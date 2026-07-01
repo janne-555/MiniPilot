@@ -1,0 +1,37 @@
+CC=gcc
+
+CFLAGS=\
+-I. \
+-I./libraries/generated/include/mavlink/v2.0
+
+SRC=\
+main.c \
+AP_Scheduler/AP_Scheduler.c \
+AP_HAL/HAL_Linux.c \
+AP_Vehicle/AP_Vehicle.c \
+AP_GPS/AP_GPS.c \
+AP_AHRS/AP_AHRS.c \
+AP_IMU/AP_IMU.c \
+AP_RC/AP_RC.c \
+AP_Control/AP_Control.c \
+AP_PID/AP_PID.c \
+AP_Sim/AP_Sim.c \
+AP_Mixer/AP_Mixer.c \
+AP_Motors/AP_Motors.c \
+AP_Param/AP_Param.c \
+AP_Mode/AP_Mode.c \
+AP_Arming/AP_Arming.c \
+GCS_MAVLink/GCS_Heartbeat.c \
+GCS_MAVLink/GCS_Parser.c \
+GCS_MAVLink/GCS_Statustext.c \
+GCS_MAVLink/GCS_SysStatus.c \
+GCS_MAVLink/GCS_Attitude.c \
+GCS_MAVLink/GCS_GPS.c \
+GCS_MAVLink/GCS_VFR_HUD.c \
+GCS_MAVLink/GCS_Commands.c \
+GCS_MAVLink/GCS_Params.c
+all:
+	$(CC) $(SRC) $(CFLAGS) -o build/minipilot -lm
+
+clean:
+	rm -f build/minipilot
