@@ -1,75 +1,104 @@
-
 //------------------------------------------------------------------------------
 // File    : AP_Sim.c
-// Purpose : Simple Drone Physics Simulator
+// Purpose : Drone Physics Simulator
 // Project : MiniPilot
 //------------------------------------------------------------------------------
 
 #include "AP_Sim.h"
+#include "AP_Debug/AP_Debug.h"
+#include "../AP_Motors/AP_Motors.h"
 
-/*---------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
  * Private Variables
  *---------------------------------------------------------------------------*/
 
-// Roll angle (degrees)
-static float roll = 0.0f;
+static AP_Sim_State_t sim;
 
-// Roll rate (deg/sec)
-static float roll_rate = 0.0f;
+/* Moment of inertia (simulation constant) */
+static const float inertia = 10.0f;
 
-/*---------------------------------------------------------------------------
- * Initialize Simulator
+/*----------------------------------------------------------------------------
+ * Initialize
  *---------------------------------------------------------------------------*/
 
 void AP_Sim_Init(void)
 {
-    roll = 0.0f;
-    roll_rate = 0.0f;
+	sim.roll = 0.0f;
+	sim.pitch = 0.0f;
+	sim.yaw = 0.0f;
+
+	sim.roll_rate = 0.0f;
+	sim.pitch_rate = 0.0f;
+	sim.yaw_rate = 0.0f;
+
+	sim.roll_accel = 0.0f;
+	sim.pitch_accel = 0.0f;
+	sim.yaw_accel = 0.0f;
 }
 
-/*---------------------------------------------------------------------------
- * Update Simulator
+/*----------------------------------------------------------------------------
+ * Update Physics
  *---------------------------------------------------------------------------*/
 
-void AP_Sim_Update(float roll_command,
-                   float dt)
+void AP_Sim_Update(float dt)
 {
-    /*---------------------------------------------------------------
-     * Physics
-     *
-     * Roll Command
-     *      ↓
-     * Roll Acceleration
-     *      ↓
-     * Roll Rate
-     *      ↓
-     * Roll Angle
-     *--------------------------------------------------------------*/
+	const AP_Motors_Output_t *motor;
 
-    /* Update roll rate */
-    roll_rate += roll_command * dt;
+	float roll_torque;
 
-    /* Simple damping to stop infinite acceleration */
-    roll_rate *= 0.98f;
+	motor = AP_Motors_GetOutput();
 
-    /* Update roll angle */
-    roll += roll_rate * dt;
+	/*--------------------------------------------------------------
+	 * Roll Torque
+	 *
+	 *      Front
+	 *
+	 *   M1       M2
+	 *
+	 *   M4       M3
+	 *
+	 *       Back
+	 *
+	 * Left Motors  : M1 M4
+	 * Right Motors : M2 M3
+	 *-------------------------------------------------------------*/
+
+roll_torque =
+    (motor->motor[0] + motor->motor[3]) -
+    (motor->motor[1] + motor->motor[2]);
+	/*--------------------------------------------------------------
+	 * Newton's Law
+	 *
+	 * Torque = Inertia × Angular Acceleration
+	 *-------------------------------------------------------------*/
+
+	sim.roll_accel = roll_torque / inertia;
+
+	/* Update angular velocity */
+
+	sim.roll_rate += sim.roll_accel * dt;
+
+	/* Air resistance */
+
+	sim.roll_rate *= 0.995f;
+
+	/* Update angle */
+
+	sim.roll += sim.roll_rate * dt;
+
+	AP_Debug_Print(DBG_SIM,
+			"\n===== SIM =====\n"
+			"Roll      : %.2f\n"
+			"Roll Rate : %.2f\n",
+			sim.roll,
+			sim.roll_rate);
 }
 
-/*---------------------------------------------------------------------------
- * Get Roll Angle
+/*----------------------------------------------------------------------------
+ * Get Simulator State
  *---------------------------------------------------------------------------*/
 
-float AP_Sim_GetRoll(void)
+const AP_Sim_State_t *AP_Sim_GetState(void)
 {
-    return roll;
-}
-
-/*---------------------------------------------------------------------------
- * Get Roll Rate
- *---------------------------------------------------------------------------*/
-
-float AP_Sim_GetRollRate(void)
-{
-    return roll_rate;
+	return &sim;
 }

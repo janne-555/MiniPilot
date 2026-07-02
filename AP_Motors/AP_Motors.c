@@ -17,27 +17,27 @@
 //------------------------------------------------------------------------------
 
 #include "AP_Motors.h"
-
+#include "../AP_Config/AP_Config.h"
 #include "../AP_Mixer/AP_Mixer.h"
-
+#include "../AP_Arming/AP_Arming.h"
+#include "AP_Debug/AP_Debug.h"
 #include <stdio.h>
-
 /*----------------------------------------------------------------------------
  * Private Variables
  *---------------------------------------------------------------------------*/
 
 static AP_Motors_Output_t motors;
-
+static uint8_t last_armed = 255;
 /*----------------------------------------------------------------------------
  * Initialize
  *---------------------------------------------------------------------------*/
 
 void AP_Motors_Init(void)
 {
-    motors.motor1 = 0.0f;
-    motors.motor2 = 0.0f;
-    motors.motor3 = 0.0f;
-    motors.motor4 = 0.0f;
+	for (int i = 0; i < 4; i++)
+	{
+		motors.motor[i] = MOTOR_MIN_OUTPUT ;
+	}
 }
 
 /*----------------------------------------------------------------------------
@@ -46,31 +46,57 @@ void AP_Motors_Init(void)
 
 void AP_Motors_Update(void)
 {
-    const AP_Mixer_Output_t *mixer;
+	uint8_t armed;
+	const AP_Mixer_Output_t *mixer;
 
-    mixer = AP_Mixer_GetOutput();
+	armed = AP_Arming_IsArmed();
+	mixer = AP_Mixer_GetOutput();
 
-    motors.motor1 = mixer->motor1;
-    motors.motor2 = mixer->motor2;
-    motors.motor3 = mixer->motor3;
-    motors.motor4 = mixer->motor4;
+	if (armed != last_armed)
+	{
+		AP_Debug_Print(DBG_MOTORS,
+				"\n===== MOTORS =====\n"
+				"State : %s\n",
+				armed ? "ARMED" : "DISARMED");
 
-    /* Motor limits */
-    if(motors.motor1 < 0.0f) motors.motor1 = 0.0f;
-    if(motors.motor2 < 0.0f) motors.motor2 = 0.0f;
-    if(motors.motor3 < 0.0f) motors.motor3 = 0.0f;
-    if(motors.motor4 < 0.0f) motors.motor4 = 0.0f;
+		last_armed = armed;
+	}
+	if (!armed)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			motors.motor[i] = MOTOR_MIN_OUTPUT  ;
+		}
 
-    if(motors.motor1 > 100.0f) motors.motor1 = 100.0f;
-    if(motors.motor2 > 100.0f) motors.motor2 = 100.0f;
-    if(motors.motor3 > 100.0f) motors.motor3 = 100.0f;
-    if(motors.motor4 > 100.0f) motors.motor4 = 100.0f;
+		return;
+	}
 
-    printf("Motor : %.2f %.2f %.2f %.2f\n",
-            motors.motor1,
-            motors.motor2,
-            motors.motor3,
-            motors.motor4);
+	/* Vehicle is armed */
+
+	for (int i = 0; i < 4; i++)
+	{
+		motors.motor[i] = mixer->motor[i];
+	}
+	/* Motor limits */
+	for (int i = 0; i < 4; i++)
+	{
+		if (motors.motor[i] < MOTOR_MIN_OUTPUT )
+			motors.motor[i] = MOTOR_MIN_OUTPUT ;
+
+		if (motors.motor[i] > MOTOR_MAX_OUTPUT )
+			motors.motor[i] = MOTOR_MAX_OUTPUT ;
+	}
+	AP_Debug_Print(DBG_MOTORS,
+			"\n===== MOTORS =====\n"
+			"M1 : %.2f\n"
+			"M2 : %.2f\n"
+			"M3 : %.2f\n"
+			"M4 : %.2f\n",
+			motors.motor[0],
+			motors.motor[1],
+			motors.motor[2],
+			motors.motor[3]);
+
 }
 
 /*----------------------------------------------------------------------------
@@ -79,5 +105,5 @@ void AP_Motors_Update(void)
 
 const AP_Motors_Output_t *AP_Motors_GetOutput(void)
 {
-    return &motors;
+	return &motors;
 }

@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include "AP_HAL/AP_HAL.h"
+#include "AP_Config/AP_Config.h"
 #include "AP_Scheduler/AP_Scheduler.h"
 #include "AP_Vehicle/AP_Vehicle.h"
 #include "AP_GPS/AP_GPS.h"
@@ -16,10 +17,13 @@
 #include "AP_Motors/AP_Motors.h"
 #include "AP_Sim/AP_Sim.h"
 #include "AP_Mixer/AP_Mixer.h"
+#include "AP_Debug/AP_Debug.h"
+#include "AP_Input/AP_Keyboard.h"
+#include "AP_FlightMode/AP_FlightMode.h"
+#include "AP_Failsafe/AP_Failsafe.h"
 #include "GCS_MAVLink/GCS_MAVLink.h"
 
 
-#define CONTROL_DT 0.01f
 //------------------------------------------------------------------------------
 // Scheduler Tasks
 //------------------------------------------------------------------------------
@@ -29,27 +33,31 @@
 // IMU
 static void Task_IMU(void)
 {
-    AP_IMU_Update();
+	AP_IMU_Update();
 }
 // AHRS
 static void Task_AHRS(void)
 {
-    AP_AHRS_Update();
+	AP_AHRS_Update();
 }
 // Flight Controller
 static void Task_Control(void)
 {
-    AP_Control_Update(CONTROL_DT);
+	AP_Control_Update(LOOP_DT);
 }
 // Mixer
 static void Task_Mixer(void)
 {
-    AP_Mixer_Update();
+	AP_Mixer_Update();
 }
 // Motors
 static void Task_Motors(void)
 {
-    AP_Motors_Update();
+	AP_Motors_Update();
+}
+static void Task_Sim(void)
+{
+	AP_Sim_Update(LOOP_DT);
 }
 //----------------------------
 // 50 Hz Tasks
@@ -57,25 +65,30 @@ static void Task_Motors(void)
 // RC Receiver
 static void Task_RC(void)
 {
-    AP_RC_Update();
+	AP_RC_Update();
 }
 // Ground Control Station
 static void Task_GCS(void)
 {
-    GCS_update();
+	GCS_update();
 }
+
 //----------------------------
 // 5 Hz Tasks
 //----------------------------
 // GPS Driver
 static void Task_GPS_Driver(void)
 {
-    AP_GPS_Update();
+	AP_GPS_Update();
 }
 // Send GPS
 static void Task_GPS(void)
 {
-    GCS_send_gps_raw_int();
+	GCS_send_gps_raw_int();
+}
+static void Task_FlightMode(void)
+{
+	AP_FlightMode_Update();
 }
 //----------------------------
 // 10 Hz Tasks
@@ -83,7 +96,16 @@ static void Task_GPS(void)
 // Send Attitude
 static void Task_Attitude(void)
 {
-    GCS_send_attitude();
+	GCS_send_attitude();
+}
+
+static void Task_Arming(void)
+{
+    AP_Arming_Update();
+}
+static void Task_Failsafe(void)
+{
+    AP_Failsafe_Update();
 }
 //----------------------------
 // 2 Hz Tasks
@@ -91,7 +113,7 @@ static void Task_Attitude(void)
 // Send VFR HUD
 static void Task_VFR_HUD(void)
 {
-    GCS_send_vfr_hud();
+	GCS_send_vfr_hud();
 }
 //----------------------------
 // 1 Hz Tasks
@@ -99,80 +121,102 @@ static void Task_VFR_HUD(void)
 // Heartbeat
 static void Task_Heartbeat(void)
 {
-    GCS_send_heartbeat();
+	GCS_send_heartbeat();
 }
 // System Status
 static void Task_SysStatus(void)
 {
-    GCS_send_sys_status();
+	GCS_send_sys_status();
 }
 //------------------------------------------------------------------------------
 // Main
 //------------------------------------------------------------------------------
 int main(void)
 {
-    //----------------------------------------------------------------------
-    // HAL
-    //----------------------------------------------------------------------
-    if (hal_init() < 0)
-    {
-        printf("HAL Init Failed\n");
-        return -1;
-    }
-    printf("MiniPilot Started\n");
-    //----------------------------------------------------------------------
-    // Initialize Modules
-    //----------------------------------------------------------------------
-    AP_Vehicle_Init();
-    AP_GPS_Init();
-    AP_IMU_Init();
-    AP_RC_Init();
-    AP_Control_Init();
-    AP_Mixer_Init();
-    AP_Motors_Init();
-    AP_Sim_Init();
+	//----------------------------------------------------------------------
+	// HAL
+	//----------------------------------------------------------------------
+	if (hal_init() < 0)
+	{
+		printf("HAL Init Failed\n");
+		return -1;
+	}
+	printf("MiniPilot Started\n");
+	//----------------------------------------------------------------------
+	// Initialize Modules
+	//----------------------------------------------------------------------
+	AP_Vehicle_Init();
+	AP_GPS_Init();
+	AP_IMU_Init();
+	AP_FlightMode_Init();
+	AP_RC_Init();
+	AP_Control_Init();
+	AP_Mixer_Init();
+	AP_Motors_Init();
+	AP_Sim_Init();
+	AP_Arming_Init();
+	AP_Keyboard_Init();
+	AP_Debug_Init();
+	AP_Failsafe_Init();
 
 
-    //----------------------------------------------------------------------
-    // Scheduler
-    //----------------------------------------------------------------------
-    AP_Scheduler_Init();
-    //----------------------------------------------------------------------
-    // Register 100 Hz Tasks
-    //----------------------------------------------------------------------
-    AP_Scheduler_Add_Task(Task_IMU,10);
-    AP_Scheduler_Add_Task(Task_AHRS,10);
-    AP_Scheduler_Add_Task(Task_Control,10);
-    AP_Scheduler_Add_Task(Task_Mixer,10);
-    AP_Scheduler_Add_Task(Task_Motors,10);
-    //----------------------------------------------------------------------
-    // Register 50 Hz Tasks
-    //----------------------------------------------------------------------
-    AP_Scheduler_Add_Task(Task_RC,20);
-    AP_Scheduler_Add_Task(Task_GCS,20);
-    //----------------------------------------------------------------------
-    // Register 5 Hz Tasks
-    //----------------------------------------------------------------------
-    AP_Scheduler_Add_Task(Task_GPS,200);
-    //----------------------------------------------------------------------
-    // Register 10 Hz Tasks
-    //----------------------------------------------------------------------
-    AP_Scheduler_Add_Task(Task_Attitude,100);
-    //----------------------------------------------------------------------
-    // Register 2 Hz Tasks
-    //----------------------------------------------------------------------
-    AP_Scheduler_Add_Task(Task_VFR_HUD,500);
-    //----------------------------------------------------------------------
-    // Register 1 Hz Tasks
-    AP_Scheduler_Add_Task(Task_Heartbeat,1000);
-    AP_Scheduler_Add_Task(Task_SysStatus,1000);
-    //----------------------------------------------------------------------
-    // Main Loop
-    //----------------------------------------------------------------------
-    while (1)
-    {
-        AP_Scheduler_Run();
+//	AP_Debug_Enable(DBG_RC);
+//	AP_Debug_Enable(DBG_CONTROL);
+	AP_Debug_Enable(DBG_IMU);
+//	AP_Debug_Enable(DBG_MIXER);
+	AP_Debug_Enable(DBG_MOTORS);
+	AP_Debug_Enable(DBG_ARMING);
+	AP_Debug_Enable(DBG_FAILSAFE);
 
-    }
-    return 0;
+
+
+	//----------------------------------------------------------------------
+	// Scheduler
+	//----------------------------------------------------------------------
+	AP_Scheduler_Init();
+	//----------------------------------------------------------------------
+	// Register 100 Hz Tasks
+	//----------------------------------------------------------------------
+	AP_Scheduler_Add_Task(Task_IMU,TASK_100HZ);
+	AP_Scheduler_Add_Task(Task_Sim,TASK_100HZ);
+	AP_Scheduler_Add_Task(Task_AHRS,TASK_100HZ);
+	AP_Scheduler_Add_Task(Task_Control,TASK_100HZ);
+	AP_Scheduler_Add_Task(Task_Mixer,TASK_100HZ);
+	AP_Scheduler_Add_Task(Task_Motors,TASK_100HZ);
+	//----------------------------------------------------------------------
+	// Register 50 Hz Tasks
+	//----------------------------------------------------------------------
+	AP_Scheduler_Add_Task(Task_RC,TASK_50HZ);
+	AP_Scheduler_Add_Task(Task_GCS,TASK_50HZ);
+	AP_Scheduler_Add_Task(Task_FlightMode, TASK_50HZ);
+	//----------------------------------------------------------------------
+	// Register 5 Hz Tasks
+	//----------------------------------------------------------------------
+	AP_Scheduler_Add_Task(Task_GPS,TASK_5HZ);
+	//----------------------------------------------------------------------
+	// Register 10 Hz Tasks
+	//----------------------------------------------------------------------
+	AP_Scheduler_Add_Task(Task_Attitude,TASK_10HZ);
+	AP_Scheduler_Add_Task(Task_Arming,TASK_10HZ);
+	AP_Scheduler_Add_Task(Task_Failsafe,TASK_10HZ);
+
+	//----------------------------------------------------------------------
+	// Register 2 Hz Tasks
+	//----------------------------------------------------------------------
+	AP_Scheduler_Add_Task(Task_VFR_HUD,TASK_2HZ );
+	//----------------------------------------------------------------------
+	// Register 1 Hz Tasks
+	AP_Scheduler_Add_Task(Task_Heartbeat,TASK_1HZ );
+	AP_Scheduler_Add_Task(Task_SysStatus,TASK_1HZ );
+	//----------------------------------------------------------------------
+	// Main Loop
+	//----------------------------------------------------------------------
+	while (1)
+	{
+
+		AP_Scheduler_Run();
+
+	}
+	AP_Keyboard_Close();
+	return 0;
 }

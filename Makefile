@@ -14,6 +14,7 @@ AP_AHRS/AP_AHRS.c \
 AP_IMU/AP_IMU.c \
 AP_RC/AP_RC.c \
 AP_Control/AP_Control.c \
+AP_FlightMode/AP_FlightMode.c \
 AP_PID/AP_PID.c \
 AP_Sim/AP_Sim.c \
 AP_Mixer/AP_Mixer.c \
@@ -21,6 +22,9 @@ AP_Motors/AP_Motors.c \
 AP_Param/AP_Param.c \
 AP_Mode/AP_Mode.c \
 AP_Arming/AP_Arming.c \
+AP_Input/AP_Keyboard.c \
+AP_Debug/AP_Debug.c \
+AP_Failsafe/AP_Failsafe.c \
 GCS_MAVLink/GCS_Heartbeat.c \
 GCS_MAVLink/GCS_Parser.c \
 GCS_MAVLink/GCS_Statustext.c \

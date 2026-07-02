@@ -9,10 +9,7 @@
 
 typedef struct
 {
-    float motor1;
-    float motor2;
-    float motor3;
-    float motor4;
+    float motor[4];
 
 } AP_Mixer_Output_t;
 

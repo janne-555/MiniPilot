@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // File    : AP_RC.h
-// Purpose : RC Input Driver
+// Purpose : Radio Control Receiver
 // Project : MiniPilot
 //------------------------------------------------------------------------------
 
@@ -9,25 +9,40 @@
 
 #include <stdint.h>
 
+/*----------------------------------------------------------------------------
+ * RC Input
+ *---------------------------------------------------------------------------*/
+
 typedef struct
 {
-    uint16_t roll;
+    /* Stick Commands */
 
-    uint16_t pitch;
+    float roll;
 
-    uint16_t throttle;
+    float pitch;
 
-    uint16_t yaw;
+    float yaw;
 
-} AP_RC_Data_t;
+    float throttle;
 
-// Initialize RC
+    /* Switches */
+
+    uint8_t arm;
+
+    uint8_t mode;
+
+} AP_RC_t;
+
+/*----------------------------------------------------------------------------
+ * API
+ *---------------------------------------------------------------------------*/
+
 void AP_RC_Init(void);
 
-// Update RC
 void AP_RC_Update(void);
 
-// Read RC
-void AP_RC_Get(AP_RC_Data_t *rc);
+/* Get latest RC data */
+
+const AP_RC_t *AP_RC_Get(void);
 
 #endif

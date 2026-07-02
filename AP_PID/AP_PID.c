@@ -5,7 +5,7 @@
 //------------------------------------------------------------------------------
 #include<stdio.h>
 #include "AP_PID.h"
-
+#include "../AP_Config/AP_Config.h"
 // Initialize PID
 void AP_PID_Init(AP_PID_t *pid,
 		float kp,
@@ -36,14 +36,14 @@ float AP_PID_Update(AP_PID_t *pid,
 	pid->integral += error * dt;
 
 	/* Anti-windup */
-	if (pid->integral > 100.0f)
+	if (pid->integral > PID_INTEGRAL_LIMIT)
 	{
-		pid->integral = 100.0f;
+		pid->integral = PID_INTEGRAL_LIMIT;
 	}
 
-	if (pid->integral < -100.0f)
+	if (pid->integral < -PID_INTEGRAL_LIMIT)
 	{
-		pid->integral = -100.0f;
+		pid->integral = -PID_INTEGRAL_LIMIT;
 	}
 
 	float derivative =
