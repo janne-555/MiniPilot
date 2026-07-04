@@ -57,6 +57,7 @@ typedef struct
 
     uint8_t baro_ok;
 
+    uint8_t compass_ok;
 
 
     uint8_t healthy;
@@ -99,7 +100,7 @@ float AP_EKF_GetAltitude(void);
 
 float AP_EKF_GetVelocityZ(void);
 
-
+uint8_t AP_EKF_CompassHealthy(void);
 
 uint8_t AP_EKF_IsHealthy(void);
 
