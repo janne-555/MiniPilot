@@ -38,6 +38,7 @@ GCS_MAVLink/GCS_Attitude.c \
 GCS_MAVLink/GCS_GPS.c \
 GCS_MAVLink/GCS_VFR_HUD.c \
 GCS_MAVLink/GCS_Commands.c \
+GCS_MAVLink/GCS_GlobalPosition.c \
 GCS_MAVLink/GCS_Params.c
 all:
 	$(CC) $(SRC) $(CFLAGS) -o build/minipilot -lm

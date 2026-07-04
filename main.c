@@ -111,6 +111,10 @@ static void Task_FlightMode(void)
 {
 	AP_FlightMode_Update();
 }
+static void Task_GlobalPosition(void)
+{
+    GCS_send_global_position();
+}
 //----------------------------
 // 10 Hz Tasks
 //----------------------------
@@ -254,6 +258,8 @@ int main(void)
 	AP_Scheduler_Add_Task(Task_GPS_Driver,TASK_5HZ);
 
 	AP_Scheduler_Add_Task(Task_GPS,TASK_5HZ);
+
+	AP_Scheduler_Add_Task(Task_GlobalPosition,TASK_5HZ);
 
 
 	//================================================

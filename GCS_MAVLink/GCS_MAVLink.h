@@ -21,4 +21,7 @@ void GCS_send_vfr_hud(void);
 
 void GCS_update(void);
 
+void GCS_send_global_position(void);
+
+
 #endif
