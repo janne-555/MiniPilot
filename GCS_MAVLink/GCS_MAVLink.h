@@ -23,5 +23,7 @@ void GCS_update(void);
 
 void GCS_send_global_position(void);
 
+void GCS_send_ekf_status(void);
+
 
 #endif

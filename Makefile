@@ -17,6 +17,7 @@ AP_IMU/AP_IMU.c \
 AP_EKF/AP_EKF.c \
 AP_RC/AP_RC.c \
 AP_Control/AP_Control.c \
+AP_Compass/AP_Compass.c \
 AP_FlightMode/AP_FlightMode.c \
 AP_PID/AP_PID.c \
 AP_Sim/AP_Sim.c \
@@ -39,6 +40,7 @@ GCS_MAVLink/GCS_GPS.c \
 GCS_MAVLink/GCS_VFR_HUD.c \
 GCS_MAVLink/GCS_Commands.c \
 GCS_MAVLink/GCS_GlobalPosition.c \
+GCS_MAVLink/GCS_EKFStatus.c \
 GCS_MAVLink/GCS_Params.c
 all:
 	$(CC) $(SRC) $(CFLAGS) -o build/minipilot -lm

@@ -20,7 +20,7 @@ static uint8_t last_critical = 255;
 
 void AP_Battery_Init(void)
 {
-        battery.voltage = 10.2f;
+        battery.voltage = 12.2f;
 
         battery.current = 0.0f;
 

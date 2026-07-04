@@ -134,5 +134,5 @@ void GCS_send_global_position(void)
         len);
 
 
-    printf("SEND GLOBAL POSITION\n");
+//    printf("SEND GLOBAL POSITION\n");
 }

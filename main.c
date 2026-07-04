@@ -27,6 +27,7 @@
 #include "AP_FlightMode/AP_FlightMode.h"
 #include "AP_Failsafe/AP_Failsafe.h"
 #include "AP_Param/AP_Param.h"
+#include "AP_Compass/AP_Compass.h"
 #include "GCS_MAVLink/GCS_MAVLink.h"
 #include "GCS_MAVLink/GCS_Statustext.h"
 
@@ -136,6 +137,11 @@ static void Task_Battery(void)
 {
 	AP_Battery_Update();
 }
+// Compass
+static void Task_Compass(void)
+{
+    AP_Compass_Update();
+}
 //----------------------------
 // 2 Hz Tasks
 //----------------------------
@@ -157,6 +163,10 @@ static void Task_SysStatus(void)
 {
 	GCS_send_sys_status();
 }
+static void Task_EKFStatus(void)
+{
+    GCS_send_ekf_status();
+}
 //------------------------------------------------------------------------------
 // Main
 //------------------------------------------------------------------------------
@@ -176,6 +186,7 @@ int main(void)
     AP_Sim_Init();
 
     AP_IMU_Init();
+    AP_Compass_Init();
     AP_GPS_Init();
     AP_Baro_Init();
     AP_Battery_Init();
@@ -196,10 +207,10 @@ int main(void)
     AP_Arming_Init();
     AP_Failsafe_Init();
 
-/*
+
     AP_Debug_Enable(DBG_RC);
     AP_Debug_Enable(DBG_CONTROL);
-//    AP_Debug_Enable(DBG_BARO);
+    AP_Debug_Enable(DBG_BARO);
     AP_Debug_Enable(DBG_IMU);
     AP_Debug_Enable(DBG_INAV);
     AP_Debug_Enable(DBG_MIXER);
@@ -209,10 +220,11 @@ int main(void)
     AP_Debug_Enable(DBG_FAILSAFE);
     AP_Debug_Enable(DBG_POS);
     AP_Debug_Enable(DBG_NAV);
-//    AP_Debug_Enable(DBG_EKF);
-//    AP_Debug_Enable(DBG_VEHICLE);
+    AP_Debug_Enable(DBG_COMPASS);
+    AP_Debug_Enable(DBG_EKF);
+    AP_Debug_Enable(DBG_VEHICLE);
 
-*/
+
     AP_Scheduler_Init();
 
 
@@ -244,12 +256,15 @@ int main(void)
 
 	AP_Scheduler_Add_Task(Task_Attitude,TASK_10HZ);
 
+
+	AP_Scheduler_Add_Task(Task_Compass,TASK_10HZ);
+
 	AP_Scheduler_Add_Task(Task_Arming,TASK_10HZ);
 
 	AP_Scheduler_Add_Task(Task_Failsafe,TASK_10HZ);
 
 	AP_Scheduler_Add_Task(Task_Battery,TASK_10HZ);
-
+	
 
 	//================================================
 	// 5HZ
@@ -276,6 +291,9 @@ int main(void)
 	AP_Scheduler_Add_Task(Task_Heartbeat,TASK_1HZ);
 
 	AP_Scheduler_Add_Task(Task_SysStatus,TASK_1HZ);
+	
+	AP_Scheduler_Add_Task(Task_EKFStatus,TASK_1HZ);
+
 	//----------------------------------------------------------------------
 	// Main Loop
 	//----------------------------------------------------------------------
