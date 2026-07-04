@@ -17,6 +17,7 @@
 #include "AP_Motors/AP_Motors.h"
 #include "AP_Arming/AP_Arming.h"
 #include "AP_Battery/AP_Battery.h"
+#include "AP_Baro/AP_Baro.h"
 #include "AP_Sim/AP_Sim.h"
 #include "AP_Mixer/AP_Mixer.h"
 #include "AP_Debug/AP_Debug.h"
@@ -109,10 +110,13 @@ static void Task_Failsafe(void)
 {
 	AP_Failsafe_Update();
 }
-
+static void Task_Baro(void)
+{
+	AP_Baro_Update();
+}
 static void Task_Battery(void)
 {
-    AP_Battery_Update();
+	AP_Battery_Update();
 }
 //----------------------------
 // 2 Hz Tasks
@@ -164,7 +168,7 @@ int main(void)
 	AP_GPS_Init();
 
 	AP_Battery_Init();
-
+	AP_Baro_Init();
 	/* State */
 	AP_Vehicle_Init();
 
@@ -188,11 +192,11 @@ int main(void)
 
 	//	AP_Debug_Enable(DBG_RC);
 	//	AP_Debug_Enable(DBG_CONTROL);
-		AP_Debug_Enable(DBG_IMU);
+	AP_Debug_Enable(DBG_IMU);
 	//	AP_Debug_Enable(DBG_MIXER);
-		AP_Debug_Enable(DBG_MOTORS);
-		AP_Debug_Enable(DBG_ARMING);
-		AP_Debug_Enable(DBG_FAILSAFE);
+	AP_Debug_Enable(DBG_MOTORS);
+	AP_Debug_Enable(DBG_ARMING);
+	AP_Debug_Enable(DBG_FAILSAFE);
 
 
 
@@ -231,7 +235,7 @@ int main(void)
 	AP_Scheduler_Add_Task(Task_Arming,TASK_10HZ);
 	AP_Scheduler_Add_Task(Task_Failsafe,TASK_10HZ);
 	AP_Scheduler_Add_Task(Task_Battery,TASK_10HZ);
-
+	AP_Scheduler_Add_Task(Task_Baro,TASK_10HZ);
 	//----------------------------------------------------------------------
 	// Register 2 Hz Tasks
 	//----------------------------------------------------------------------
