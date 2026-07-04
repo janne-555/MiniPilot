@@ -14,6 +14,7 @@ AP_Baro/AP_Baro.c \
 AP_GPS/AP_GPS.c \
 AP_AHRS/AP_AHRS.c \
 AP_IMU/AP_IMU.c \
+AP_EKF/AP_EKF.c \
 AP_RC/AP_RC.c \
 AP_Control/AP_Control.c \
 AP_FlightMode/AP_FlightMode.c \

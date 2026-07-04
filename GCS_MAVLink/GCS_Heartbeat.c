@@ -4,7 +4,7 @@
 // Purpose : Send HEARTBEAT Message
 // Project : MiniPilot
 //------------------------------------------------------------------------------
-
+#include <stdio.h>
 #include "../AP_HAL/AP_HAL.h"
 #include "../AP_Vehicle/AP_Vehicle.h"
 
@@ -56,4 +56,6 @@ void GCS_send_heartbeat(void)
     hal_comm_write(
         buffer,
         len);
+
+    printf("SEND HEARTBEAT\n");
 }

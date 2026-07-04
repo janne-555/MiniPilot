@@ -44,4 +44,5 @@ void GCS_send_attitude(void)
             &msg);
 
     hal_comm_write(buffer,len);
+//printf("SEND ATTITUDE\n");
 }

@@ -11,6 +11,7 @@
 #include "AP_Vehicle/AP_Vehicle.h"
 #include "AP_GPS/AP_GPS.h"
 #include "AP_IMU/AP_IMU.h"
+#include "AP_EKF/AP_EKF.h"
 #include "AP_AHRS/AP_AHRS.h"
 #include "AP_RC/AP_RC.h"
 #include "AP_Control/AP_Control.h"
@@ -25,6 +26,7 @@
 #include "AP_InertialNav/AP_InertialNav.h"
 #include "AP_FlightMode/AP_FlightMode.h"
 #include "AP_Failsafe/AP_Failsafe.h"
+#include "AP_Param/AP_Param.h"
 #include "GCS_MAVLink/GCS_MAVLink.h"
 #include "GCS_MAVLink/GCS_Statustext.h"
 
@@ -38,6 +40,10 @@
 static void Task_IMU(void)
 {
 	AP_IMU_Update();
+}
+static void Task_EKF(void)
+{
+    AP_EKF_Update(LOOP_DT);
 }
 // AHRS
 static void Task_AHRS(void)
@@ -152,97 +158,80 @@ static void Task_SysStatus(void)
 //------------------------------------------------------------------------------
 int main(void)
 {
-	//----------------------------------------------------------------------
-	// HAL
-	//----------------------------------------------------------------------
-	if (hal_init() < 0)
-	{
-		printf("HAL Init Failed\n");
-		return -1;
-	}
-	printf("MiniPilot Started\n");
-	//----------------------------------------------------------------------
-	// Initialize Modules
-	//----------------------------------------------------------------------
-	AP_Debug_Init();
+    if (hal_init() < 0)
+    {
+        printf("HAL Init Failed\n");
+        return -1;
+    }
 
-	/* HAL / Drivers */
-	AP_Keyboard_Init();
+    printf("MiniPilot Started\n");
 
-	AP_Sim_Init();
+    AP_Debug_Init();
 
-	AP_IMU_Init();
+    AP_Keyboard_Init();
+    AP_Sim_Init();
 
-	AP_GPS_Init();
+    AP_IMU_Init();
+    AP_GPS_Init();
+    AP_Baro_Init();
+    AP_Battery_Init();
 
-	AP_Battery_Init();
-	AP_Baro_Init();
-	/* State */
-	AP_Vehicle_Init();
+    AP_AHRS_Init();
+    AP_InertialNav_Init();
+    AP_EKF_Init();
 
-	/* Pilot */
-	AP_RC_Init();
+    AP_Vehicle_Init();
 
-	AP_FlightMode_Init();
-	AP_InertialNav_Init();
-	/* Control */
-	AP_Control_Init();
+    AP_RC_Init();
+    AP_FlightMode_Init();
 
-	AP_Mixer_Init();
+    AP_Control_Init();
+    AP_Mixer_Init();
+    AP_Motors_Init();
 
-	AP_Motors_Init();
+    AP_Arming_Init();
+    AP_Failsafe_Init();
 
-	/* Safety */
-	AP_Arming_Init();
+/*
+    AP_Debug_Enable(DBG_RC);
+    AP_Debug_Enable(DBG_CONTROL);
+//    AP_Debug_Enable(DBG_BARO);
+    AP_Debug_Enable(DBG_IMU);
+    AP_Debug_Enable(DBG_INAV);
+    AP_Debug_Enable(DBG_MIXER);
+    AP_Debug_Enable(DBG_MOTORS);
+    AP_Debug_Enable(DBG_ARMING);
+    AP_Debug_Enable(DBG_BATTERY);
+    AP_Debug_Enable(DBG_FAILSAFE);
+    AP_Debug_Enable(DBG_POS);
+    AP_Debug_Enable(DBG_NAV);
+//    AP_Debug_Enable(DBG_EKF);
+//    AP_Debug_Enable(DBG_VEHICLE);
 
-	AP_Failsafe_Init();
-
-
-	AP_Debug_Enable(DBG_RC);
-	AP_Debug_Enable(DBG_CONTROL);
-	AP_Debug_Enable(DBG_BARO);
-	AP_Debug_Enable(DBG_IMU);
-	AP_Debug_Enable(DBG_INAV);
-	AP_Debug_Enable(DBG_MIXER);
-	AP_Debug_Enable(DBG_MOTORS);
-	AP_Debug_Enable(DBG_ARMING);
-	AP_Debug_Enable(DBG_BATTERY);
-	AP_Debug_Enable(DBG_FAILSAFE);
-	AP_Debug_Enable(DBG_POS);
-	AP_Debug_Enable(DBG_NAV);
-
-	//================================================
-	// 100HZ FAST LOOP
-	//================================================
-
-	AP_Scheduler_Add_Task(Task_Sim,TASK_100HZ);
-
-	AP_Scheduler_Add_Task(Task_IMU,TASK_100HZ);
-
-	AP_Scheduler_Add_Task(Task_AHRS,TASK_100HZ);
-
-	AP_Scheduler_Add_Task(Task_Control,TASK_100HZ);
-
-	AP_Scheduler_Add_Task(Task_Mixer,TASK_100HZ);
-
-	AP_Scheduler_Add_Task(Task_Motors,TASK_100HZ);
+*/
+    AP_Scheduler_Init();
 
 
-	//================================================
-	// 50HZ MEDIUM LOOP
-	//================================================
+    /* 100Hz */
 
-	AP_Scheduler_Add_Task(Task_RC,TASK_50HZ);
+    AP_Scheduler_Add_Task(Task_Sim,TASK_100HZ);
+    AP_Scheduler_Add_Task(Task_IMU,TASK_100HZ);
+    AP_Scheduler_Add_Task(Task_AHRS,TASK_100HZ);
+    AP_Scheduler_Add_Task(Task_EKF,TASK_100HZ);
+    AP_Scheduler_Add_Task(Task_Control,TASK_100HZ);
+    AP_Scheduler_Add_Task(Task_Mixer,TASK_100HZ);
+    AP_Scheduler_Add_Task(Task_Motors,TASK_100HZ);
 
+
+    /* 50Hz */
+
+    AP_Scheduler_Add_Task(Task_GCS,TASK_50HZ);
+    AP_Scheduler_Add_Task(Task_RC,TASK_50HZ);
+    AP_Scheduler_Add_Task(Task_Baro,TASK_50HZ);
+    AP_Scheduler_Add_Task(Task_InertialNav,TASK_50HZ);
+    AP_Scheduler_Add_Task(Task_FlightMode,TASK_50HZ);
+    AP_Scheduler_Add_Task(Task_Vehicle,TASK_50HZ);
 	AP_Scheduler_Add_Task(Task_Baro,TASK_50HZ);
-
-	AP_Scheduler_Add_Task(Task_InertialNav,TASK_50HZ);
-
-	AP_Scheduler_Add_Task(Task_Vehicle,TASK_50HZ);
-
-	AP_Scheduler_Add_Task(Task_FlightMode,TASK_50HZ);
-
-	AP_Scheduler_Add_Task(Task_GCS,TASK_50HZ);
 
 
 	//================================================

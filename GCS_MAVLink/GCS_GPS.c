@@ -62,4 +62,5 @@ void GCS_send_gps_raw_int(void)
             &msg);
 
     hal_comm_write(buffer,len);
+printf("SEND GPS\n");
 }

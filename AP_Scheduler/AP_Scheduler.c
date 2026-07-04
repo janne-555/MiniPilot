@@ -3,12 +3,12 @@
 // Purpose : MiniPilot task scheduler
 // Project : MiniPilot
 //------------------------------------------------------------------------------
-
+#include<stdio.h>
 #include "AP_Scheduler.h"
 
 #include "../AP_HAL/AP_HAL.h"
 
-#define MAX_TASKS 20
+#define MAX_TASKS 50
 
 static AP_Task_t tasks[MAX_TASKS];
 
@@ -26,6 +26,7 @@ int AP_Scheduler_Add_Task(TaskFunction_t function,
 {
     if(task_count >= MAX_TASKS)
     {
+	      printf("SCHEDULER FULL\n");
         return -1;
     }
 

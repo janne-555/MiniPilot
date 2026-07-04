@@ -5,13 +5,11 @@
 //------------------------------------------------------------------------------
 
 #include "AP_Vehicle.h"
-
-#include "../AP_AHRS/AP_AHRS.h"
+#include "../AP_EKF/AP_EKF.h"
 #include "../AP_GPS/AP_GPS.h"
-#include "../AP_InertialNav/AP_InertialNav.h"
 #include "../AP_Arming/AP_Arming.h"
 #include "../AP_FlightMode/AP_FlightMode.h"
-
+#include "../AP_Debug/AP_Debug.h"
 
 /*----------------------------------------------------------------------------
  * Private
@@ -48,58 +46,61 @@ void AP_Vehicle_Init(void)
 }
 
 
-
-/*----------------------------------------------------------------------------
- * Update
- *---------------------------------------------------------------------------*/
+//------------------------------------------------------------------------------
+// Update vehicle
+//------------------------------------------------------------------------------
 
 void AP_Vehicle_Update(void)
 {
 
     /*
-     * AHRS attitude
+     * EKF attitude estimate
      */
 
     vehicle.roll =
-        AP_AHRS_GetRoll();
+        AP_EKF_GetRoll();
 
 
     vehicle.pitch =
-        AP_AHRS_GetPitch();
+        AP_EKF_GetPitch();
 
 
     vehicle.yaw =
-        AP_AHRS_GetYaw();
+        AP_EKF_GetYaw();
 
 
 
     /*
-     * GPS position
+     * EKF position estimate
      */
 
     vehicle.latitude =
-        AP_GPS_GetLatitude();
+        AP_EKF_GetLatitude();
 
 
     vehicle.longitude =
-        AP_GPS_GetLongitude();
+        AP_EKF_GetLongitude();
 
 
-    vehicle.ground_speed =
-        AP_GPS_GetGroundSpeed();
+    vehicle.altitude =
+        AP_EKF_GetAltitude();
 
 
 
     /*
-     * Navigation altitude
+     * EKF velocity
      */
 
-    vehicle.altitude =
-        AP_InertialNav_GetAltitude();
-
-
     vehicle.climb_rate =
-        AP_InertialNav_GetVelocityZ();
+        AP_EKF_GetVelocityZ();
+
+
+    /*
+     * GPS raw info still comes from GPS driver
+     */
+
+    vehicle.ground_speed =
+        AP_GPS_GetGroundSpeed();
 
 
 
@@ -114,9 +115,25 @@ void AP_Vehicle_Update(void)
     vehicle.mode =
         AP_FlightMode_GetMode();
 
+/*
+    AP_Debug_Print(DBG_VEHICLE,
+
+"\n===== VEHICLE =====\n"
+"Roll %.2f\n"
+"Pitch %.2f\n"
+"Yaw %.2f\n"
+"Lat %.7lf\n"
+"Lon %.7lf\n"
+"Alt %.2f\n",
+
+vehicle.roll,
+vehicle.pitch,
+vehicle.yaw,
+vehicle.latitude,
+vehicle.longitude,
+vehicle.altitude);
+*/
 }
-
-
 
 /*----------------------------------------------------------------------------
  * Get attitude

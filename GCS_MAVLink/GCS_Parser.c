@@ -46,12 +46,20 @@ void GCS_update(void)
 				case MAVLINK_MSG_ID_HEARTBEAT:
 					printf("HEARTBEAT\n");
 					break;
-
 				case MAVLINK_MSG_ID_PARAM_REQUEST_LIST:
 					{
 						printf("PARAM_REQUEST_LIST\n");
-						for(uint16_t i=0;i<g_param_count;i++)
+
+						printf("PARAM COUNT = %u\n",
+								g_param_count);
+
+
+						for(uint16_t i=0;
+								i<g_param_count;
+								i++)
 						{
+							printf("SEND PARAM %u\n",i);
+
 							GCS_send_param(i);
 						}
 

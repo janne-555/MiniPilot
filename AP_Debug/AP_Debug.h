@@ -28,6 +28,8 @@
 #define DBG_NAV		 (1U << 15)
 #define DBG_POS		 (1U << 16)
 #define DBG_INAV 	 (1U << 17)
+#define DBG_EKF          (1U << 18)
+#define DBG_VEHICLE      (1U << 19)
 #define DBG_ALL          0xFFFFFFFFU
 #define DBG_SENSORS   (DBG_IMU | DBG_GPS | DBG_AHRS)
 #define DBG_CONTROLS  (DBG_CONTROL | DBG_PID | DBG_MIXER | DBG_MOTORS)
