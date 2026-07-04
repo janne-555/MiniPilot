@@ -5,10 +5,13 @@
 //------------------------------------------------------------------------------
 
 #include "AP_Arming.h"
-
+#include "../AP_Failsafe/AP_Failsafe.h"
 #include "AP_Debug/AP_Debug.h"
 #include <stdio.h>
 
+static uint8_t last_armed = 255;
+static uint8_t last_prearm = 255;
+static uint8_t last_failsafe = 255;
 /*---------------------------------------------------------------------------
  * Private Variable
  *--------------------------------------------------------------------------*/
@@ -34,40 +37,78 @@ void AP_Arming_Init(void)
 
 void AP_Arming_Update(void)
 {
-	if (arming.gyro_ok &&
-			arming.accel_ok &&
-			arming.rc_ok &&
-			!arming.failsafe)
-	{
-		arming.pre_arm_ok = 1;
-	}
-	else
-	{
-		arming.pre_arm_ok = 0;
-	}
+        /*
+         * Read system safety status
+         */
+        arming.failsafe =
+                AP_Failsafe_IsActive();
 
 
-	AP_Debug_Print(DBG_ARMING,
-			"\n===== ARMING =====\n"
-			"Armed      : %u\n"
-			"PreArm OK  : %u\n"
-			"Gyro OK    : %u\n"
-			"Accel OK   : %u\n"
-			"Compass OK : %u\n"
-			"GPS OK     : %u\n"
-			"Battery OK : %u\n"
-			"RC OK      : %u\n"
-			"Failsafe   : %u\n",
-			arming.armed,
-			arming.pre_arm_ok,
-			arming.gyro_ok,
-			arming.accel_ok,
-			arming.compass_ok,
-			arming.gps_ok,
-			arming.battery_ok,
-			arming.rc_ok,
-			arming.failsafe);
+        /*
+         * Battery status comes from failsafe decision
+         */
+        if (AP_Failsafe_GetReason() ==
+                        FAILSAFE_BATTERY)
+        {
+                arming.battery_ok = 0;
+        }
+        else
+        {
+                arming.battery_ok = 1;
+        }
+
+
+
+        /*
+         * Pre arm checks
+         */
+        if (arming.gyro_ok &&
+            arming.accel_ok &&
+            arming.rc_ok &&
+            arming.battery_ok &&
+            !arming.failsafe)
+        {
+                arming.pre_arm_ok = 1;
+        }
+        else
+        {
+                arming.pre_arm_ok = 0;
+        }
+
+if ((arming.armed != last_armed) ||
+    (arming.pre_arm_ok != last_prearm) ||
+    (arming.failsafe != last_failsafe))
+{
+
+    AP_Debug_Print(DBG_ARMING,
+        "\n===== ARMING =====\n"
+        "Armed      : %u\n"
+        "PreArm OK  : %u\n"
+        "Gyro OK    : %u\n"
+        "Accel OK   : %u\n"
+        "Compass OK : %u\n"
+        "GPS OK     : %u\n"
+        "Battery OK : %u\n"
+        "RC OK      : %u\n"
+        "Failsafe   : %u\n",
+        arming.armed,
+        arming.pre_arm_ok,
+        arming.gyro_ok,
+        arming.accel_ok,
+        arming.compass_ok,
+        arming.gps_ok,
+        arming.battery_ok,
+        arming.rc_ok,
+        arming.failsafe);
+
+
+    last_armed = arming.armed;
+    last_prearm = arming.pre_arm_ok;
+    last_failsafe = arming.failsafe;
 }
+
+}
+
 /*---------------------------------------------------------------------------
  * Arm
  *--------------------------------------------------------------------------*/

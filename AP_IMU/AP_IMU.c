@@ -10,7 +10,7 @@
 #include <math.h>
 #define DEG_TO_RAD 0.0174532925f
 static AP_IMU_t imu;
-
+static float last_gx = 999.0f;
 
 void AP_IMU_Init(void)
 {
@@ -62,23 +62,30 @@ void AP_IMU_Update(void)
 
 	imu.healthy = 1;
 
-	AP_Debug_Print(DBG_IMU,
-			"\n===== IMU =====\n"
-			"GX : %.2f\n"
-			"GY : %.2f\n"
-			"GZ : %.2f\n"
-			"AX : %.2f\n"
-			"AY : %.2f\n"
-			"AZ : %.2f\n",
-			imu.gx,
-			imu.gy,
-			imu.gz,
-			imu.ax,
-			imu.ay,
-			imu.az);
 
 
 
+	if ((imu.gx - last_gx > 1.0f) ||
+			(last_gx - imu.gx > 1.0f))
+	{
+		AP_Debug_Print(DBG_IMU,
+				"\n===== IMU =====\n"
+				"GX : %.2f\n"
+				"GY : %.2f\n"
+				"GZ : %.2f\n"
+				"AX : %.2f\n"
+				"AY : %.2f\n"
+				"AZ : %.2f\n",
+				imu.gx,
+				imu.gy,
+				imu.gz,
+				imu.ax,
+				imu.ay,
+				imu.az);
+
+
+		last_gx = imu.gx;
+	}
 }
 
 const AP_IMU_t *AP_IMU_Get(void)

@@ -1,7 +1,6 @@
-
 //------------------------------------------------------------------------------
 // File    : AP_Vehicle.h
-// Purpose : Vehicle State
+// Purpose : Vehicle State Manager
 // Project : MiniPilot
 //------------------------------------------------------------------------------
 
@@ -10,66 +9,84 @@
 
 #include <stdint.h>
 
-// Vehicle state
+/*----------------------------------------------------------------------------
+ * Vehicle State
+ *---------------------------------------------------------------------------*/
+
 typedef struct
 {
+    /* Attitude */
     float roll;
     float pitch;
     float yaw;
 
+
+    /* Position */
     double latitude;
     double longitude;
 
     float altitude;
 
+
+    /* Velocity */
     float ground_speed;
 
+    float climb_rate;
+
+
+    /* System */
     uint8_t armed;
 
     uint8_t mode;
 
+
 } AP_Vehicle_State_t;
 
-// Initialize vehicle
+
+/*----------------------------------------------------------------------------
+ * API
+ *---------------------------------------------------------------------------*/
+
 void AP_Vehicle_Init(void);
 
-// Update vehicle
+
 void AP_Vehicle_Update(void);
 
-// Set attitude
-void AP_Vehicle_Set_Attitude(float roll,
-                             float pitch,
-                             float yaw);
 
-// Get attitude
+/* Attitude */
+
 void AP_Vehicle_Get_Attitude(float *roll,
                              float *pitch,
                              float *yaw);
 
-// Set GPS
-void AP_Vehicle_Set_GPS(double lat,
-                        double lon,
-                        float alt);
 
-// Get GPS
+/* Position */
+
 void AP_Vehicle_Get_GPS(double *lat,
                         double *lon,
                         float *alt);
 
-// Set speed
-void AP_Vehicle_Set_GroundSpeed(float speed);
 
-// Get speed
+float AP_Vehicle_Get_Altitude(void);
+
+
+/* Velocity */
+
 float AP_Vehicle_Get_GroundSpeed(void);
 
-// Arm state
-void AP_Vehicle_Set_Armed(uint8_t armed);
+
+float AP_Vehicle_Get_ClimbRate(void);
+
+
+/* System */
 
 uint8_t AP_Vehicle_Get_Armed(void);
 
-// Flight mode
-void AP_Vehicle_Set_Mode(uint8_t mode);
 
 uint8_t AP_Vehicle_Get_Mode(void);
+
+
+const AP_Vehicle_State_t *AP_Vehicle_GetState(void);
+
 
 #endif

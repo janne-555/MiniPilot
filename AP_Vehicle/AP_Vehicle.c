@@ -1,110 +1,201 @@
-
 //------------------------------------------------------------------------------
 // File    : AP_Vehicle.c
-// Purpose : Vehicle State
+// Purpose : Vehicle State Manager
 // Project : MiniPilot
 //------------------------------------------------------------------------------
 
 #include "AP_Vehicle.h"
 
+#include "../AP_AHRS/AP_AHRS.h"
+#include "../AP_GPS/AP_GPS.h"
+#include "../AP_InertialNav/AP_InertialNav.h"
+#include "../AP_Arming/AP_Arming.h"
+#include "../AP_FlightMode/AP_FlightMode.h"
+
+
+/*----------------------------------------------------------------------------
+ * Private
+ *---------------------------------------------------------------------------*/
+
 static AP_Vehicle_State_t vehicle;
 
-// Initialize vehicle
+
+/*----------------------------------------------------------------------------
+ * Init
+ *---------------------------------------------------------------------------*/
+
 void AP_Vehicle_Init(void)
 {
     vehicle.roll = 0.0f;
     vehicle.pitch = 0.0f;
     vehicle.yaw = 0.0f;
 
-    vehicle.latitude = 12.971598;
-    vehicle.longitude = 77.594566;
 
-    vehicle.altitude = 920.0f;
+    vehicle.latitude = 0;
+    vehicle.longitude = 0;
 
-    vehicle.ground_speed = 0.0f;
+    vehicle.altitude = 0;
+
+
+    vehicle.ground_speed = 0;
+
+    vehicle.climb_rate = 0;
+
 
     vehicle.armed = 0;
 
     vehicle.mode = 0;
 }
 
-// Update vehicle
+
+
+/*----------------------------------------------------------------------------
+ * Update
+ *---------------------------------------------------------------------------*/
+
 void AP_Vehicle_Update(void)
 {
-    // Reserved for future vehicle logic
+
+    /*
+     * AHRS attitude
+     */
+
+    vehicle.roll =
+        AP_AHRS_GetRoll();
+
+
+    vehicle.pitch =
+        AP_AHRS_GetPitch();
+
+
+    vehicle.yaw =
+        AP_AHRS_GetYaw();
+
+
+
+    /*
+     * GPS position
+     */
+
+    vehicle.latitude =
+        AP_GPS_GetLatitude();
+
+
+    vehicle.longitude =
+        AP_GPS_GetLongitude();
+
+
+    vehicle.ground_speed =
+        AP_GPS_GetGroundSpeed();
+
+
+
+    /*
+     * Navigation altitude
+     */
+
+    vehicle.altitude =
+        AP_InertialNav_GetAltitude();
+
+
+    vehicle.climb_rate =
+        AP_InertialNav_GetVelocityZ();
+
+
+
+    /*
+     * Vehicle status
+     */
+
+    vehicle.armed =
+        AP_Arming_IsArmed();
+
+
+    vehicle.mode =
+        AP_FlightMode_GetMode();
+
 }
 
 
-// Set attitude
-void AP_Vehicle_Set_Attitude(float roll,
-                             float pitch,
-                             float yaw)
-{
-    vehicle.roll = roll;
-    vehicle.pitch = pitch;
-    vehicle.yaw = yaw;
-}
 
-// Get attitude
+/*----------------------------------------------------------------------------
+ * Get attitude
+ *---------------------------------------------------------------------------*/
+
 void AP_Vehicle_Get_Attitude(float *roll,
                              float *pitch,
                              float *yaw)
 {
     *roll = vehicle.roll;
+
     *pitch = vehicle.pitch;
+
     *yaw = vehicle.yaw;
 }
 
-// Set GPS
-void AP_Vehicle_Set_GPS(double lat,
-                        double lon,
-                        float alt)
-{
-    vehicle.latitude = lat;
-    vehicle.longitude = lon;
-    vehicle.altitude = alt;
-}
 
-// Get GPS
+
+/*----------------------------------------------------------------------------
+ * Get GPS
+ *---------------------------------------------------------------------------*/
+
 void AP_Vehicle_Get_GPS(double *lat,
                         double *lon,
                         float *alt)
 {
     *lat = vehicle.latitude;
+
     *lon = vehicle.longitude;
+
     *alt = vehicle.altitude;
 }
 
-// Set speed
-void AP_Vehicle_Set_GroundSpeed(float speed)
+
+
+float AP_Vehicle_Get_Altitude(void)
 {
-    vehicle.ground_speed = speed;
+    return vehicle.altitude;
 }
 
-// Get speed
+
+
+/*----------------------------------------------------------------------------
+ * Velocity
+ *---------------------------------------------------------------------------*/
+
 float AP_Vehicle_Get_GroundSpeed(void)
 {
     return vehicle.ground_speed;
 }
 
-// Arm state
-void AP_Vehicle_Set_Armed(uint8_t armed)
+
+
+float AP_Vehicle_Get_ClimbRate(void)
 {
-    vehicle.armed = armed;
+    return vehicle.climb_rate;
 }
+
+
+
+/*----------------------------------------------------------------------------
+ * Status
+ *---------------------------------------------------------------------------*/
 
 uint8_t AP_Vehicle_Get_Armed(void)
 {
     return vehicle.armed;
 }
 
-// Flight mode
-void AP_Vehicle_Set_Mode(uint8_t mode)
-{
-    vehicle.mode = mode;
-}
+
 
 uint8_t AP_Vehicle_Get_Mode(void)
 {
     return vehicle.mode;
+}
+
+
+
+const AP_Vehicle_State_t *AP_Vehicle_GetState(void)
+{
+    return &vehicle;
 }

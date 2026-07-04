@@ -25,6 +25,8 @@ AP_Param/AP_Param.c \
 AP_Mode/AP_Mode.c \
 AP_Arming/AP_Arming.c \
 AP_Input/AP_Keyboard.c \
+AP_InertialNav/AP_InertialNav.c \
+AP_PosControl/AP_PosControl.c \
 AP_Debug/AP_Debug.c \
 AP_Failsafe/AP_Failsafe.c \
 GCS_MAVLink/GCS_Heartbeat.c \

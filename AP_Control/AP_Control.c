@@ -12,7 +12,8 @@
 #include "../AP_FlightMode/AP_FlightMode.h"
 
 #include <stdio.h>
-
+static float last_error = 999.0f;
+static float last_pid = 999.0f;
 /*---------------------------------------------------------------------------
  * Private Variables
  *---------------------------------------------------------------------------*/
@@ -62,20 +63,23 @@ void AP_Control_Update(float dt)
 	control_output.yaw_output = 0.0f;
 	control_output.throttle_output = 0.5f;
 
+	if ((pid_output - last_pid > 0.5f) ||
+			(last_pid - pid_output > 0.5f))
+	{
+		AP_Debug_Print(DBG_CONTROL,
+				"\n===== CONTROL =====\n"
+				"Desired Roll : %.2f\n"
+				"Current Roll : %.2f\n"
+				"Error        : %.2f\n"
+				"PID Output   : %.2f\n",
+				desired_roll,
+				current_roll,
+				desired_roll-current_roll,
+				pid_output);
+		last_pid = pid_output;
+	}
 
-	AP_Debug_Print(DBG_CONTROL,
-			"\n===== CONTROL =====\n"
-			"Desired Roll : %.2f\n"
-			"Current Roll : %.2f\n"
-			"Error        : %.2f\n"
-			"PID Output   : %.2f\n",
-			desired_roll,
-			current_roll,
-			desired_roll-current_roll,
-			pid_output);
 }
-
-
 /*---------------------------------------------------------------------------
  * Get Control Outputs
  *---------------------------------------------------------------------------*/

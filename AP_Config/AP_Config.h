@@ -21,6 +21,23 @@
 #define TASK_5HZ     200
 #define TASK_2HZ     500
 #define TASK_1HZ    1000
+
+/*
+ * Task delta time (seconds)
+ */
+
+#define TASK_100HZ_DT            0.01f
+
+#define TASK_50HZ_DT             0.02f
+
+#define TASK_10HZ_DT             0.10f
+
+#define TASK_5HZ_DT              0.20f
+
+#define TASK_2HZ_DT              0.50f
+
+#define TASK_1HZ_DT              1.00f
+
 /*----------------------------------------------------------------------------
  * AHRS
  *---------------------------------------------------------------------------*/
@@ -36,6 +53,13 @@
 #define MAX_PITCH_ANGLE        45.0f
 #define MAX_YAW_RATE          180.0f
 
+/* Rate limits - deg/sec */
+
+#define MAX_ROLL_RATE       180.0f
+
+#define MAX_PITCH_RATE      180.0f
+
+#define MAX_YAW_RATE        120.0f
 /*----------------------------------------------------------------------------
  * RC
  *---------------------------------------------------------------------------*/
