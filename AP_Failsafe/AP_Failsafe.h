@@ -35,6 +35,21 @@ typedef enum
 
 } AP_Failsafe_Type_t;
 
+typedef enum
+{
+    FAILSAFE_ACTION_NONE = 0,
+
+    FAILSAFE_ACTION_LAND,
+
+    FAILSAFE_ACTION_RTL,
+
+    FAILSAFE_ACTION_HOLD,
+
+    FAILSAFE_ACTION_DISARM,
+
+    FAILSAFE_ACTION_TERMINATE
+
+} AP_Failsafe_Action_t;
 /*----------------------------------------------------------------------------
  * Failsafe State
  *---------------------------------------------------------------------------*/
@@ -45,9 +60,13 @@ typedef struct
 
     AP_Failsafe_Type_t reason;
 
+    AP_Failsafe_Action_t action;
+
     uint8_t rc_lost;
 
     uint8_t battery_low;
+
+     uint8_t battery_critical;
 
     uint8_t imu_failure;
 
@@ -75,6 +94,22 @@ const AP_Failsafe_t *AP_Failsafe_Get(void);
 
 uint8_t AP_Failsafe_IsActive(void);
 
-AP_Failsafe_Type_t AP_Failsafe_GetReason(void);
+void AP_Failsafe_SetRC(uint8_t state);
 
+void AP_Failsafe_SetBattery(uint8_t state);
+
+void AP_Failsafe_SetIMU(uint8_t state);
+
+void AP_Failsafe_SetGPS(uint8_t state);
+
+void AP_Failsafe_SetCompass(uint8_t state);
+
+void AP_Failsafe_SetBarometer(uint8_t state);
+
+void AP_Failsafe_SetEKF(uint8_t state);
+
+void AP_Failsafe_SetMotor(uint8_t state);
+
+AP_Failsafe_Type_t AP_Failsafe_GetReason(void);
+AP_Failsafe_Action_t AP_Failsafe_GetAction(void);
 #endif

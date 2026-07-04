@@ -15,6 +15,8 @@
 #include "AP_RC/AP_RC.h"
 #include "AP_Control/AP_Control.h"
 #include "AP_Motors/AP_Motors.h"
+#include "AP_Arming/AP_Arming.h"
+#include "AP_Battery/AP_Battery.h"
 #include "AP_Sim/AP_Sim.h"
 #include "AP_Mixer/AP_Mixer.h"
 #include "AP_Debug/AP_Debug.h"
@@ -22,7 +24,7 @@
 #include "AP_FlightMode/AP_FlightMode.h"
 #include "AP_Failsafe/AP_Failsafe.h"
 #include "GCS_MAVLink/GCS_MAVLink.h"
-
+#include "GCS_MAVLink/GCS_Statustext.h"
 
 //------------------------------------------------------------------------------
 // Scheduler Tasks
@@ -101,11 +103,16 @@ static void Task_Attitude(void)
 
 static void Task_Arming(void)
 {
-    AP_Arming_Update();
+	AP_Arming_Update();
 }
 static void Task_Failsafe(void)
 {
-    AP_Failsafe_Update();
+	AP_Failsafe_Update();
+}
+
+static void Task_Battery(void)
+{
+    AP_Battery_Update();
 }
 //----------------------------
 // 2 Hz Tasks
@@ -145,28 +152,47 @@ int main(void)
 	//----------------------------------------------------------------------
 	// Initialize Modules
 	//----------------------------------------------------------------------
-	AP_Vehicle_Init();
-	AP_GPS_Init();
-	AP_IMU_Init();
-	AP_FlightMode_Init();
-	AP_RC_Init();
-	AP_Control_Init();
-	AP_Mixer_Init();
-	AP_Motors_Init();
-	AP_Sim_Init();
-	AP_Arming_Init();
-	AP_Keyboard_Init();
 	AP_Debug_Init();
+
+	/* HAL / Drivers */
+	AP_Keyboard_Init();
+
+	AP_Sim_Init();
+
+	AP_IMU_Init();
+
+	AP_GPS_Init();
+
+	AP_Battery_Init();
+
+	/* State */
+	AP_Vehicle_Init();
+
+	/* Pilot */
+	AP_RC_Init();
+
+	AP_FlightMode_Init();
+
+	/* Control */
+	AP_Control_Init();
+
+	AP_Mixer_Init();
+
+	AP_Motors_Init();
+
+	/* Safety */
+	AP_Arming_Init();
+
 	AP_Failsafe_Init();
 
 
-//	AP_Debug_Enable(DBG_RC);
-//	AP_Debug_Enable(DBG_CONTROL);
-	AP_Debug_Enable(DBG_IMU);
-//	AP_Debug_Enable(DBG_MIXER);
-	AP_Debug_Enable(DBG_MOTORS);
-	AP_Debug_Enable(DBG_ARMING);
-	AP_Debug_Enable(DBG_FAILSAFE);
+	//	AP_Debug_Enable(DBG_RC);
+	//	AP_Debug_Enable(DBG_CONTROL);
+		AP_Debug_Enable(DBG_IMU);
+	//	AP_Debug_Enable(DBG_MIXER);
+		AP_Debug_Enable(DBG_MOTORS);
+		AP_Debug_Enable(DBG_ARMING);
+		AP_Debug_Enable(DBG_FAILSAFE);
 
 
 
@@ -178,20 +204,25 @@ int main(void)
 	// Register 100 Hz Tasks
 	//----------------------------------------------------------------------
 	AP_Scheduler_Add_Task(Task_IMU,TASK_100HZ);
-	AP_Scheduler_Add_Task(Task_Sim,TASK_100HZ);
+
 	AP_Scheduler_Add_Task(Task_AHRS,TASK_100HZ);
+
 	AP_Scheduler_Add_Task(Task_Control,TASK_100HZ);
+
 	AP_Scheduler_Add_Task(Task_Mixer,TASK_100HZ);
+
 	AP_Scheduler_Add_Task(Task_Motors,TASK_100HZ);
-	//----------------------------------------------------------------------
+
+	AP_Scheduler_Add_Task(Task_Sim,TASK_100HZ);
 	// Register 50 Hz Tasks
 	//----------------------------------------------------------------------
 	AP_Scheduler_Add_Task(Task_RC,TASK_50HZ);
-	AP_Scheduler_Add_Task(Task_GCS,TASK_50HZ);
 	AP_Scheduler_Add_Task(Task_FlightMode, TASK_50HZ);
+	AP_Scheduler_Add_Task(Task_GCS,TASK_50HZ);
 	//----------------------------------------------------------------------
 	// Register 5 Hz Tasks
 	//----------------------------------------------------------------------
+	AP_Scheduler_Add_Task(Task_GPS_Driver,TASK_5HZ);
 	AP_Scheduler_Add_Task(Task_GPS,TASK_5HZ);
 	//----------------------------------------------------------------------
 	// Register 10 Hz Tasks
@@ -199,6 +230,7 @@ int main(void)
 	AP_Scheduler_Add_Task(Task_Attitude,TASK_10HZ);
 	AP_Scheduler_Add_Task(Task_Arming,TASK_10HZ);
 	AP_Scheduler_Add_Task(Task_Failsafe,TASK_10HZ);
+	AP_Scheduler_Add_Task(Task_Battery,TASK_10HZ);
 
 	//----------------------------------------------------------------------
 	// Register 2 Hz Tasks

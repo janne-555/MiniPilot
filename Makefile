@@ -9,6 +9,7 @@ main.c \
 AP_Scheduler/AP_Scheduler.c \
 AP_HAL/HAL_Linux.c \
 AP_Vehicle/AP_Vehicle.c \
+AP_Battery/AP_Battery.c \
 AP_GPS/AP_GPS.c \
 AP_AHRS/AP_AHRS.c \
 AP_IMU/AP_IMU.c \
