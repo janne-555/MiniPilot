@@ -8,7 +8,7 @@
 
 #include "../AP_Param/AP_Param.h"
 
-#include "../libraries/generated/include/mavlink/v2.0/common/mavlink.h"
+#include "GCS_MAVLink.h"
 
 #include <stdio.h>
 #include <string.h>

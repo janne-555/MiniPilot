@@ -8,7 +8,7 @@
 
 #include "../AP_HAL/AP_HAL.h"
 
-#define MAX_TASKS 50
+#define MAX_TASKS 100
 
 static AP_Task_t tasks[MAX_TASKS];
 

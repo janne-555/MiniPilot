@@ -1,8 +1,8 @@
+#include <stdio.h>
 #include "GCS_MAVLink.h"
 
 #include "../AP_HAL/AP_HAL.h"
 
-#include "../libraries/generated/include/mavlink/v2.0/common/mavlink.h"
 
 void GCS_send_statustext(const char *text)
 {

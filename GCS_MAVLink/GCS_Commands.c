@@ -1,6 +1,6 @@
 #include "../AP_HAL/AP_HAL.h"
 
-#include "../libraries/generated/include/mavlink/v2.0/common/mavlink.h"
+#include "GCS_MAVLink.h"
 
 void GCS_send_command_ack(uint16_t command)
 {

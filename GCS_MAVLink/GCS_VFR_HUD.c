@@ -7,7 +7,7 @@
 #include "../AP_HAL/AP_HAL.h"
 #include "../AP_Vehicle/AP_Vehicle.h"
 
-#include "../libraries/generated/include/mavlink/v2.0/common/mavlink.h"
+#include "GCS_MAVLink.h"
 
 // Send VFR HUD
 void GCS_send_vfr_hud(void)

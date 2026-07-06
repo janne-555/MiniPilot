@@ -15,6 +15,7 @@ AP_GPS/AP_GPS.c \
 AP_AHRS/AP_AHRS.c \
 AP_IMU/AP_IMU.c \
 AP_EKF/AP_EKF.c \
+AP_Home/AP_Home.c \
 AP_RC/AP_RC.c \
 AP_Control/AP_Control.c \
 AP_Compass/AP_Compass.c \
@@ -25,6 +26,7 @@ AP_Mixer/AP_Mixer.c \
 AP_Motors/AP_Motors.c \
 AP_Param/AP_Param.c \
 AP_Mode/AP_Mode.c \
+AP_Logger/AP_Logger.c \
 AP_Arming/AP_Arming.c \
 AP_Input/AP_Keyboard.c \
 AP_InertialNav/AP_InertialNav.c \
@@ -41,6 +43,20 @@ GCS_MAVLink/GCS_VFR_HUD.c \
 GCS_MAVLink/GCS_Commands.c \
 GCS_MAVLink/GCS_GlobalPosition.c \
 GCS_MAVLink/GCS_EKFStatus.c \
+GCS_MAVLink/GCS_Home.c \
+GCS_MAVLink/GCS_Request.c \
+GCS_MAVLink/GCS_AutopilotVersion.c \
+GCS_MAVLink/GCS_ProtocolVersion.c \
+GCS_MAVLink/GCS_MessageInterval.c \
+GCS_MAVLink/GCS_Camera.c \
+GCS_MAVLink/GCS_BatteryStatus.c \
+GCS_MAVLink/GCS_LocalPosition.c \
+GCS_MAVLink/GCS_Stream.c \
+GCS_MAVLink/GCS_RC.c \
+GCS_MAVLink/GCS_Servo.c \
+GCS_MAVLink/GCS_SystemTime.c \
+GCS_MAVLink/GCS_ExtendedState.c \
+GCS_MAVLink/GCS_Timesync.c \
 GCS_MAVLink/GCS_Params.c
 all:
 	$(CC) $(SRC) $(CFLAGS) -o build/minipilot -lm

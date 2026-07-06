@@ -28,9 +28,11 @@
 #include "AP_Failsafe/AP_Failsafe.h"
 #include "AP_Param/AP_Param.h"
 #include "AP_Compass/AP_Compass.h"
+#include "AP_Logger/AP_Logger.h"
+#include "AP_Home/AP_Home.h"
 #include "GCS_MAVLink/GCS_MAVLink.h"
 #include "GCS_MAVLink/GCS_Statustext.h"
-
+#include "GCS_MAVLink/GCS_Stream.h"
 //------------------------------------------------------------------------------
 // Scheduler Tasks
 //------------------------------------------------------------------------------
@@ -82,6 +84,16 @@ static void Task_RC(void)
 static void Task_GCS(void)
 {
 	GCS_update();
+}
+
+
+//------------------------------------------------------------------------------
+// MAVLink Telemetry Stream TX
+//------------------------------------------------------------------------------
+
+static void Task_GCS_Stream(void)
+{
+    GCS_stream_update();
 }
 static void Task_InertialNav(void)
 {
@@ -142,6 +154,10 @@ static void Task_Compass(void)
 {
     AP_Compass_Update();
 }
+static void Task_Logger(void)
+{
+    AP_Logger_Update();
+}
 //----------------------------
 // 2 Hz Tasks
 //----------------------------
@@ -167,6 +183,12 @@ static void Task_EKFStatus(void)
 {
     GCS_send_ekf_status();
 }
+// Home Update
+static void Task_Home(void)
+{
+    AP_Home_Update();
+}
+
 //------------------------------------------------------------------------------
 // Main
 //------------------------------------------------------------------------------
@@ -184,7 +206,7 @@ int main(void)
 
     AP_Keyboard_Init();
     AP_Sim_Init();
-
+GCS_MessageInterval_Init();
     AP_IMU_Init();
     AP_Compass_Init();
     AP_GPS_Init();
@@ -194,6 +216,9 @@ int main(void)
     AP_AHRS_Init();
     AP_InertialNav_Init();
     AP_EKF_Init();
+    AP_Home_Init();
+
+    GCS_stream_init();
 
     AP_Vehicle_Init();
 
@@ -206,8 +231,9 @@ int main(void)
 
     AP_Arming_Init();
     AP_Failsafe_Init();
+    AP_Logger_Init();
 
-
+/*
     AP_Debug_Enable(DBG_RC);
     AP_Debug_Enable(DBG_CONTROL);
     AP_Debug_Enable(DBG_BARO);
@@ -222,7 +248,8 @@ int main(void)
     AP_Debug_Enable(DBG_NAV);
     AP_Debug_Enable(DBG_COMPASS);
     AP_Debug_Enable(DBG_EKF);
-    AP_Debug_Enable(DBG_VEHICLE);
+ */   AP_Debug_Enable(DBG_VEHICLE);
+     AP_Debug_Enable(DBG_HOME);
 
 
     AP_Scheduler_Init();
@@ -248,7 +275,7 @@ int main(void)
     AP_Scheduler_Add_Task(Task_FlightMode,TASK_50HZ);
     AP_Scheduler_Add_Task(Task_Vehicle,TASK_50HZ);
 	AP_Scheduler_Add_Task(Task_Baro,TASK_50HZ);
-
+  AP_Scheduler_Add_Task(Task_GCS_Stream,TASK_50HZ);
 
 	//================================================
 	// 10HZ
@@ -264,6 +291,8 @@ int main(void)
 	AP_Scheduler_Add_Task(Task_Failsafe,TASK_10HZ);
 
 	AP_Scheduler_Add_Task(Task_Battery,TASK_10HZ);
+
+	 AP_Scheduler_Add_Task(Task_Logger,TASK_10HZ);
 	
 
 	//================================================
@@ -293,6 +322,8 @@ int main(void)
 	AP_Scheduler_Add_Task(Task_SysStatus,TASK_1HZ);
 	
 	AP_Scheduler_Add_Task(Task_EKFStatus,TASK_1HZ);
+
+	AP_Scheduler_Add_Task(Task_Home,TASK_1HZ);
 
 	//----------------------------------------------------------------------
 	// Main Loop

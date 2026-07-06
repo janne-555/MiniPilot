@@ -1,156 +1,423 @@
+//------------------------------------------------------------------------------
+// File    : GCS_Parser.c
+// Purpose : MAVLink RX Parser
+// Project : MiniPilot
+//------------------------------------------------------------------------------
+
 #include <stdio.h>
 
 #include "GCS_MAVLink.h"
+#include "GCS_Stream.h"
 #include "../AP_HAL/AP_HAL.h"
+
 #include "../AP_Param/AP_Param.h"
 #include "../AP_Mode/AP_Mode.h"
 #include "../AP_Arming/AP_Arming.h"
+#include "../AP_Home/AP_Home.h"
 
-#include "../libraries/generated/include/mavlink/v2.0/common/mavlink.h"
+#include "GCS_MAVLink.h"
+
+
+static void handle_command_long(mavlink_message_t *msg)
+{
+	mavlink_command_long_t cmd;
+
+
+	mavlink_msg_command_long_decode(
+			msg,
+			&cmd);
+
+
+	printf(
+			"\nCOMMAND_LONG\n"
+			"CMD    : %u\n"
+			"Param1 : %.2f\n",
+			cmd.command,
+			cmd.param1);
+
+
+	switch(cmd.command)
+	{
+
+
+		//--------------------------------------------------
+		// ARM / DISARM
+		//--------------------------------------------------
+
+		case MAV_CMD_COMPONENT_ARM_DISARM:
+
+
+			if(cmd.param1 == 1)
+			{
+				AP_Arming_Arm();
+
+
+				GCS_send_statustext(
+						"Vehicle Armed");
+			}
+			else
+			{
+				AP_Arming_Disarm();
+
+
+				GCS_send_statustext(
+						"Vehicle Disarmed");
+			}
+
+
+			GCS_send_command_ack(
+					cmd.command);
+
+
+			break;
+
+
+
+			//--------------------------------------------------
+			// SET HOME
+			//--------------------------------------------------
+
+		case MAV_CMD_DO_SET_HOME:
+
+
+			printf("SET HOME COMMAND RECEIVED\n");
+
+
+			if(AP_Home_SetCurrent())
+			{
+				GCS_send_statustext(
+						"Home position set");
+
+
+				/*
+				 * Mission Planner expects
+				 * HOME_POSITION after setting home
+				 */
+
+				GCS_send_home_position();
+			}
+			else
+			{
+				GCS_send_statustext(
+						"Home set failed");
+			}
+
+
+			GCS_send_command_ack(
+					cmd.command);
+
+
+			break;
+
+		case MAV_CMD_REQUEST_MESSAGE:
+			{
+				uint16_t request_id;
+
+
+				request_id =
+					(uint16_t)cmd.param1;
+
+
+				printf(
+						"REQUEST MESSAGE %u\n",
+						request_id);
+
+
+				GCS_handle_request_message(
+						request_id);
+
+
+				GCS_send_command_ack(
+						cmd.command);
+
+
+				break;
+			}
+
+			//--------------------------------------------------
+			// SET MESSAGE INTERVAL
+			//--------------------------------------------------
+
+		case MAV_CMD_SET_MESSAGE_INTERVAL:
+			{
+
+
+				uint32_t msg_id;
+
+
+				int32_t interval;
+
+
+
+				msg_id =
+					(uint32_t)cmd.param1;
+
+
+
+				interval =
+					(int32_t)cmd.param2;
+
+
+
+
+				GCS_set_message_interval(
+						msg_id,
+						interval);
+
+
+
+				GCS_send_command_ack(
+						cmd.command);
+
+
+
+				break;
+			}
+			//--------------------------------------------------
+			// REQUEST PROTOCOL VERSION
+			//--------------------------------------------------
+
+		case MAV_CMD_REQUEST_PROTOCOL_VERSION:
+
+
+			printf("PROTOCOL VERSION REQUEST\n");
+
+
+			GCS_send_protocol_version();
+
+
+			GCS_send_command_ack(
+					cmd.command);
+
+
+			break;
+
+
+			//--------------------------------------------------
+			// Other commands
+			//--------------------------------------------------
+
+		default:
+
+
+			printf(
+					"Unsupported CMD %u\n",
+					cmd.command);
+
+
+			GCS_send_command_ack(
+					cmd.command);
+
+
+			break;
+	}
+}
+
+
+
+
 
 void GCS_update(void)
 {
+
 	uint8_t rxbuf[512];
 
-	int n = hal_comm_read(rxbuf,sizeof(rxbuf));
+
+	int n =
+		hal_comm_read(
+				rxbuf,
+				sizeof(rxbuf));
+
 
 	if(n <= 0)
 	{
 		return;
 	}
 
-	printf("RX %d bytes\n",n);
+
 
 	mavlink_message_t msg;
+
 	mavlink_status_t status;
+
+
 
 	for(int i=0;i<n;i++)
 	{
+
 		if(mavlink_parse_char(
 					MAVLINK_COMM_0,
 					rxbuf[i],
 					&msg,
 					&status))
 		{
+
+
 			printf(
 					"\nMAVLINK MSG\n"
 					"ID   : %u\n"
 					"SYS  : %u\n"
 					"COMP : %u\n",
+
 					msg.msgid,
 					msg.sysid,
 					msg.compid);
 
+
+
 			switch(msg.msgid)
 			{
+
+
 				case MAVLINK_MSG_ID_HEARTBEAT:
+
+
 					printf("HEARTBEAT\n");
+
+
 					break;
+
+
+
+
 				case MAVLINK_MSG_ID_PARAM_REQUEST_LIST:
+
+
+					printf(
+							"PARAM_REQUEST_LIST\n");
+
+
+					for(uint16_t i=0;
+							i<g_param_count;
+							i++)
 					{
-						printf("PARAM_REQUEST_LIST\n");
 
-						printf("PARAM COUNT = %u\n",
-								g_param_count);
+						GCS_send_param(i);
 
-
-						for(uint16_t i=0;
-								i<g_param_count;
-								i++)
-						{
-							printf("SEND PARAM %u\n",i);
-
-							GCS_send_param(i);
-						}
-
-						break;
 					}
 
-				case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
-					printf("PARAM_REQUEST_READ\n");
+
 					break;
 
-				case MAVLINK_MSG_ID_PARAM_SET:
-					printf("PARAM_SET\n");
+
+
+
+				case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
+
+
+					printf(
+							"PARAM_REQUEST_READ\n");
+
+
 					break;
+
+
+
+
+				case MAVLINK_MSG_ID_PARAM_SET:
+
+
+					printf(
+							"PARAM_SET\n");
+
+
+					break;
+
+
+
 
 				case MAVLINK_MSG_ID_SET_MODE:
 					{
 						mavlink_set_mode_t mode;
 
+
 						mavlink_msg_set_mode_decode(
 								&msg,
 								&mode);
 
+
+
 						AP_Mode_Set(
-								(AP_Mode_t)mode.custom_mode);
+								(AP_Mode_t)
+								mode.custom_mode);
+
+
 
 						printf(
-								"Mode=%u\n",
+								"MODE SET %u\n",
 								mode.custom_mode);
+
 
 						break;
 					}
 
+
+
+
 				case MAVLINK_MSG_ID_COMMAND_LONG:
-					{
-						mavlink_command_long_t cmd;
 
-						mavlink_msg_command_long_decode(
-								&msg,
-								&cmd);
 
-						switch(cmd.command)
-						{
-							case MAV_CMD_COMPONENT_ARM_DISARM:
+					handle_command_long(
+							&msg);
 
-								if(cmd.param1 == 1)
-								{
-									AP_Arming_Arm();
 
-									GCS_send_statustext(
-											"Vehicle Armed");
-								}
-								else
-								{
-									AP_Arming_Disarm();
+					break;
 
-									GCS_send_statustext(
-											"Vehicle Disarmed");
-								}
 
-								GCS_send_command_ack(
-										cmd.command);
-
-								break;
-
-							default:
-
-								GCS_send_command_ack(
-										cmd.command);
-
-								break;
-						}
-						break;}
 
 
 				case MAVLINK_MSG_ID_REQUEST_DATA_STREAM:
 					{
 						mavlink_request_data_stream_t req;
-						mavlink_msg_request_data_stream_decode( &msg, &req);
 
-						printf("REQUEST_DATA_STREAM\n"
+
+						mavlink_msg_request_data_stream_decode(
+								&msg,
+								&req);
+
+
+						printf(
+								"REQUEST_DATA_STREAM\n"
 								"stream_id=%u\n"
 								"rate=%u\n"
-								"start_stop=%u\n", 
-								req.req_stream_id, 
+								"start_stop=%u\n",
+
+								req.req_stream_id,
 								req.req_message_rate,
-								req.start_stop); 
+								req.start_stop);
+
+						GCS_stream_set_rate(
+								req.req_stream_id,
+								req.req_message_rate);
+
+
+
 						break;
 					}
 
+				//--------------------------------------------------
+// TIMESYNC #111
+//--------------------------------------------------
+
+case MAVLINK_MSG_ID_TIMESYNC:
+
+
+        GCS_handle_timesync(
+                &msg);
+
+
+        break;
+
+
+
+
 				default:
-					printf("OTHER MESSAGE\n");
+
+
+					printf(
+							"OTHER MESSAGE\n");
+
+
 					break;
 			}
 		}
