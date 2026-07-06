@@ -30,6 +30,7 @@
 #include "AP_Compass/AP_Compass.h"
 #include "AP_Logger/AP_Logger.h"
 #include "AP_Home/AP_Home.h"
+#include "AP_Mission/AP_Mission.h"
 #include "GCS_MAVLink/GCS_MAVLink.h"
 #include "GCS_MAVLink/GCS_Statustext.h"
 #include "GCS_MAVLink/GCS_Stream.h"
@@ -86,7 +87,10 @@ static void Task_GCS(void)
 	GCS_update();
 }
 
-
+static void Task_Mission(void)
+{
+    AP_Mission_Update();
+}
 //------------------------------------------------------------------------------
 // MAVLink Telemetry Stream TX
 //------------------------------------------------------------------------------
@@ -221,7 +225,7 @@ GCS_MessageInterval_Init();
     GCS_stream_init();
 
     AP_Vehicle_Init();
-
+AP_Mission_Init();
     AP_RC_Init();
     AP_FlightMode_Init();
 
@@ -276,7 +280,7 @@ GCS_MessageInterval_Init();
     AP_Scheduler_Add_Task(Task_Vehicle,TASK_50HZ);
 	AP_Scheduler_Add_Task(Task_Baro,TASK_50HZ);
   AP_Scheduler_Add_Task(Task_GCS_Stream,TASK_50HZ);
-
+AP_Scheduler_Add_Task(Task_Mission,TASK_50HZ);
 	//================================================
 	// 10HZ
 	//================================================

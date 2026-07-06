@@ -108,7 +108,18 @@ void GCS_send_extended_state(void);
 
 void GCS_handle_timesync(mavlink_message_t *msg);
 
+void GCS_handle_mission_count(mavlink_message_t *msg);
 
+void GCS_handle_mission_item(mavlink_message_t *msg);
+
+void GCS_handle_mission_request_list(void);
+
+
+void GCS_send_mission_ack(void);
+
+void GCS_send_mission_count(void);
+
+void GCS_send_mission_request(uint16_t seq);
 
 
 

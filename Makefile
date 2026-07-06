@@ -26,6 +26,8 @@ AP_Mixer/AP_Mixer.c \
 AP_Motors/AP_Motors.c \
 AP_Param/AP_Param.c \
 AP_Mode/AP_Mode.c \
+AP_Nav/AP_Nav.c \
+AP_Mission/AP_Mission.c \
 AP_Logger/AP_Logger.c \
 AP_Arming/AP_Arming.c \
 AP_Input/AP_Keyboard.c \
@@ -54,6 +56,7 @@ GCS_MAVLink/GCS_LocalPosition.c \
 GCS_MAVLink/GCS_Stream.c \
 GCS_MAVLink/GCS_RC.c \
 GCS_MAVLink/GCS_Servo.c \
+GCS_MAVLink/GCS_Mission.c \
 GCS_MAVLink/GCS_SystemTime.c \
 GCS_MAVLink/GCS_ExtendedState.c \
 GCS_MAVLink/GCS_Timesync.c \
