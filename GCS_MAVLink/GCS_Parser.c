@@ -9,12 +9,12 @@
 #include "GCS_MAVLink.h"
 #include "GCS_Stream.h"
 #include "../AP_HAL/AP_HAL.h"
-
+#include "../AP_FlightMode/AP_FlightMode.h"
 #include "../AP_Param/AP_Param.h"
 #include "../AP_Mode/AP_Mode.h"
 #include "../AP_Arming/AP_Arming.h"
 #include "../AP_Home/AP_Home.h"
-
+#include "../AP_Mission/AP_Mission.h"
 #include "GCS_MAVLink.h"
 
 
@@ -108,6 +108,42 @@ static void handle_command_long(mavlink_message_t *msg)
 
 
 			break;
+		//--------------------------------------------------
+// GET HOME POSITION
+//--------------------------------------------------
+
+case MAV_CMD_GET_HOME_POSITION:
+
+
+        printf("GET HOME POSITION\n");
+
+
+        GCS_send_home_position();
+
+
+        GCS_send_command_ack(
+                cmd.command);
+
+
+        break;
+
+
+	case MAV_CMD_DO_SET_MODE:
+{
+
+        printf("DO_SET_MODE\n");
+
+
+        AP_Mode_Set(
+            (AP_Mode_t)cmd.param2);
+
+
+        GCS_send_command_ack(
+            cmd.command);
+
+
+        break;
+}
 
 		case MAV_CMD_REQUEST_MESSAGE:
 			{
@@ -300,8 +336,6 @@ void GCS_update(void)
 					break;
 
 
-
-
 				case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
 
 
@@ -315,11 +349,7 @@ void GCS_update(void)
 
 
 				case MAVLINK_MSG_ID_PARAM_SET:
-
-
-					printf(
-							"PARAM_SET\n");
-
+					 GCS_Handle_Param_Set(&msg);
 
 					break;
 
@@ -336,11 +366,9 @@ void GCS_update(void)
 								&mode);
 
 
-
-						AP_Mode_Set(
-								(AP_Mode_t)
-								mode.custom_mode);
-
+						AP_FlightMode_SetMode(
+								(AP_FlightMode_t)mode.custom_mode,
+								MODE_REASON_USER);
 
 
 						printf(
@@ -408,8 +436,61 @@ case MAVLINK_MSG_ID_TIMESYNC:
 
         break;
 
+case MAVLINK_MSG_ID_MISSION_COUNT:
+
+        GCS_handle_mission_count(&msg);
+
+        break;
 
 
+
+case MAVLINK_MSG_ID_MISSION_ITEM_INT:
+
+        GCS_handle_mission_item(&msg);
+
+        break;
+
+
+
+case MAVLINK_MSG_ID_MISSION_REQUEST_LIST:
+
+        GCS_handle_mission_request_list();
+
+        break;
+
+
+
+case MAVLINK_MSG_ID_MISSION_CLEAR_ALL:
+
+        AP_Mission_Clear();
+
+        GCS_send_mission_ack();
+
+        break;
+
+case MAVLINK_MSG_ID_MISSION_ITEM:
+
+        GCS_handle_mission_item_float(&msg);
+
+        break;
+case MAVLINK_MSG_ID_MISSION_REQUEST:
+{
+        printf("MISSION_REQUEST\n");
+
+        GCS_handle_mission_request(&msg);
+
+        break;
+}
+
+
+case MAVLINK_MSG_ID_MISSION_REQUEST_INT:
+{
+        printf("MISSION_REQUEST_INT\n");
+
+        GCS_handle_mission_request(&msg);
+
+        break;
+}
 
 				default:
 

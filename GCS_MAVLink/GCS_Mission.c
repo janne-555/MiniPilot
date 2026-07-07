@@ -264,3 +264,141 @@ void GCS_handle_mission_request_list(void)
     GCS_send_mission_count();
 
 }
+
+
+
+
+void GCS_handle_mission_item_float(mavlink_message_t *msg)
+{
+    mavlink_mission_item_t item;
+
+
+    mavlink_msg_mission_item_decode(
+            msg,
+            &item);
+
+
+    AP_Mission_Item_t wp;
+
+
+    wp.seq = item.seq;
+
+    wp.command = item.command;
+
+
+    wp.lat = item.x;
+
+    wp.lon = item.y;
+
+    wp.alt = item.z;
+
+
+    wp.param1 = item.param1;
+    wp.param2 = item.param2;
+    wp.param3 = item.param3;
+    wp.param4 = item.param4;
+
+
+    AP_Mission_AddItem(&wp);
+
+
+    printf(
+        "MISSION ITEM FLOAT RX %u\n",
+        item.seq);
+
+
+    upload_seq++;
+
+
+    if(upload_seq < upload_count)
+    {
+        GCS_send_mission_request(
+                upload_seq);
+    }
+    else
+    {
+        GCS_send_mission_ack();
+    }
+}
+
+
+
+void GCS_handle_mission_request(mavlink_message_t *msg)
+{
+    mavlink_mission_request_t req;
+
+
+    mavlink_msg_mission_request_decode(
+            msg,
+            &req);
+
+
+    printf("SEND MISSION ITEM %u\n",
+            req.seq);
+
+
+    AP_Mission_Item_t *wp =
+        AP_Mission_GetItem(req.seq);
+
+
+    if(wp == NULL)
+    {
+        return;
+    }
+
+
+    mavlink_message_t tx;
+
+
+    mavlink_msg_mission_item_int_pack(
+        1,
+        1,
+        &tx,
+
+        255,
+        190,
+
+        wp->seq,
+
+        MAV_FRAME_GLOBAL_RELATIVE_ALT,
+
+        wp->command,
+
+        0,
+        1,
+
+        wp->param1,
+        wp->param2,
+        wp->param3,
+        wp->param4,
+
+        wp->lat * 10000000,
+        wp->lon * 10000000,
+        wp->alt,
+
+        MAV_MISSION_TYPE_MISSION);
+
+
+    send_msg(&tx);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

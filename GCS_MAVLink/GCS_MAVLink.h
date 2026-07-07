@@ -121,9 +121,10 @@ void GCS_send_mission_count(void);
 
 void GCS_send_mission_request(uint16_t seq);
 
+void GCS_Handle_Param_Set(mavlink_message_t *msg);
 
 
-
+void GCS_handle_mission_item_float(mavlink_message_t *msg);
 
 
 

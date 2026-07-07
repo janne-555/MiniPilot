@@ -62,3 +62,44 @@ void GCS_send_param(uint16_t index)
 printf("RX MAV ID = %u\n", msg.msgid);
 
 }
+
+
+
+void GCS_Handle_Param_Set(mavlink_message_t *msg)
+{
+    mavlink_param_set_t pkt;
+
+    mavlink_msg_param_set_decode(msg, &pkt);
+
+
+    // update MiniPilot parameter
+    AP_Param_Set(pkt.param_id,
+                 pkt.param_value);
+
+
+    // send confirmation back
+    mavlink_message_t reply;
+
+
+    mavlink_msg_param_value_pack(
+        1,
+        MAV_COMP_ID_AUTOPILOT1,
+        &reply,
+
+        pkt.param_id,
+        pkt.param_value,
+
+        MAV_PARAM_TYPE_REAL32,
+
+        g_param_count,
+        0
+    );
+
+uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
+
+uint16_t len =
+    mavlink_msg_to_send_buffer(
+        buffer,
+        &reply);
+hal_comm_write(buffer, len);
+}
