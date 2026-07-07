@@ -3,133 +3,100 @@
 Author: JANNE
 
 ## Overview
-This document explains how MAVLink communication works inside MiniPilot.
+This document explains the MAVLink communication flow inside MiniPilot.
 
-GCS_MAVLink acts as the bridge between external systems and internal autopilot modules.
+MAVLink connects MiniPilot with external systems like Ground Control Stations, simulators and companion computers.
 
-It converts MiniPilot data into MAVLink messages and converts received MAVLink commands into internal actions.
+GCS_MAVLink handles protocol processing while AP_HAL handles the physical communication interface.
 
-## Communication Position
+## MAVLink Layer Position
 
 External System
        |
        v
-Communication Interface
+Communication Transport
+       |
+       v
+AP_HAL
        |
        v
 GCS_MAVLink
        |
        v
-MiniPilot Modules
+MiniPilot Core
 
 
 ## Main Components
 
 GCS_MAVLink.c
-- Main communication handling
+- Main MAVLink manager
+- Runs communication update logic
 
-GCS_Heartbeat.c
-- System alive message
-- Vehicle status
+GCS_Parser.c
+- Receives MAVLink bytes
+- Decodes packets
+- Processes message IDs
+- Calls required handlers
 
-GCS_Params.c
-- Parameter communication
+GCS_Stream.c
+- Manages telemetry streams
+- Controls periodic message sending
 
-GCS_Mission.c
-- Mission communication
-
-GCS_GPS.c
-- GPS telemetry
-
-GCS_EKF.c
-- Estimation status
-
-GCS_SystemTime.c
-- Time synchronization
+Message Files:
+- GCS_Heartbeat
+- GCS_Attitude
+- GCS_GPS
+- GCS_EKF
+- GCS_Params
+- GCS_Mission
+- GCS_Commands
+- Other MAVLink messages
 
 
-## Receive Flow
+## Receive Data Flow
 
-External Message
-        |
-        v
-Communication Driver
-        |
-        v
-AP_HAL
-        |
-        v
+Ground Station
+       |
+       v
+UDP / UART
+       |
+       v
+AP_HAL Communication
+       |
+       v
 GCS_MAVLink
+       |
+       v
+GCS_Parser
+       |
+       v
+Decode MAVLink Message
+       |
+       v
+Execute Message Handler
+       |
+       v
+MiniPilot Module
+
+
+## Transmit Data Flow
+
+MiniPilot Module
         |
         v
-Decode MAVLink Packet
+Message Generator
         |
         v
-Find Message Handler
+MAVLink Encode
         |
         v
-Update MiniPilot Module
-
-
-## Command Flow
-
-Ground Station Command
-          |
-          v
-     MAVLink Message
-          |
-          v
-     GCS_MAVLink
-          |
- +--------+---------+
- |        |         |
- v        v         v
-Param  Mission   Vehicle
-
-
-## Parameter Flow
-
-Read/Write Request
-          |
-          v
-GCS_MAVLink Params
-          |
-          v
-      AP_Param
-          |
-          v
-System Configuration
-
-
-## Mission Flow
-
-Mission Upload
+GCS_Stream
         |
         v
-GCS_MAVLink Mission
+AP_HAL Communication
         |
         v
-AP_Mission
-        |
-        v
-AP_Nav
-
-
-## Telemetry Flow
-
-MiniPilot Modules
-        |
-        v
-Collect Data
-        |
-        v
-GCS_MAVLink
-        |
-        v
-Encode MAVLink Message
-        |
-        v
-Send To External System
+Ground Station
 
 
 ## Heartbeat Flow
@@ -137,22 +104,39 @@ Send To External System
 AP_Vehicle
       |
       v
-System State
+Vehicle State
       |
       v
 GCS_Heartbeat
       |
       v
-MAVLink Heartbeat Message
+MAVLink HEARTBEAT
+      |
+      v
+GCS_Stream
+      |
+      v
+AP_HAL
 
 
-Purpose:
-- Identify vehicle
-- Show system alive
-- Send vehicle status
+## Attitude Flow
+
+AP_IMU
+   |
+   v
+AP_AHRS
+   |
+   v
+Vehicle Attitude
+   |
+   v
+GCS_Attitude
+   |
+   v
+Ground Station
 
 
-## Sensor Telemetry Flow
+## GPS Position Flow
 
 AP_GPS
    |
@@ -163,76 +147,160 @@ GCS_GPS
 GPS MAVLink Message
 
 
+Global position:
+
 AP_EKF
    |
    v
-GCS_EKF
+GCS_GlobalPosition
    |
    v
-EKF Status Message
+MAVLink Position Message
 
 
-## Module Dependency
+## EKF Status Flow
 
-GCS_MAVLink receives data from:
+Sensors
+   |
+   v
+AP_EKF
+   |
+   v
+GCS_EKFStatus
+   |
+   v
+Estimator Status Message
 
-- AP_Vehicle
-- AP_Param
-- AP_Mission
-- AP_GPS
-- AP_AHRS
-- AP_EKF
 
-GCS_MAVLink uses:
+## Parameter Flow
 
-AP_HAL
-- For communication interface
+Ground Station
+        |
+        v
+PARAM Request
+        |
+        v
+GCS_Parser
+        |
+        v
+GCS_Params
+        |
+        v
+AP_Param
+
+
+## Mission Flow
+
+Mission Upload
+       |
+       v
+GCS_Parser
+       |
+       v
+GCS_Mission
+       |
+       v
+AP_Mission
+       |
+       v
+AP_Nav
+
+
+## Command Flow
+
+COMMAND_LONG
+      |
+      v
+GCS_Parser
+      |
+      v
+GCS_Commands
+      |
+      v
+Vehicle Module
+
+
+## Stream System
+
+Telemetry messages are not sent directly.
+
+Flow:
+
+Module Data
+      |
+      v
+GCS Message Function
+      |
+      v
+GCS_Stream
+      |
+      v
+Scheduled Output
+
+
+## Current Transport
+
+Current MiniPilot testing:
+
+Mission Planner
+       |
+       v
+UDP Network
+       |
+       v
+HAL_Linux
+       |
+       v
+MiniPilot
+
+
+## Future STM32 Transport
+
+Ground Station
+       |
+       v
+Telemetry UART
+       |
+       v
+STM32 HAL
+       |
+       v
+Same GCS_MAVLink Code
 
 
 ## Hardware Independence
 
-Communication transport is separated.
+Only AP_HAL changes.
 
-Examples:
+MAVLink message handling remains same.
 
-MiniPilot Core
-       |
-       v
-GCS_MAVLink
-       |
-       v
-AP_HAL Communication
-       |
- +-----+------+
- |            |
-UART        Network
+Linux:
+UDP Socket
+
+STM32:
+UART Driver
 
 
-## Runtime Execution
+## Runtime Flow
 
 AP_Scheduler
       |
       v
 GCS_MAVLink Update
       |
-      +-- Check Received Messages
+      +-- Read incoming data
       |
-      +-- Process Commands
+      +-- Parse messages
       |
-      +-- Send Telemetry
+      +-- Execute commands
+      |
+      +-- Send telemetry
 
-
-## Future Expansion
-
-GCS_MAVLink can support:
-- More MAVLink messages
-- Multiple telemetry ports
-- Companion computers
-- Advanced mission handling
-- External control systems
 
 ## Design Goal
 
-MAVLink protocol handling remains inside GCS_MAVLink.
+GCS_MAVLink only manages communication.
 
-Autopilot modules provide data but do not directly manage communication protocols.
+Flight modules provide information.
+
+Communication transport stays inside AP_HAL.

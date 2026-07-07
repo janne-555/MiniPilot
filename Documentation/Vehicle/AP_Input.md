@@ -3,146 +3,131 @@
 Author: JANNE
 
 ## Overview
-AP_Input is the input abstraction module of MiniPilot.
+AP_Input manages external user input sources for MiniPilot.
 
-It manages external input sources and provides a common interface for vehicle control commands.
+The input layer converts different input methods into common vehicle commands.
 
-AP_Input separates input sources from the main vehicle logic.
+Currently MiniPilot uses keyboard based input for Linux simulation.
+
+Future hardware targets can add RC receivers, joystick or other input sources without changing vehicle logic.
 
 ## Files
 
-AP_Input.c
-- Contains input processing implementation
-- Handles input update logic
-- Provides input data to vehicle modules
+AP_Keyboard.c
+- Handles Linux keyboard input
+- Reads user commands during simulation
+- Converts keyboard actions into control requests
 
-AP_Input.h
-- Defines input interfaces
-- Provides APIs used by MiniPilot modules
+AP_Keyboard.h
+- Defines keyboard input interface
+- Provides input functions
 
 ## Responsibilities
+
 AP_Input manages:
-- Input source handling
-- Input data processing
-- Command abstraction
-- Input status tracking
+- User input collection
+- Input abstraction
+- Command processing
+- Simulation control input
+
+## Current Implementation
+
+Current flow:
+
+Keyboard
+    |
+    v
+AP_Keyboard
+    |
+    v
+MiniPilot Input System
+
 
 ## Input Data
 
-AP_Input receives data from:
+AP_Input receives:
 
-AP_RC
-- Pilot control commands
+Linux Keyboard:
+- Manual commands
+- Test inputs
+- Simulation controls
 
-GCS_MAVLink
-- External control commands
+Future:
+- RC receiver
+- Joystick
+- Companion computer
 
-Future Sources:
-- Companion computer commands
-- Autonomous systems
 
 ## Output Data
 
-AP_Input provides:
-- Vehicle command requests
-- Processed input values
-- Input source status
+Provides:
+- Processed commands
+- User requests
+- Control inputs
+
 
 ## Depends On
 
-AP_HAL
-- Provides hardware input interfaces
+Operating system input interface
 
-AP_RC
-- Provides receiver data
+For Linux:
+- Terminal input APIs
 
-AP_Param
-- Provides input configuration
 
 ## Used By
 
-AP_Vehicle
-- Uses input state
-
-AP_Mode
-- Selects behavior based on input
+AP_RC
+- Uses keyboard input for simulation
 
 AP_Control
-- Receives control targets
+- Receives processed control requests
 
-AP_Arming
-- Receives user commands
+AP_Mode
+- Uses command selection
 
-## Data Flow
+AP_Vehicle
+- Uses vehicle input state
 
-External Input
-       |
-       v
-   AP_Input
-       |
-+------+------+
-|             |
-v             v
-AP_Mode   AP_Control
 
-## Startup Flow
+## Real Current Flow
 
-System Start
+AP_Keyboard
       |
       v
-AP_Input Init
+AP_RC
       |
       v
-Configure Sources
+AP_FlightMode
       |
       v
-Ready For Commands
+AP_Control
 
-## Runtime Flow
 
-Scheduler Update
-        |
-        v
-AP_Input Update
-        |
-        v
-Read Input Sources
-        |
-        v
-Process Commands
-        |
-        v
-Update Vehicle Request
+## Future Hardware Flow
 
-## Input Concept
-
-Different command sources should use the same interface.
-
-Example:
-
-RC Controller
-      |
-Ground Station
-      |
-Companion Computer
+RC Receiver
       |
       v
-AP_Input
+AP_HAL
+      |
+      v
+Input Layer
       |
       v
 Vehicle Logic
 
+
 ## Future Expansion
 
 AP_Input can support:
-- Multiple input sources
-- Input priority handling
-- External APIs
-- Autonomous commands
-- Safety filtering
+- RC protocols
+- Joystick input
+- External commands
+- Autonomous input sources
+
 
 ## Design Goal
 
-AP_Input isolates command sources from vehicle logic.
+Input sources remain separated from vehicle logic.
 
-New input methods can be added without changing control modules.
+Only input drivers change when moving from Linux simulation to STM32 hardware.

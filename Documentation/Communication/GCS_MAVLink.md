@@ -5,104 +5,131 @@ Author: JANNE
 ## Overview
 GCS_MAVLink is the communication layer of MiniPilot.
 
-It manages data exchange between MiniPilot and external systems using the MAVLink protocol.
-
-This module converts internal autopilot data into MAVLink messages and converts received MAVLink commands into MiniPilot actions.
-
-## Files
-
-GCS_MAVLink.c
-- Main MAVLink handling implementation
-- Manages message processing
-- Connects MAVLink system with MiniPilot modules
-
-GCS_MAVLink.h
-- Defines MAVLink interfaces
-- Provides APIs for communication handling
-
-GCS_Heartbeat.c
-- Handles heartbeat messages
-- Provides system alive/status information
-
-GCS_Params.c
-- Handles parameter communication
-- Connects MAVLink parameter messages with AP_Param
-
-GCS_Mission.c
-- Handles mission communication
-- Provides mission upload/download support
-
-GCS_GPS.c
-- Sends GPS related information
-
-GCS_EKF.c
-- Sends estimation and navigation status
-
-GCS_SystemTime.c
-- Handles system time synchronization
-
-## Responsibilities
-GCS_MAVLink manages:
-- MAVLink message encoding
-- MAVLink message decoding
-- Telemetry transmission
-- Command reception
-- Parameter communication
-- Mission communication
-- Vehicle status reporting
-
-## Input Data
-
-GCS_MAVLink receives data from MiniPilot modules.
+It handles MAVLink protocol communication between MiniPilot and external systems.
 
 Examples:
-- Vehicle status from AP_Vehicle
-- Parameters from AP_Param
-- GPS data from AP_GPS
-- Attitude from AP_AHRS
-- EKF status from AP_EKF
-- Mission data from AP_Mission
+- Ground Control Station
+- Mission Planner
+- Companion computer
+- External applications
 
-External input:
-- Ground station commands
-- Parameter changes
-- Mission uploads
+GCS_MAVLink converts internal MiniPilot data into MAVLink messages and converts received MAVLink commands into autopilot actions.
 
-## Output Data
+## Core Files
 
-GCS_MAVLink provides:
-- Telemetry messages
-- Vehicle status messages
-- Sensor information
-- Mission responses
-- Command requests to modules
+GCS_MAVLink.c
+- Main MAVLink management
+- Controls send and receive processing
 
-## Depends On
+GCS_MAVLink.h
+- Common MAVLink interface
+- Includes generated MAVLink library
 
-AP_HAL
-- Provides communication interface
+GCS_Parser.c
+- Decodes received MAVLink packets
+- Finds message type
+- Calls required handlers
 
-AP_Param
-- Parameter access
+GCS_Stream.c
+- Controls periodic telemetry sending
+- Manages message streaming
 
-AP_Vehicle
-- Vehicle status
+## System Message Files
 
-AP_Mission
-- Mission handling
+GCS_Heartbeat.c
+- Sends vehicle alive status
+- Reports autopilot state
 
-## Used By
+GCS_SysStatus.c
+- Sends system health information
 
-Ground Control Systems:
-- Telemetry monitoring
-- Parameter configuration
-- Mission control
+GCS_AutopilotVersion.c
+- Reports firmware/system information
 
-MiniPilot Modules:
-- Receive external commands
-- Send system information
+GCS_SystemTime.c
+- Handles system time messages
 
-## Data Flow
+GCS_Timesync.c
+- Handles MAVLink time synchronization
+
+GCS_ProtocolVersion.c
+- Provides MAVLink protocol version
+
+
+## Vehicle Telemetry Files
+
+GCS_Attitude.c
+- Sends roll, pitch and yaw information
+
+GCS_GPS.c
+- Sends GPS data
+
+GCS_GlobalPosition.c
+- Sends global vehicle position
+
+GCS_LocalPosition.c
+- Sends local position information
+
+GCS_VFR_HUD.c
+- Sends flight display information
+
+
+## Estimation Messages
+
+GCS_EKF.c
+- Sends EKF information
+
+GCS_EKFStatus.c
+- Sends estimator health status
+
+
+## Mission System
+
+GCS_Mission.c
+- Handles mission upload/download communication
+
+GCS_Home.c
+- Handles home position messages
+
+
+## Control Messages
+
+GCS_Commands.c
+- Handles MAVLink command requests
+
+GCS_RC.c
+- Handles RC related MAVLink messages
+
+GCS_Servo.c
+- Sends actuator/output information
+
+
+## Parameter System
+
+GCS_Params.c
+- Handles parameter requests
+- Reads and writes AP_Param values
+
+
+## Status Messages
+
+GCS_BatteryStatus.c
+- Sends battery information
+
+GCS_ExtendedState.c
+- Sends vehicle extended state
+
+GCS_Statustext.c
+- Sends text/status messages
+
+
+## Camera Support
+
+GCS_Camera.c
+- Handles camera related MAVLink messages
+
+
+## Receive Flow
 
 Ground Station
        |
@@ -110,75 +137,159 @@ Ground Station
 Communication Interface
        |
        v
-GCS_MAVLink
+AP_HAL
        |
-+------+------+------+
-|      |      |      |
-Param Mission Status
-|      |      |
-v      v      v
-AP_Param AP_Mission AP_Vehicle
+       v
+GCS_Parser
+       |
+       v
+Message Handler
+       |
+       v
+MiniPilot Module
 
-## Receive Flow
 
-MAVLink Packet
-       |
-       v
-Decode Message
-       |
-       v
-Identify Message ID
-       |
-       v
-Execute Handler
-       |
-       v
-Update MiniPilot Module
-
-## Transmit Flow
+## Send Flow
 
 MiniPilot Module
         |
         v
-Collect Data
+GCS Message File
         |
         v
-Create MAVLink Message
+MAVLink Encoder
         |
         v
-Send Through AP_HAL
+AP_HAL
+        |
+        v
+External System
 
-## Message Groups
 
-System:
-- Heartbeat
-- System status
-- Time
+## Example Heartbeat Flow
 
-Navigation:
-- GPS information
-- EKF information
-- Position data
+AP_Vehicle
+      |
+      v
+GCS_Heartbeat
+      |
+      v
+MAVLink HEARTBEAT
+      |
+      v
+Ground Station
 
-Configuration:
-- Parameters
 
-Mission:
-- Mission upload
-- Mission download
-- Mission status
+## Example Parameter Flow
+
+Ground Station Request
+          |
+          v
+GCS_Parser
+          |
+          v
+GCS_Params
+          |
+          v
+AP_Param
+
+
+## Example Mission Flow
+
+Mission Upload
+       |
+       v
+GCS_Mission
+       |
+       v
+AP_Mission
+       |
+       v
+AP_Nav
+
+
+## Depends On
+
+AP_HAL
+- Communication transport
+
+AP_Param
+- Parameter storage
+
+Vehicle Modules
+- Status information
+
+Sensor/Estimation Modules
+- Telemetry data
+
+
+## Uses Generated Library
+
+MAVLink headers:
+
+libraries/generated/include/mavlink/
+
+Generated files provide:
+- Message definitions
+- Encode functions
+- Decode functions
+
+
+## Hardware Independence
+
+MAVLink layer does not directly access hardware.
+
+Transport path:
+
+GCS_MAVLink
+      |
+      v
+AP_HAL
+      |
++-----+-----+
+|           |
+UART       UDP
+
+
+## Current Implementation
+
+Current testing:
+
+MiniPilot
+    |
+    v
+Linux HAL
+    |
+    v
+UDP MAVLink
+
+
+Future:
+
+MiniPilot
+    |
+    v
+STM32 HAL
+    |
+    v
+UART Telemetry
+
 
 ## Future Expansion
 
 GCS_MAVLink can support:
-- Additional MAVLink messages
+- More MAVLink messages
 - Multiple communication ports
-- Telemetry radios
-- Companion computers
-- Advanced command handling
+- Companion computer control
+- Advanced mission handling
+- Log download
+- Parameter management
+
 
 ## Design Goal
 
-Communication protocol handling stays inside GCS_MAVLink.
+Keep MAVLink protocol separated from flight logic.
 
-Flight modules should only provide data and should not handle MAVLink encoding directly.
+Vehicle modules provide data.
+
+GCS_MAVLink manages communication.
