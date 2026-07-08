@@ -7,106 +7,77 @@
 #ifndef AP_NAV_H
 #define AP_NAV_H
 
-
 #include <stdint.h>
 
+typedef struct {
+  /*
+   * Home position
+   */
 
-typedef struct
-{
-    /*
-     * Home position
-     */
+  double home_lat;
 
-    double home_lat;
+  double home_lon;
 
-    double home_lon;
+  /*
+   * Target position
+   */
 
+  double target_lat;
 
-    /*
-     * Target position
-     */
+  double target_lon;
 
-    double target_lat;
+  /*
+   * Current position
+   */
 
-    double target_lon;
+  double current_lat;
 
+  double current_lon;
 
-    /*
-     * Current position
-     */
+  /*
+   * Navigation data
+   */
 
-    double current_lat;
+  float distance;
 
-    double current_lon;
+  float bearing;
 
+  float error_x;
 
-    /*
-     * Navigation data
-     */
+  float error_y;
 
-    float distance;
+  /*
+   * Output to attitude controller
+   */
 
-    float bearing;
+  float target_roll;
 
+  float target_pitch;
 
-    float error_x;
+  uint8_t home_set;
 
-    float error_y;
-
-
-    /*
-     * Output to attitude controller
-     */
-
-    float target_roll;
-
-    float target_pitch;
-
-
-    uint8_t home_set;
-
-
-    uint8_t active;
-
+  uint8_t active;
 
 } AP_Nav_t;
 
-
-
 void AP_Nav_Init(void);
-
 
 void AP_Nav_Update(void);
 
-
-
 void AP_Nav_SetHome(void);
 
-
-void AP_Nav_SetTarget(double lat,
-                      double lon);
-
-
+void AP_Nav_SetTarget(double lat, double lon);
 
 void AP_Nav_Enable(uint8_t enable);
 
-
-
 float AP_Nav_GetDistance(void);
-
 
 float AP_Nav_GetBearing(void);
 
-
 float AP_Nav_GetRollTarget(void);
-
 
 float AP_Nav_GetPitchTarget(void);
 
-
-
 const AP_Nav_t *AP_Nav_Get(void);
-
-
 
 #endif

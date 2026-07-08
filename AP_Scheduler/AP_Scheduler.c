@@ -3,8 +3,8 @@
 // Purpose : MiniPilot task scheduler
 // Project : MiniPilot
 //------------------------------------------------------------------------------
-#include<stdio.h>
 #include "AP_Scheduler.h"
+#include <stdio.h>
 
 #include "../AP_HAL/AP_HAL.h"
 
@@ -15,45 +15,35 @@ static AP_Task_t tasks[MAX_TASKS];
 static uint8_t task_count = 0;
 
 // Initialize scheduler
-void AP_Scheduler_Init(void)
-{
-    task_count = 0;
-}
+void AP_Scheduler_Init(void) { task_count = 0; }
 
 // Register task
-int AP_Scheduler_Add_Task(TaskFunction_t function,
-                          uint32_t period_ms)
-{
-    if(task_count >= MAX_TASKS)
-    {
-	      printf("SCHEDULER FULL\n");
-        return -1;
-    }
+int AP_Scheduler_Add_Task(TaskFunction_t function, uint32_t period_ms) {
+  if (task_count >= MAX_TASKS) {
+    printf("SCHEDULER FULL\n");
+    return -1;
+  }
 
-    tasks[task_count].function = function;
+  tasks[task_count].function = function;
 
-    tasks[task_count].period_ms = period_ms;
+  tasks[task_count].period_ms = period_ms;
 
-    tasks[task_count].last_run_ms = 0;
+  tasks[task_count].last_run_ms = 0;
 
-    task_count++;
+  task_count++;
 
-    return 0;
+  return 0;
 }
 
 // Execute scheduler
-void AP_Scheduler_Run(void)
-{
-    uint32_t now = hal_millis();
+void AP_Scheduler_Run(void) {
+  uint32_t now = hal_millis();
 
-    for(uint8_t i=0;i<task_count;i++)
-    {
-        if((now - tasks[i].last_run_ms) >=
-            tasks[i].period_ms)
-        {
-            tasks[i].last_run_ms = now;
+  for (uint8_t i = 0; i < task_count; i++) {
+    if ((now - tasks[i].last_run_ms) >= tasks[i].period_ms) {
+      tasks[i].last_run_ms = now;
 
-            tasks[i].function();
-        }
+      tasks[i].function();
     }
+  }
 }

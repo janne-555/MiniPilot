@@ -13,93 +13,59 @@
 #include <stdio.h>
 #include <string.h>
 
+void GCS_send_param(uint16_t index) {
+  if (index >= g_param_count) {
+    return;
+  }
 
-void GCS_send_param(uint16_t index)
-{
-    if(index >= g_param_count)
-    {
-        return;
-    }
+  mavlink_message_t msg;
 
+  uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 
-    mavlink_message_t msg;
+  char id[16] = {0};
 
-    uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
+  strncpy(id, g_params[index].name, sizeof(id));
 
-    char id[16] = {0};
+  mavlink_msg_param_value_pack(1, 1, &msg,
 
+                               id,
 
-    strncpy(id,
-            g_params[index].name,
-            sizeof(id));
+                               g_params[index].value,
 
+                               MAV_PARAM_TYPE_REAL32,
 
-    mavlink_msg_param_value_pack(
-        1,
-        1,
-        &msg,
+                               g_param_count,
 
-        id,
+                               index);
 
-        g_params[index].value,
+  uint16_t len = mavlink_msg_to_send_buffer(buffer, &msg);
 
-        MAV_PARAM_TYPE_REAL32,
+  hal_comm_write(buffer, len);
 
-        g_param_count,
-
-        index);
-
-
-
-    uint16_t len =
-        mavlink_msg_to_send_buffer(
-            buffer,
-            &msg);
-
-
-    hal_comm_write(buffer,len);
-
-printf("RX MAV ID = %u\n", msg.msgid);
-
+  printf("RX MAV ID = %u\n", msg.msgid);
 }
 
+void GCS_Handle_Param_Set(mavlink_message_t *msg) {
+  mavlink_param_set_t pkt;
 
+  mavlink_msg_param_set_decode(msg, &pkt);
 
-void GCS_Handle_Param_Set(mavlink_message_t *msg)
-{
-    mavlink_param_set_t pkt;
+  // update MiniPilot parameter
+  AP_Param_Set(pkt.param_id, pkt.param_value);
 
-    mavlink_msg_param_set_decode(msg, &pkt);
+  // send confirmation back
+  mavlink_message_t reply;
 
+  mavlink_msg_param_value_pack(1, MAV_COMP_ID_AUTOPILOT1, &reply,
 
-    // update MiniPilot parameter
-    AP_Param_Set(pkt.param_id,
-                 pkt.param_value);
+                               pkt.param_id, pkt.param_value,
 
+                               MAV_PARAM_TYPE_REAL32,
 
-    // send confirmation back
-    mavlink_message_t reply;
+                               g_param_count, 0);
 
+  uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 
-    mavlink_msg_param_value_pack(
-        1,
-        MAV_COMP_ID_AUTOPILOT1,
-        &reply,
-
-        pkt.param_id,
-        pkt.param_value,
-
-        MAV_PARAM_TYPE_REAL32,
-
-        g_param_count,
-        0
-    );
-
-uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
-
-uint16_t len =
-    mavlink_msg_to_send_buffer(
-        buffer,
-        &reply);
-hal_comm_write(buffer, len);
+  uint16_t len = mavlink_msg_to_send_buffer(buffer, &reply);
+  hal_comm_write(buffer, len);
 }

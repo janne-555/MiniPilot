@@ -11,9 +11,8 @@
  * Motor Outputs
  *---------------------------------------------------------------------------*/
 
-typedef struct
-{
-    float motor[4];
+typedef struct {
+  float motor[4];
 
 } AP_Motors_Output_t;
 

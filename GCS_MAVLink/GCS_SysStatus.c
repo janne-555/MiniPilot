@@ -6,108 +6,75 @@
 
 #include <stdio.h>
 
-#include "../AP_HAL/AP_HAL.h"
 #include "../AP_Battery/AP_Battery.h"
+#include "../AP_HAL/AP_HAL.h"
 
 #include "GCS_MAVLink.h"
 
+void GCS_send_sys_status(void) {
+  mavlink_message_t msg;
 
-void GCS_send_sys_status(void)
-{
-    mavlink_message_t msg;
+  uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 
-    uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
+  const AP_Battery_t *battery;
 
+  battery = AP_Battery_Get();
 
-    const AP_Battery_t *battery;
+  uint16_t voltage_mv;
 
-    battery = AP_Battery_Get();
+  voltage_mv = (uint16_t)(battery->voltage * 1000.0f);
 
+  int16_t current_ca;
 
-    uint16_t voltage_mv;
+  current_ca = (int16_t)(battery->current * 100.0f);
 
-    voltage_mv =
-        (uint16_t)(battery->voltage * 1000.0f);
+  int8_t remaining;
 
+  remaining = (int8_t)battery->remaining_percent;
 
-    int16_t current_ca;
+  mavlink_msg_sys_status_pack(
+      1, 1, &msg,
 
-    current_ca =
-        (int16_t)(battery->current * 100.0f);
+      MAV_SYS_STATUS_SENSOR_3D_GYRO | MAV_SYS_STATUS_SENSOR_3D_ACCEL |
+          MAV_SYS_STATUS_SENSOR_GPS,
 
+      MAV_SYS_STATUS_SENSOR_3D_GYRO | MAV_SYS_STATUS_SENSOR_3D_ACCEL |
+          MAV_SYS_STATUS_SENSOR_GPS,
 
-    int8_t remaining;
+      MAV_SYS_STATUS_SENSOR_3D_GYRO | MAV_SYS_STATUS_SENSOR_3D_ACCEL |
+          MAV_SYS_STATUS_SENSOR_GPS,
 
-    remaining =
-        (int8_t)battery->remaining_percent;
+      500,
 
+      voltage_mv,
 
+      current_ca,
 
-    mavlink_msg_sys_status_pack(
-        1,
-        1,
-        &msg,
+      remaining,
 
+      0,
 
-        MAV_SYS_STATUS_SENSOR_3D_GYRO |
-        MAV_SYS_STATUS_SENSOR_3D_ACCEL |
-        MAV_SYS_STATUS_SENSOR_GPS,
+      0,
 
-        MAV_SYS_STATUS_SENSOR_3D_GYRO |
-        MAV_SYS_STATUS_SENSOR_3D_ACCEL |
-        MAV_SYS_STATUS_SENSOR_GPS,
+      0,
 
-        MAV_SYS_STATUS_SENSOR_3D_GYRO |
-        MAV_SYS_STATUS_SENSOR_3D_ACCEL |
-        MAV_SYS_STATUS_SENSOR_GPS,
+      0,
 
+      0,
 
-        500,
+      0,
 
+      0,
 
-        voltage_mv,
+      0,
 
-        current_ca,
+      0);
 
+  uint16_t len;
 
-        remaining,
+  len = mavlink_msg_to_send_buffer(buffer, &msg);
 
+  hal_comm_write(buffer, len);
 
-        0,
-
-        0,
-
-
-        0,
-
-        0,
-
-        0,
-
-        0,
-
-
-        0,
-
-        0,
-
-        0
-    );
-
-
-
-    uint16_t len;
-
-    len =
-        mavlink_msg_to_send_buffer(
-            buffer,
-            &msg);
-
-
-    hal_comm_write(
-        buffer,
-        len);
-
-
-//    printf("SEND SYS_STATUS\n");
+  //    printf("SEND SYS_STATUS\n");
 }

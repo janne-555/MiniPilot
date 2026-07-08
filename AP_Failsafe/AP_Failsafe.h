@@ -13,72 +13,69 @@
  * Failsafe Types
  *---------------------------------------------------------------------------*/
 
-typedef enum
-{
-    FAILSAFE_NONE = 0,
+typedef enum {
+  FAILSAFE_NONE = 0,
 
-    FAILSAFE_RC,
+  FAILSAFE_RC,
 
-    FAILSAFE_BATTERY,
+  FAILSAFE_BATTERY,
 
-    FAILSAFE_IMU,
+  FAILSAFE_IMU,
 
-    FAILSAFE_GPS,
+  FAILSAFE_GPS,
 
-    FAILSAFE_COMPASS,
+  FAILSAFE_COMPASS,
 
-    FAILSAFE_BAROMETER,
+  FAILSAFE_BAROMETER,
 
-    FAILSAFE_EKF,
+  FAILSAFE_EKF,
 
-    FAILSAFE_MOTOR
+  FAILSAFE_MOTOR
 
 } AP_Failsafe_Type_t;
 
-typedef enum
-{
-    FAILSAFE_ACTION_NONE = 0,
+typedef enum {
+  FAILSAFE_ACTION_NONE = 0,
 
-    FAILSAFE_ACTION_LAND,
+  FAILSAFE_ACTION_LAND,
 
-    FAILSAFE_ACTION_RTL,
+  FAILSAFE_ACTION_RTL,
 
-    FAILSAFE_ACTION_HOLD,
+  FAILSAFE_ACTION_HOLD,
 
-    FAILSAFE_ACTION_DISARM,
+  FAILSAFE_ACTION_DISARM,
 
-    FAILSAFE_ACTION_TERMINATE
+  FAILSAFE_ACTION_TERMINATE
 
 } AP_Failsafe_Action_t;
 /*----------------------------------------------------------------------------
  * Failsafe State
  *---------------------------------------------------------------------------*/
 
-typedef struct
-{
-    uint8_t active;
+typedef struct {
+  uint8_t active;
 
-    AP_Failsafe_Type_t reason;
+  AP_Failsafe_Type_t reason;
 
-    AP_Failsafe_Action_t action;
+  AP_Failsafe_Action_t action;
 
-    uint8_t rc_lost;
+  uint8_t rc_lost;
 
-    uint8_t battery_low;
+  uint8_t battery_low;
 
-     uint8_t battery_critical;
+  uint8_t battery_critical;
 
-    uint8_t imu_failure;
+  uint8_t imu_failure;
 
-    uint8_t gps_failure;
+  uint8_t gps_failure;
 
-    uint8_t compass_failure;
+  uint8_t compass_failure;
 
-    uint8_t barometer_failure;
+  uint8_t barometer_failure;
 
-    uint8_t ekf_failure;
+  uint8_t ekf_failure;
 
-    uint8_t motor_failure;
+  uint8_t motor_failure;
 
 } AP_Failsafe_t;
 

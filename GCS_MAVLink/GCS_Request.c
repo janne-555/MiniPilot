@@ -8,130 +8,86 @@
 
 #include "GCS_MAVLink.h"
 
+void GCS_handle_request_message(uint16_t msgid) {
 
+  printf("REQUEST MESSAGE ID : %u\n", msgid);
 
-void GCS_handle_request_message(uint16_t msgid)
-{
-
-    printf(
-        "REQUEST MESSAGE ID : %u\n",
-        msgid);
-
-
-
-    switch(msgid)
-    {
-
+  switch (msgid) {
 
     //--------------------------------------------------
     // HEARTBEAT
     // MSG ID : 0
     //--------------------------------------------------
 
-    case MAVLINK_MSG_ID_HEARTBEAT:
+  case MAVLINK_MSG_ID_HEARTBEAT:
 
+    GCS_send_heartbeat();
 
-        GCS_send_heartbeat();
-
-
-        break;
-
-
-
-
+    break;
 
     //--------------------------------------------------
     // SYS_STATUS
     // MSG ID : 1
     //--------------------------------------------------
 
-    case MAVLINK_MSG_ID_SYS_STATUS:
+  case MAVLINK_MSG_ID_SYS_STATUS:
 
+    GCS_send_sys_status();
 
-        GCS_send_sys_status();
+    break;
+    //--------------------------------------------------
+    // SYSTEM_TIME #2
+    //--------------------------------------------------
 
+  case MAVLINK_MSG_ID_SYSTEM_TIME:
 
-        break;
-//--------------------------------------------------
-// SYSTEM_TIME #2
-//--------------------------------------------------
+    GCS_send_system_time();
 
-case MAVLINK_MSG_ID_SYSTEM_TIME:
-
-        GCS_send_system_time();
-
-        break;
-
-
-
+    break;
 
     //--------------------------------------------------
     // GPS_RAW_INT
     // MSG ID : 24
     //--------------------------------------------------
 
-    case MAVLINK_MSG_ID_GPS_RAW_INT:
+  case MAVLINK_MSG_ID_GPS_RAW_INT:
 
+    GCS_send_gps_raw_int();
 
-        GCS_send_gps_raw_int();
-
-
-        break;
-
-
-
-
+    break;
 
     //--------------------------------------------------
     // ATTITUDE
     // MSG ID : 30
     //--------------------------------------------------
 
-    case MAVLINK_MSG_ID_ATTITUDE:
+  case MAVLINK_MSG_ID_ATTITUDE:
 
+    GCS_send_attitude();
 
-        GCS_send_attitude();
-
-
-        break;
-
-
-
-
+    break;
 
     //--------------------------------------------------
     // GLOBAL_POSITION_INT
     // MSG ID : 33
     //--------------------------------------------------
 
-    case MAVLINK_MSG_ID_GLOBAL_POSITION_INT:
+  case MAVLINK_MSG_ID_GLOBAL_POSITION_INT:
 
+    GCS_send_global_position();
 
-        GCS_send_global_position();
-
-
-        break;
-
-
-
-
+    break;
 
     //--------------------------------------------------
     // VFR HUD
     // MSG ID : 74
     //--------------------------------------------------
 
-    case MAVLINK_MSG_ID_VFR_HUD:
+  case MAVLINK_MSG_ID_VFR_HUD:
 
+    GCS_send_vfr_hud();
 
-        GCS_send_vfr_hud();
-
-
-        break;
-
-
-
-
+    break;
 
     //--------------------------------------------------
     // BATTERY_STATUS
@@ -140,17 +96,13 @@ case MAVLINK_MSG_ID_SYSTEM_TIME:
 
 #ifdef MAVLINK_MSG_ID_BATTERY_STATUS
 
-    case MAVLINK_MSG_ID_BATTERY_STATUS:
+  case MAVLINK_MSG_ID_BATTERY_STATUS:
 
-	GCS_send_battery_status();
+    GCS_send_battery_status();
 
-        break;
+    break;
 
 #endif
-
-
-
-
 
     //--------------------------------------------------
     // AUTOPILOT_VERSION
@@ -159,23 +111,15 @@ case MAVLINK_MSG_ID_SYSTEM_TIME:
 
 #ifdef MAVLINK_MSG_ID_AUTOPILOT_VERSION
 
-    case MAVLINK_MSG_ID_AUTOPILOT_VERSION:
+  case MAVLINK_MSG_ID_AUTOPILOT_VERSION:
 
+    printf("AUTOPILOT_VERSION REQUEST\n");
 
-        printf(
-            "AUTOPILOT_VERSION REQUEST\n");
+    GCS_send_autopilot_version();
 
-
-        GCS_send_autopilot_version();
-
-
-        break;
+    break;
 
 #endif
-
-
-
-
 
     //--------------------------------------------------
     // ESTIMATOR_STATUS
@@ -183,19 +127,13 @@ case MAVLINK_MSG_ID_SYSTEM_TIME:
 
 #ifdef MAVLINK_MSG_ID_ESTIMATOR_STATUS
 
-    case MAVLINK_MSG_ID_ESTIMATOR_STATUS:
+  case MAVLINK_MSG_ID_ESTIMATOR_STATUS:
 
+    GCS_send_ekf_status();
 
-        GCS_send_ekf_status();
-
-
-        break;
+    break;
 
 #endif
-
-
-
-
 
     //--------------------------------------------------
     // HOME_POSITION
@@ -203,27 +141,23 @@ case MAVLINK_MSG_ID_SYSTEM_TIME:
 
 #ifdef MAVLINK_MSG_ID_HOME_POSITION
 
-    case MAVLINK_MSG_ID_HOME_POSITION:
+  case MAVLINK_MSG_ID_HOME_POSITION:
 
+    GCS_send_home_position();
 
-        GCS_send_home_position();
-
-
-        break;
+    break;
 
 #endif
 
-//--------------------------------------------------
-// EXTENDED_SYS_STATE #245
-//--------------------------------------------------
+    //--------------------------------------------------
+    // EXTENDED_SYS_STATE #245
+    //--------------------------------------------------
 
-case MAVLINK_MSG_ID_EXTENDED_SYS_STATE:
+  case MAVLINK_MSG_ID_EXTENDED_SYS_STATE:
 
-        GCS_send_extended_state();
+    GCS_send_extended_state();
 
-        break;
-
-
+    break;
 
     //--------------------------------------------------
     // CAMERA_INFORMATION
@@ -232,34 +166,27 @@ case MAVLINK_MSG_ID_EXTENDED_SYS_STATE:
 
 #ifdef MAVLINK_MSG_ID_CAMERA_INFORMATION
 
-    case MAVLINK_MSG_ID_CAMERA_INFORMATION:
+  case MAVLINK_MSG_ID_CAMERA_INFORMATION:
 
-
-        GCS_send_camera_information();
-
-
-        break;
-
-#endif
-
-//--------------------------------------------------
-// VIDEO STREAM INFORMATION
-//--------------------------------------------------
-
-#ifdef MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION
-
-case MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION:
-
-
-    printf(
-        "VIDEO STREAM ignored\n");
-
+    GCS_send_camera_information();
 
     break;
 
 #endif
 
+    //--------------------------------------------------
+    // VIDEO STREAM INFORMATION
+    //--------------------------------------------------
 
+#ifdef MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION
+
+  case MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION:
+
+    printf("VIDEO STREAM ignored\n");
+
+    break;
+
+#endif
 
     //--------------------------------------------------
     // GIMBAL_MANAGER_INFORMATION
@@ -268,19 +195,13 @@ case MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION:
 
 #ifdef MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION
 
-    case MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION:
+  case MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION:
 
+    GCS_send_gimbal_information();
 
-        GCS_send_gimbal_information();
-
-
-        break;
+    break;
 
 #endif
-
-
-
-
 
     //--------------------------------------------------
     // LOCAL_POSITION_NED
@@ -289,18 +210,13 @@ case MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION:
 
 #ifdef MAVLINK_MSG_ID_LOCAL_POSITION_NED
 
-    case MAVLINK_MSG_ID_LOCAL_POSITION_NED:
+  case MAVLINK_MSG_ID_LOCAL_POSITION_NED:
 
+    GCS_send_local_position();
 
-  GCS_send_local_position();
-
-        break;
+    break;
 
 #endif
-
-
-
-
 
     //--------------------------------------------------
     // RC_CHANNELS
@@ -309,17 +225,13 @@ case MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION:
 
 #ifdef MAVLINK_MSG_ID_RC_CHANNELS
 
-    case MAVLINK_MSG_ID_RC_CHANNELS:
+  case MAVLINK_MSG_ID_RC_CHANNELS:
 
-  GCS_send_rc_channels();
+    GCS_send_rc_channels();
 
-        break;
+    break;
 
 #endif
-
-
-
-
 
     //--------------------------------------------------
     // SERVO_OUTPUT_RAW
@@ -328,33 +240,22 @@ case MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION:
 
 #ifdef MAVLINK_MSG_ID_SERVO_OUTPUT_RAW
 
-    case MAVLINK_MSG_ID_SERVO_OUTPUT_RAW:
-
+  case MAVLINK_MSG_ID_SERVO_OUTPUT_RAW:
 
     GCS_send_servo_output();
 
-        break;
+    break;
 
 #endif
-
-
-
-
 
     //--------------------------------------------------
     // UNKNOWN REQUEST
     //--------------------------------------------------
 
-    default:
+  default:
 
+    printf("REQUEST MESSAGE unsupported %u\n", msgid);
 
-        printf(
-            "REQUEST MESSAGE unsupported %u\n",
-            msgid);
-
-
-        break;
-
-    }
-
+    break;
+  }
 }

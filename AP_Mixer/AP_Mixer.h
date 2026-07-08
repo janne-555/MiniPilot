@@ -7,9 +7,8 @@
 #ifndef AP_MIXER_H
 #define AP_MIXER_H
 
-typedef struct
-{
-    float motor[4];
+typedef struct {
+  float motor[4];
 
 } AP_Mixer_Output_t;
 

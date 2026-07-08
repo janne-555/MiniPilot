@@ -13,13 +13,12 @@
 typedef void (*TaskFunction_t)(void);
 
 // Scheduler task
-typedef struct
-{
-    TaskFunction_t function;
+typedef struct {
+  TaskFunction_t function;
 
-    uint32_t period_ms;
+  uint32_t period_ms;
 
-    uint32_t last_run_ms;
+  uint32_t last_run_ms;
 
 } AP_Task_t;
 
@@ -27,8 +26,7 @@ typedef struct
 void AP_Scheduler_Init(void);
 
 // Register new task
-int AP_Scheduler_Add_Task(TaskFunction_t function,
-                          uint32_t period_ms);
+int AP_Scheduler_Add_Task(TaskFunction_t function, uint32_t period_ms);
 
 // Execute scheduler
 void AP_Scheduler_Run(void);

@@ -4,135 +4,94 @@
 // Project : MiniPilot
 //------------------------------------------------------------------------------
 
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "../AP_HAL/AP_HAL.h"
 #include "../AP_Vehicle/AP_Vehicle.h"
 
 #include "GCS_MAVLink.h"
 
+void GCS_send_global_position(void) {
+  mavlink_message_t msg;
 
-void GCS_send_global_position(void)
-{
-    mavlink_message_t msg;
+  uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 
-    uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
+  double latitude;
+  double longitude;
 
+  float altitude;
 
-    double latitude;
-    double longitude;
+  /*
+   * Read EKF fused position through vehicle
+   */
 
-    float altitude;
+  AP_Vehicle_Get_GPS(&latitude, &longitude, &altitude);
 
+  /*
+   * MAVLink units:
+   *
+   * lat/lon : degrees * 1E7
+   * altitude: millimeters
+   */
 
-    /*
-     * Read EKF fused position through vehicle
-     */
+  int32_t lat = (int32_t)(latitude * 10000000.0);
 
-    AP_Vehicle_Get_GPS(
-        &latitude,
-        &longitude,
-        &altitude);
+  int32_t lon = (int32_t)(longitude * 10000000.0);
 
+  int32_t alt = (int32_t)(altitude * 1000.0f);
 
-    /*
-     * MAVLink units:
-     *
-     * lat/lon : degrees * 1E7
-     * altitude: millimeters
-     */
+  /*
+   * Velocity
+   *
+   * Later from EKF velocity
+   */
 
-    int32_t lat =
-        (int32_t)(latitude * 10000000.0);
+  int16_t vx = 0;
 
+  int16_t vy = 0;
 
-    int32_t lon =
-        (int32_t)(longitude * 10000000.0);
+  int16_t vz = 0;
 
+  /*
+   * Heading
+   *
+   * centi-degrees
+   */
 
-    int32_t alt =
-        (int32_t)(altitude * 1000.0f);
+  float roll;
+  float pitch;
+  float yaw;
 
+  AP_Vehicle_Get_Attitude(&roll, &pitch, &yaw);
 
+  uint16_t heading = (uint16_t)(yaw * 100.0f);
 
-    /*
-     * Velocity
-     *
-     * Later from EKF velocity
-     */
+  mavlink_msg_global_position_int_pack(1, 1,
 
-    int16_t vx = 0;
+                                       &msg,
 
-    int16_t vy = 0;
+                                       hal_millis(),
 
-    int16_t vz = 0;
+                                       lat,
 
+                                       lon,
 
-    /*
-     * Heading
-     *
-     * centi-degrees
-     */
+                                       alt,
 
-    float roll;
-    float pitch;
-    float yaw;
+                                       alt,
 
+                                       vx,
 
-    AP_Vehicle_Get_Attitude(
-        &roll,
-        &pitch,
-        &yaw);
+                                       vy,
 
+                                       vz,
 
-    uint16_t heading =
-        (uint16_t)(yaw * 100.0f);
+                                       heading);
 
+  uint16_t len = mavlink_msg_to_send_buffer(buffer, &msg);
 
+  hal_comm_write(buffer, len);
 
-    mavlink_msg_global_position_int_pack(
-        1,
-        1,
-
-        &msg,
-
-
-        hal_millis(),
-
-
-        lat,
-
-        lon,
-
-
-        alt,
-
-
-        alt,
-
-
-        vx,
-
-        vy,
-
-        vz,
-
-
-        heading
-    );
-
-
-    uint16_t len =
-        mavlink_msg_to_send_buffer(
-            buffer,
-            &msg);
-
-
-    hal_comm_write(
-        buffer,
-        len);
-
-
-//    printf("SEND GLOBAL POSITION\n");
+  //    printf("SEND GLOBAL POSITION\n");
 }

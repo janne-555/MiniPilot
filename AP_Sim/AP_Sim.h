@@ -11,22 +11,21 @@
  * Simulator State
  *---------------------------------------------------------------------------*/
 
-typedef struct
-{
-    /* Attitude (degrees) */
-    float roll;
-    float pitch;
-    float yaw;
+typedef struct {
+  /* Attitude (degrees) */
+  float roll;
+  float pitch;
+  float yaw;
 
-    /* Angular Velocity (deg/sec) */
-    float roll_rate;
-    float pitch_rate;
-    float yaw_rate;
+  /* Angular Velocity (deg/sec) */
+  float roll_rate;
+  float pitch_rate;
+  float yaw_rate;
 
-    /* Angular Acceleration (deg/sec²) */
-    float roll_accel;
-    float pitch_accel;
-    float yaw_accel;
+  /* Angular Acceleration (deg/sec²) */
+  float roll_accel;
+  float pitch_accel;
+  float yaw_accel;
 
 } AP_Sim_State_t;
 

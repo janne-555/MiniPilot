@@ -4,24 +4,22 @@
 // Project : MiniPilot
 //------------------------------------------------------------------------------
 
-
 #ifndef AP_IMU_H
 #define AP_IMU_H
 
-typedef struct
-{
-    /* Gyroscope (deg/s) */
-    float gx;
-    float gy;
-    float gz;
+typedef struct {
+  /* Gyroscope (deg/s) */
+  float gx;
+  float gy;
+  float gz;
 
-    /* Accelerometer (m/s²) */
-    float ax;
-    float ay;
-    float az;
+  /* Accelerometer (m/s²) */
+  float ax;
+  float ay;
+  float az;
 
-    /* Sensor health */
-    int healthy;
+  /* Sensor health */
+  int healthy;
 
 } AP_IMU_t;
 

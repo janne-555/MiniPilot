@@ -9,22 +9,18 @@
 
 #include <stdint.h>
 
-typedef struct
-{
-    const char *name;
-    float value;
+typedef struct {
+  const char *name;
+  float value;
 
 } AP_Param_t;
-
 
 extern AP_Param_t g_params[];
 
 extern const uint16_t g_param_count;
 
-
 float AP_Param_Get(const char *name);
 
-void AP_Param_Set(const char *name,float value);
-
+void AP_Param_Set(const char *name, float value);
 
 #endif

@@ -13,23 +13,22 @@
  * RC Input
  *---------------------------------------------------------------------------*/
 
-typedef struct
-{
-    /* Stick Commands */
+typedef struct {
+  /* Stick Commands */
 
-    float roll;
+  float roll;
 
-    float pitch;
+  float pitch;
 
-    float yaw;
+  float yaw;
 
-    float throttle;
+  float throttle;
 
-    /* Switches */
+  /* Switches */
 
-    uint8_t arm;
+  uint8_t arm;
 
-    uint8_t mode;
+  uint8_t mode;
 
 } AP_RC_t;
 

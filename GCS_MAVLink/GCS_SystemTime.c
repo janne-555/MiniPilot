@@ -4,57 +4,37 @@
 // Project : MiniPilot
 //------------------------------------------------------------------------------
 
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "../AP_HAL/AP_HAL.h"
 
 #include "GCS_MAVLink.h"
 
+void GCS_send_system_time(void) {
+  mavlink_message_t msg;
 
-void GCS_send_system_time(void)
-{
-    mavlink_message_t msg;
+  uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 
-    uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
+  uint64_t unix_time;
 
+  unix_time = 0;
 
-    uint64_t unix_time;
+  uint32_t boot_time;
 
-    unix_time = 0;
+  boot_time = hal_millis();
 
+  mavlink_msg_system_time_pack(1, 1, &msg,
 
-    uint32_t boot_time;
+                               unix_time,
 
-    boot_time = hal_millis();
+                               boot_time);
 
+  uint16_t len;
 
+  len = mavlink_msg_to_send_buffer(buffer, &msg);
 
-    mavlink_msg_system_time_pack(
-            1,
-            1,
-            &msg,
+  hal_comm_write(buffer, len);
 
-            unix_time,
-
-            boot_time
-    );
-
-
-
-    uint16_t len;
-
-    len =
-        mavlink_msg_to_send_buffer(
-                buffer,
-                &msg);
-
-
-
-    hal_comm_write(
-            buffer,
-            len);
-
-
-    printf("SEND SYSTEM_TIME\n");
+  printf("SEND SYSTEM_TIME\n");
 }

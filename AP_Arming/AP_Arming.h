@@ -7,25 +7,24 @@
 #define AP_ARMING_H
 
 #include <stdint.h>
-typedef struct
-{
-    uint8_t armed;
+typedef struct {
+  uint8_t armed;
 
-    uint8_t pre_arm_ok;
+  uint8_t pre_arm_ok;
 
-    uint8_t gyro_ok;
+  uint8_t gyro_ok;
 
-    uint8_t accel_ok;
+  uint8_t accel_ok;
 
-    uint8_t compass_ok;
+  uint8_t compass_ok;
 
-    uint8_t gps_ok;
+  uint8_t gps_ok;
 
-    uint8_t battery_ok;
+  uint8_t battery_ok;
 
-    uint8_t rc_ok;
+  uint8_t rc_ok;
 
-    uint8_t failsafe;
+  uint8_t failsafe;
 
 } AP_Arming_t;
 
