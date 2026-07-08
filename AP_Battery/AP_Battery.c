@@ -17,8 +17,9 @@ static uint8_t last_critical = 255;
   Init
   ----------------------------------------------------------------------------*/
 
-void AP_Battery_Init(void) {
-  battery.voltage = 12.2f;
+void AP_Battery_Init(void)
+{
+    battery.voltage = 12.2f;
 
   battery.current = 0.0f;
 
@@ -50,9 +51,10 @@ voltage = ADC conversion
 
   if (battery.voltage >= 12.6f) {
     battery.remaining_percent = 100;
-  } else if (battery.voltage <= 9.9f) {
+  } else if (battery.voltage <= 9.9f)
+{
     battery.remaining_percent = 0;
-  } else {
+} else {
     battery.remaining_percent =
         ((battery.voltage - 9.9f) / (12.6f - 9.9f)) * 100.0f;
   }
@@ -97,12 +99,27 @@ voltage = ADC conversion
 
 const AP_Battery_t *AP_Battery_Get(void) { return &battery; }
 
-float AP_Battery_GetVoltage(void) { return battery.voltage; }
+float AP_Battery_GetVoltage(void)
+{
+    return battery.voltage;
+}
 
-float AP_Battery_GetCurrent(void) { return battery.current; }
+float AP_Battery_GetCurrent(void)
+{
+    return battery.current;
+}
 
-float AP_Battery_GetRemaining(void) { return battery.remaining_percent; }
+float AP_Battery_GetRemaining(void)
+{
+    return battery.remaining_percent;
+}
 
-uint8_t AP_Battery_IsLow(void) { return battery.low; }
+uint8_t AP_Battery_IsLow(void)
+{
+    return battery.low;
+}
 
-uint8_t AP_Battery_IsHealthy(void) { return battery.healthy; }
+uint8_t AP_Battery_IsHealthy(void)
+{
+    return battery.healthy;
+}

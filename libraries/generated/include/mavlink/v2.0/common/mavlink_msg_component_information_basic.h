@@ -79,7 +79,7 @@ typedef struct __mavlink_component_information_basic_t {
 static inline uint16_t mavlink_msg_component_information_basic_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint64_t capabilities, uint32_t time_manufacture_s, const char *vendor_name, const char *model_name, const char *software_version, const char *hardware_version, const char *serial_number)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC_LEN];
     _mav_put_uint64_t(buf, 0, capabilities);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -127,7 +127,7 @@ static inline uint16_t mavlink_msg_component_information_basic_pack(uint8_t syst
 static inline uint16_t mavlink_msg_component_information_basic_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint64_t capabilities, uint32_t time_manufacture_s, const char *vendor_name, const char *model_name, const char *software_version, const char *hardware_version, const char *serial_number)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC_LEN];
     _mav_put_uint64_t(buf, 0, capabilities);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -179,7 +179,7 @@ static inline uint16_t mavlink_msg_component_information_basic_pack_chan(uint8_t
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint64_t capabilities,uint32_t time_manufacture_s,const char *vendor_name,const char *model_name,const char *software_version,const char *hardware_version,const char *serial_number)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC_LEN];
     _mav_put_uint64_t(buf, 0, capabilities);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -265,7 +265,7 @@ static inline uint16_t mavlink_msg_component_information_basic_encode_status(uin
 
 static inline void mavlink_msg_component_information_basic_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint64_t capabilities, uint32_t time_manufacture_s, const char *vendor_name, const char *model_name, const char *software_version, const char *hardware_version, const char *serial_number)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC_LEN];
     _mav_put_uint64_t(buf, 0, capabilities);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -297,7 +297,7 @@ static inline void mavlink_msg_component_information_basic_send(mavlink_channel_
  */
 static inline void mavlink_msg_component_information_basic_send_struct(mavlink_channel_t chan, const mavlink_component_information_basic_t* component_information_basic)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_component_information_basic_send(chan, component_information_basic->time_boot_ms, component_information_basic->capabilities, component_information_basic->time_manufacture_s, component_information_basic->vendor_name, component_information_basic->model_name, component_information_basic->software_version, component_information_basic->hardware_version, component_information_basic->serial_number);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC, (const char *)component_information_basic, MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC_MIN_LEN, MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC_LEN, MAVLINK_MSG_ID_COMPONENT_INFORMATION_BASIC_CRC);
@@ -314,7 +314,7 @@ static inline void mavlink_msg_component_information_basic_send_struct(mavlink_c
  */
 static inline void mavlink_msg_component_information_basic_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint64_t capabilities, uint32_t time_manufacture_s, const char *vendor_name, const char *model_name, const char *software_version, const char *hardware_version, const char *serial_number)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, capabilities);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -433,7 +433,7 @@ static inline uint16_t mavlink_msg_component_information_basic_get_serial_number
  */
 static inline void mavlink_msg_component_information_basic_decode(const mavlink_message_t* msg, mavlink_component_information_basic_t* component_information_basic)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     component_information_basic->capabilities = mavlink_msg_component_information_basic_get_capabilities(msg);
     component_information_basic->time_boot_ms = mavlink_msg_component_information_basic_get_time_boot_ms(msg);
     component_information_basic->time_manufacture_s = mavlink_msg_component_information_basic_get_time_manufacture_s(msg);

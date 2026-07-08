@@ -107,7 +107,7 @@ typedef struct __mavlink_hil_sensor_t {
 static inline uint16_t mavlink_msg_hil_sensor_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint32_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_SENSOR_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -181,7 +181,7 @@ static inline uint16_t mavlink_msg_hil_sensor_pack(uint8_t system_id, uint8_t co
 static inline uint16_t mavlink_msg_hil_sensor_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint32_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_SENSOR_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -259,7 +259,7 @@ static inline uint16_t mavlink_msg_hil_sensor_pack_chan(uint8_t system_id, uint8
                                mavlink_message_t* msg,
                                    uint64_t time_usec,float xacc,float yacc,float zacc,float xgyro,float ygyro,float zgyro,float xmag,float ymag,float zmag,float abs_pressure,float diff_pressure,float pressure_alt,float temperature,uint32_t fields_updated,uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_SENSOR_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -371,7 +371,7 @@ static inline uint16_t mavlink_msg_hil_sensor_encode_status(uint8_t system_id, u
 
 static inline void mavlink_msg_hil_sensor_send(mavlink_channel_t chan, uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint32_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_SENSOR_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -421,7 +421,7 @@ static inline void mavlink_msg_hil_sensor_send(mavlink_channel_t chan, uint64_t 
  */
 static inline void mavlink_msg_hil_sensor_send_struct(mavlink_channel_t chan, const mavlink_hil_sensor_t* hil_sensor)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_hil_sensor_send(chan, hil_sensor->time_usec, hil_sensor->xacc, hil_sensor->yacc, hil_sensor->zacc, hil_sensor->xgyro, hil_sensor->ygyro, hil_sensor->zgyro, hil_sensor->xmag, hil_sensor->ymag, hil_sensor->zmag, hil_sensor->abs_pressure, hil_sensor->diff_pressure, hil_sensor->pressure_alt, hil_sensor->temperature, hil_sensor->fields_updated, hil_sensor->id);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_HIL_SENSOR, (const char *)hil_sensor, MAVLINK_MSG_ID_HIL_SENSOR_MIN_LEN, MAVLINK_MSG_ID_HIL_SENSOR_LEN, MAVLINK_MSG_ID_HIL_SENSOR_CRC);
@@ -438,7 +438,7 @@ static inline void mavlink_msg_hil_sensor_send_struct(mavlink_channel_t chan, co
  */
 static inline void mavlink_msg_hil_sensor_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint32_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -655,7 +655,7 @@ static inline uint8_t mavlink_msg_hil_sensor_get_id(const mavlink_message_t* msg
  */
 static inline void mavlink_msg_hil_sensor_decode(const mavlink_message_t* msg, mavlink_hil_sensor_t* hil_sensor)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     hil_sensor->time_usec = mavlink_msg_hil_sensor_get_time_usec(msg);
     hil_sensor->xacc = mavlink_msg_hil_sensor_get_xacc(msg);
     hil_sensor->yacc = mavlink_msg_hil_sensor_get_yacc(msg);

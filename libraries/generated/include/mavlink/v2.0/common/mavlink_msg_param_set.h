@@ -63,7 +63,7 @@ typedef struct __mavlink_param_set_t {
 static inline uint16_t mavlink_msg_param_set_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, float param_value, uint8_t param_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_SET_LEN];
     _mav_put_float(buf, 0, param_value);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -102,7 +102,7 @@ static inline uint16_t mavlink_msg_param_set_pack(uint8_t system_id, uint8_t com
 static inline uint16_t mavlink_msg_param_set_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, float param_value, uint8_t param_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_SET_LEN];
     _mav_put_float(buf, 0, param_value);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -145,7 +145,7 @@ static inline uint16_t mavlink_msg_param_set_pack_chan(uint8_t system_id, uint8_
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const char *param_id,float param_value,uint8_t param_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_SET_LEN];
     _mav_put_float(buf, 0, param_value);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -222,7 +222,7 @@ static inline uint16_t mavlink_msg_param_set_encode_status(uint8_t system_id, ui
 
 static inline void mavlink_msg_param_set_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const char *param_id, float param_value, uint8_t param_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_SET_LEN];
     _mav_put_float(buf, 0, param_value);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -248,7 +248,7 @@ static inline void mavlink_msg_param_set_send(mavlink_channel_t chan, uint8_t ta
  */
 static inline void mavlink_msg_param_set_send_struct(mavlink_channel_t chan, const mavlink_param_set_t* param_set)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_param_set_send(chan, param_set->target_system, param_set->target_component, param_set->param_id, param_set->param_value, param_set->param_type);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_SET, (const char *)param_set, MAVLINK_MSG_ID_PARAM_SET_MIN_LEN, MAVLINK_MSG_ID_PARAM_SET_LEN, MAVLINK_MSG_ID_PARAM_SET_CRC);
@@ -265,7 +265,7 @@ static inline void mavlink_msg_param_set_send_struct(mavlink_channel_t chan, con
  */
 static inline void mavlink_msg_param_set_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const char *param_id, float param_value, uint8_t param_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, param_value);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -348,7 +348,7 @@ static inline uint8_t mavlink_msg_param_set_get_param_type(const mavlink_message
  */
 static inline void mavlink_msg_param_set_decode(const mavlink_message_t* msg, mavlink_param_set_t* param_set)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     param_set->param_value = mavlink_msg_param_set_get_param_value(msg);
     param_set->target_system = mavlink_msg_param_set_get_target_system(msg);
     param_set->target_component = mavlink_msg_param_set_get_target_component(msg);

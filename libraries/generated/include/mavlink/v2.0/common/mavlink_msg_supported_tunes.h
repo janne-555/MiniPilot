@@ -55,7 +55,7 @@ typedef struct __mavlink_supported_tunes_t {
 static inline uint16_t mavlink_msg_supported_tunes_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint32_t format)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SUPPORTED_TUNES_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_supported_tunes_pack(uint8_t system_id, uint8
 static inline uint16_t mavlink_msg_supported_tunes_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint32_t format)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SUPPORTED_TUNES_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_supported_tunes_pack_chan(uint8_t system_id, 
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint32_t format)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SUPPORTED_TUNES_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_supported_tunes_encode_status(uint8_t system_
 
 static inline void mavlink_msg_supported_tunes_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint32_t format)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SUPPORTED_TUNES_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_supported_tunes_send(mavlink_channel_t chan, uint
  */
 static inline void mavlink_msg_supported_tunes_send_struct(mavlink_channel_t chan, const mavlink_supported_tunes_t* supported_tunes)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_supported_tunes_send(chan, supported_tunes->target_system, supported_tunes->target_component, supported_tunes->format);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SUPPORTED_TUNES, (const char *)supported_tunes, MAVLINK_MSG_ID_SUPPORTED_TUNES_MIN_LEN, MAVLINK_MSG_ID_SUPPORTED_TUNES_LEN, MAVLINK_MSG_ID_SUPPORTED_TUNES_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_supported_tunes_send_struct(mavlink_channel_t cha
  */
 static inline void mavlink_msg_supported_tunes_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint32_t format)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -304,7 +304,7 @@ static inline uint32_t mavlink_msg_supported_tunes_get_format(const mavlink_mess
  */
 static inline void mavlink_msg_supported_tunes_decode(const mavlink_message_t* msg, mavlink_supported_tunes_t* supported_tunes)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     supported_tunes->format = mavlink_msg_supported_tunes_get_format(msg);
     supported_tunes->target_system = mavlink_msg_supported_tunes_get_target_system(msg);
     supported_tunes->target_component = mavlink_msg_supported_tunes_get_target_component(msg);

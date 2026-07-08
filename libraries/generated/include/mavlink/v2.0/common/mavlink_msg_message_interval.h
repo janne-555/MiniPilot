@@ -51,7 +51,7 @@ typedef struct __mavlink_message_interval_t {
 static inline uint16_t mavlink_msg_message_interval_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint16_t message_id, int32_t interval_us)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MESSAGE_INTERVAL_LEN];
     _mav_put_int32_t(buf, 0, interval_us);
     _mav_put_uint16_t(buf, 4, message_id);
@@ -83,7 +83,7 @@ static inline uint16_t mavlink_msg_message_interval_pack(uint8_t system_id, uint
 static inline uint16_t mavlink_msg_message_interval_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint16_t message_id, int32_t interval_us)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MESSAGE_INTERVAL_LEN];
     _mav_put_int32_t(buf, 0, interval_us);
     _mav_put_uint16_t(buf, 4, message_id);
@@ -119,7 +119,7 @@ static inline uint16_t mavlink_msg_message_interval_pack_chan(uint8_t system_id,
                                mavlink_message_t* msg,
                                    uint16_t message_id,int32_t interval_us)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MESSAGE_INTERVAL_LEN];
     _mav_put_int32_t(buf, 0, interval_us);
     _mav_put_uint16_t(buf, 4, message_id);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_message_interval_encode_status(uint8_t system
 
 static inline void mavlink_msg_message_interval_send(mavlink_channel_t chan, uint16_t message_id, int32_t interval_us)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MESSAGE_INTERVAL_LEN];
     _mav_put_int32_t(buf, 0, interval_us);
     _mav_put_uint16_t(buf, 4, message_id);
@@ -211,7 +211,7 @@ static inline void mavlink_msg_message_interval_send(mavlink_channel_t chan, uin
  */
 static inline void mavlink_msg_message_interval_send_struct(mavlink_channel_t chan, const mavlink_message_interval_t* message_interval)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_message_interval_send(chan, message_interval->message_id, message_interval->interval_us);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_MESSAGE_INTERVAL, (const char *)message_interval, MAVLINK_MSG_ID_MESSAGE_INTERVAL_MIN_LEN, MAVLINK_MSG_ID_MESSAGE_INTERVAL_LEN, MAVLINK_MSG_ID_MESSAGE_INTERVAL_CRC);
@@ -228,7 +228,7 @@ static inline void mavlink_msg_message_interval_send_struct(mavlink_channel_t ch
  */
 static inline void mavlink_msg_message_interval_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint16_t message_id, int32_t interval_us)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int32_t(buf, 0, interval_us);
     _mav_put_uint16_t(buf, 4, message_id);
@@ -277,7 +277,7 @@ static inline int32_t mavlink_msg_message_interval_get_interval_us(const mavlink
  */
 static inline void mavlink_msg_message_interval_decode(const mavlink_message_t* msg, mavlink_message_interval_t* message_interval)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     message_interval->interval_us = mavlink_msg_message_interval_get_interval_us(msg);
     message_interval->message_id = mavlink_msg_message_interval_get_message_id(msg);
 #else

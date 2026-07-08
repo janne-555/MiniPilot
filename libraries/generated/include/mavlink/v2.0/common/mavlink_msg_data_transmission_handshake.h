@@ -71,7 +71,7 @@ typedef struct __mavlink_data_transmission_handshake_t {
 static inline uint16_t mavlink_msg_data_transmission_handshake_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t type, uint32_t size, uint16_t width, uint16_t height, uint16_t packets, uint8_t payload, uint8_t jpg_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE_LEN];
     _mav_put_uint32_t(buf, 0, size);
     _mav_put_uint16_t(buf, 4, width);
@@ -118,7 +118,7 @@ static inline uint16_t mavlink_msg_data_transmission_handshake_pack(uint8_t syst
 static inline uint16_t mavlink_msg_data_transmission_handshake_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t type, uint32_t size, uint16_t width, uint16_t height, uint16_t packets, uint8_t payload, uint8_t jpg_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE_LEN];
     _mav_put_uint32_t(buf, 0, size);
     _mav_put_uint16_t(buf, 4, width);
@@ -169,7 +169,7 @@ static inline uint16_t mavlink_msg_data_transmission_handshake_pack_chan(uint8_t
                                mavlink_message_t* msg,
                                    uint8_t type,uint32_t size,uint16_t width,uint16_t height,uint16_t packets,uint8_t payload,uint8_t jpg_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE_LEN];
     _mav_put_uint32_t(buf, 0, size);
     _mav_put_uint16_t(buf, 4, width);
@@ -254,7 +254,7 @@ static inline uint16_t mavlink_msg_data_transmission_handshake_encode_status(uin
 
 static inline void mavlink_msg_data_transmission_handshake_send(mavlink_channel_t chan, uint8_t type, uint32_t size, uint16_t width, uint16_t height, uint16_t packets, uint8_t payload, uint8_t jpg_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE_LEN];
     _mav_put_uint32_t(buf, 0, size);
     _mav_put_uint16_t(buf, 4, width);
@@ -286,7 +286,7 @@ static inline void mavlink_msg_data_transmission_handshake_send(mavlink_channel_
  */
 static inline void mavlink_msg_data_transmission_handshake_send_struct(mavlink_channel_t chan, const mavlink_data_transmission_handshake_t* data_transmission_handshake)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_data_transmission_handshake_send(chan, data_transmission_handshake->type, data_transmission_handshake->size, data_transmission_handshake->width, data_transmission_handshake->height, data_transmission_handshake->packets, data_transmission_handshake->payload, data_transmission_handshake->jpg_quality);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE, (const char *)data_transmission_handshake, MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE_MIN_LEN, MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE_LEN, MAVLINK_MSG_ID_DATA_TRANSMISSION_HANDSHAKE_CRC);
@@ -303,7 +303,7 @@ static inline void mavlink_msg_data_transmission_handshake_send_struct(mavlink_c
  */
 static inline void mavlink_msg_data_transmission_handshake_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t type, uint32_t size, uint16_t width, uint16_t height, uint16_t packets, uint8_t payload, uint8_t jpg_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, size);
     _mav_put_uint16_t(buf, 4, width);
@@ -412,7 +412,7 @@ static inline uint8_t mavlink_msg_data_transmission_handshake_get_jpg_quality(co
  */
 static inline void mavlink_msg_data_transmission_handshake_decode(const mavlink_message_t* msg, mavlink_data_transmission_handshake_t* data_transmission_handshake)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     data_transmission_handshake->size = mavlink_msg_data_transmission_handshake_get_size(msg);
     data_transmission_handshake->width = mavlink_msg_data_transmission_handshake_get_width(msg);
     data_transmission_handshake->height = mavlink_msg_data_transmission_handshake_get_height(msg);

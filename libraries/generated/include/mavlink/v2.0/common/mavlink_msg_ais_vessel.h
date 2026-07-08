@@ -112,7 +112,7 @@ typedef struct __mavlink_ais_vessel_t {
 static inline uint16_t mavlink_msg_ais_vessel_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t MMSI, int32_t lat, int32_t lon, uint16_t COG, uint16_t heading, uint16_t velocity, int8_t turn_rate, uint8_t navigational_status, uint8_t type, uint16_t dimension_bow, uint16_t dimension_stern, uint8_t dimension_port, uint8_t dimension_starboard, const char *callsign, const char *name, uint16_t tslc, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIS_VESSEL_LEN];
     _mav_put_uint32_t(buf, 0, MMSI);
     _mav_put_int32_t(buf, 4, lat);
@@ -187,7 +187,7 @@ static inline uint16_t mavlink_msg_ais_vessel_pack(uint8_t system_id, uint8_t co
 static inline uint16_t mavlink_msg_ais_vessel_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t MMSI, int32_t lat, int32_t lon, uint16_t COG, uint16_t heading, uint16_t velocity, int8_t turn_rate, uint8_t navigational_status, uint8_t type, uint16_t dimension_bow, uint16_t dimension_stern, uint8_t dimension_port, uint8_t dimension_starboard, const char *callsign, const char *name, uint16_t tslc, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIS_VESSEL_LEN];
     _mav_put_uint32_t(buf, 0, MMSI);
     _mav_put_int32_t(buf, 4, lat);
@@ -266,7 +266,7 @@ static inline uint16_t mavlink_msg_ais_vessel_pack_chan(uint8_t system_id, uint8
                                mavlink_message_t* msg,
                                    uint32_t MMSI,int32_t lat,int32_t lon,uint16_t COG,uint16_t heading,uint16_t velocity,int8_t turn_rate,uint8_t navigational_status,uint8_t type,uint16_t dimension_bow,uint16_t dimension_stern,uint8_t dimension_port,uint8_t dimension_starboard,const char *callsign,const char *name,uint16_t tslc,uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIS_VESSEL_LEN];
     _mav_put_uint32_t(buf, 0, MMSI);
     _mav_put_int32_t(buf, 4, lat);
@@ -379,7 +379,7 @@ static inline uint16_t mavlink_msg_ais_vessel_encode_status(uint8_t system_id, u
 
 static inline void mavlink_msg_ais_vessel_send(mavlink_channel_t chan, uint32_t MMSI, int32_t lat, int32_t lon, uint16_t COG, uint16_t heading, uint16_t velocity, int8_t turn_rate, uint8_t navigational_status, uint8_t type, uint16_t dimension_bow, uint16_t dimension_stern, uint8_t dimension_port, uint8_t dimension_starboard, const char *callsign, const char *name, uint16_t tslc, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIS_VESSEL_LEN];
     _mav_put_uint32_t(buf, 0, MMSI);
     _mav_put_int32_t(buf, 4, lat);
@@ -429,7 +429,7 @@ static inline void mavlink_msg_ais_vessel_send(mavlink_channel_t chan, uint32_t 
  */
 static inline void mavlink_msg_ais_vessel_send_struct(mavlink_channel_t chan, const mavlink_ais_vessel_t* ais_vessel)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_ais_vessel_send(chan, ais_vessel->MMSI, ais_vessel->lat, ais_vessel->lon, ais_vessel->COG, ais_vessel->heading, ais_vessel->velocity, ais_vessel->turn_rate, ais_vessel->navigational_status, ais_vessel->type, ais_vessel->dimension_bow, ais_vessel->dimension_stern, ais_vessel->dimension_port, ais_vessel->dimension_starboard, ais_vessel->callsign, ais_vessel->name, ais_vessel->tslc, ais_vessel->flags);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_AIS_VESSEL, (const char *)ais_vessel, MAVLINK_MSG_ID_AIS_VESSEL_MIN_LEN, MAVLINK_MSG_ID_AIS_VESSEL_LEN, MAVLINK_MSG_ID_AIS_VESSEL_CRC);
@@ -446,7 +446,7 @@ static inline void mavlink_msg_ais_vessel_send_struct(mavlink_channel_t chan, co
  */
 static inline void mavlink_msg_ais_vessel_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t MMSI, int32_t lat, int32_t lon, uint16_t COG, uint16_t heading, uint16_t velocity, int8_t turn_rate, uint8_t navigational_status, uint8_t type, uint16_t dimension_bow, uint16_t dimension_stern, uint8_t dimension_port, uint8_t dimension_starboard, const char *callsign, const char *name, uint16_t tslc, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, MMSI);
     _mav_put_int32_t(buf, 4, lat);
@@ -673,7 +673,7 @@ static inline uint16_t mavlink_msg_ais_vessel_get_flags(const mavlink_message_t*
  */
 static inline void mavlink_msg_ais_vessel_decode(const mavlink_message_t* msg, mavlink_ais_vessel_t* ais_vessel)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     ais_vessel->MMSI = mavlink_msg_ais_vessel_get_MMSI(msg);
     ais_vessel->lat = mavlink_msg_ais_vessel_get_lat(msg);
     ais_vessel->lon = mavlink_msg_ais_vessel_get_lon(msg);

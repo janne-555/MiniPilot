@@ -51,7 +51,7 @@ typedef struct __mavlink_extended_sys_state_t {
 static inline uint16_t mavlink_msg_extended_sys_state_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t vtol_state, uint8_t landed_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EXTENDED_SYS_STATE_LEN];
     _mav_put_uint8_t(buf, 0, vtol_state);
     _mav_put_uint8_t(buf, 1, landed_state);
@@ -83,7 +83,7 @@ static inline uint16_t mavlink_msg_extended_sys_state_pack(uint8_t system_id, ui
 static inline uint16_t mavlink_msg_extended_sys_state_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t vtol_state, uint8_t landed_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EXTENDED_SYS_STATE_LEN];
     _mav_put_uint8_t(buf, 0, vtol_state);
     _mav_put_uint8_t(buf, 1, landed_state);
@@ -119,7 +119,7 @@ static inline uint16_t mavlink_msg_extended_sys_state_pack_chan(uint8_t system_i
                                mavlink_message_t* msg,
                                    uint8_t vtol_state,uint8_t landed_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EXTENDED_SYS_STATE_LEN];
     _mav_put_uint8_t(buf, 0, vtol_state);
     _mav_put_uint8_t(buf, 1, landed_state);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_extended_sys_state_encode_status(uint8_t syst
 
 static inline void mavlink_msg_extended_sys_state_send(mavlink_channel_t chan, uint8_t vtol_state, uint8_t landed_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EXTENDED_SYS_STATE_LEN];
     _mav_put_uint8_t(buf, 0, vtol_state);
     _mav_put_uint8_t(buf, 1, landed_state);
@@ -211,7 +211,7 @@ static inline void mavlink_msg_extended_sys_state_send(mavlink_channel_t chan, u
  */
 static inline void mavlink_msg_extended_sys_state_send_struct(mavlink_channel_t chan, const mavlink_extended_sys_state_t* extended_sys_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_extended_sys_state_send(chan, extended_sys_state->vtol_state, extended_sys_state->landed_state);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_EXTENDED_SYS_STATE, (const char *)extended_sys_state, MAVLINK_MSG_ID_EXTENDED_SYS_STATE_MIN_LEN, MAVLINK_MSG_ID_EXTENDED_SYS_STATE_LEN, MAVLINK_MSG_ID_EXTENDED_SYS_STATE_CRC);
@@ -228,7 +228,7 @@ static inline void mavlink_msg_extended_sys_state_send_struct(mavlink_channel_t 
  */
 static inline void mavlink_msg_extended_sys_state_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t vtol_state, uint8_t landed_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 0, vtol_state);
     _mav_put_uint8_t(buf, 1, landed_state);
@@ -277,7 +277,7 @@ static inline uint8_t mavlink_msg_extended_sys_state_get_landed_state(const mavl
  */
 static inline void mavlink_msg_extended_sys_state_decode(const mavlink_message_t* msg, mavlink_extended_sys_state_t* extended_sys_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     extended_sys_state->vtol_state = mavlink_msg_extended_sys_state_get_vtol_state(msg);
     extended_sys_state->landed_state = mavlink_msg_extended_sys_state_get_landed_state(msg);
 #else

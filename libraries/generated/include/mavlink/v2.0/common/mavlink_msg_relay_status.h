@@ -55,7 +55,7 @@ typedef struct __mavlink_relay_status_t {
 static inline uint16_t mavlink_msg_relay_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint16_t on, uint16_t present)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RELAY_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, on);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_relay_status_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_relay_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint16_t on, uint16_t present)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RELAY_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, on);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_relay_status_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint16_t on,uint16_t present)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RELAY_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, on);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_relay_status_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_relay_status_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint16_t on, uint16_t present)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RELAY_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, on);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_relay_status_send(mavlink_channel_t chan, uint32_
  */
 static inline void mavlink_msg_relay_status_send_struct(mavlink_channel_t chan, const mavlink_relay_status_t* relay_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_relay_status_send(chan, relay_status->time_boot_ms, relay_status->on, relay_status->present);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_RELAY_STATUS, (const char *)relay_status, MAVLINK_MSG_ID_RELAY_STATUS_MIN_LEN, MAVLINK_MSG_ID_RELAY_STATUS_LEN, MAVLINK_MSG_ID_RELAY_STATUS_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_relay_status_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_relay_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint16_t on, uint16_t present)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, on);
@@ -304,7 +304,7 @@ static inline uint16_t mavlink_msg_relay_status_get_present(const mavlink_messag
  */
 static inline void mavlink_msg_relay_status_decode(const mavlink_message_t* msg, mavlink_relay_status_t* relay_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     relay_status->time_boot_ms = mavlink_msg_relay_status_get_time_boot_ms(msg);
     relay_status->on = mavlink_msg_relay_status_get_on(msg);
     relay_status->present = mavlink_msg_relay_status_get_present(msg);

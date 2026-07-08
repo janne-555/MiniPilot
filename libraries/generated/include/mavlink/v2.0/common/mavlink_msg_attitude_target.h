@@ -71,7 +71,7 @@ typedef struct __mavlink_attitude_target_t {
 static inline uint16_t mavlink_msg_attitude_target_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint8_t type_mask, const float *q, float body_roll_rate, float body_pitch_rate, float body_yaw_rate, float thrust)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_TARGET_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 20, body_roll_rate);
@@ -116,7 +116,7 @@ static inline uint16_t mavlink_msg_attitude_target_pack(uint8_t system_id, uint8
 static inline uint16_t mavlink_msg_attitude_target_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint8_t type_mask, const float *q, float body_roll_rate, float body_pitch_rate, float body_yaw_rate, float thrust)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_TARGET_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 20, body_roll_rate);
@@ -165,7 +165,7 @@ static inline uint16_t mavlink_msg_attitude_target_pack_chan(uint8_t system_id, 
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint8_t type_mask,const float *q,float body_roll_rate,float body_pitch_rate,float body_yaw_rate,float thrust)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_TARGET_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 20, body_roll_rate);
@@ -248,7 +248,7 @@ static inline uint16_t mavlink_msg_attitude_target_encode_status(uint8_t system_
 
 static inline void mavlink_msg_attitude_target_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint8_t type_mask, const float *q, float body_roll_rate, float body_pitch_rate, float body_yaw_rate, float thrust)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_TARGET_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 20, body_roll_rate);
@@ -278,7 +278,7 @@ static inline void mavlink_msg_attitude_target_send(mavlink_channel_t chan, uint
  */
 static inline void mavlink_msg_attitude_target_send_struct(mavlink_channel_t chan, const mavlink_attitude_target_t* attitude_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_attitude_target_send(chan, attitude_target->time_boot_ms, attitude_target->type_mask, attitude_target->q, attitude_target->body_roll_rate, attitude_target->body_pitch_rate, attitude_target->body_yaw_rate, attitude_target->thrust);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ATTITUDE_TARGET, (const char *)attitude_target, MAVLINK_MSG_ID_ATTITUDE_TARGET_MIN_LEN, MAVLINK_MSG_ID_ATTITUDE_TARGET_LEN, MAVLINK_MSG_ID_ATTITUDE_TARGET_CRC);
@@ -295,7 +295,7 @@ static inline void mavlink_msg_attitude_target_send_struct(mavlink_channel_t cha
  */
 static inline void mavlink_msg_attitude_target_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint8_t type_mask, const float *q, float body_roll_rate, float body_pitch_rate, float body_yaw_rate, float thrust)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 20, body_roll_rate);
@@ -402,7 +402,7 @@ static inline float mavlink_msg_attitude_target_get_thrust(const mavlink_message
  */
 static inline void mavlink_msg_attitude_target_decode(const mavlink_message_t* msg, mavlink_attitude_target_t* attitude_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     attitude_target->time_boot_ms = mavlink_msg_attitude_target_get_time_boot_ms(msg);
     mavlink_msg_attitude_target_get_q(msg, attitude_target->q);
     attitude_target->body_roll_rate = mavlink_msg_attitude_target_get_body_roll_rate(msg);

@@ -67,7 +67,7 @@ typedef struct __mavlink_canfd_frame_t {
 static inline uint16_t mavlink_msg_canfd_frame_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t len, uint32_t id, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CANFD_FRAME_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -109,7 +109,7 @@ static inline uint16_t mavlink_msg_canfd_frame_pack(uint8_t system_id, uint8_t c
 static inline uint16_t mavlink_msg_canfd_frame_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t len, uint32_t id, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CANFD_FRAME_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -155,7 +155,7 @@ static inline uint16_t mavlink_msg_canfd_frame_pack_chan(uint8_t system_id, uint
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint8_t bus,uint8_t len,uint32_t id,const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CANFD_FRAME_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -235,7 +235,7 @@ static inline uint16_t mavlink_msg_canfd_frame_encode_status(uint8_t system_id, 
 
 static inline void mavlink_msg_canfd_frame_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t len, uint32_t id, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CANFD_FRAME_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -263,7 +263,7 @@ static inline void mavlink_msg_canfd_frame_send(mavlink_channel_t chan, uint8_t 
  */
 static inline void mavlink_msg_canfd_frame_send_struct(mavlink_channel_t chan, const mavlink_canfd_frame_t* canfd_frame)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_canfd_frame_send(chan, canfd_frame->target_system, canfd_frame->target_component, canfd_frame->bus, canfd_frame->len, canfd_frame->id, canfd_frame->data);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CANFD_FRAME, (const char *)canfd_frame, MAVLINK_MSG_ID_CANFD_FRAME_MIN_LEN, MAVLINK_MSG_ID_CANFD_FRAME_LEN, MAVLINK_MSG_ID_CANFD_FRAME_CRC);
@@ -280,7 +280,7 @@ static inline void mavlink_msg_canfd_frame_send_struct(mavlink_channel_t chan, c
  */
 static inline void mavlink_msg_canfd_frame_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t len, uint32_t id, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -375,7 +375,7 @@ static inline uint16_t mavlink_msg_canfd_frame_get_data(const mavlink_message_t*
  */
 static inline void mavlink_msg_canfd_frame_decode(const mavlink_message_t* msg, mavlink_canfd_frame_t* canfd_frame)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     canfd_frame->id = mavlink_msg_canfd_frame_get_id(msg);
     canfd_frame->target_system = mavlink_msg_canfd_frame_get_target_system(msg);
     canfd_frame->target_component = mavlink_msg_canfd_frame_get_target_component(msg);

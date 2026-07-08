@@ -63,7 +63,7 @@ typedef struct __mavlink_raw_pressure_t {
 static inline uint16_t mavlink_msg_raw_pressure_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, int16_t press_abs, int16_t press_diff1, int16_t press_diff2, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_PRESSURE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int16_t(buf, 8, press_abs);
@@ -104,7 +104,7 @@ static inline uint16_t mavlink_msg_raw_pressure_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_raw_pressure_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, int16_t press_abs, int16_t press_diff1, int16_t press_diff2, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_PRESSURE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int16_t(buf, 8, press_abs);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_raw_pressure_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint64_t time_usec,int16_t press_abs,int16_t press_diff1,int16_t press_diff2,int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_PRESSURE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int16_t(buf, 8, press_abs);
@@ -228,7 +228,7 @@ static inline uint16_t mavlink_msg_raw_pressure_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_raw_pressure_send(mavlink_channel_t chan, uint64_t time_usec, int16_t press_abs, int16_t press_diff1, int16_t press_diff2, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_PRESSURE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int16_t(buf, 8, press_abs);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_raw_pressure_send(mavlink_channel_t chan, uint64_
  */
 static inline void mavlink_msg_raw_pressure_send_struct(mavlink_channel_t chan, const mavlink_raw_pressure_t* raw_pressure)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_raw_pressure_send(chan, raw_pressure->time_usec, raw_pressure->press_abs, raw_pressure->press_diff1, raw_pressure->press_diff2, raw_pressure->temperature);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_RAW_PRESSURE, (const char *)raw_pressure, MAVLINK_MSG_ID_RAW_PRESSURE_MIN_LEN, MAVLINK_MSG_ID_RAW_PRESSURE_LEN, MAVLINK_MSG_ID_RAW_PRESSURE_CRC);
@@ -273,7 +273,7 @@ static inline void mavlink_msg_raw_pressure_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_raw_pressure_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, int16_t press_abs, int16_t press_diff1, int16_t press_diff2, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int16_t(buf, 8, press_abs);
@@ -358,7 +358,7 @@ static inline int16_t mavlink_msg_raw_pressure_get_temperature(const mavlink_mes
  */
 static inline void mavlink_msg_raw_pressure_decode(const mavlink_message_t* msg, mavlink_raw_pressure_t* raw_pressure)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     raw_pressure->time_usec = mavlink_msg_raw_pressure_get_time_usec(msg);
     raw_pressure->press_abs = mavlink_msg_raw_pressure_get_press_abs(msg);
     raw_pressure->press_diff1 = mavlink_msg_raw_pressure_get_press_diff1(msg);

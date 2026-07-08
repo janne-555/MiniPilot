@@ -63,7 +63,7 @@ typedef struct __mavlink_log_entry_t {
 static inline uint16_t mavlink_msg_log_entry_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint16_t id, uint16_t num_logs, uint16_t last_log_num, uint32_t time_utc, uint32_t size)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOG_ENTRY_LEN];
     _mav_put_uint32_t(buf, 0, time_utc);
     _mav_put_uint32_t(buf, 4, size);
@@ -104,7 +104,7 @@ static inline uint16_t mavlink_msg_log_entry_pack(uint8_t system_id, uint8_t com
 static inline uint16_t mavlink_msg_log_entry_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint16_t id, uint16_t num_logs, uint16_t last_log_num, uint32_t time_utc, uint32_t size)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOG_ENTRY_LEN];
     _mav_put_uint32_t(buf, 0, time_utc);
     _mav_put_uint32_t(buf, 4, size);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_log_entry_pack_chan(uint8_t system_id, uint8_
                                mavlink_message_t* msg,
                                    uint16_t id,uint16_t num_logs,uint16_t last_log_num,uint32_t time_utc,uint32_t size)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOG_ENTRY_LEN];
     _mav_put_uint32_t(buf, 0, time_utc);
     _mav_put_uint32_t(buf, 4, size);
@@ -228,7 +228,7 @@ static inline uint16_t mavlink_msg_log_entry_encode_status(uint8_t system_id, ui
 
 static inline void mavlink_msg_log_entry_send(mavlink_channel_t chan, uint16_t id, uint16_t num_logs, uint16_t last_log_num, uint32_t time_utc, uint32_t size)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOG_ENTRY_LEN];
     _mav_put_uint32_t(buf, 0, time_utc);
     _mav_put_uint32_t(buf, 4, size);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_log_entry_send(mavlink_channel_t chan, uint16_t i
  */
 static inline void mavlink_msg_log_entry_send_struct(mavlink_channel_t chan, const mavlink_log_entry_t* log_entry)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_log_entry_send(chan, log_entry->id, log_entry->num_logs, log_entry->last_log_num, log_entry->time_utc, log_entry->size);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_LOG_ENTRY, (const char *)log_entry, MAVLINK_MSG_ID_LOG_ENTRY_MIN_LEN, MAVLINK_MSG_ID_LOG_ENTRY_LEN, MAVLINK_MSG_ID_LOG_ENTRY_CRC);
@@ -273,7 +273,7 @@ static inline void mavlink_msg_log_entry_send_struct(mavlink_channel_t chan, con
  */
 static inline void mavlink_msg_log_entry_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint16_t id, uint16_t num_logs, uint16_t last_log_num, uint32_t time_utc, uint32_t size)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_utc);
     _mav_put_uint32_t(buf, 4, size);
@@ -358,7 +358,7 @@ static inline uint32_t mavlink_msg_log_entry_get_size(const mavlink_message_t* m
  */
 static inline void mavlink_msg_log_entry_decode(const mavlink_message_t* msg, mavlink_log_entry_t* log_entry)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     log_entry->time_utc = mavlink_msg_log_entry_get_time_utc(msg);
     log_entry->size = mavlink_msg_log_entry_get_size(msg);
     log_entry->id = mavlink_msg_log_entry_get_id(msg);

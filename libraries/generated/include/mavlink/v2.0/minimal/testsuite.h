@@ -17,7 +17,6 @@ static void mavlink_test_minimal(uint8_t, uint8_t, mavlink_message_t *last_msg);
 
 static void mavlink_test_all(uint8_t system_id, uint8_t component_id, mavlink_message_t *last_msg)
 {
-
     mavlink_test_minimal(system_id, component_id, last_msg);
 }
 #endif
@@ -50,10 +49,11 @@ static void mavlink_test_heartbeat(uint8_t system_id, uint8_t component_id, mavl
         
         
 #ifdef MAVLINK_STATUS_FLAG_OUT_MAVLINK1
-        if (status->flags & MAVLINK_STATUS_FLAG_OUT_MAVLINK1) {
-           // cope with extensions
+        if (status->flags & MAVLINK_STATUS_FLAG_OUT_MAVLINK1)
+{
+    // cope with extensions
            memset(MAVLINK_MSG_ID_HEARTBEAT_MIN_LEN + (char *)&packet1, 0, sizeof(packet1)-MAVLINK_MSG_ID_HEARTBEAT_MIN_LEN);
-        }
+}
 #endif
         memset(&packet2, 0, sizeof(packet2));
     mavlink_msg_heartbeat_encode(system_id, component_id, &msg, &packet1);

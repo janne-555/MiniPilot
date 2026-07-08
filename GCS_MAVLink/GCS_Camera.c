@@ -66,9 +66,9 @@ void GCS_send_camera_information(void) {
   printf("SEND CAMERA_INFORMATION\n");
 }
 
-void GCS_send_gimbal_information(void) {
-
-  /*
+void GCS_send_gimbal_information(void)
+{
+    /*
    * MiniPilot currently has no gimbal.
    *
    * Mission Planner requests this.

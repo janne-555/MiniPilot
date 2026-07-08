@@ -7,8 +7,9 @@
 #include "../AP_Config/AP_Config.h"
 #include <stdio.h>
 // Initialize PID
-void AP_PID_Init(AP_PID_t *pid, float kp, float ki, float kd) {
-  pid->kp = kp;
+void AP_PID_Init(AP_PID_t *pid, float kp, float ki, float kd)
+{
+    pid->kp = kp;
   pid->ki = ki;
   pid->kd = kd;
 

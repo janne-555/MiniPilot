@@ -47,7 +47,7 @@ typedef struct __mavlink_auth_key_t {
 static inline uint16_t mavlink_msg_auth_key_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                const char *key)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AUTH_KEY_LEN];
 
     _mav_put_char_array(buf, 0, key, 32);
@@ -76,7 +76,7 @@ static inline uint16_t mavlink_msg_auth_key_pack(uint8_t system_id, uint8_t comp
 static inline uint16_t mavlink_msg_auth_key_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                const char *key)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AUTH_KEY_LEN];
 
     _mav_put_char_array(buf, 0, key, 32);
@@ -109,7 +109,7 @@ static inline uint16_t mavlink_msg_auth_key_pack_chan(uint8_t system_id, uint8_t
                                mavlink_message_t* msg,
                                    const char *key)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AUTH_KEY_LEN];
 
     _mav_put_char_array(buf, 0, key, 32);
@@ -176,7 +176,7 @@ static inline uint16_t mavlink_msg_auth_key_encode_status(uint8_t system_id, uin
 
 static inline void mavlink_msg_auth_key_send(mavlink_channel_t chan, const char *key)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AUTH_KEY_LEN];
 
     _mav_put_char_array(buf, 0, key, 32);
@@ -196,7 +196,7 @@ static inline void mavlink_msg_auth_key_send(mavlink_channel_t chan, const char 
  */
 static inline void mavlink_msg_auth_key_send_struct(mavlink_channel_t chan, const mavlink_auth_key_t* auth_key)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_auth_key_send(chan, auth_key->key);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_AUTH_KEY, (const char *)auth_key, MAVLINK_MSG_ID_AUTH_KEY_MIN_LEN, MAVLINK_MSG_ID_AUTH_KEY_LEN, MAVLINK_MSG_ID_AUTH_KEY_CRC);
@@ -213,7 +213,7 @@ static inline void mavlink_msg_auth_key_send_struct(mavlink_channel_t chan, cons
  */
 static inline void mavlink_msg_auth_key_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  const char *key)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
 
     _mav_put_char_array(buf, 0, key, 32);
@@ -250,7 +250,7 @@ static inline uint16_t mavlink_msg_auth_key_get_key(const mavlink_message_t* msg
  */
 static inline void mavlink_msg_auth_key_decode(const mavlink_message_t* msg, mavlink_auth_key_t* auth_key)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_auth_key_get_key(msg, auth_key->key);
 #else
         uint8_t len = msg->len < MAVLINK_MSG_ID_AUTH_KEY_LEN? msg->len : MAVLINK_MSG_ID_AUTH_KEY_LEN;

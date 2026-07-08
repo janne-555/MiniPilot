@@ -79,7 +79,7 @@ typedef struct __mavlink_safety_set_allowed_area_t {
 static inline uint16_t mavlink_msg_safety_set_allowed_area_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t frame, float p1x, float p1y, float p1z, float p2x, float p2y, float p2z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA_LEN];
     _mav_put_float(buf, 0, p1x);
     _mav_put_float(buf, 4, p1y);
@@ -132,7 +132,7 @@ static inline uint16_t mavlink_msg_safety_set_allowed_area_pack(uint8_t system_i
 static inline uint16_t mavlink_msg_safety_set_allowed_area_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t frame, float p1x, float p1y, float p1z, float p2x, float p2y, float p2z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA_LEN];
     _mav_put_float(buf, 0, p1x);
     _mav_put_float(buf, 4, p1y);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_safety_set_allowed_area_pack_chan(uint8_t sys
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint8_t frame,float p1x,float p1y,float p1z,float p2x,float p2y,float p2z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA_LEN];
     _mav_put_float(buf, 0, p1x);
     _mav_put_float(buf, 4, p1y);
@@ -280,7 +280,7 @@ static inline uint16_t mavlink_msg_safety_set_allowed_area_encode_status(uint8_t
 
 static inline void mavlink_msg_safety_set_allowed_area_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint8_t frame, float p1x, float p1y, float p1z, float p2x, float p2y, float p2z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA_LEN];
     _mav_put_float(buf, 0, p1x);
     _mav_put_float(buf, 4, p1y);
@@ -316,7 +316,7 @@ static inline void mavlink_msg_safety_set_allowed_area_send(mavlink_channel_t ch
  */
 static inline void mavlink_msg_safety_set_allowed_area_send_struct(mavlink_channel_t chan, const mavlink_safety_set_allowed_area_t* safety_set_allowed_area)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_safety_set_allowed_area_send(chan, safety_set_allowed_area->target_system, safety_set_allowed_area->target_component, safety_set_allowed_area->frame, safety_set_allowed_area->p1x, safety_set_allowed_area->p1y, safety_set_allowed_area->p1z, safety_set_allowed_area->p2x, safety_set_allowed_area->p2y, safety_set_allowed_area->p2z);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA, (const char *)safety_set_allowed_area, MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA_MIN_LEN, MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA_LEN, MAVLINK_MSG_ID_SAFETY_SET_ALLOWED_AREA_CRC);
@@ -333,7 +333,7 @@ static inline void mavlink_msg_safety_set_allowed_area_send_struct(mavlink_chann
  */
 static inline void mavlink_msg_safety_set_allowed_area_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint8_t frame, float p1x, float p1y, float p1z, float p2x, float p2y, float p2z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, p1x);
     _mav_put_float(buf, 4, p1y);
@@ -466,7 +466,7 @@ static inline float mavlink_msg_safety_set_allowed_area_get_p2z(const mavlink_me
  */
 static inline void mavlink_msg_safety_set_allowed_area_decode(const mavlink_message_t* msg, mavlink_safety_set_allowed_area_t* safety_set_allowed_area)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     safety_set_allowed_area->p1x = mavlink_msg_safety_set_allowed_area_get_p1x(msg);
     safety_set_allowed_area->p1y = mavlink_msg_safety_set_allowed_area_get_p1y(msg);
     safety_set_allowed_area->p1z = mavlink_msg_safety_set_allowed_area_get_p1z(msg);

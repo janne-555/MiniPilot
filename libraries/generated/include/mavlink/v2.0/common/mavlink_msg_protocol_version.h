@@ -64,7 +64,7 @@ typedef struct __mavlink_protocol_version_t {
 static inline uint16_t mavlink_msg_protocol_version_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint16_t version, uint16_t min_version, uint16_t max_version, const uint8_t *spec_version_hash, const uint8_t *library_version_hash)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PROTOCOL_VERSION_LEN];
     _mav_put_uint16_t(buf, 0, version);
     _mav_put_uint16_t(buf, 2, min_version);
@@ -103,7 +103,7 @@ static inline uint16_t mavlink_msg_protocol_version_pack(uint8_t system_id, uint
 static inline uint16_t mavlink_msg_protocol_version_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint16_t version, uint16_t min_version, uint16_t max_version, const uint8_t *spec_version_hash, const uint8_t *library_version_hash)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PROTOCOL_VERSION_LEN];
     _mav_put_uint16_t(buf, 0, version);
     _mav_put_uint16_t(buf, 2, min_version);
@@ -146,7 +146,7 @@ static inline uint16_t mavlink_msg_protocol_version_pack_chan(uint8_t system_id,
                                mavlink_message_t* msg,
                                    uint16_t version,uint16_t min_version,uint16_t max_version,const uint8_t *spec_version_hash,const uint8_t *library_version_hash)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PROTOCOL_VERSION_LEN];
     _mav_put_uint16_t(buf, 0, version);
     _mav_put_uint16_t(buf, 2, min_version);
@@ -223,7 +223,7 @@ static inline uint16_t mavlink_msg_protocol_version_encode_status(uint8_t system
 
 static inline void mavlink_msg_protocol_version_send(mavlink_channel_t chan, uint16_t version, uint16_t min_version, uint16_t max_version, const uint8_t *spec_version_hash, const uint8_t *library_version_hash)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PROTOCOL_VERSION_LEN];
     _mav_put_uint16_t(buf, 0, version);
     _mav_put_uint16_t(buf, 2, min_version);
@@ -249,7 +249,7 @@ static inline void mavlink_msg_protocol_version_send(mavlink_channel_t chan, uin
  */
 static inline void mavlink_msg_protocol_version_send_struct(mavlink_channel_t chan, const mavlink_protocol_version_t* protocol_version)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_protocol_version_send(chan, protocol_version->version, protocol_version->min_version, protocol_version->max_version, protocol_version->spec_version_hash, protocol_version->library_version_hash);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PROTOCOL_VERSION, (const char *)protocol_version, MAVLINK_MSG_ID_PROTOCOL_VERSION_MIN_LEN, MAVLINK_MSG_ID_PROTOCOL_VERSION_LEN, MAVLINK_MSG_ID_PROTOCOL_VERSION_CRC);
@@ -266,7 +266,7 @@ static inline void mavlink_msg_protocol_version_send_struct(mavlink_channel_t ch
  */
 static inline void mavlink_msg_protocol_version_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint16_t version, uint16_t min_version, uint16_t max_version, const uint8_t *spec_version_hash, const uint8_t *library_version_hash)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, version);
     _mav_put_uint16_t(buf, 2, min_version);
@@ -349,7 +349,7 @@ static inline uint16_t mavlink_msg_protocol_version_get_library_version_hash(con
  */
 static inline void mavlink_msg_protocol_version_decode(const mavlink_message_t* msg, mavlink_protocol_version_t* protocol_version)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     protocol_version->version = mavlink_msg_protocol_version_get_version(msg);
     protocol_version->min_version = mavlink_msg_protocol_version_get_min_version(msg);
     protocol_version->max_version = mavlink_msg_protocol_version_get_max_version(msg);

@@ -91,7 +91,7 @@ typedef struct __mavlink_distance_sensor_t {
 static inline uint16_t mavlink_msg_distance_sensor_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint16_t min_distance, uint16_t max_distance, uint16_t current_distance, uint8_t type, uint8_t id, uint8_t orientation, uint8_t covariance, float horizontal_fov, float vertical_fov, const float *quaternion, uint8_t signal_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DISTANCE_SENSOR_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, min_distance);
@@ -151,7 +151,7 @@ static inline uint16_t mavlink_msg_distance_sensor_pack(uint8_t system_id, uint8
 static inline uint16_t mavlink_msg_distance_sensor_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint16_t min_distance, uint16_t max_distance, uint16_t current_distance, uint8_t type, uint8_t id, uint8_t orientation, uint8_t covariance, float horizontal_fov, float vertical_fov, const float *quaternion, uint8_t signal_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DISTANCE_SENSOR_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, min_distance);
@@ -215,7 +215,7 @@ static inline uint16_t mavlink_msg_distance_sensor_pack_chan(uint8_t system_id, 
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint16_t min_distance,uint16_t max_distance,uint16_t current_distance,uint8_t type,uint8_t id,uint8_t orientation,uint8_t covariance,float horizontal_fov,float vertical_fov,const float *quaternion,uint8_t signal_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DISTANCE_SENSOR_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, min_distance);
@@ -313,7 +313,7 @@ static inline uint16_t mavlink_msg_distance_sensor_encode_status(uint8_t system_
 
 static inline void mavlink_msg_distance_sensor_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint16_t min_distance, uint16_t max_distance, uint16_t current_distance, uint8_t type, uint8_t id, uint8_t orientation, uint8_t covariance, float horizontal_fov, float vertical_fov, const float *quaternion, uint8_t signal_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DISTANCE_SENSOR_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, min_distance);
@@ -353,7 +353,7 @@ static inline void mavlink_msg_distance_sensor_send(mavlink_channel_t chan, uint
  */
 static inline void mavlink_msg_distance_sensor_send_struct(mavlink_channel_t chan, const mavlink_distance_sensor_t* distance_sensor)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_distance_sensor_send(chan, distance_sensor->time_boot_ms, distance_sensor->min_distance, distance_sensor->max_distance, distance_sensor->current_distance, distance_sensor->type, distance_sensor->id, distance_sensor->orientation, distance_sensor->covariance, distance_sensor->horizontal_fov, distance_sensor->vertical_fov, distance_sensor->quaternion, distance_sensor->signal_quality);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_DISTANCE_SENSOR, (const char *)distance_sensor, MAVLINK_MSG_ID_DISTANCE_SENSOR_MIN_LEN, MAVLINK_MSG_ID_DISTANCE_SENSOR_LEN, MAVLINK_MSG_ID_DISTANCE_SENSOR_CRC);
@@ -370,7 +370,7 @@ static inline void mavlink_msg_distance_sensor_send_struct(mavlink_channel_t cha
  */
 static inline void mavlink_msg_distance_sensor_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint16_t min_distance, uint16_t max_distance, uint16_t current_distance, uint8_t type, uint8_t id, uint8_t orientation, uint8_t covariance, float horizontal_fov, float vertical_fov, const float *quaternion, uint8_t signal_quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint16_t(buf, 4, min_distance);
@@ -537,7 +537,7 @@ static inline uint8_t mavlink_msg_distance_sensor_get_signal_quality(const mavli
  */
 static inline void mavlink_msg_distance_sensor_decode(const mavlink_message_t* msg, mavlink_distance_sensor_t* distance_sensor)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     distance_sensor->time_boot_ms = mavlink_msg_distance_sensor_get_time_boot_ms(msg);
     distance_sensor->min_distance = mavlink_msg_distance_sensor_get_min_distance(msg);
     distance_sensor->max_distance = mavlink_msg_distance_sensor_get_max_distance(msg);

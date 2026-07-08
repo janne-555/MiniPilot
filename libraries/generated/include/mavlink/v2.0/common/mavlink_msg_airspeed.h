@@ -63,7 +63,7 @@ typedef struct __mavlink_airspeed_t {
 static inline uint16_t mavlink_msg_airspeed_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t id, float airspeed, int16_t temperature, float raw_press, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIRSPEED_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, raw_press);
@@ -104,7 +104,7 @@ static inline uint16_t mavlink_msg_airspeed_pack(uint8_t system_id, uint8_t comp
 static inline uint16_t mavlink_msg_airspeed_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t id, float airspeed, int16_t temperature, float raw_press, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIRSPEED_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, raw_press);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_airspeed_pack_chan(uint8_t system_id, uint8_t
                                mavlink_message_t* msg,
                                    uint8_t id,float airspeed,int16_t temperature,float raw_press,uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIRSPEED_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, raw_press);
@@ -228,7 +228,7 @@ static inline uint16_t mavlink_msg_airspeed_encode_status(uint8_t system_id, uin
 
 static inline void mavlink_msg_airspeed_send(mavlink_channel_t chan, uint8_t id, float airspeed, int16_t temperature, float raw_press, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AIRSPEED_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, raw_press);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_airspeed_send(mavlink_channel_t chan, uint8_t id,
  */
 static inline void mavlink_msg_airspeed_send_struct(mavlink_channel_t chan, const mavlink_airspeed_t* airspeed)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_airspeed_send(chan, airspeed->id, airspeed->airspeed, airspeed->temperature, airspeed->raw_press, airspeed->flags);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_AIRSPEED, (const char *)airspeed, MAVLINK_MSG_ID_AIRSPEED_MIN_LEN, MAVLINK_MSG_ID_AIRSPEED_LEN, MAVLINK_MSG_ID_AIRSPEED_CRC);
@@ -273,7 +273,7 @@ static inline void mavlink_msg_airspeed_send_struct(mavlink_channel_t chan, cons
  */
 static inline void mavlink_msg_airspeed_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t id, float airspeed, int16_t temperature, float raw_press, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, raw_press);
@@ -358,7 +358,7 @@ static inline uint8_t mavlink_msg_airspeed_get_flags(const mavlink_message_t* ms
  */
 static inline void mavlink_msg_airspeed_decode(const mavlink_message_t* msg, mavlink_airspeed_t* airspeed)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     airspeed->airspeed = mavlink_msg_airspeed_get_airspeed(msg);
     airspeed->raw_press = mavlink_msg_airspeed_get_raw_press(msg);
     airspeed->temperature = mavlink_msg_airspeed_get_temperature(msg);

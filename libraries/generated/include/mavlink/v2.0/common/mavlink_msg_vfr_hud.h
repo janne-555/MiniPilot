@@ -67,7 +67,7 @@ typedef struct __mavlink_vfr_hud_t {
 static inline uint16_t mavlink_msg_vfr_hud_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                float airspeed, float groundspeed, int16_t heading, uint16_t throttle, float alt, float climb)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VFR_HUD_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, groundspeed);
@@ -111,7 +111,7 @@ static inline uint16_t mavlink_msg_vfr_hud_pack(uint8_t system_id, uint8_t compo
 static inline uint16_t mavlink_msg_vfr_hud_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                float airspeed, float groundspeed, int16_t heading, uint16_t throttle, float alt, float climb)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VFR_HUD_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, groundspeed);
@@ -159,7 +159,7 @@ static inline uint16_t mavlink_msg_vfr_hud_pack_chan(uint8_t system_id, uint8_t 
                                mavlink_message_t* msg,
                                    float airspeed,float groundspeed,int16_t heading,uint16_t throttle,float alt,float climb)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VFR_HUD_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, groundspeed);
@@ -241,7 +241,7 @@ static inline uint16_t mavlink_msg_vfr_hud_encode_status(uint8_t system_id, uint
 
 static inline void mavlink_msg_vfr_hud_send(mavlink_channel_t chan, float airspeed, float groundspeed, int16_t heading, uint16_t throttle, float alt, float climb)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VFR_HUD_LEN];
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, groundspeed);
@@ -271,7 +271,7 @@ static inline void mavlink_msg_vfr_hud_send(mavlink_channel_t chan, float airspe
  */
 static inline void mavlink_msg_vfr_hud_send_struct(mavlink_channel_t chan, const mavlink_vfr_hud_t* vfr_hud)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_vfr_hud_send(chan, vfr_hud->airspeed, vfr_hud->groundspeed, vfr_hud->heading, vfr_hud->throttle, vfr_hud->alt, vfr_hud->climb);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_VFR_HUD, (const char *)vfr_hud, MAVLINK_MSG_ID_VFR_HUD_MIN_LEN, MAVLINK_MSG_ID_VFR_HUD_LEN, MAVLINK_MSG_ID_VFR_HUD_CRC);
@@ -288,7 +288,7 @@ static inline void mavlink_msg_vfr_hud_send_struct(mavlink_channel_t chan, const
  */
 static inline void mavlink_msg_vfr_hud_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  float airspeed, float groundspeed, int16_t heading, uint16_t throttle, float alt, float climb)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, airspeed);
     _mav_put_float(buf, 4, groundspeed);
@@ -385,7 +385,7 @@ static inline float mavlink_msg_vfr_hud_get_climb(const mavlink_message_t* msg)
  */
 static inline void mavlink_msg_vfr_hud_decode(const mavlink_message_t* msg, mavlink_vfr_hud_t* vfr_hud)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     vfr_hud->airspeed = mavlink_msg_vfr_hud_get_airspeed(msg);
     vfr_hud->groundspeed = mavlink_msg_vfr_hud_get_groundspeed(msg);
     vfr_hud->alt = mavlink_msg_vfr_hud_get_alt(msg);

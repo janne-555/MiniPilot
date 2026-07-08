@@ -113,7 +113,7 @@ typedef struct __mavlink_gimbal_device_information_t {
 static inline uint16_t mavlink_msg_gimbal_device_information_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, const char *vendor_name, const char *model_name, const char *custom_name, uint32_t firmware_version, uint32_t hardware_version, uint64_t uid, uint16_t cap_flags, uint16_t custom_cap_flags, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max, uint8_t gimbal_device_id, uint32_t cap_flags2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, uid);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -188,7 +188,7 @@ static inline uint16_t mavlink_msg_gimbal_device_information_pack(uint8_t system
 static inline uint16_t mavlink_msg_gimbal_device_information_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, const char *vendor_name, const char *model_name, const char *custom_name, uint32_t firmware_version, uint32_t hardware_version, uint64_t uid, uint16_t cap_flags, uint16_t custom_cap_flags, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max, uint8_t gimbal_device_id, uint32_t cap_flags2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, uid);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -267,7 +267,7 @@ static inline uint16_t mavlink_msg_gimbal_device_information_pack_chan(uint8_t s
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,const char *vendor_name,const char *model_name,const char *custom_name,uint32_t firmware_version,uint32_t hardware_version,uint64_t uid,uint16_t cap_flags,uint16_t custom_cap_flags,float roll_min,float roll_max,float pitch_min,float pitch_max,float yaw_min,float yaw_max,uint8_t gimbal_device_id,uint32_t cap_flags2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, uid);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -380,7 +380,7 @@ static inline uint16_t mavlink_msg_gimbal_device_information_encode_status(uint8
 
 static inline void mavlink_msg_gimbal_device_information_send(mavlink_channel_t chan, uint32_t time_boot_ms, const char *vendor_name, const char *model_name, const char *custom_name, uint32_t firmware_version, uint32_t hardware_version, uint64_t uid, uint16_t cap_flags, uint16_t custom_cap_flags, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max, uint8_t gimbal_device_id, uint32_t cap_flags2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, uid);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -430,7 +430,7 @@ static inline void mavlink_msg_gimbal_device_information_send(mavlink_channel_t 
  */
 static inline void mavlink_msg_gimbal_device_information_send_struct(mavlink_channel_t chan, const mavlink_gimbal_device_information_t* gimbal_device_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_gimbal_device_information_send(chan, gimbal_device_information->time_boot_ms, gimbal_device_information->vendor_name, gimbal_device_information->model_name, gimbal_device_information->custom_name, gimbal_device_information->firmware_version, gimbal_device_information->hardware_version, gimbal_device_information->uid, gimbal_device_information->cap_flags, gimbal_device_information->custom_cap_flags, gimbal_device_information->roll_min, gimbal_device_information->roll_max, gimbal_device_information->pitch_min, gimbal_device_information->pitch_max, gimbal_device_information->yaw_min, gimbal_device_information->yaw_max, gimbal_device_information->gimbal_device_id, gimbal_device_information->cap_flags2);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION, (const char *)gimbal_device_information, MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION_MIN_LEN, MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION_LEN, MAVLINK_MSG_ID_GIMBAL_DEVICE_INFORMATION_CRC);
@@ -447,7 +447,7 @@ static inline void mavlink_msg_gimbal_device_information_send_struct(mavlink_cha
  */
 static inline void mavlink_msg_gimbal_device_information_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, const char *vendor_name, const char *model_name, const char *custom_name, uint32_t firmware_version, uint32_t hardware_version, uint64_t uid, uint16_t cap_flags, uint16_t custom_cap_flags, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max, uint8_t gimbal_device_id, uint32_t cap_flags2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, uid);
     _mav_put_uint32_t(buf, 8, time_boot_ms);
@@ -674,7 +674,7 @@ static inline uint32_t mavlink_msg_gimbal_device_information_get_cap_flags2(cons
  */
 static inline void mavlink_msg_gimbal_device_information_decode(const mavlink_message_t* msg, mavlink_gimbal_device_information_t* gimbal_device_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     gimbal_device_information->uid = mavlink_msg_gimbal_device_information_get_uid(msg);
     gimbal_device_information->time_boot_ms = mavlink_msg_gimbal_device_information_get_time_boot_ms(msg);
     gimbal_device_information->firmware_version = mavlink_msg_gimbal_device_information_get_firmware_version(msg);

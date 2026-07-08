@@ -18,8 +18,9 @@ static AP_Home_t home;
 
 static uint32_t debug_counter = 0;
 
-void AP_Home_Init(void) {
-  home.latitude = 0.0;
+void AP_Home_Init(void)
+{
+    home.latitude = 0.0;
 
   home.longitude = 0.0;
 
@@ -81,9 +82,9 @@ uint8_t AP_Home_SetCurrent(void) {
   return 1;
 }
 
-void AP_Home_Set(double lat, double lon, float alt) {
-
-  home.latitude = lat;
+void AP_Home_Set(double lat, double lon, float alt)
+{
+    home.latitude = lat;
 
   home.longitude = lon;
 
@@ -92,15 +93,30 @@ void AP_Home_Set(double lat, double lon, float alt) {
   home.valid = 1;
 }
 
-void AP_Home_Clear(void) { home.valid = 0; }
+void AP_Home_Clear(void)
+{
+    home.valid = 0;
+}
 
-uint8_t AP_Home_IsSet(void) { return home.valid; }
+uint8_t AP_Home_IsSet(void)
+{
+    return home.valid;
+}
 
-double AP_Home_GetLatitude(void) { return home.latitude; }
+double AP_Home_GetLatitude(void)
+{
+    return home.latitude;
+}
 
-double AP_Home_GetLongitude(void) { return home.longitude; }
+double AP_Home_GetLongitude(void)
+{
+    return home.longitude;
+}
 
-float AP_Home_GetAltitude(void) { return home.altitude; }
+float AP_Home_GetAltitude(void)
+{
+    return home.altitude;
+}
 
 float AP_Home_GetDistance(void) {
 

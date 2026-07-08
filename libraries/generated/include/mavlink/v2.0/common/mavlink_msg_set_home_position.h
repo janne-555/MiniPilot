@@ -91,7 +91,7 @@ typedef struct __mavlink_set_home_position_t {
 static inline uint16_t mavlink_msg_set_home_position_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, int32_t latitude, int32_t longitude, int32_t altitude, float x, float y, float z, const float *q, float approach_x, float approach_y, float approach_z, uint64_t time_usec)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SET_HOME_POSITION_LEN];
     _mav_put_int32_t(buf, 0, latitude);
     _mav_put_int32_t(buf, 4, longitude);
@@ -151,7 +151,7 @@ static inline uint16_t mavlink_msg_set_home_position_pack(uint8_t system_id, uin
 static inline uint16_t mavlink_msg_set_home_position_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, int32_t latitude, int32_t longitude, int32_t altitude, float x, float y, float z, const float *q, float approach_x, float approach_y, float approach_z, uint64_t time_usec)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SET_HOME_POSITION_LEN];
     _mav_put_int32_t(buf, 0, latitude);
     _mav_put_int32_t(buf, 4, longitude);
@@ -215,7 +215,7 @@ static inline uint16_t mavlink_msg_set_home_position_pack_chan(uint8_t system_id
                                mavlink_message_t* msg,
                                    uint8_t target_system,int32_t latitude,int32_t longitude,int32_t altitude,float x,float y,float z,const float *q,float approach_x,float approach_y,float approach_z,uint64_t time_usec)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SET_HOME_POSITION_LEN];
     _mav_put_int32_t(buf, 0, latitude);
     _mav_put_int32_t(buf, 4, longitude);
@@ -313,7 +313,7 @@ static inline uint16_t mavlink_msg_set_home_position_encode_status(uint8_t syste
 
 static inline void mavlink_msg_set_home_position_send(mavlink_channel_t chan, uint8_t target_system, int32_t latitude, int32_t longitude, int32_t altitude, float x, float y, float z, const float *q, float approach_x, float approach_y, float approach_z, uint64_t time_usec)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SET_HOME_POSITION_LEN];
     _mav_put_int32_t(buf, 0, latitude);
     _mav_put_int32_t(buf, 4, longitude);
@@ -353,7 +353,7 @@ static inline void mavlink_msg_set_home_position_send(mavlink_channel_t chan, ui
  */
 static inline void mavlink_msg_set_home_position_send_struct(mavlink_channel_t chan, const mavlink_set_home_position_t* set_home_position)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_set_home_position_send(chan, set_home_position->target_system, set_home_position->latitude, set_home_position->longitude, set_home_position->altitude, set_home_position->x, set_home_position->y, set_home_position->z, set_home_position->q, set_home_position->approach_x, set_home_position->approach_y, set_home_position->approach_z, set_home_position->time_usec);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SET_HOME_POSITION, (const char *)set_home_position, MAVLINK_MSG_ID_SET_HOME_POSITION_MIN_LEN, MAVLINK_MSG_ID_SET_HOME_POSITION_LEN, MAVLINK_MSG_ID_SET_HOME_POSITION_CRC);
@@ -370,7 +370,7 @@ static inline void mavlink_msg_set_home_position_send_struct(mavlink_channel_t c
  */
 static inline void mavlink_msg_set_home_position_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, int32_t latitude, int32_t longitude, int32_t altitude, float x, float y, float z, const float *q, float approach_x, float approach_y, float approach_z, uint64_t time_usec)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int32_t(buf, 0, latitude);
     _mav_put_int32_t(buf, 4, longitude);
@@ -537,7 +537,7 @@ static inline uint64_t mavlink_msg_set_home_position_get_time_usec(const mavlink
  */
 static inline void mavlink_msg_set_home_position_decode(const mavlink_message_t* msg, mavlink_set_home_position_t* set_home_position)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     set_home_position->latitude = mavlink_msg_set_home_position_get_latitude(msg);
     set_home_position->longitude = mavlink_msg_set_home_position_get_longitude(msg);
     set_home_position->altitude = mavlink_msg_set_home_position_get_altitude(msg);

@@ -59,7 +59,7 @@ typedef struct __mavlink_param_request_read_t {
 static inline uint16_t mavlink_msg_param_request_read_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_REQUEST_READ_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -95,7 +95,7 @@ static inline uint16_t mavlink_msg_param_request_read_pack(uint8_t system_id, ui
 static inline uint16_t mavlink_msg_param_request_read_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_REQUEST_READ_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -135,7 +135,7 @@ static inline uint16_t mavlink_msg_param_request_read_pack_chan(uint8_t system_i
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const char *param_id,int16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_REQUEST_READ_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_param_request_read_encode_status(uint8_t syst
 
 static inline void mavlink_msg_param_request_read_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_REQUEST_READ_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -233,7 +233,7 @@ static inline void mavlink_msg_param_request_read_send(mavlink_channel_t chan, u
  */
 static inline void mavlink_msg_param_request_read_send_struct(mavlink_channel_t chan, const mavlink_param_request_read_t* param_request_read)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_param_request_read_send(chan, param_request_read->target_system, param_request_read->target_component, param_request_read->param_id, param_request_read->param_index);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_REQUEST_READ, (const char *)param_request_read, MAVLINK_MSG_ID_PARAM_REQUEST_READ_MIN_LEN, MAVLINK_MSG_ID_PARAM_REQUEST_READ_LEN, MAVLINK_MSG_ID_PARAM_REQUEST_READ_CRC);
@@ -250,7 +250,7 @@ static inline void mavlink_msg_param_request_read_send_struct(mavlink_channel_t 
  */
 static inline void mavlink_msg_param_request_read_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -321,7 +321,7 @@ static inline int16_t mavlink_msg_param_request_read_get_param_index(const mavli
  */
 static inline void mavlink_msg_param_request_read_decode(const mavlink_message_t* msg, mavlink_param_request_read_t* param_request_read)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     param_request_read->param_index = mavlink_msg_param_request_read_get_param_index(msg);
     param_request_read->target_system = mavlink_msg_param_request_read_get_target_system(msg);
     param_request_read->target_component = mavlink_msg_param_request_read_get_target_component(msg);

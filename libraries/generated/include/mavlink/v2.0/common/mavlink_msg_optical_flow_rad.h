@@ -91,7 +91,7 @@ typedef struct __mavlink_optical_flow_rad_t {
 static inline uint16_t mavlink_msg_optical_flow_rad_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t sensor_id, uint32_t integration_time_us, float integrated_x, float integrated_y, float integrated_xgyro, float integrated_ygyro, float integrated_zgyro, int16_t temperature, uint8_t quality, uint32_t time_delta_distance_us, float distance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, integration_time_us);
@@ -153,7 +153,7 @@ static inline uint16_t mavlink_msg_optical_flow_rad_pack(uint8_t system_id, uint
 static inline uint16_t mavlink_msg_optical_flow_rad_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t sensor_id, uint32_t integration_time_us, float integrated_x, float integrated_y, float integrated_xgyro, float integrated_ygyro, float integrated_zgyro, int16_t temperature, uint8_t quality, uint32_t time_delta_distance_us, float distance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, integration_time_us);
@@ -219,7 +219,7 @@ static inline uint16_t mavlink_msg_optical_flow_rad_pack_chan(uint8_t system_id,
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint8_t sensor_id,uint32_t integration_time_us,float integrated_x,float integrated_y,float integrated_xgyro,float integrated_ygyro,float integrated_zgyro,int16_t temperature,uint8_t quality,uint32_t time_delta_distance_us,float distance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, integration_time_us);
@@ -319,7 +319,7 @@ static inline uint16_t mavlink_msg_optical_flow_rad_encode_status(uint8_t system
 
 static inline void mavlink_msg_optical_flow_rad_send(mavlink_channel_t chan, uint64_t time_usec, uint8_t sensor_id, uint32_t integration_time_us, float integrated_x, float integrated_y, float integrated_xgyro, float integrated_ygyro, float integrated_zgyro, int16_t temperature, uint8_t quality, uint32_t time_delta_distance_us, float distance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, integration_time_us);
@@ -361,7 +361,7 @@ static inline void mavlink_msg_optical_flow_rad_send(mavlink_channel_t chan, uin
  */
 static inline void mavlink_msg_optical_flow_rad_send_struct(mavlink_channel_t chan, const mavlink_optical_flow_rad_t* optical_flow_rad)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_optical_flow_rad_send(chan, optical_flow_rad->time_usec, optical_flow_rad->sensor_id, optical_flow_rad->integration_time_us, optical_flow_rad->integrated_x, optical_flow_rad->integrated_y, optical_flow_rad->integrated_xgyro, optical_flow_rad->integrated_ygyro, optical_flow_rad->integrated_zgyro, optical_flow_rad->temperature, optical_flow_rad->quality, optical_flow_rad->time_delta_distance_us, optical_flow_rad->distance);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_OPTICAL_FLOW_RAD, (const char *)optical_flow_rad, MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_MIN_LEN, MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_LEN, MAVLINK_MSG_ID_OPTICAL_FLOW_RAD_CRC);
@@ -378,7 +378,7 @@ static inline void mavlink_msg_optical_flow_rad_send_struct(mavlink_channel_t ch
  */
 static inline void mavlink_msg_optical_flow_rad_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint8_t sensor_id, uint32_t integration_time_us, float integrated_x, float integrated_y, float integrated_xgyro, float integrated_ygyro, float integrated_zgyro, int16_t temperature, uint8_t quality, uint32_t time_delta_distance_us, float distance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, integration_time_us);
@@ -547,7 +547,7 @@ static inline float mavlink_msg_optical_flow_rad_get_distance(const mavlink_mess
  */
 static inline void mavlink_msg_optical_flow_rad_decode(const mavlink_message_t* msg, mavlink_optical_flow_rad_t* optical_flow_rad)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     optical_flow_rad->time_usec = mavlink_msg_optical_flow_rad_get_time_usec(msg);
     optical_flow_rad->integration_time_us = mavlink_msg_optical_flow_rad_get_integration_time_us(msg);
     optical_flow_rad->integrated_x = mavlink_msg_optical_flow_rad_get_integrated_x(msg);

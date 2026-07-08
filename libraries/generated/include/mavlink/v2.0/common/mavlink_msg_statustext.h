@@ -59,7 +59,7 @@ typedef struct __mavlink_statustext_t {
 static inline uint16_t mavlink_msg_statustext_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t severity, const char *text, uint16_t id, uint8_t chunk_seq)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_STATUSTEXT_LEN];
     _mav_put_uint8_t(buf, 0, severity);
     _mav_put_uint16_t(buf, 51, id);
@@ -95,7 +95,7 @@ static inline uint16_t mavlink_msg_statustext_pack(uint8_t system_id, uint8_t co
 static inline uint16_t mavlink_msg_statustext_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t severity, const char *text, uint16_t id, uint8_t chunk_seq)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_STATUSTEXT_LEN];
     _mav_put_uint8_t(buf, 0, severity);
     _mav_put_uint16_t(buf, 51, id);
@@ -135,7 +135,7 @@ static inline uint16_t mavlink_msg_statustext_pack_chan(uint8_t system_id, uint8
                                mavlink_message_t* msg,
                                    uint8_t severity,const char *text,uint16_t id,uint8_t chunk_seq)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_STATUSTEXT_LEN];
     _mav_put_uint8_t(buf, 0, severity);
     _mav_put_uint16_t(buf, 51, id);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_statustext_encode_status(uint8_t system_id, u
 
 static inline void mavlink_msg_statustext_send(mavlink_channel_t chan, uint8_t severity, const char *text, uint16_t id, uint8_t chunk_seq)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_STATUSTEXT_LEN];
     _mav_put_uint8_t(buf, 0, severity);
     _mav_put_uint16_t(buf, 51, id);
@@ -233,7 +233,7 @@ static inline void mavlink_msg_statustext_send(mavlink_channel_t chan, uint8_t s
  */
 static inline void mavlink_msg_statustext_send_struct(mavlink_channel_t chan, const mavlink_statustext_t* statustext)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_statustext_send(chan, statustext->severity, statustext->text, statustext->id, statustext->chunk_seq);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_STATUSTEXT, (const char *)statustext, MAVLINK_MSG_ID_STATUSTEXT_MIN_LEN, MAVLINK_MSG_ID_STATUSTEXT_LEN, MAVLINK_MSG_ID_STATUSTEXT_CRC);
@@ -250,7 +250,7 @@ static inline void mavlink_msg_statustext_send_struct(mavlink_channel_t chan, co
  */
 static inline void mavlink_msg_statustext_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t severity, const char *text, uint16_t id, uint8_t chunk_seq)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 0, severity);
     _mav_put_uint16_t(buf, 51, id);
@@ -321,7 +321,7 @@ static inline uint8_t mavlink_msg_statustext_get_chunk_seq(const mavlink_message
  */
 static inline void mavlink_msg_statustext_decode(const mavlink_message_t* msg, mavlink_statustext_t* statustext)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     statustext->severity = mavlink_msg_statustext_get_severity(msg);
     mavlink_msg_statustext_get_text(msg, statustext->text);
     statustext->id = mavlink_msg_statustext_get_id(msg);

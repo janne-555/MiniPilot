@@ -103,7 +103,7 @@ typedef struct __mavlink_open_drone_id_system_t {
 static inline uint16_t mavlink_msg_open_drone_id_system_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t operator_location_type, uint8_t classification_type, int32_t operator_latitude, int32_t operator_longitude, uint16_t area_count, uint16_t area_radius, float area_ceiling, float area_floor, uint8_t category_eu, uint8_t class_eu, float operator_altitude_geo, uint32_t timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_LEN];
     _mav_put_int32_t(buf, 0, operator_latitude);
     _mav_put_int32_t(buf, 4, operator_longitude);
@@ -172,7 +172,7 @@ static inline uint16_t mavlink_msg_open_drone_id_system_pack(uint8_t system_id, 
 static inline uint16_t mavlink_msg_open_drone_id_system_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t operator_location_type, uint8_t classification_type, int32_t operator_latitude, int32_t operator_longitude, uint16_t area_count, uint16_t area_radius, float area_ceiling, float area_floor, uint8_t category_eu, uint8_t class_eu, float operator_altitude_geo, uint32_t timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_LEN];
     _mav_put_int32_t(buf, 0, operator_latitude);
     _mav_put_int32_t(buf, 4, operator_longitude);
@@ -245,7 +245,7 @@ static inline uint16_t mavlink_msg_open_drone_id_system_pack_chan(uint8_t system
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const uint8_t *id_or_mac,uint8_t operator_location_type,uint8_t classification_type,int32_t operator_latitude,int32_t operator_longitude,uint16_t area_count,uint16_t area_radius,float area_ceiling,float area_floor,uint8_t category_eu,uint8_t class_eu,float operator_altitude_geo,uint32_t timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_LEN];
     _mav_put_int32_t(buf, 0, operator_latitude);
     _mav_put_int32_t(buf, 4, operator_longitude);
@@ -352,7 +352,7 @@ static inline uint16_t mavlink_msg_open_drone_id_system_encode_status(uint8_t sy
 
 static inline void mavlink_msg_open_drone_id_system_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t operator_location_type, uint8_t classification_type, int32_t operator_latitude, int32_t operator_longitude, uint16_t area_count, uint16_t area_radius, float area_ceiling, float area_floor, uint8_t category_eu, uint8_t class_eu, float operator_altitude_geo, uint32_t timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_LEN];
     _mav_put_int32_t(buf, 0, operator_latitude);
     _mav_put_int32_t(buf, 4, operator_longitude);
@@ -398,7 +398,7 @@ static inline void mavlink_msg_open_drone_id_system_send(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_open_drone_id_system_send_struct(mavlink_channel_t chan, const mavlink_open_drone_id_system_t* open_drone_id_system)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_open_drone_id_system_send(chan, open_drone_id_system->target_system, open_drone_id_system->target_component, open_drone_id_system->id_or_mac, open_drone_id_system->operator_location_type, open_drone_id_system->classification_type, open_drone_id_system->operator_latitude, open_drone_id_system->operator_longitude, open_drone_id_system->area_count, open_drone_id_system->area_radius, open_drone_id_system->area_ceiling, open_drone_id_system->area_floor, open_drone_id_system->category_eu, open_drone_id_system->class_eu, open_drone_id_system->operator_altitude_geo, open_drone_id_system->timestamp);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM, (const char *)open_drone_id_system, MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_MIN_LEN, MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_LEN, MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_CRC);
@@ -415,7 +415,7 @@ static inline void mavlink_msg_open_drone_id_system_send_struct(mavlink_channel_
  */
 static inline void mavlink_msg_open_drone_id_system_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t operator_location_type, uint8_t classification_type, int32_t operator_latitude, int32_t operator_longitude, uint16_t area_count, uint16_t area_radius, float area_ceiling, float area_floor, uint8_t category_eu, uint8_t class_eu, float operator_altitude_geo, uint32_t timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int32_t(buf, 0, operator_latitude);
     _mav_put_int32_t(buf, 4, operator_longitude);
@@ -618,7 +618,7 @@ static inline uint32_t mavlink_msg_open_drone_id_system_get_timestamp(const mavl
  */
 static inline void mavlink_msg_open_drone_id_system_decode(const mavlink_message_t* msg, mavlink_open_drone_id_system_t* open_drone_id_system)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     open_drone_id_system->operator_latitude = mavlink_msg_open_drone_id_system_get_operator_latitude(msg);
     open_drone_id_system->operator_longitude = mavlink_msg_open_drone_id_system_get_operator_longitude(msg);
     open_drone_id_system->area_ceiling = mavlink_msg_open_drone_id_system_get_area_ceiling(msg);

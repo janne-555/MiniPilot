@@ -78,7 +78,7 @@ typedef struct __mavlink_cellular_config_t {
 static inline uint16_t mavlink_msg_cellular_config_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t enable_lte, uint8_t enable_pin, const char *pin, const char *new_pin, const char *apn, const char *puk, uint8_t roaming, uint8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CELLULAR_CONFIG_LEN];
     _mav_put_uint8_t(buf, 0, enable_lte);
     _mav_put_uint8_t(buf, 1, enable_pin);
@@ -126,7 +126,7 @@ static inline uint16_t mavlink_msg_cellular_config_pack(uint8_t system_id, uint8
 static inline uint16_t mavlink_msg_cellular_config_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t enable_lte, uint8_t enable_pin, const char *pin, const char *new_pin, const char *apn, const char *puk, uint8_t roaming, uint8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CELLULAR_CONFIG_LEN];
     _mav_put_uint8_t(buf, 0, enable_lte);
     _mav_put_uint8_t(buf, 1, enable_pin);
@@ -178,7 +178,7 @@ static inline uint16_t mavlink_msg_cellular_config_pack_chan(uint8_t system_id, 
                                mavlink_message_t* msg,
                                    uint8_t enable_lte,uint8_t enable_pin,const char *pin,const char *new_pin,const char *apn,const char *puk,uint8_t roaming,uint8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CELLULAR_CONFIG_LEN];
     _mav_put_uint8_t(buf, 0, enable_lte);
     _mav_put_uint8_t(buf, 1, enable_pin);
@@ -264,7 +264,7 @@ static inline uint16_t mavlink_msg_cellular_config_encode_status(uint8_t system_
 
 static inline void mavlink_msg_cellular_config_send(mavlink_channel_t chan, uint8_t enable_lte, uint8_t enable_pin, const char *pin, const char *new_pin, const char *apn, const char *puk, uint8_t roaming, uint8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CELLULAR_CONFIG_LEN];
     _mav_put_uint8_t(buf, 0, enable_lte);
     _mav_put_uint8_t(buf, 1, enable_pin);
@@ -296,7 +296,7 @@ static inline void mavlink_msg_cellular_config_send(mavlink_channel_t chan, uint
  */
 static inline void mavlink_msg_cellular_config_send_struct(mavlink_channel_t chan, const mavlink_cellular_config_t* cellular_config)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_cellular_config_send(chan, cellular_config->enable_lte, cellular_config->enable_pin, cellular_config->pin, cellular_config->new_pin, cellular_config->apn, cellular_config->puk, cellular_config->roaming, cellular_config->response);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CELLULAR_CONFIG, (const char *)cellular_config, MAVLINK_MSG_ID_CELLULAR_CONFIG_MIN_LEN, MAVLINK_MSG_ID_CELLULAR_CONFIG_LEN, MAVLINK_MSG_ID_CELLULAR_CONFIG_CRC);
@@ -313,7 +313,7 @@ static inline void mavlink_msg_cellular_config_send_struct(mavlink_channel_t cha
  */
 static inline void mavlink_msg_cellular_config_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t enable_lte, uint8_t enable_pin, const char *pin, const char *new_pin, const char *apn, const char *puk, uint8_t roaming, uint8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 0, enable_lte);
     _mav_put_uint8_t(buf, 1, enable_pin);
@@ -432,7 +432,7 @@ static inline uint8_t mavlink_msg_cellular_config_get_response(const mavlink_mes
  */
 static inline void mavlink_msg_cellular_config_decode(const mavlink_message_t* msg, mavlink_cellular_config_t* cellular_config)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     cellular_config->enable_lte = mavlink_msg_cellular_config_get_enable_lte(msg);
     cellular_config->enable_pin = mavlink_msg_cellular_config_get_enable_pin(msg);
     mavlink_msg_cellular_config_get_pin(msg, cellular_config->pin);

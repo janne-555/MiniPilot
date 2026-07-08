@@ -59,7 +59,7 @@ typedef struct __mavlink_file_transfer_protocol_t {
 static inline uint16_t mavlink_msg_file_transfer_protocol_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_network, uint8_t target_system, uint8_t target_component, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL_LEN];
     _mav_put_uint8_t(buf, 0, target_network);
     _mav_put_uint8_t(buf, 1, target_system);
@@ -95,7 +95,7 @@ static inline uint16_t mavlink_msg_file_transfer_protocol_pack(uint8_t system_id
 static inline uint16_t mavlink_msg_file_transfer_protocol_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_network, uint8_t target_system, uint8_t target_component, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL_LEN];
     _mav_put_uint8_t(buf, 0, target_network);
     _mav_put_uint8_t(buf, 1, target_system);
@@ -135,7 +135,7 @@ static inline uint16_t mavlink_msg_file_transfer_protocol_pack_chan(uint8_t syst
                                mavlink_message_t* msg,
                                    uint8_t target_network,uint8_t target_system,uint8_t target_component,const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL_LEN];
     _mav_put_uint8_t(buf, 0, target_network);
     _mav_put_uint8_t(buf, 1, target_system);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_file_transfer_protocol_encode_status(uint8_t 
 
 static inline void mavlink_msg_file_transfer_protocol_send(mavlink_channel_t chan, uint8_t target_network, uint8_t target_system, uint8_t target_component, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL_LEN];
     _mav_put_uint8_t(buf, 0, target_network);
     _mav_put_uint8_t(buf, 1, target_system);
@@ -233,7 +233,7 @@ static inline void mavlink_msg_file_transfer_protocol_send(mavlink_channel_t cha
  */
 static inline void mavlink_msg_file_transfer_protocol_send_struct(mavlink_channel_t chan, const mavlink_file_transfer_protocol_t* file_transfer_protocol)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_file_transfer_protocol_send(chan, file_transfer_protocol->target_network, file_transfer_protocol->target_system, file_transfer_protocol->target_component, file_transfer_protocol->payload);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL, (const char *)file_transfer_protocol, MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL_MIN_LEN, MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL_LEN, MAVLINK_MSG_ID_FILE_TRANSFER_PROTOCOL_CRC);
@@ -250,7 +250,7 @@ static inline void mavlink_msg_file_transfer_protocol_send_struct(mavlink_channe
  */
 static inline void mavlink_msg_file_transfer_protocol_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_network, uint8_t target_system, uint8_t target_component, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 0, target_network);
     _mav_put_uint8_t(buf, 1, target_system);
@@ -321,7 +321,7 @@ static inline uint16_t mavlink_msg_file_transfer_protocol_get_payload(const mavl
  */
 static inline void mavlink_msg_file_transfer_protocol_decode(const mavlink_message_t* msg, mavlink_file_transfer_protocol_t* file_transfer_protocol)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     file_transfer_protocol->target_network = mavlink_msg_file_transfer_protocol_get_target_network(msg);
     file_transfer_protocol->target_system = mavlink_msg_file_transfer_protocol_get_target_system(msg);
     file_transfer_protocol->target_component = mavlink_msg_file_transfer_protocol_get_target_component(msg);

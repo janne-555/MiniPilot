@@ -28,9 +28,9 @@ static float last_output = -999;
  Init
 ----------------------------------------------------------------------------*/
 
-void AP_PosControl_Init(void) {
-
-  pos.target_altitude = 0.0f;
+void AP_PosControl_Init(void)
+{
+    pos.target_altitude = 0.0f;
 
   pos.target_climb_rate = 0.0f;
 
@@ -134,20 +134,30 @@ void AP_PosControl_Update(float dt) {
  Setters
 ----------------------------------------------------------------------------*/
 
-void AP_PosControl_SetAltTarget(float altitude) {
-  pos.target_altitude = altitude;
+void AP_PosControl_SetAltTarget(float altitude)
+{
+    pos.target_altitude = altitude;
 
   pos.active = 1;
 }
 
-void AP_PosControl_SetClimbRate(float rate) { pos.target_climb_rate = rate; }
+void AP_PosControl_SetClimbRate(float rate)
+{
+    pos.target_climb_rate = rate;
+}
 
 /*----------------------------------------------------------------------------
  Getters
 ----------------------------------------------------------------------------*/
 
-float AP_PosControl_GetThrottle(void) { return pos.throttle_output; }
+float AP_PosControl_GetThrottle(void)
+{
+    return pos.throttle_output;
+}
 
 const AP_PosControl_t *AP_PosControl_Get(void) { return &pos; }
 
-void AP_PosControl_Enable(uint8_t enable) { pos.active = enable; }
+void AP_PosControl_Enable(uint8_t enable)
+{
+    pos.active = enable;
+}

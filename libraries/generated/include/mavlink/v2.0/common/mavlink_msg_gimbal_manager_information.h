@@ -79,7 +79,7 @@ typedef struct __mavlink_gimbal_manager_information_t {
 static inline uint16_t mavlink_msg_gimbal_manager_information_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint32_t cap_flags, uint8_t gimbal_device_id, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, cap_flags);
@@ -132,7 +132,7 @@ static inline uint16_t mavlink_msg_gimbal_manager_information_pack(uint8_t syste
 static inline uint16_t mavlink_msg_gimbal_manager_information_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint32_t cap_flags, uint8_t gimbal_device_id, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, cap_flags);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_gimbal_manager_information_pack_chan(uint8_t 
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint32_t cap_flags,uint8_t gimbal_device_id,float roll_min,float roll_max,float pitch_min,float pitch_max,float yaw_min,float yaw_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, cap_flags);
@@ -280,7 +280,7 @@ static inline uint16_t mavlink_msg_gimbal_manager_information_encode_status(uint
 
 static inline void mavlink_msg_gimbal_manager_information_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint32_t cap_flags, uint8_t gimbal_device_id, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, cap_flags);
@@ -316,7 +316,7 @@ static inline void mavlink_msg_gimbal_manager_information_send(mavlink_channel_t
  */
 static inline void mavlink_msg_gimbal_manager_information_send_struct(mavlink_channel_t chan, const mavlink_gimbal_manager_information_t* gimbal_manager_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_gimbal_manager_information_send(chan, gimbal_manager_information->time_boot_ms, gimbal_manager_information->cap_flags, gimbal_manager_information->gimbal_device_id, gimbal_manager_information->roll_min, gimbal_manager_information->roll_max, gimbal_manager_information->pitch_min, gimbal_manager_information->pitch_max, gimbal_manager_information->yaw_min, gimbal_manager_information->yaw_max);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION, (const char *)gimbal_manager_information, MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION_MIN_LEN, MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION_LEN, MAVLINK_MSG_ID_GIMBAL_MANAGER_INFORMATION_CRC);
@@ -333,7 +333,7 @@ static inline void mavlink_msg_gimbal_manager_information_send_struct(mavlink_ch
  */
 static inline void mavlink_msg_gimbal_manager_information_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint32_t cap_flags, uint8_t gimbal_device_id, float roll_min, float roll_max, float pitch_min, float pitch_max, float yaw_min, float yaw_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, cap_flags);
@@ -466,7 +466,7 @@ static inline float mavlink_msg_gimbal_manager_information_get_yaw_max(const mav
  */
 static inline void mavlink_msg_gimbal_manager_information_decode(const mavlink_message_t* msg, mavlink_gimbal_manager_information_t* gimbal_manager_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     gimbal_manager_information->time_boot_ms = mavlink_msg_gimbal_manager_information_get_time_boot_ms(msg);
     gimbal_manager_information->cap_flags = mavlink_msg_gimbal_manager_information_get_cap_flags(msg);
     gimbal_manager_information->roll_min = mavlink_msg_gimbal_manager_information_get_roll_min(msg);

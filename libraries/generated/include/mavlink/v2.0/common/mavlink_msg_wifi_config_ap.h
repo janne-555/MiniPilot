@@ -60,7 +60,7 @@ typedef struct __mavlink_wifi_config_ap_t {
 static inline uint16_t mavlink_msg_wifi_config_ap_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                const char *ssid, const char *password, int8_t mode, int8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WIFI_CONFIG_AP_LEN];
     _mav_put_int8_t(buf, 96, mode);
     _mav_put_int8_t(buf, 97, response);
@@ -96,7 +96,7 @@ static inline uint16_t mavlink_msg_wifi_config_ap_pack(uint8_t system_id, uint8_
 static inline uint16_t mavlink_msg_wifi_config_ap_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                const char *ssid, const char *password, int8_t mode, int8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WIFI_CONFIG_AP_LEN];
     _mav_put_int8_t(buf, 96, mode);
     _mav_put_int8_t(buf, 97, response);
@@ -136,7 +136,7 @@ static inline uint16_t mavlink_msg_wifi_config_ap_pack_chan(uint8_t system_id, u
                                mavlink_message_t* msg,
                                    const char *ssid,const char *password,int8_t mode,int8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WIFI_CONFIG_AP_LEN];
     _mav_put_int8_t(buf, 96, mode);
     _mav_put_int8_t(buf, 97, response);
@@ -210,7 +210,7 @@ static inline uint16_t mavlink_msg_wifi_config_ap_encode_status(uint8_t system_i
 
 static inline void mavlink_msg_wifi_config_ap_send(mavlink_channel_t chan, const char *ssid, const char *password, int8_t mode, int8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WIFI_CONFIG_AP_LEN];
     _mav_put_int8_t(buf, 96, mode);
     _mav_put_int8_t(buf, 97, response);
@@ -234,7 +234,7 @@ static inline void mavlink_msg_wifi_config_ap_send(mavlink_channel_t chan, const
  */
 static inline void mavlink_msg_wifi_config_ap_send_struct(mavlink_channel_t chan, const mavlink_wifi_config_ap_t* wifi_config_ap)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_wifi_config_ap_send(chan, wifi_config_ap->ssid, wifi_config_ap->password, wifi_config_ap->mode, wifi_config_ap->response);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_WIFI_CONFIG_AP, (const char *)wifi_config_ap, MAVLINK_MSG_ID_WIFI_CONFIG_AP_MIN_LEN, MAVLINK_MSG_ID_WIFI_CONFIG_AP_LEN, MAVLINK_MSG_ID_WIFI_CONFIG_AP_CRC);
@@ -251,7 +251,7 @@ static inline void mavlink_msg_wifi_config_ap_send_struct(mavlink_channel_t chan
  */
 static inline void mavlink_msg_wifi_config_ap_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  const char *ssid, const char *password, int8_t mode, int8_t response)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int8_t(buf, 96, mode);
     _mav_put_int8_t(buf, 97, response);
@@ -322,7 +322,7 @@ static inline int8_t mavlink_msg_wifi_config_ap_get_response(const mavlink_messa
  */
 static inline void mavlink_msg_wifi_config_ap_decode(const mavlink_message_t* msg, mavlink_wifi_config_ap_t* wifi_config_ap)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_wifi_config_ap_get_ssid(msg, wifi_config_ap->ssid);
     mavlink_msg_wifi_config_ap_get_password(msg, wifi_config_ap->password);
     wifi_config_ap->mode = mavlink_msg_wifi_config_ap_get_mode(msg);

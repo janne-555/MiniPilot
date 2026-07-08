@@ -83,7 +83,7 @@ typedef struct __mavlink_estimator_status_t {
 static inline uint16_t mavlink_msg_estimator_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint16_t flags, float vel_ratio, float pos_horiz_ratio, float pos_vert_ratio, float mag_ratio, float hagl_ratio, float tas_ratio, float pos_horiz_accuracy, float pos_vert_accuracy)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESTIMATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vel_ratio);
@@ -139,7 +139,7 @@ static inline uint16_t mavlink_msg_estimator_status_pack(uint8_t system_id, uint
 static inline uint16_t mavlink_msg_estimator_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint16_t flags, float vel_ratio, float pos_horiz_ratio, float pos_vert_ratio, float mag_ratio, float hagl_ratio, float tas_ratio, float pos_horiz_accuracy, float pos_vert_accuracy)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESTIMATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vel_ratio);
@@ -199,7 +199,7 @@ static inline uint16_t mavlink_msg_estimator_status_pack_chan(uint8_t system_id,
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint16_t flags,float vel_ratio,float pos_horiz_ratio,float pos_vert_ratio,float mag_ratio,float hagl_ratio,float tas_ratio,float pos_horiz_accuracy,float pos_vert_accuracy)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESTIMATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vel_ratio);
@@ -293,7 +293,7 @@ static inline uint16_t mavlink_msg_estimator_status_encode_status(uint8_t system
 
 static inline void mavlink_msg_estimator_status_send(mavlink_channel_t chan, uint64_t time_usec, uint16_t flags, float vel_ratio, float pos_horiz_ratio, float pos_vert_ratio, float mag_ratio, float hagl_ratio, float tas_ratio, float pos_horiz_accuracy, float pos_vert_accuracy)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESTIMATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vel_ratio);
@@ -331,7 +331,7 @@ static inline void mavlink_msg_estimator_status_send(mavlink_channel_t chan, uin
  */
 static inline void mavlink_msg_estimator_status_send_struct(mavlink_channel_t chan, const mavlink_estimator_status_t* estimator_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_estimator_status_send(chan, estimator_status->time_usec, estimator_status->flags, estimator_status->vel_ratio, estimator_status->pos_horiz_ratio, estimator_status->pos_vert_ratio, estimator_status->mag_ratio, estimator_status->hagl_ratio, estimator_status->tas_ratio, estimator_status->pos_horiz_accuracy, estimator_status->pos_vert_accuracy);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ESTIMATOR_STATUS, (const char *)estimator_status, MAVLINK_MSG_ID_ESTIMATOR_STATUS_MIN_LEN, MAVLINK_MSG_ID_ESTIMATOR_STATUS_LEN, MAVLINK_MSG_ID_ESTIMATOR_STATUS_CRC);
@@ -348,7 +348,7 @@ static inline void mavlink_msg_estimator_status_send_struct(mavlink_channel_t ch
  */
 static inline void mavlink_msg_estimator_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint16_t flags, float vel_ratio, float pos_horiz_ratio, float pos_vert_ratio, float mag_ratio, float hagl_ratio, float tas_ratio, float pos_horiz_accuracy, float pos_vert_accuracy)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vel_ratio);
@@ -493,7 +493,7 @@ static inline float mavlink_msg_estimator_status_get_pos_vert_accuracy(const mav
  */
 static inline void mavlink_msg_estimator_status_decode(const mavlink_message_t* msg, mavlink_estimator_status_t* estimator_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     estimator_status->time_usec = mavlink_msg_estimator_status_get_time_usec(msg);
     estimator_status->vel_ratio = mavlink_msg_estimator_status_get_vel_ratio(msg);
     estimator_status->pos_horiz_ratio = mavlink_msg_estimator_status_get_pos_horiz_ratio(msg);

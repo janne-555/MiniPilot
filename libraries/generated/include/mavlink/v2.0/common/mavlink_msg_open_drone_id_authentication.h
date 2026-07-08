@@ -80,7 +80,7 @@ typedef struct __mavlink_open_drone_id_authentication_t {
 static inline uint16_t mavlink_msg_open_drone_id_authentication_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t authentication_type, uint8_t data_page, uint8_t last_page_index, uint8_t length, uint32_t timestamp, const uint8_t *authentication_data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION_LEN];
     _mav_put_uint32_t(buf, 0, timestamp);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -131,7 +131,7 @@ static inline uint16_t mavlink_msg_open_drone_id_authentication_pack(uint8_t sys
 static inline uint16_t mavlink_msg_open_drone_id_authentication_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t authentication_type, uint8_t data_page, uint8_t last_page_index, uint8_t length, uint32_t timestamp, const uint8_t *authentication_data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION_LEN];
     _mav_put_uint32_t(buf, 0, timestamp);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -186,7 +186,7 @@ static inline uint16_t mavlink_msg_open_drone_id_authentication_pack_chan(uint8_
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const uint8_t *id_or_mac,uint8_t authentication_type,uint8_t data_page,uint8_t last_page_index,uint8_t length,uint32_t timestamp,const uint8_t *authentication_data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION_LEN];
     _mav_put_uint32_t(buf, 0, timestamp);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -275,7 +275,7 @@ static inline uint16_t mavlink_msg_open_drone_id_authentication_encode_status(ui
 
 static inline void mavlink_msg_open_drone_id_authentication_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t authentication_type, uint8_t data_page, uint8_t last_page_index, uint8_t length, uint32_t timestamp, const uint8_t *authentication_data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION_LEN];
     _mav_put_uint32_t(buf, 0, timestamp);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -309,7 +309,7 @@ static inline void mavlink_msg_open_drone_id_authentication_send(mavlink_channel
  */
 static inline void mavlink_msg_open_drone_id_authentication_send_struct(mavlink_channel_t chan, const mavlink_open_drone_id_authentication_t* open_drone_id_authentication)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_open_drone_id_authentication_send(chan, open_drone_id_authentication->target_system, open_drone_id_authentication->target_component, open_drone_id_authentication->id_or_mac, open_drone_id_authentication->authentication_type, open_drone_id_authentication->data_page, open_drone_id_authentication->last_page_index, open_drone_id_authentication->length, open_drone_id_authentication->timestamp, open_drone_id_authentication->authentication_data);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION, (const char *)open_drone_id_authentication, MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION_MIN_LEN, MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION_LEN, MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION_CRC);
@@ -326,7 +326,7 @@ static inline void mavlink_msg_open_drone_id_authentication_send_struct(mavlink_
  */
 static inline void mavlink_msg_open_drone_id_authentication_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t authentication_type, uint8_t data_page, uint8_t last_page_index, uint8_t length, uint32_t timestamp, const uint8_t *authentication_data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, timestamp);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -457,7 +457,7 @@ static inline uint16_t mavlink_msg_open_drone_id_authentication_get_authenticati
  */
 static inline void mavlink_msg_open_drone_id_authentication_decode(const mavlink_message_t* msg, mavlink_open_drone_id_authentication_t* open_drone_id_authentication)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     open_drone_id_authentication->timestamp = mavlink_msg_open_drone_id_authentication_get_timestamp(msg);
     open_drone_id_authentication->target_system = mavlink_msg_open_drone_id_authentication_get_target_system(msg);
     open_drone_id_authentication->target_component = mavlink_msg_open_drone_id_authentication_get_target_component(msg);

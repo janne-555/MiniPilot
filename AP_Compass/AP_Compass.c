@@ -16,8 +16,9 @@ static AP_Compass_t compass;
 
 static uint32_t debug_counter = 0;
 
-void AP_Compass_Init(void) {
-  compass.mag_x = 100.0f;
+void AP_Compass_Init(void)
+{
+    compass.mag_x = 100.0f;
   compass.mag_y = 0.0f;
   compass.mag_z = 40.0f;
 
@@ -109,8 +110,9 @@ void AP_Compass_Update(void) {
   }
 }
 
-void AP_Compass_Calibrate(void) {
-  compass.offset_x = compass.mag_x;
+void AP_Compass_Calibrate(void)
+{
+    compass.offset_x = compass.mag_x;
 
   compass.offset_y = compass.mag_y;
 
@@ -121,12 +123,27 @@ void AP_Compass_Calibrate(void) {
 
 const AP_Compass_t *AP_Compass_Get(void) { return &compass; }
 
-float AP_Compass_GetHeading(void) { return compass.heading; }
+float AP_Compass_GetHeading(void)
+{
+    return compass.heading;
+}
 
-float AP_Compass_GetMagX(void) { return compass.field_x; }
+float AP_Compass_GetMagX(void)
+{
+    return compass.field_x;
+}
 
-float AP_Compass_GetMagY(void) { return compass.field_y; }
+float AP_Compass_GetMagY(void)
+{
+    return compass.field_y;
+}
 
-float AP_Compass_GetMagZ(void) { return compass.field_z; }
+float AP_Compass_GetMagZ(void)
+{
+    return compass.field_z;
+}
 
-uint8_t AP_Compass_IsHealthy(void) { return compass.healthy; }
+uint8_t AP_Compass_IsHealthy(void)
+{
+    return compass.healthy;
+}

@@ -82,7 +82,7 @@ MAVLINK_WIP
 static inline uint16_t mavlink_msg_esc_info_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t index, uint64_t time_usec, uint16_t counter, uint8_t count, uint8_t connection_type, uint8_t info, const uint16_t *failure_flags, const uint32_t *error_count, const int16_t *temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 24, counter);
@@ -133,7 +133,7 @@ static inline uint16_t mavlink_msg_esc_info_pack(uint8_t system_id, uint8_t comp
 static inline uint16_t mavlink_msg_esc_info_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t index, uint64_t time_usec, uint16_t counter, uint8_t count, uint8_t connection_type, uint8_t info, const uint16_t *failure_flags, const uint32_t *error_count, const int16_t *temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 24, counter);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_esc_info_pack_chan(uint8_t system_id, uint8_t
                                mavlink_message_t* msg,
                                    uint8_t index,uint64_t time_usec,uint16_t counter,uint8_t count,uint8_t connection_type,uint8_t info,const uint16_t *failure_flags,const uint32_t *error_count,const int16_t *temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 24, counter);
@@ -281,7 +281,7 @@ static inline uint16_t mavlink_msg_esc_info_encode_status(uint8_t system_id, uin
 MAVLINK_WIP
 static inline void mavlink_msg_esc_info_send(mavlink_channel_t chan, uint8_t index, uint64_t time_usec, uint16_t counter, uint8_t count, uint8_t connection_type, uint8_t info, const uint16_t *failure_flags, const uint32_t *error_count, const int16_t *temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 24, counter);
@@ -316,7 +316,7 @@ static inline void mavlink_msg_esc_info_send(mavlink_channel_t chan, uint8_t ind
 MAVLINK_WIP
 static inline void mavlink_msg_esc_info_send_struct(mavlink_channel_t chan, const mavlink_esc_info_t* esc_info)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_esc_info_send(chan, esc_info->index, esc_info->time_usec, esc_info->counter, esc_info->count, esc_info->connection_type, esc_info->info, esc_info->failure_flags, esc_info->error_count, esc_info->temperature);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ESC_INFO, (const char *)esc_info, MAVLINK_MSG_ID_ESC_INFO_MIN_LEN, MAVLINK_MSG_ID_ESC_INFO_LEN, MAVLINK_MSG_ID_ESC_INFO_CRC);
@@ -334,7 +334,7 @@ static inline void mavlink_msg_esc_info_send_struct(mavlink_channel_t chan, cons
 MAVLINK_WIP
 static inline void mavlink_msg_esc_info_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t index, uint64_t time_usec, uint16_t counter, uint8_t count, uint8_t connection_type, uint8_t info, const uint16_t *failure_flags, const uint32_t *error_count, const int16_t *temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 24, counter);
@@ -475,7 +475,7 @@ static inline uint16_t mavlink_msg_esc_info_get_temperature(const mavlink_messag
 MAVLINK_WIP
 static inline void mavlink_msg_esc_info_decode(const mavlink_message_t* msg, mavlink_esc_info_t* esc_info)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     esc_info->time_usec = mavlink_msg_esc_info_get_time_usec(msg);
     mavlink_msg_esc_info_get_error_count(msg, esc_info->error_count);
     esc_info->counter = mavlink_msg_esc_info_get_counter(msg);

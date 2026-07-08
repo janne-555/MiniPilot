@@ -3,8 +3,9 @@
 
 #include "../AP_HAL/AP_HAL.h"
 
-void GCS_send_statustext(const char *text) {
-  mavlink_message_t msg;
+void GCS_send_statustext(const char *text)
+{
+    mavlink_message_t msg;
 
   uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 

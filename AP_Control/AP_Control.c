@@ -23,7 +23,10 @@ static AP_PID_t roll_pid;
 /* Latest controller outputs */
 static AP_Control_Output_t control_output;
 
-void AP_Control_Init(void) { AP_PID_Init(&roll_pid, 2.0f, 0.05f, 0.1f); }
+void AP_Control_Init(void)
+{
+    AP_PID_Init(&roll_pid, 2.0f, 0.05f, 0.1f);
+}
 
 void AP_Control_Update(float dt) {
   float current_roll;

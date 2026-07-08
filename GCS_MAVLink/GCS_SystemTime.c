@@ -11,8 +11,9 @@
 
 #include "GCS_MAVLink.h"
 
-void GCS_send_system_time(void) {
-  mavlink_message_t msg;
+void GCS_send_system_time(void)
+{
+    mavlink_message_t msg;
 
   uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 

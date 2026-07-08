@@ -41,70 +41,157 @@
 // 100 Hz Flight Control Tasks
 //----------------------------
 // IMU
-static void Task_IMU(void) { AP_IMU_Update(); }
-static void Task_EKF(void) { AP_EKF_Update(LOOP_DT); }
+static void Task_IMU(void)
+{
+    AP_IMU_Update();
+}
+static void Task_EKF(void)
+{
+    AP_EKF_Update(LOOP_DT);
+}
 // AHRS
-static void Task_AHRS(void) { AP_AHRS_Update(); }
+static void Task_AHRS(void)
+{
+    AP_AHRS_Update();
+}
 // Flight Controller
-static void Task_Control(void) { AP_Control_Update(LOOP_DT); }
+static void Task_Control(void)
+{
+    AP_Control_Update(LOOP_DT);
+}
 // Mixer
-static void Task_Mixer(void) { AP_Mixer_Update(); }
+static void Task_Mixer(void)
+{
+    AP_Mixer_Update();
+}
 // Motors
-static void Task_Motors(void) { AP_Motors_Update(); }
-static void Task_Sim(void) { AP_Sim_Update(LOOP_DT); }
+static void Task_Motors(void)
+{
+    AP_Motors_Update();
+}
+static void Task_Sim(void)
+{
+    AP_Sim_Update(LOOP_DT);
+}
 //----------------------------
 // 50 Hz Tasks
 //----------------------------
 // RC Receiver
-static void Task_RC(void) { AP_RC_Update(); }
+static void Task_RC(void)
+{
+    AP_RC_Update();
+}
 // Ground Control Station
-static void Task_GCS(void) { GCS_update(); }
+static void Task_GCS(void)
+{
+    GCS_update();
+}
 
-static void Task_Mission(void) { AP_Mission_Update(); }
+static void Task_Mission(void)
+{
+    AP_Mission_Update();
+}
 //------------------------------------------------------------------------------
 // MAVLink Telemetry Stream TX
 //------------------------------------------------------------------------------
 
-static void Task_GCS_Stream(void) { GCS_stream_update(); }
-static void Task_InertialNav(void) { AP_InertialNav_Update(TASK_50HZ); }
-static void Task_Vehicle(void) { AP_Vehicle_Update(); }
-static void Task_Baro(void) { AP_Baro_Update(); }
+static void Task_GCS_Stream(void)
+{
+    GCS_stream_update();
+}
+static void Task_InertialNav(void)
+{
+    AP_InertialNav_Update(TASK_50HZ);
+}
+static void Task_Vehicle(void)
+{
+    AP_Vehicle_Update();
+}
+static void Task_Baro(void)
+{
+    AP_Baro_Update();
+}
 //----------------------------
 // 5 Hz Tasks
 //----------------------------
 // GPS Driver
-static void Task_GPS_Driver(void) { AP_GPS_Update(); }
+static void Task_GPS_Driver(void)
+{
+    AP_GPS_Update();
+}
 // Send GPS
-static void Task_GPS(void) { GCS_send_gps_raw_int(); }
-static void Task_FlightMode(void) { AP_FlightMode_Update(); }
-static void Task_GlobalPosition(void) { GCS_send_global_position(); }
+static void Task_GPS(void)
+{
+    GCS_send_gps_raw_int();
+}
+static void Task_FlightMode(void)
+{
+    AP_FlightMode_Update();
+}
+static void Task_GlobalPosition(void)
+{
+    GCS_send_global_position();
+}
 //----------------------------
 // 10 Hz Tasks
 //----------------------------
 // Send Attitude
-static void Task_Attitude(void) { GCS_send_attitude(); }
+static void Task_Attitude(void)
+{
+    GCS_send_attitude();
+}
 
-static void Task_Arming(void) { AP_Arming_Update(); }
-static void Task_Failsafe(void) { AP_Failsafe_Update(); }
-static void Task_Battery(void) { AP_Battery_Update(); }
+static void Task_Arming(void)
+{
+    AP_Arming_Update();
+}
+static void Task_Failsafe(void)
+{
+    AP_Failsafe_Update();
+}
+static void Task_Battery(void)
+{
+    AP_Battery_Update();
+}
 // Compass
-static void Task_Compass(void) { AP_Compass_Update(); }
-static void Task_Logger(void) { AP_Logger_Update(); }
+static void Task_Compass(void)
+{
+    AP_Compass_Update();
+}
+static void Task_Logger(void)
+{
+    AP_Logger_Update();
+}
 //----------------------------
 // 2 Hz Tasks
 //----------------------------
 // Send VFR HUD
-static void Task_VFR_HUD(void) { GCS_send_vfr_hud(); }
+static void Task_VFR_HUD(void)
+{
+    GCS_send_vfr_hud();
+}
 //----------------------------
 // 1 Hz Tasks
 //----------------------------
 // Heartbeat
-static void Task_Heartbeat(void) { GCS_send_heartbeat(); }
+static void Task_Heartbeat(void)
+{
+    GCS_send_heartbeat();
+}
 // System Status
-static void Task_SysStatus(void) { GCS_send_sys_status(); }
-static void Task_EKFStatus(void) { GCS_send_ekf_status(); }
+static void Task_SysStatus(void)
+{
+    GCS_send_sys_status();
+}
+static void Task_EKFStatus(void)
+{
+    GCS_send_ekf_status();
+}
 // Home Update
-static void Task_Home(void) { AP_Home_Update(); }
+static void Task_Home(void)
+{
+    AP_Home_Update();
+}
 
 //------------------------------------------------------------------------------
 // Main

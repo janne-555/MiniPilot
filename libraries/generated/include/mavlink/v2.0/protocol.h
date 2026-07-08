@@ -102,19 +102,19 @@ static inline uint16_t mavlink_msg_get_send_buffer_length(const mavlink_message_
 #if MAVLINK_NEED_BYTE_SWAP
 static inline void byte_swap_2(char *dst, const char *src)
 {
-	dst[0] = src[1];
+    dst[0] = src[1];
 	dst[1] = src[0];
 }
 static inline void byte_swap_4(char *dst, const char *src)
 {
-	dst[0] = src[3];
+    dst[0] = src[3];
 	dst[1] = src[2];
 	dst[2] = src[1];
 	dst[3] = src[0];
 }
 static inline void byte_swap_8(char *dst, const char *src)
 {
-	dst[0] = src[7];
+    dst[0] = src[7];
 	dst[1] = src[6];
 	dst[2] = src[5];
 	dst[3] = src[4];
@@ -126,19 +126,19 @@ static inline void byte_swap_8(char *dst, const char *src)
 #elif !MAVLINK_ALIGNED_FIELDS
 static inline void byte_copy_2(char *dst, const char *src)
 {
-	dst[0] = src[0];
+    dst[0] = src[0];
 	dst[1] = src[1];
 }
 static inline void byte_copy_4(char *dst, const char *src)
 {
-	dst[0] = src[0];
+    dst[0] = src[0];
 	dst[1] = src[1];
 	dst[2] = src[2];
 	dst[3] = src[3];
 }
 static inline void byte_copy_8(char *dst, const char *src)
 {
-	memcpy(dst, src, 8);
+    memcpy(dst, src, 8);
 }
 #endif
 
@@ -199,8 +199,7 @@ static inline void mav_array_memcpy(void *dest, const void *src, size_t n)
  */
 static inline void _mav_put_char_array(char *buf, uint8_t wire_offset, const char *b, uint8_t array_length)
 {
-	mav_array_memcpy(&buf[wire_offset], b, array_length);
-
+    mav_array_memcpy(&buf[wire_offset], b, array_length);
 }
 
 /*
@@ -208,8 +207,7 @@ static inline void _mav_put_char_array(char *buf, uint8_t wire_offset, const cha
  */
 static inline void _mav_put_uint8_t_array(char *buf, uint8_t wire_offset, const uint8_t *b, uint8_t array_length)
 {
-	mav_array_memcpy(&buf[wire_offset], b, array_length);
-
+    mav_array_memcpy(&buf[wire_offset], b, array_length);
 }
 
 /*
@@ -217,8 +215,7 @@ static inline void _mav_put_uint8_t_array(char *buf, uint8_t wire_offset, const 
  */
 static inline void _mav_put_int8_t_array(char *buf, uint8_t wire_offset, const int8_t *b, uint8_t array_length)
 {
-	mav_array_memcpy(&buf[wire_offset], b, array_length);
-
+    mav_array_memcpy(&buf[wire_offset], b, array_length);
 }
 
 #if MAVLINK_NEED_BYTE_SWAP
@@ -300,21 +297,21 @@ _MAV_MSG_RETURN_TYPE(double)
 static inline uint16_t _MAV_RETURN_char_array(const mavlink_message_t *msg, char *value, 
 						     uint8_t array_length, uint8_t wire_offset)
 {
-	memcpy(value, &_MAV_PAYLOAD(msg)[wire_offset], array_length);
+    memcpy(value, &_MAV_PAYLOAD(msg)[wire_offset], array_length);
 	return array_length;
 }
 
 static inline uint16_t _MAV_RETURN_uint8_t_array(const mavlink_message_t *msg, uint8_t *value, 
 							uint8_t array_length, uint8_t wire_offset)
 {
-	memcpy(value, &_MAV_PAYLOAD(msg)[wire_offset], array_length);
+    memcpy(value, &_MAV_PAYLOAD(msg)[wire_offset], array_length);
 	return array_length;
 }
 
 static inline uint16_t _MAV_RETURN_int8_t_array(const mavlink_message_t *msg, int8_t *value, 
 						       uint8_t array_length, uint8_t wire_offset)
 {
-	memcpy(value, &_MAV_PAYLOAD(msg)[wire_offset], array_length);
+    memcpy(value, &_MAV_PAYLOAD(msg)[wire_offset], array_length);
 	return array_length;
 }
 

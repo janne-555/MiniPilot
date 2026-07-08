@@ -55,7 +55,7 @@ typedef struct __mavlink_current_mode_t {
 static inline uint16_t mavlink_msg_current_mode_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t standard_mode, uint32_t custom_mode, uint32_t intended_custom_mode)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_MODE_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, intended_custom_mode);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_current_mode_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_current_mode_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t standard_mode, uint32_t custom_mode, uint32_t intended_custom_mode)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_MODE_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, intended_custom_mode);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_current_mode_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint8_t standard_mode,uint32_t custom_mode,uint32_t intended_custom_mode)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_MODE_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, intended_custom_mode);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_current_mode_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_current_mode_send(mavlink_channel_t chan, uint8_t standard_mode, uint32_t custom_mode, uint32_t intended_custom_mode)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_MODE_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, intended_custom_mode);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_current_mode_send(mavlink_channel_t chan, uint8_t
  */
 static inline void mavlink_msg_current_mode_send_struct(mavlink_channel_t chan, const mavlink_current_mode_t* current_mode)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_current_mode_send(chan, current_mode->standard_mode, current_mode->custom_mode, current_mode->intended_custom_mode);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CURRENT_MODE, (const char *)current_mode, MAVLINK_MSG_ID_CURRENT_MODE_MIN_LEN, MAVLINK_MSG_ID_CURRENT_MODE_LEN, MAVLINK_MSG_ID_CURRENT_MODE_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_current_mode_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_current_mode_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t standard_mode, uint32_t custom_mode, uint32_t intended_custom_mode)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, intended_custom_mode);
@@ -304,7 +304,7 @@ static inline uint32_t mavlink_msg_current_mode_get_intended_custom_mode(const m
  */
 static inline void mavlink_msg_current_mode_decode(const mavlink_message_t* msg, mavlink_current_mode_t* current_mode)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     current_mode->custom_mode = mavlink_msg_current_mode_get_custom_mode(msg);
     current_mode->intended_custom_mode = mavlink_msg_current_mode_get_intended_custom_mode(msg);
     current_mode->standard_mode = mavlink_msg_current_mode_get_standard_mode(msg);

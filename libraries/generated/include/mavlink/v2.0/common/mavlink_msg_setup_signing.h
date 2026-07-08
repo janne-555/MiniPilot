@@ -59,7 +59,7 @@ typedef struct __mavlink_setup_signing_t {
 static inline uint16_t mavlink_msg_setup_signing_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *secret_key, uint64_t initial_timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SETUP_SIGNING_LEN];
     _mav_put_uint64_t(buf, 0, initial_timestamp);
     _mav_put_uint8_t(buf, 8, target_system);
@@ -95,7 +95,7 @@ static inline uint16_t mavlink_msg_setup_signing_pack(uint8_t system_id, uint8_t
 static inline uint16_t mavlink_msg_setup_signing_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *secret_key, uint64_t initial_timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SETUP_SIGNING_LEN];
     _mav_put_uint64_t(buf, 0, initial_timestamp);
     _mav_put_uint8_t(buf, 8, target_system);
@@ -135,7 +135,7 @@ static inline uint16_t mavlink_msg_setup_signing_pack_chan(uint8_t system_id, ui
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const uint8_t *secret_key,uint64_t initial_timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SETUP_SIGNING_LEN];
     _mav_put_uint64_t(buf, 0, initial_timestamp);
     _mav_put_uint8_t(buf, 8, target_system);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_setup_signing_encode_status(uint8_t system_id
 
 static inline void mavlink_msg_setup_signing_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const uint8_t *secret_key, uint64_t initial_timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SETUP_SIGNING_LEN];
     _mav_put_uint64_t(buf, 0, initial_timestamp);
     _mav_put_uint8_t(buf, 8, target_system);
@@ -233,7 +233,7 @@ static inline void mavlink_msg_setup_signing_send(mavlink_channel_t chan, uint8_
  */
 static inline void mavlink_msg_setup_signing_send_struct(mavlink_channel_t chan, const mavlink_setup_signing_t* setup_signing)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_setup_signing_send(chan, setup_signing->target_system, setup_signing->target_component, setup_signing->secret_key, setup_signing->initial_timestamp);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SETUP_SIGNING, (const char *)setup_signing, MAVLINK_MSG_ID_SETUP_SIGNING_MIN_LEN, MAVLINK_MSG_ID_SETUP_SIGNING_LEN, MAVLINK_MSG_ID_SETUP_SIGNING_CRC);
@@ -250,7 +250,7 @@ static inline void mavlink_msg_setup_signing_send_struct(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_setup_signing_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const uint8_t *secret_key, uint64_t initial_timestamp)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, initial_timestamp);
     _mav_put_uint8_t(buf, 8, target_system);
@@ -321,7 +321,7 @@ static inline uint64_t mavlink_msg_setup_signing_get_initial_timestamp(const mav
  */
 static inline void mavlink_msg_setup_signing_decode(const mavlink_message_t* msg, mavlink_setup_signing_t* setup_signing)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     setup_signing->initial_timestamp = mavlink_msg_setup_signing_get_initial_timestamp(msg);
     setup_signing->target_system = mavlink_msg_setup_signing_get_target_system(msg);
     setup_signing->target_component = mavlink_msg_setup_signing_get_target_component(msg);

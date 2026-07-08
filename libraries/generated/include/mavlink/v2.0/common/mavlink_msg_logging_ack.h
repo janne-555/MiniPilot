@@ -55,7 +55,7 @@ typedef struct __mavlink_logging_ack_t {
 static inline uint16_t mavlink_msg_logging_ack_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t sequence)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOGGING_ACK_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_logging_ack_pack(uint8_t system_id, uint8_t c
 static inline uint16_t mavlink_msg_logging_ack_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t sequence)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOGGING_ACK_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_logging_ack_pack_chan(uint8_t system_id, uint
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint16_t sequence)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOGGING_ACK_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_logging_ack_encode_status(uint8_t system_id, 
 
 static inline void mavlink_msg_logging_ack_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint16_t sequence)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LOGGING_ACK_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_logging_ack_send(mavlink_channel_t chan, uint8_t 
  */
 static inline void mavlink_msg_logging_ack_send_struct(mavlink_channel_t chan, const mavlink_logging_ack_t* logging_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_logging_ack_send(chan, logging_ack->target_system, logging_ack->target_component, logging_ack->sequence);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_LOGGING_ACK, (const char *)logging_ack, MAVLINK_MSG_ID_LOGGING_ACK_MIN_LEN, MAVLINK_MSG_ID_LOGGING_ACK_LEN, MAVLINK_MSG_ID_LOGGING_ACK_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_logging_ack_send_struct(mavlink_channel_t chan, c
  */
 static inline void mavlink_msg_logging_ack_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint16_t sequence)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -304,7 +304,7 @@ static inline uint16_t mavlink_msg_logging_ack_get_sequence(const mavlink_messag
  */
 static inline void mavlink_msg_logging_ack_decode(const mavlink_message_t* msg, mavlink_logging_ack_t* logging_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     logging_ack->sequence = mavlink_msg_logging_ack_get_sequence(msg);
     logging_ack->target_system = mavlink_msg_logging_ack_get_target_system(msg);
     logging_ack->target_component = mavlink_msg_logging_ack_get_target_component(msg);

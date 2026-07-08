@@ -87,7 +87,7 @@ typedef struct __mavlink_camera_tracking_image_status_t {
 static inline uint16_t mavlink_msg_camera_tracking_image_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t tracking_status, uint8_t tracking_mode, uint8_t target_data, float point_x, float point_y, float radius, float rec_top_x, float rec_top_y, float rec_bottom_x, float rec_bottom_y, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS_LEN];
     _mav_put_float(buf, 0, point_x);
     _mav_put_float(buf, 4, point_y);
@@ -146,7 +146,7 @@ static inline uint16_t mavlink_msg_camera_tracking_image_status_pack(uint8_t sys
 static inline uint16_t mavlink_msg_camera_tracking_image_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t tracking_status, uint8_t tracking_mode, uint8_t target_data, float point_x, float point_y, float radius, float rec_top_x, float rec_top_y, float rec_bottom_x, float rec_bottom_y, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS_LEN];
     _mav_put_float(buf, 0, point_x);
     _mav_put_float(buf, 4, point_y);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_camera_tracking_image_status_pack_chan(uint8_
                                mavlink_message_t* msg,
                                    uint8_t tracking_status,uint8_t tracking_mode,uint8_t target_data,float point_x,float point_y,float radius,float rec_top_x,float rec_top_y,float rec_bottom_x,float rec_bottom_y,uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS_LEN];
     _mav_put_float(buf, 0, point_x);
     _mav_put_float(buf, 4, point_y);
@@ -306,7 +306,7 @@ static inline uint16_t mavlink_msg_camera_tracking_image_status_encode_status(ui
 
 static inline void mavlink_msg_camera_tracking_image_status_send(mavlink_channel_t chan, uint8_t tracking_status, uint8_t tracking_mode, uint8_t target_data, float point_x, float point_y, float radius, float rec_top_x, float rec_top_y, float rec_bottom_x, float rec_bottom_y, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS_LEN];
     _mav_put_float(buf, 0, point_x);
     _mav_put_float(buf, 4, point_y);
@@ -346,7 +346,7 @@ static inline void mavlink_msg_camera_tracking_image_status_send(mavlink_channel
  */
 static inline void mavlink_msg_camera_tracking_image_status_send_struct(mavlink_channel_t chan, const mavlink_camera_tracking_image_status_t* camera_tracking_image_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_camera_tracking_image_status_send(chan, camera_tracking_image_status->tracking_status, camera_tracking_image_status->tracking_mode, camera_tracking_image_status->target_data, camera_tracking_image_status->point_x, camera_tracking_image_status->point_y, camera_tracking_image_status->radius, camera_tracking_image_status->rec_top_x, camera_tracking_image_status->rec_top_y, camera_tracking_image_status->rec_bottom_x, camera_tracking_image_status->rec_bottom_y, camera_tracking_image_status->camera_device_id);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS, (const char *)camera_tracking_image_status, MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS_MIN_LEN, MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS_LEN, MAVLINK_MSG_ID_CAMERA_TRACKING_IMAGE_STATUS_CRC);
@@ -363,7 +363,7 @@ static inline void mavlink_msg_camera_tracking_image_status_send_struct(mavlink_
  */
 static inline void mavlink_msg_camera_tracking_image_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t tracking_status, uint8_t tracking_mode, uint8_t target_data, float point_x, float point_y, float radius, float rec_top_x, float rec_top_y, float rec_bottom_x, float rec_bottom_y, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, point_x);
     _mav_put_float(buf, 4, point_y);
@@ -520,7 +520,7 @@ static inline uint8_t mavlink_msg_camera_tracking_image_status_get_camera_device
  */
 static inline void mavlink_msg_camera_tracking_image_status_decode(const mavlink_message_t* msg, mavlink_camera_tracking_image_status_t* camera_tracking_image_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     camera_tracking_image_status->point_x = mavlink_msg_camera_tracking_image_status_get_point_x(msg);
     camera_tracking_image_status->point_y = mavlink_msg_camera_tracking_image_status_get_point_y(msg);
     camera_tracking_image_status->radius = mavlink_msg_camera_tracking_image_status_get_radius(msg);

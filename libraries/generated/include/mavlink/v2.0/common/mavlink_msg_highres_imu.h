@@ -107,7 +107,7 @@ typedef struct __mavlink_highres_imu_t {
 static inline uint16_t mavlink_msg_highres_imu_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint16_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIGHRES_IMU_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -181,7 +181,7 @@ static inline uint16_t mavlink_msg_highres_imu_pack(uint8_t system_id, uint8_t c
 static inline uint16_t mavlink_msg_highres_imu_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint16_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIGHRES_IMU_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -259,7 +259,7 @@ static inline uint16_t mavlink_msg_highres_imu_pack_chan(uint8_t system_id, uint
                                mavlink_message_t* msg,
                                    uint64_t time_usec,float xacc,float yacc,float zacc,float xgyro,float ygyro,float zgyro,float xmag,float ymag,float zmag,float abs_pressure,float diff_pressure,float pressure_alt,float temperature,uint16_t fields_updated,uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIGHRES_IMU_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -371,7 +371,7 @@ static inline uint16_t mavlink_msg_highres_imu_encode_status(uint8_t system_id, 
 
 static inline void mavlink_msg_highres_imu_send(mavlink_channel_t chan, uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint16_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIGHRES_IMU_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -421,7 +421,7 @@ static inline void mavlink_msg_highres_imu_send(mavlink_channel_t chan, uint64_t
  */
 static inline void mavlink_msg_highres_imu_send_struct(mavlink_channel_t chan, const mavlink_highres_imu_t* highres_imu)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_highres_imu_send(chan, highres_imu->time_usec, highres_imu->xacc, highres_imu->yacc, highres_imu->zacc, highres_imu->xgyro, highres_imu->ygyro, highres_imu->zgyro, highres_imu->xmag, highres_imu->ymag, highres_imu->zmag, highres_imu->abs_pressure, highres_imu->diff_pressure, highres_imu->pressure_alt, highres_imu->temperature, highres_imu->fields_updated, highres_imu->id);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_HIGHRES_IMU, (const char *)highres_imu, MAVLINK_MSG_ID_HIGHRES_IMU_MIN_LEN, MAVLINK_MSG_ID_HIGHRES_IMU_LEN, MAVLINK_MSG_ID_HIGHRES_IMU_CRC);
@@ -438,7 +438,7 @@ static inline void mavlink_msg_highres_imu_send_struct(mavlink_channel_t chan, c
  */
 static inline void mavlink_msg_highres_imu_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, float xacc, float yacc, float zacc, float xgyro, float ygyro, float zgyro, float xmag, float ymag, float zmag, float abs_pressure, float diff_pressure, float pressure_alt, float temperature, uint16_t fields_updated, uint8_t id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, xacc);
@@ -655,7 +655,7 @@ static inline uint8_t mavlink_msg_highres_imu_get_id(const mavlink_message_t* ms
  */
 static inline void mavlink_msg_highres_imu_decode(const mavlink_message_t* msg, mavlink_highres_imu_t* highres_imu)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     highres_imu->time_usec = mavlink_msg_highres_imu_get_time_usec(msg);
     highres_imu->xacc = mavlink_msg_highres_imu_get_xacc(msg);
     highres_imu->yacc = mavlink_msg_highres_imu_get_yacc(msg);

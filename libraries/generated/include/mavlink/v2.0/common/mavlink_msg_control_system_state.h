@@ -113,7 +113,7 @@ typedef struct __mavlink_control_system_state_t {
 static inline uint16_t mavlink_msg_control_system_state_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, float x_acc, float y_acc, float z_acc, float x_vel, float y_vel, float z_vel, float x_pos, float y_pos, float z_pos, float airspeed, const float *vel_variance, const float *pos_variance, const float *q, float roll_rate, float pitch_rate, float yaw_rate)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x_acc);
@@ -188,7 +188,7 @@ static inline uint16_t mavlink_msg_control_system_state_pack(uint8_t system_id, 
 static inline uint16_t mavlink_msg_control_system_state_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, float x_acc, float y_acc, float z_acc, float x_vel, float y_vel, float z_vel, float x_pos, float y_pos, float z_pos, float airspeed, const float *vel_variance, const float *pos_variance, const float *q, float roll_rate, float pitch_rate, float yaw_rate)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x_acc);
@@ -267,7 +267,7 @@ static inline uint16_t mavlink_msg_control_system_state_pack_chan(uint8_t system
                                mavlink_message_t* msg,
                                    uint64_t time_usec,float x_acc,float y_acc,float z_acc,float x_vel,float y_vel,float z_vel,float x_pos,float y_pos,float z_pos,float airspeed,const float *vel_variance,const float *pos_variance,const float *q,float roll_rate,float pitch_rate,float yaw_rate)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x_acc);
@@ -380,7 +380,7 @@ static inline uint16_t mavlink_msg_control_system_state_encode_status(uint8_t sy
 
 static inline void mavlink_msg_control_system_state_send(mavlink_channel_t chan, uint64_t time_usec, float x_acc, float y_acc, float z_acc, float x_vel, float y_vel, float z_vel, float x_pos, float y_pos, float z_pos, float airspeed, const float *vel_variance, const float *pos_variance, const float *q, float roll_rate, float pitch_rate, float yaw_rate)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x_acc);
@@ -430,7 +430,7 @@ static inline void mavlink_msg_control_system_state_send(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_control_system_state_send_struct(mavlink_channel_t chan, const mavlink_control_system_state_t* control_system_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_control_system_state_send(chan, control_system_state->time_usec, control_system_state->x_acc, control_system_state->y_acc, control_system_state->z_acc, control_system_state->x_vel, control_system_state->y_vel, control_system_state->z_vel, control_system_state->x_pos, control_system_state->y_pos, control_system_state->z_pos, control_system_state->airspeed, control_system_state->vel_variance, control_system_state->pos_variance, control_system_state->q, control_system_state->roll_rate, control_system_state->pitch_rate, control_system_state->yaw_rate);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE, (const char *)control_system_state, MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE_MIN_LEN, MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE_LEN, MAVLINK_MSG_ID_CONTROL_SYSTEM_STATE_CRC);
@@ -447,7 +447,7 @@ static inline void mavlink_msg_control_system_state_send_struct(mavlink_channel_
  */
 static inline void mavlink_msg_control_system_state_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, float x_acc, float y_acc, float z_acc, float x_vel, float y_vel, float z_vel, float x_pos, float y_pos, float z_pos, float airspeed, const float *vel_variance, const float *pos_variance, const float *q, float roll_rate, float pitch_rate, float yaw_rate)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x_acc);
@@ -674,7 +674,7 @@ static inline float mavlink_msg_control_system_state_get_yaw_rate(const mavlink_
  */
 static inline void mavlink_msg_control_system_state_decode(const mavlink_message_t* msg, mavlink_control_system_state_t* control_system_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     control_system_state->time_usec = mavlink_msg_control_system_state_get_time_usec(msg);
     control_system_state->x_acc = mavlink_msg_control_system_state_get_x_acc(msg);
     control_system_state->y_acc = mavlink_msg_control_system_state_get_y_acc(msg);

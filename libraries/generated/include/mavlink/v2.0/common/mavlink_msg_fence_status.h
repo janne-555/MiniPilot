@@ -63,7 +63,7 @@ typedef struct __mavlink_fence_status_t {
 static inline uint16_t mavlink_msg_fence_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t breach_status, uint16_t breach_count, uint8_t breach_type, uint32_t breach_time, uint8_t breach_mitigation)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FENCE_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, breach_time);
     _mav_put_uint16_t(buf, 4, breach_count);
@@ -104,7 +104,7 @@ static inline uint16_t mavlink_msg_fence_status_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_fence_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t breach_status, uint16_t breach_count, uint8_t breach_type, uint32_t breach_time, uint8_t breach_mitigation)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FENCE_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, breach_time);
     _mav_put_uint16_t(buf, 4, breach_count);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_fence_status_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint8_t breach_status,uint16_t breach_count,uint8_t breach_type,uint32_t breach_time,uint8_t breach_mitigation)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FENCE_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, breach_time);
     _mav_put_uint16_t(buf, 4, breach_count);
@@ -228,7 +228,7 @@ static inline uint16_t mavlink_msg_fence_status_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_fence_status_send(mavlink_channel_t chan, uint8_t breach_status, uint16_t breach_count, uint8_t breach_type, uint32_t breach_time, uint8_t breach_mitigation)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FENCE_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, breach_time);
     _mav_put_uint16_t(buf, 4, breach_count);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_fence_status_send(mavlink_channel_t chan, uint8_t
  */
 static inline void mavlink_msg_fence_status_send_struct(mavlink_channel_t chan, const mavlink_fence_status_t* fence_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_fence_status_send(chan, fence_status->breach_status, fence_status->breach_count, fence_status->breach_type, fence_status->breach_time, fence_status->breach_mitigation);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_FENCE_STATUS, (const char *)fence_status, MAVLINK_MSG_ID_FENCE_STATUS_MIN_LEN, MAVLINK_MSG_ID_FENCE_STATUS_LEN, MAVLINK_MSG_ID_FENCE_STATUS_CRC);
@@ -273,7 +273,7 @@ static inline void mavlink_msg_fence_status_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_fence_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t breach_status, uint16_t breach_count, uint8_t breach_type, uint32_t breach_time, uint8_t breach_mitigation)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, breach_time);
     _mav_put_uint16_t(buf, 4, breach_count);
@@ -358,7 +358,7 @@ static inline uint8_t mavlink_msg_fence_status_get_breach_mitigation(const mavli
  */
 static inline void mavlink_msg_fence_status_decode(const mavlink_message_t* msg, mavlink_fence_status_t* fence_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     fence_status->breach_time = mavlink_msg_fence_status_get_breach_time(msg);
     fence_status->breach_count = mavlink_msg_fence_status_get_breach_count(msg);
     fence_status->breach_status = mavlink_msg_fence_status_get_breach_status(msg);

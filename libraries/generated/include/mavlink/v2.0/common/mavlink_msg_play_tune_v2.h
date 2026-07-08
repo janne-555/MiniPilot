@@ -59,7 +59,7 @@ typedef struct __mavlink_play_tune_v2_t {
 static inline uint16_t mavlink_msg_play_tune_v2_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint32_t format, const char *tune)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PLAY_TUNE_V2_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -95,7 +95,7 @@ static inline uint16_t mavlink_msg_play_tune_v2_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_play_tune_v2_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint32_t format, const char *tune)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PLAY_TUNE_V2_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -135,7 +135,7 @@ static inline uint16_t mavlink_msg_play_tune_v2_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint32_t format,const char *tune)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PLAY_TUNE_V2_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_play_tune_v2_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_play_tune_v2_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint32_t format, const char *tune)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PLAY_TUNE_V2_LEN];
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -233,7 +233,7 @@ static inline void mavlink_msg_play_tune_v2_send(mavlink_channel_t chan, uint8_t
  */
 static inline void mavlink_msg_play_tune_v2_send_struct(mavlink_channel_t chan, const mavlink_play_tune_v2_t* play_tune_v2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_play_tune_v2_send(chan, play_tune_v2->target_system, play_tune_v2->target_component, play_tune_v2->format, play_tune_v2->tune);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PLAY_TUNE_V2, (const char *)play_tune_v2, MAVLINK_MSG_ID_PLAY_TUNE_V2_MIN_LEN, MAVLINK_MSG_ID_PLAY_TUNE_V2_LEN, MAVLINK_MSG_ID_PLAY_TUNE_V2_CRC);
@@ -250,7 +250,7 @@ static inline void mavlink_msg_play_tune_v2_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_play_tune_v2_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint32_t format, const char *tune)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, format);
     _mav_put_uint8_t(buf, 4, target_system);
@@ -321,7 +321,7 @@ static inline uint16_t mavlink_msg_play_tune_v2_get_tune(const mavlink_message_t
  */
 static inline void mavlink_msg_play_tune_v2_decode(const mavlink_message_t* msg, mavlink_play_tune_v2_t* play_tune_v2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     play_tune_v2->format = mavlink_msg_play_tune_v2_get_format(msg);
     play_tune_v2->target_system = mavlink_msg_play_tune_v2_get_target_system(msg);
     play_tune_v2->target_component = mavlink_msg_play_tune_v2_get_target_component(msg);

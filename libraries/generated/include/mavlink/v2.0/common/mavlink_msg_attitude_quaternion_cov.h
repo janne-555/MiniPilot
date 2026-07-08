@@ -68,7 +68,7 @@ typedef struct __mavlink_attitude_quaternion_cov_t {
 static inline uint16_t mavlink_msg_attitude_quaternion_cov_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, const float *q, float rollspeed, float pitchspeed, float yawspeed, const float *covariance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 24, rollspeed);
@@ -110,7 +110,7 @@ static inline uint16_t mavlink_msg_attitude_quaternion_cov_pack(uint8_t system_i
 static inline uint16_t mavlink_msg_attitude_quaternion_cov_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, const float *q, float rollspeed, float pitchspeed, float yawspeed, const float *covariance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 24, rollspeed);
@@ -156,7 +156,7 @@ static inline uint16_t mavlink_msg_attitude_quaternion_cov_pack_chan(uint8_t sys
                                mavlink_message_t* msg,
                                    uint64_t time_usec,const float *q,float rollspeed,float pitchspeed,float yawspeed,const float *covariance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 24, rollspeed);
@@ -236,7 +236,7 @@ static inline uint16_t mavlink_msg_attitude_quaternion_cov_encode_status(uint8_t
 
 static inline void mavlink_msg_attitude_quaternion_cov_send(mavlink_channel_t chan, uint64_t time_usec, const float *q, float rollspeed, float pitchspeed, float yawspeed, const float *covariance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 24, rollspeed);
@@ -264,7 +264,7 @@ static inline void mavlink_msg_attitude_quaternion_cov_send(mavlink_channel_t ch
  */
 static inline void mavlink_msg_attitude_quaternion_cov_send_struct(mavlink_channel_t chan, const mavlink_attitude_quaternion_cov_t* attitude_quaternion_cov)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_attitude_quaternion_cov_send(chan, attitude_quaternion_cov->time_usec, attitude_quaternion_cov->q, attitude_quaternion_cov->rollspeed, attitude_quaternion_cov->pitchspeed, attitude_quaternion_cov->yawspeed, attitude_quaternion_cov->covariance);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV, (const char *)attitude_quaternion_cov, MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV_MIN_LEN, MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV_LEN, MAVLINK_MSG_ID_ATTITUDE_QUATERNION_COV_CRC);
@@ -281,7 +281,7 @@ static inline void mavlink_msg_attitude_quaternion_cov_send_struct(mavlink_chann
  */
 static inline void mavlink_msg_attitude_quaternion_cov_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, const float *q, float rollspeed, float pitchspeed, float yawspeed, const float *covariance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 24, rollspeed);
@@ -376,7 +376,7 @@ static inline uint16_t mavlink_msg_attitude_quaternion_cov_get_covariance(const 
  */
 static inline void mavlink_msg_attitude_quaternion_cov_decode(const mavlink_message_t* msg, mavlink_attitude_quaternion_cov_t* attitude_quaternion_cov)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     attitude_quaternion_cov->time_usec = mavlink_msg_attitude_quaternion_cov_get_time_usec(msg);
     mavlink_msg_attitude_quaternion_cov_get_q(msg, attitude_quaternion_cov->q);
     attitude_quaternion_cov->rollspeed = mavlink_msg_attitude_quaternion_cov_get_rollspeed(msg);

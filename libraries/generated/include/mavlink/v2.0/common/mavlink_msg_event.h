@@ -72,7 +72,7 @@ MAVLINK_WIP
 static inline uint16_t mavlink_msg_event_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t destination_component, uint8_t destination_system, uint32_t id, uint32_t event_time_boot_ms, uint16_t sequence, uint8_t log_levels, const uint8_t *arguments)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EVENT_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint32_t(buf, 4, event_time_boot_ms);
@@ -117,7 +117,7 @@ static inline uint16_t mavlink_msg_event_pack(uint8_t system_id, uint8_t compone
 static inline uint16_t mavlink_msg_event_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t destination_component, uint8_t destination_system, uint32_t id, uint32_t event_time_boot_ms, uint16_t sequence, uint8_t log_levels, const uint8_t *arguments)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EVENT_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint32_t(buf, 4, event_time_boot_ms);
@@ -167,7 +167,7 @@ static inline uint16_t mavlink_msg_event_pack_chan(uint8_t system_id, uint8_t co
                                mavlink_message_t* msg,
                                    uint8_t destination_component,uint8_t destination_system,uint32_t id,uint32_t event_time_boot_ms,uint16_t sequence,uint8_t log_levels,const uint8_t *arguments)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EVENT_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint32_t(buf, 4, event_time_boot_ms);
@@ -253,7 +253,7 @@ static inline uint16_t mavlink_msg_event_encode_status(uint8_t system_id, uint8_
 MAVLINK_WIP
 static inline void mavlink_msg_event_send(mavlink_channel_t chan, uint8_t destination_component, uint8_t destination_system, uint32_t id, uint32_t event_time_boot_ms, uint16_t sequence, uint8_t log_levels, const uint8_t *arguments)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_EVENT_LEN];
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint32_t(buf, 4, event_time_boot_ms);
@@ -284,7 +284,7 @@ static inline void mavlink_msg_event_send(mavlink_channel_t chan, uint8_t destin
 MAVLINK_WIP
 static inline void mavlink_msg_event_send_struct(mavlink_channel_t chan, const mavlink_event_t* event)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_event_send(chan, event->destination_component, event->destination_system, event->id, event->event_time_boot_ms, event->sequence, event->log_levels, event->arguments);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_EVENT, (const char *)event, MAVLINK_MSG_ID_EVENT_MIN_LEN, MAVLINK_MSG_ID_EVENT_LEN, MAVLINK_MSG_ID_EVENT_CRC);
@@ -302,7 +302,7 @@ static inline void mavlink_msg_event_send_struct(mavlink_channel_t chan, const m
 MAVLINK_WIP
 static inline void mavlink_msg_event_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t destination_component, uint8_t destination_system, uint32_t id, uint32_t event_time_boot_ms, uint16_t sequence, uint8_t log_levels, const uint8_t *arguments)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, id);
     _mav_put_uint32_t(buf, 4, event_time_boot_ms);
@@ -417,7 +417,7 @@ static inline uint16_t mavlink_msg_event_get_arguments(const mavlink_message_t* 
 MAVLINK_WIP
 static inline void mavlink_msg_event_decode(const mavlink_message_t* msg, mavlink_event_t* event)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     event->id = mavlink_msg_event_get_id(msg);
     event->event_time_boot_ms = mavlink_msg_event_get_event_time_boot_ms(msg);
     event->sequence = mavlink_msg_event_get_sequence(msg);

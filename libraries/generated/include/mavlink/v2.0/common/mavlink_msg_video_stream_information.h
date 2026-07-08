@@ -100,7 +100,7 @@ typedef struct __mavlink_video_stream_information_t {
 static inline uint16_t mavlink_msg_video_stream_information_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t stream_id, uint8_t count, uint8_t type, uint16_t flags, float framerate, uint16_t resolution_h, uint16_t resolution_v, uint32_t bitrate, uint16_t rotation, uint16_t hfov, const char *name, const char *uri, uint8_t encoding, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_LEN];
     _mav_put_float(buf, 0, framerate);
     _mav_put_uint32_t(buf, 4, bitrate);
@@ -166,7 +166,7 @@ static inline uint16_t mavlink_msg_video_stream_information_pack(uint8_t system_
 static inline uint16_t mavlink_msg_video_stream_information_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t stream_id, uint8_t count, uint8_t type, uint16_t flags, float framerate, uint16_t resolution_h, uint16_t resolution_v, uint32_t bitrate, uint16_t rotation, uint16_t hfov, const char *name, const char *uri, uint8_t encoding, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_LEN];
     _mav_put_float(buf, 0, framerate);
     _mav_put_uint32_t(buf, 4, bitrate);
@@ -236,7 +236,7 @@ static inline uint16_t mavlink_msg_video_stream_information_pack_chan(uint8_t sy
                                mavlink_message_t* msg,
                                    uint8_t stream_id,uint8_t count,uint8_t type,uint16_t flags,float framerate,uint16_t resolution_h,uint16_t resolution_v,uint32_t bitrate,uint16_t rotation,uint16_t hfov,const char *name,const char *uri,uint8_t encoding,uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_LEN];
     _mav_put_float(buf, 0, framerate);
     _mav_put_uint32_t(buf, 4, bitrate);
@@ -340,7 +340,7 @@ static inline uint16_t mavlink_msg_video_stream_information_encode_status(uint8_
 
 static inline void mavlink_msg_video_stream_information_send(mavlink_channel_t chan, uint8_t stream_id, uint8_t count, uint8_t type, uint16_t flags, float framerate, uint16_t resolution_h, uint16_t resolution_v, uint32_t bitrate, uint16_t rotation, uint16_t hfov, const char *name, const char *uri, uint8_t encoding, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_LEN];
     _mav_put_float(buf, 0, framerate);
     _mav_put_uint32_t(buf, 4, bitrate);
@@ -384,7 +384,7 @@ static inline void mavlink_msg_video_stream_information_send(mavlink_channel_t c
  */
 static inline void mavlink_msg_video_stream_information_send_struct(mavlink_channel_t chan, const mavlink_video_stream_information_t* video_stream_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_video_stream_information_send(chan, video_stream_information->stream_id, video_stream_information->count, video_stream_information->type, video_stream_information->flags, video_stream_information->framerate, video_stream_information->resolution_h, video_stream_information->resolution_v, video_stream_information->bitrate, video_stream_information->rotation, video_stream_information->hfov, video_stream_information->name, video_stream_information->uri, video_stream_information->encoding, video_stream_information->camera_device_id);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION, (const char *)video_stream_information, MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_MIN_LEN, MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_LEN, MAVLINK_MSG_ID_VIDEO_STREAM_INFORMATION_CRC);
@@ -401,7 +401,7 @@ static inline void mavlink_msg_video_stream_information_send_struct(mavlink_chan
  */
 static inline void mavlink_msg_video_stream_information_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t stream_id, uint8_t count, uint8_t type, uint16_t flags, float framerate, uint16_t resolution_h, uint16_t resolution_v, uint32_t bitrate, uint16_t rotation, uint16_t hfov, const char *name, const char *uri, uint8_t encoding, uint8_t camera_device_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, framerate);
     _mav_put_uint32_t(buf, 4, bitrate);
@@ -592,7 +592,7 @@ static inline uint8_t mavlink_msg_video_stream_information_get_camera_device_id(
  */
 static inline void mavlink_msg_video_stream_information_decode(const mavlink_message_t* msg, mavlink_video_stream_information_t* video_stream_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     video_stream_information->framerate = mavlink_msg_video_stream_information_get_framerate(msg);
     video_stream_information->bitrate = mavlink_msg_video_stream_information_get_bitrate(msg);
     video_stream_information->flags = mavlink_msg_video_stream_information_get_flags(msg);

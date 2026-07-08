@@ -55,7 +55,7 @@ typedef struct __mavlink_debug_t {
 static inline uint16_t mavlink_msg_debug_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint8_t ind, float value)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DEBUG_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, value);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_debug_pack(uint8_t system_id, uint8_t compone
 static inline uint16_t mavlink_msg_debug_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint8_t ind, float value)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DEBUG_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, value);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_debug_pack_chan(uint8_t system_id, uint8_t co
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint8_t ind,float value)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DEBUG_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, value);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_debug_encode_status(uint8_t system_id, uint8_
 
 static inline void mavlink_msg_debug_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint8_t ind, float value)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_DEBUG_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, value);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_debug_send(mavlink_channel_t chan, uint32_t time_
  */
 static inline void mavlink_msg_debug_send_struct(mavlink_channel_t chan, const mavlink_debug_t* debug)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_debug_send(chan, debug->time_boot_ms, debug->ind, debug->value);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_DEBUG, (const char *)debug, MAVLINK_MSG_ID_DEBUG_MIN_LEN, MAVLINK_MSG_ID_DEBUG_LEN, MAVLINK_MSG_ID_DEBUG_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_debug_send_struct(mavlink_channel_t chan, const m
  */
 static inline void mavlink_msg_debug_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint8_t ind, float value)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, value);
@@ -304,7 +304,7 @@ static inline float mavlink_msg_debug_get_value(const mavlink_message_t* msg)
  */
 static inline void mavlink_msg_debug_decode(const mavlink_message_t* msg, mavlink_debug_t* debug)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     debug->time_boot_ms = mavlink_msg_debug_get_time_boot_ms(msg);
     debug->value = mavlink_msg_debug_get_value(msg);
     debug->ind = mavlink_msg_debug_get_ind(msg);

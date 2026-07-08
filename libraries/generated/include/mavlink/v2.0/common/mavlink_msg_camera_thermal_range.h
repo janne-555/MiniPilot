@@ -79,7 +79,7 @@ typedef struct __mavlink_camera_thermal_range_t {
 static inline uint16_t mavlink_msg_camera_thermal_range_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint8_t stream_id, uint8_t camera_device_id, float max, float max_point_x, float max_point_y, float min, float min_point_x, float min_point_y)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, max);
@@ -132,7 +132,7 @@ static inline uint16_t mavlink_msg_camera_thermal_range_pack(uint8_t system_id, 
 static inline uint16_t mavlink_msg_camera_thermal_range_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint8_t stream_id, uint8_t camera_device_id, float max, float max_point_x, float max_point_y, float min, float min_point_x, float min_point_y)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, max);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_camera_thermal_range_pack_chan(uint8_t system
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint8_t stream_id,uint8_t camera_device_id,float max,float max_point_x,float max_point_y,float min,float min_point_x,float min_point_y)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, max);
@@ -280,7 +280,7 @@ static inline uint16_t mavlink_msg_camera_thermal_range_encode_status(uint8_t sy
 
 static inline void mavlink_msg_camera_thermal_range_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint8_t stream_id, uint8_t camera_device_id, float max, float max_point_x, float max_point_y, float min, float min_point_x, float min_point_y)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, max);
@@ -316,7 +316,7 @@ static inline void mavlink_msg_camera_thermal_range_send(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_camera_thermal_range_send_struct(mavlink_channel_t chan, const mavlink_camera_thermal_range_t* camera_thermal_range)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_camera_thermal_range_send(chan, camera_thermal_range->time_boot_ms, camera_thermal_range->stream_id, camera_thermal_range->camera_device_id, camera_thermal_range->max, camera_thermal_range->max_point_x, camera_thermal_range->max_point_y, camera_thermal_range->min, camera_thermal_range->min_point_x, camera_thermal_range->min_point_y);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE, (const char *)camera_thermal_range, MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE_MIN_LEN, MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE_LEN, MAVLINK_MSG_ID_CAMERA_THERMAL_RANGE_CRC);
@@ -333,7 +333,7 @@ static inline void mavlink_msg_camera_thermal_range_send_struct(mavlink_channel_
  */
 static inline void mavlink_msg_camera_thermal_range_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint8_t stream_id, uint8_t camera_device_id, float max, float max_point_x, float max_point_y, float min, float min_point_x, float min_point_y)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, max);
@@ -466,7 +466,7 @@ static inline float mavlink_msg_camera_thermal_range_get_min_point_y(const mavli
  */
 static inline void mavlink_msg_camera_thermal_range_decode(const mavlink_message_t* msg, mavlink_camera_thermal_range_t* camera_thermal_range)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     camera_thermal_range->time_boot_ms = mavlink_msg_camera_thermal_range_get_time_boot_ms(msg);
     camera_thermal_range->max = mavlink_msg_camera_thermal_range_get_max(msg);
     camera_thermal_range->max_point_x = mavlink_msg_camera_thermal_range_get_max_point_x(msg);

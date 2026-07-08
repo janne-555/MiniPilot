@@ -51,7 +51,7 @@ typedef struct __mavlink_raw_rpm_t {
 static inline uint16_t mavlink_msg_raw_rpm_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t index, float frequency)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_RPM_LEN];
     _mav_put_float(buf, 0, frequency);
     _mav_put_uint8_t(buf, 4, index);
@@ -83,7 +83,7 @@ static inline uint16_t mavlink_msg_raw_rpm_pack(uint8_t system_id, uint8_t compo
 static inline uint16_t mavlink_msg_raw_rpm_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t index, float frequency)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_RPM_LEN];
     _mav_put_float(buf, 0, frequency);
     _mav_put_uint8_t(buf, 4, index);
@@ -119,7 +119,7 @@ static inline uint16_t mavlink_msg_raw_rpm_pack_chan(uint8_t system_id, uint8_t 
                                mavlink_message_t* msg,
                                    uint8_t index,float frequency)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_RPM_LEN];
     _mav_put_float(buf, 0, frequency);
     _mav_put_uint8_t(buf, 4, index);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_raw_rpm_encode_status(uint8_t system_id, uint
 
 static inline void mavlink_msg_raw_rpm_send(mavlink_channel_t chan, uint8_t index, float frequency)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_RAW_RPM_LEN];
     _mav_put_float(buf, 0, frequency);
     _mav_put_uint8_t(buf, 4, index);
@@ -211,7 +211,7 @@ static inline void mavlink_msg_raw_rpm_send(mavlink_channel_t chan, uint8_t inde
  */
 static inline void mavlink_msg_raw_rpm_send_struct(mavlink_channel_t chan, const mavlink_raw_rpm_t* raw_rpm)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_raw_rpm_send(chan, raw_rpm->index, raw_rpm->frequency);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_RAW_RPM, (const char *)raw_rpm, MAVLINK_MSG_ID_RAW_RPM_MIN_LEN, MAVLINK_MSG_ID_RAW_RPM_LEN, MAVLINK_MSG_ID_RAW_RPM_CRC);
@@ -228,7 +228,7 @@ static inline void mavlink_msg_raw_rpm_send_struct(mavlink_channel_t chan, const
  */
 static inline void mavlink_msg_raw_rpm_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t index, float frequency)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, frequency);
     _mav_put_uint8_t(buf, 4, index);
@@ -277,7 +277,7 @@ static inline float mavlink_msg_raw_rpm_get_frequency(const mavlink_message_t* m
  */
 static inline void mavlink_msg_raw_rpm_decode(const mavlink_message_t* msg, mavlink_raw_rpm_t* raw_rpm)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     raw_rpm->frequency = mavlink_msg_raw_rpm_get_frequency(msg);
     raw_rpm->index = mavlink_msg_raw_rpm_get_index(msg);
 #else

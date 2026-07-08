@@ -14,16 +14,18 @@
 static uint16_t upload_count = 0;
 static uint16_t upload_seq = 0;
 
-static void send_msg(mavlink_message_t *msg) {
-  uint8_t buf[MAVLINK_MAX_PACKET_LEN];
+static void send_msg(mavlink_message_t *msg)
+{
+    uint8_t buf[MAVLINK_MAX_PACKET_LEN];
 
   uint16_t len = mavlink_msg_to_send_buffer(buf, msg);
 
   hal_comm_write(buf, len);
 }
 
-void GCS_send_mission_ack(void) {
-  mavlink_message_t msg;
+void GCS_send_mission_ack(void)
+{
+    mavlink_message_t msg;
 
   mavlink_msg_mission_ack_pack(1, 1, &msg,
 
@@ -40,8 +42,9 @@ void GCS_send_mission_ack(void) {
   printf("SEND MISSION_ACK\n");
 }
 
-void GCS_send_mission_count(void) {
-  mavlink_message_t msg;
+void GCS_send_mission_count(void)
+{
+    mavlink_message_t msg;
 
   mavlink_msg_mission_count_pack(1, 1, &msg,
 
@@ -58,9 +61,9 @@ void GCS_send_mission_count(void) {
   printf("SEND MISSION_COUNT\n");
 }
 
-void GCS_send_mission_request(uint16_t seq) {
-
-  mavlink_message_t msg;
+void GCS_send_mission_request(uint16_t seq)
+{
+    mavlink_message_t msg;
 
   mavlink_msg_mission_request_int_pack(1, 1, &msg,
 
@@ -133,9 +136,9 @@ void GCS_handle_mission_item(mavlink_message_t *msg) {
   }
 }
 
-void GCS_handle_mission_request_list(void) {
-
-  printf("MISSION LIST REQUEST\n");
+void GCS_handle_mission_request_list(void)
+{
+    printf("MISSION LIST REQUEST\n");
 
   GCS_send_mission_count();
 }

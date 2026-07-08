@@ -79,7 +79,7 @@ typedef struct __mavlink_obstacle_distance_t {
 static inline uint16_t mavlink_msg_obstacle_distance_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t sensor_type, const uint16_t *distances, uint8_t increment, uint16_t min_distance, uint16_t max_distance, float increment_f, float angle_offset, uint8_t frame)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OBSTACLE_DISTANCE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 152, min_distance);
@@ -130,7 +130,7 @@ static inline uint16_t mavlink_msg_obstacle_distance_pack(uint8_t system_id, uin
 static inline uint16_t mavlink_msg_obstacle_distance_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t sensor_type, const uint16_t *distances, uint8_t increment, uint16_t min_distance, uint16_t max_distance, float increment_f, float angle_offset, uint8_t frame)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OBSTACLE_DISTANCE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 152, min_distance);
@@ -185,7 +185,7 @@ static inline uint16_t mavlink_msg_obstacle_distance_pack_chan(uint8_t system_id
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint8_t sensor_type,const uint16_t *distances,uint8_t increment,uint16_t min_distance,uint16_t max_distance,float increment_f,float angle_offset,uint8_t frame)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OBSTACLE_DISTANCE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 152, min_distance);
@@ -274,7 +274,7 @@ static inline uint16_t mavlink_msg_obstacle_distance_encode_status(uint8_t syste
 
 static inline void mavlink_msg_obstacle_distance_send(mavlink_channel_t chan, uint64_t time_usec, uint8_t sensor_type, const uint16_t *distances, uint8_t increment, uint16_t min_distance, uint16_t max_distance, float increment_f, float angle_offset, uint8_t frame)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OBSTACLE_DISTANCE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 152, min_distance);
@@ -308,7 +308,7 @@ static inline void mavlink_msg_obstacle_distance_send(mavlink_channel_t chan, ui
  */
 static inline void mavlink_msg_obstacle_distance_send_struct(mavlink_channel_t chan, const mavlink_obstacle_distance_t* obstacle_distance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_obstacle_distance_send(chan, obstacle_distance->time_usec, obstacle_distance->sensor_type, obstacle_distance->distances, obstacle_distance->increment, obstacle_distance->min_distance, obstacle_distance->max_distance, obstacle_distance->increment_f, obstacle_distance->angle_offset, obstacle_distance->frame);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_OBSTACLE_DISTANCE, (const char *)obstacle_distance, MAVLINK_MSG_ID_OBSTACLE_DISTANCE_MIN_LEN, MAVLINK_MSG_ID_OBSTACLE_DISTANCE_LEN, MAVLINK_MSG_ID_OBSTACLE_DISTANCE_CRC);
@@ -325,7 +325,7 @@ static inline void mavlink_msg_obstacle_distance_send_struct(mavlink_channel_t c
  */
 static inline void mavlink_msg_obstacle_distance_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint8_t sensor_type, const uint16_t *distances, uint8_t increment, uint16_t min_distance, uint16_t max_distance, float increment_f, float angle_offset, uint8_t frame)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint16_t(buf, 152, min_distance);
@@ -456,7 +456,7 @@ static inline uint8_t mavlink_msg_obstacle_distance_get_frame(const mavlink_mess
  */
 static inline void mavlink_msg_obstacle_distance_decode(const mavlink_message_t* msg, mavlink_obstacle_distance_t* obstacle_distance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     obstacle_distance->time_usec = mavlink_msg_obstacle_distance_get_time_usec(msg);
     mavlink_msg_obstacle_distance_get_distances(msg, obstacle_distance->distances);
     obstacle_distance->min_distance = mavlink_msg_obstacle_distance_get_min_distance(msg);

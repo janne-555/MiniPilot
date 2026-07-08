@@ -51,7 +51,7 @@ typedef struct __mavlink_encapsulated_data_t {
 static inline uint16_t mavlink_msg_encapsulated_data_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint16_t seqnr, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ENCAPSULATED_DATA_LEN];
     _mav_put_uint16_t(buf, 0, seqnr);
     _mav_put_uint8_t_array(buf, 2, data, 253);
@@ -81,7 +81,7 @@ static inline uint16_t mavlink_msg_encapsulated_data_pack(uint8_t system_id, uin
 static inline uint16_t mavlink_msg_encapsulated_data_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint16_t seqnr, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ENCAPSULATED_DATA_LEN];
     _mav_put_uint16_t(buf, 0, seqnr);
     _mav_put_uint8_t_array(buf, 2, data, 253);
@@ -115,7 +115,7 @@ static inline uint16_t mavlink_msg_encapsulated_data_pack_chan(uint8_t system_id
                                mavlink_message_t* msg,
                                    uint16_t seqnr,const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ENCAPSULATED_DATA_LEN];
     _mav_put_uint16_t(buf, 0, seqnr);
     _mav_put_uint8_t_array(buf, 2, data, 253);
@@ -183,7 +183,7 @@ static inline uint16_t mavlink_msg_encapsulated_data_encode_status(uint8_t syste
 
 static inline void mavlink_msg_encapsulated_data_send(mavlink_channel_t chan, uint16_t seqnr, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ENCAPSULATED_DATA_LEN];
     _mav_put_uint16_t(buf, 0, seqnr);
     _mav_put_uint8_t_array(buf, 2, data, 253);
@@ -203,7 +203,7 @@ static inline void mavlink_msg_encapsulated_data_send(mavlink_channel_t chan, ui
  */
 static inline void mavlink_msg_encapsulated_data_send_struct(mavlink_channel_t chan, const mavlink_encapsulated_data_t* encapsulated_data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_encapsulated_data_send(chan, encapsulated_data->seqnr, encapsulated_data->data);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ENCAPSULATED_DATA, (const char *)encapsulated_data, MAVLINK_MSG_ID_ENCAPSULATED_DATA_MIN_LEN, MAVLINK_MSG_ID_ENCAPSULATED_DATA_LEN, MAVLINK_MSG_ID_ENCAPSULATED_DATA_CRC);
@@ -220,7 +220,7 @@ static inline void mavlink_msg_encapsulated_data_send_struct(mavlink_channel_t c
  */
 static inline void mavlink_msg_encapsulated_data_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint16_t seqnr, const uint8_t *data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, seqnr);
     _mav_put_uint8_t_array(buf, 2, data, 253);
@@ -267,7 +267,7 @@ static inline uint16_t mavlink_msg_encapsulated_data_get_data(const mavlink_mess
  */
 static inline void mavlink_msg_encapsulated_data_decode(const mavlink_message_t* msg, mavlink_encapsulated_data_t* encapsulated_data)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     encapsulated_data->seqnr = mavlink_msg_encapsulated_data_get_seqnr(msg);
     mavlink_msg_encapsulated_data_get_data(msg, encapsulated_data->data);
 #else

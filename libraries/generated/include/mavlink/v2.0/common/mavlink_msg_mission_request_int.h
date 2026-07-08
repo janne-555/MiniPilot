@@ -59,7 +59,7 @@ typedef struct __mavlink_mission_request_int_t {
 static inline uint16_t mavlink_msg_mission_request_int_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t seq, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_REQUEST_INT_LEN];
     _mav_put_uint16_t(buf, 0, seq);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -97,7 +97,7 @@ static inline uint16_t mavlink_msg_mission_request_int_pack(uint8_t system_id, u
 static inline uint16_t mavlink_msg_mission_request_int_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t seq, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_REQUEST_INT_LEN];
     _mav_put_uint16_t(buf, 0, seq);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -139,7 +139,7 @@ static inline uint16_t mavlink_msg_mission_request_int_pack_chan(uint8_t system_
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint16_t seq,uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_REQUEST_INT_LEN];
     _mav_put_uint16_t(buf, 0, seq);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -215,7 +215,7 @@ static inline uint16_t mavlink_msg_mission_request_int_encode_status(uint8_t sys
 
 static inline void mavlink_msg_mission_request_int_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint16_t seq, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_REQUEST_INT_LEN];
     _mav_put_uint16_t(buf, 0, seq);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -241,7 +241,7 @@ static inline void mavlink_msg_mission_request_int_send(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_mission_request_int_send_struct(mavlink_channel_t chan, const mavlink_mission_request_int_t* mission_request_int)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_mission_request_int_send(chan, mission_request_int->target_system, mission_request_int->target_component, mission_request_int->seq, mission_request_int->mission_type);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_MISSION_REQUEST_INT, (const char *)mission_request_int, MAVLINK_MSG_ID_MISSION_REQUEST_INT_MIN_LEN, MAVLINK_MSG_ID_MISSION_REQUEST_INT_LEN, MAVLINK_MSG_ID_MISSION_REQUEST_INT_CRC);
@@ -258,7 +258,7 @@ static inline void mavlink_msg_mission_request_int_send_struct(mavlink_channel_t
  */
 static inline void mavlink_msg_mission_request_int_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint16_t seq, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, seq);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -331,7 +331,7 @@ static inline uint8_t mavlink_msg_mission_request_int_get_mission_type(const mav
  */
 static inline void mavlink_msg_mission_request_int_decode(const mavlink_message_t* msg, mavlink_mission_request_int_t* mission_request_int)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mission_request_int->seq = mavlink_msg_mission_request_int_get_seq(msg);
     mission_request_int->target_system = mavlink_msg_mission_request_int_get_target_system(msg);
     mission_request_int->target_component = mavlink_msg_mission_request_int_get_target_component(msg);

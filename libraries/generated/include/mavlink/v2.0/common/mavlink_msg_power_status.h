@@ -55,7 +55,7 @@ typedef struct __mavlink_power_status_t {
 static inline uint16_t mavlink_msg_power_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint16_t Vcc, uint16_t Vservo, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_POWER_STATUS_LEN];
     _mav_put_uint16_t(buf, 0, Vcc);
     _mav_put_uint16_t(buf, 2, Vservo);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_power_status_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_power_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint16_t Vcc, uint16_t Vservo, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_POWER_STATUS_LEN];
     _mav_put_uint16_t(buf, 0, Vcc);
     _mav_put_uint16_t(buf, 2, Vservo);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_power_status_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint16_t Vcc,uint16_t Vservo,uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_POWER_STATUS_LEN];
     _mav_put_uint16_t(buf, 0, Vcc);
     _mav_put_uint16_t(buf, 2, Vservo);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_power_status_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_power_status_send(mavlink_channel_t chan, uint16_t Vcc, uint16_t Vservo, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_POWER_STATUS_LEN];
     _mav_put_uint16_t(buf, 0, Vcc);
     _mav_put_uint16_t(buf, 2, Vservo);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_power_status_send(mavlink_channel_t chan, uint16_
  */
 static inline void mavlink_msg_power_status_send_struct(mavlink_channel_t chan, const mavlink_power_status_t* power_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_power_status_send(chan, power_status->Vcc, power_status->Vservo, power_status->flags);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_POWER_STATUS, (const char *)power_status, MAVLINK_MSG_ID_POWER_STATUS_MIN_LEN, MAVLINK_MSG_ID_POWER_STATUS_LEN, MAVLINK_MSG_ID_POWER_STATUS_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_power_status_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_power_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint16_t Vcc, uint16_t Vservo, uint16_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, Vcc);
     _mav_put_uint16_t(buf, 2, Vservo);
@@ -304,7 +304,7 @@ static inline uint16_t mavlink_msg_power_status_get_flags(const mavlink_message_
  */
 static inline void mavlink_msg_power_status_decode(const mavlink_message_t* msg, mavlink_power_status_t* power_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     power_status->Vcc = mavlink_msg_power_status_get_Vcc(msg);
     power_status->Vservo = mavlink_msg_power_status_get_Vservo(msg);
     power_status->flags = mavlink_msg_power_status_get_flags(msg);

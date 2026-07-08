@@ -75,7 +75,7 @@ typedef struct __mavlink_isbd_link_status_t {
 static inline uint16_t mavlink_msg_isbd_link_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t timestamp, uint64_t last_heartbeat, uint16_t failed_sessions, uint16_t successful_sessions, uint8_t signal_quality, uint8_t ring_pending, uint8_t tx_session_pending, uint8_t rx_session_pending)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ISBD_LINK_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, last_heartbeat);
@@ -125,7 +125,7 @@ static inline uint16_t mavlink_msg_isbd_link_status_pack(uint8_t system_id, uint
 static inline uint16_t mavlink_msg_isbd_link_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t timestamp, uint64_t last_heartbeat, uint16_t failed_sessions, uint16_t successful_sessions, uint8_t signal_quality, uint8_t ring_pending, uint8_t tx_session_pending, uint8_t rx_session_pending)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ISBD_LINK_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, last_heartbeat);
@@ -179,7 +179,7 @@ static inline uint16_t mavlink_msg_isbd_link_status_pack_chan(uint8_t system_id,
                                mavlink_message_t* msg,
                                    uint64_t timestamp,uint64_t last_heartbeat,uint16_t failed_sessions,uint16_t successful_sessions,uint8_t signal_quality,uint8_t ring_pending,uint8_t tx_session_pending,uint8_t rx_session_pending)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ISBD_LINK_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, last_heartbeat);
@@ -267,7 +267,7 @@ static inline uint16_t mavlink_msg_isbd_link_status_encode_status(uint8_t system
 
 static inline void mavlink_msg_isbd_link_status_send(mavlink_channel_t chan, uint64_t timestamp, uint64_t last_heartbeat, uint16_t failed_sessions, uint16_t successful_sessions, uint8_t signal_quality, uint8_t ring_pending, uint8_t tx_session_pending, uint8_t rx_session_pending)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ISBD_LINK_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, last_heartbeat);
@@ -301,7 +301,7 @@ static inline void mavlink_msg_isbd_link_status_send(mavlink_channel_t chan, uin
  */
 static inline void mavlink_msg_isbd_link_status_send_struct(mavlink_channel_t chan, const mavlink_isbd_link_status_t* isbd_link_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_isbd_link_status_send(chan, isbd_link_status->timestamp, isbd_link_status->last_heartbeat, isbd_link_status->failed_sessions, isbd_link_status->successful_sessions, isbd_link_status->signal_quality, isbd_link_status->ring_pending, isbd_link_status->tx_session_pending, isbd_link_status->rx_session_pending);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ISBD_LINK_STATUS, (const char *)isbd_link_status, MAVLINK_MSG_ID_ISBD_LINK_STATUS_MIN_LEN, MAVLINK_MSG_ID_ISBD_LINK_STATUS_LEN, MAVLINK_MSG_ID_ISBD_LINK_STATUS_CRC);
@@ -318,7 +318,7 @@ static inline void mavlink_msg_isbd_link_status_send_struct(mavlink_channel_t ch
  */
 static inline void mavlink_msg_isbd_link_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t timestamp, uint64_t last_heartbeat, uint16_t failed_sessions, uint16_t successful_sessions, uint8_t signal_quality, uint8_t ring_pending, uint8_t tx_session_pending, uint8_t rx_session_pending)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, last_heartbeat);
@@ -439,7 +439,7 @@ static inline uint8_t mavlink_msg_isbd_link_status_get_rx_session_pending(const 
  */
 static inline void mavlink_msg_isbd_link_status_decode(const mavlink_message_t* msg, mavlink_isbd_link_status_t* isbd_link_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     isbd_link_status->timestamp = mavlink_msg_isbd_link_status_get_timestamp(msg);
     isbd_link_status->last_heartbeat = mavlink_msg_isbd_link_status_get_last_heartbeat(msg);
     isbd_link_status->failed_sessions = mavlink_msg_isbd_link_status_get_failed_sessions(msg);

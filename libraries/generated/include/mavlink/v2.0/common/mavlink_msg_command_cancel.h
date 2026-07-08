@@ -56,7 +56,7 @@ MAVLINK_WIP
 static inline uint16_t mavlink_msg_command_cancel_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_CANCEL_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -91,7 +91,7 @@ static inline uint16_t mavlink_msg_command_cancel_pack(uint8_t system_id, uint8_
 static inline uint16_t mavlink_msg_command_cancel_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_CANCEL_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -131,7 +131,7 @@ static inline uint16_t mavlink_msg_command_cancel_pack_chan(uint8_t system_id, u
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint16_t command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_CANCEL_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -207,7 +207,7 @@ static inline uint16_t mavlink_msg_command_cancel_encode_status(uint8_t system_i
 MAVLINK_WIP
 static inline void mavlink_msg_command_cancel_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint16_t command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_CANCEL_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -232,7 +232,7 @@ static inline void mavlink_msg_command_cancel_send(mavlink_channel_t chan, uint8
 MAVLINK_WIP
 static inline void mavlink_msg_command_cancel_send_struct(mavlink_channel_t chan, const mavlink_command_cancel_t* command_cancel)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_command_cancel_send(chan, command_cancel->target_system, command_cancel->target_component, command_cancel->command);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_COMMAND_CANCEL, (const char *)command_cancel, MAVLINK_MSG_ID_COMMAND_CANCEL_MIN_LEN, MAVLINK_MSG_ID_COMMAND_CANCEL_LEN, MAVLINK_MSG_ID_COMMAND_CANCEL_CRC);
@@ -250,7 +250,7 @@ static inline void mavlink_msg_command_cancel_send_struct(mavlink_channel_t chan
 MAVLINK_WIP
 static inline void mavlink_msg_command_cancel_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint16_t command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -315,7 +315,7 @@ static inline uint16_t mavlink_msg_command_cancel_get_command(const mavlink_mess
 MAVLINK_WIP
 static inline void mavlink_msg_command_cancel_decode(const mavlink_message_t* msg, mavlink_command_cancel_t* command_cancel)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     command_cancel->command = mavlink_msg_command_cancel_get_command(msg);
     command_cancel->target_system = mavlink_msg_command_cancel_get_target_system(msg);
     command_cancel->target_component = mavlink_msg_command_cancel_get_target_component(msg);

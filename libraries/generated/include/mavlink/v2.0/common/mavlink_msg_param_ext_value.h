@@ -64,7 +64,7 @@ typedef struct __mavlink_param_ext_value_t {
 static inline uint16_t mavlink_msg_param_ext_value_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                const char *param_id, const char *param_value, uint8_t param_type, uint16_t param_count, uint16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_VALUE_LEN];
     _mav_put_uint16_t(buf, 0, param_count);
     _mav_put_uint16_t(buf, 2, param_index);
@@ -103,7 +103,7 @@ static inline uint16_t mavlink_msg_param_ext_value_pack(uint8_t system_id, uint8
 static inline uint16_t mavlink_msg_param_ext_value_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                const char *param_id, const char *param_value, uint8_t param_type, uint16_t param_count, uint16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_VALUE_LEN];
     _mav_put_uint16_t(buf, 0, param_count);
     _mav_put_uint16_t(buf, 2, param_index);
@@ -146,7 +146,7 @@ static inline uint16_t mavlink_msg_param_ext_value_pack_chan(uint8_t system_id, 
                                mavlink_message_t* msg,
                                    const char *param_id,const char *param_value,uint8_t param_type,uint16_t param_count,uint16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_VALUE_LEN];
     _mav_put_uint16_t(buf, 0, param_count);
     _mav_put_uint16_t(buf, 2, param_index);
@@ -223,7 +223,7 @@ static inline uint16_t mavlink_msg_param_ext_value_encode_status(uint8_t system_
 
 static inline void mavlink_msg_param_ext_value_send(mavlink_channel_t chan, const char *param_id, const char *param_value, uint8_t param_type, uint16_t param_count, uint16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_VALUE_LEN];
     _mav_put_uint16_t(buf, 0, param_count);
     _mav_put_uint16_t(buf, 2, param_index);
@@ -249,7 +249,7 @@ static inline void mavlink_msg_param_ext_value_send(mavlink_channel_t chan, cons
  */
 static inline void mavlink_msg_param_ext_value_send_struct(mavlink_channel_t chan, const mavlink_param_ext_value_t* param_ext_value)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_param_ext_value_send(chan, param_ext_value->param_id, param_ext_value->param_value, param_ext_value->param_type, param_ext_value->param_count, param_ext_value->param_index);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_EXT_VALUE, (const char *)param_ext_value, MAVLINK_MSG_ID_PARAM_EXT_VALUE_MIN_LEN, MAVLINK_MSG_ID_PARAM_EXT_VALUE_LEN, MAVLINK_MSG_ID_PARAM_EXT_VALUE_CRC);
@@ -266,7 +266,7 @@ static inline void mavlink_msg_param_ext_value_send_struct(mavlink_channel_t cha
  */
 static inline void mavlink_msg_param_ext_value_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  const char *param_id, const char *param_value, uint8_t param_type, uint16_t param_count, uint16_t param_index)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, param_count);
     _mav_put_uint16_t(buf, 2, param_index);
@@ -349,7 +349,7 @@ static inline uint16_t mavlink_msg_param_ext_value_get_param_index(const mavlink
  */
 static inline void mavlink_msg_param_ext_value_decode(const mavlink_message_t* msg, mavlink_param_ext_value_t* param_ext_value)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     param_ext_value->param_count = mavlink_msg_param_ext_value_get_param_count(msg);
     param_ext_value->param_index = mavlink_msg_param_ext_value_get_param_index(msg);
     mavlink_msg_param_ext_value_get_param_id(msg, param_ext_value->param_id);

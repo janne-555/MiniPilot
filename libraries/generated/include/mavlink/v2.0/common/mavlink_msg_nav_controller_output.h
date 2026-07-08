@@ -75,7 +75,7 @@ typedef struct __mavlink_nav_controller_output_t {
 static inline uint16_t mavlink_msg_nav_controller_output_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                float nav_roll, float nav_pitch, int16_t nav_bearing, int16_t target_bearing, uint16_t wp_dist, float alt_error, float aspd_error, float xtrack_error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT_LEN];
     _mav_put_float(buf, 0, nav_roll);
     _mav_put_float(buf, 4, nav_pitch);
@@ -125,7 +125,7 @@ static inline uint16_t mavlink_msg_nav_controller_output_pack(uint8_t system_id,
 static inline uint16_t mavlink_msg_nav_controller_output_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                float nav_roll, float nav_pitch, int16_t nav_bearing, int16_t target_bearing, uint16_t wp_dist, float alt_error, float aspd_error, float xtrack_error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT_LEN];
     _mav_put_float(buf, 0, nav_roll);
     _mav_put_float(buf, 4, nav_pitch);
@@ -179,7 +179,7 @@ static inline uint16_t mavlink_msg_nav_controller_output_pack_chan(uint8_t syste
                                mavlink_message_t* msg,
                                    float nav_roll,float nav_pitch,int16_t nav_bearing,int16_t target_bearing,uint16_t wp_dist,float alt_error,float aspd_error,float xtrack_error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT_LEN];
     _mav_put_float(buf, 0, nav_roll);
     _mav_put_float(buf, 4, nav_pitch);
@@ -267,7 +267,7 @@ static inline uint16_t mavlink_msg_nav_controller_output_encode_status(uint8_t s
 
 static inline void mavlink_msg_nav_controller_output_send(mavlink_channel_t chan, float nav_roll, float nav_pitch, int16_t nav_bearing, int16_t target_bearing, uint16_t wp_dist, float alt_error, float aspd_error, float xtrack_error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT_LEN];
     _mav_put_float(buf, 0, nav_roll);
     _mav_put_float(buf, 4, nav_pitch);
@@ -301,7 +301,7 @@ static inline void mavlink_msg_nav_controller_output_send(mavlink_channel_t chan
  */
 static inline void mavlink_msg_nav_controller_output_send_struct(mavlink_channel_t chan, const mavlink_nav_controller_output_t* nav_controller_output)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_nav_controller_output_send(chan, nav_controller_output->nav_roll, nav_controller_output->nav_pitch, nav_controller_output->nav_bearing, nav_controller_output->target_bearing, nav_controller_output->wp_dist, nav_controller_output->alt_error, nav_controller_output->aspd_error, nav_controller_output->xtrack_error);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT, (const char *)nav_controller_output, MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT_MIN_LEN, MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT_LEN, MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT_CRC);
@@ -318,7 +318,7 @@ static inline void mavlink_msg_nav_controller_output_send_struct(mavlink_channel
  */
 static inline void mavlink_msg_nav_controller_output_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  float nav_roll, float nav_pitch, int16_t nav_bearing, int16_t target_bearing, uint16_t wp_dist, float alt_error, float aspd_error, float xtrack_error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, nav_roll);
     _mav_put_float(buf, 4, nav_pitch);
@@ -439,7 +439,7 @@ static inline float mavlink_msg_nav_controller_output_get_xtrack_error(const mav
  */
 static inline void mavlink_msg_nav_controller_output_decode(const mavlink_message_t* msg, mavlink_nav_controller_output_t* nav_controller_output)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     nav_controller_output->nav_roll = mavlink_msg_nav_controller_output_get_nav_roll(msg);
     nav_controller_output->nav_pitch = mavlink_msg_nav_controller_output_get_nav_pitch(msg);
     nav_controller_output->alt_error = mavlink_msg_nav_controller_output_get_alt_error(msg);

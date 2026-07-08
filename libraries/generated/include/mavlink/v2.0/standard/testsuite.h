@@ -53,10 +53,11 @@ static void mavlink_test_global_position_int(uint8_t system_id, uint8_t componen
         
         
 #ifdef MAVLINK_STATUS_FLAG_OUT_MAVLINK1
-        if (status->flags & MAVLINK_STATUS_FLAG_OUT_MAVLINK1) {
-           // cope with extensions
+        if (status->flags & MAVLINK_STATUS_FLAG_OUT_MAVLINK1)
+{
+    // cope with extensions
            memset(MAVLINK_MSG_ID_GLOBAL_POSITION_INT_MIN_LEN + (char *)&packet1, 0, sizeof(packet1)-MAVLINK_MSG_ID_GLOBAL_POSITION_INT_MIN_LEN);
-        }
+}
 #endif
         memset(&packet2, 0, sizeof(packet2));
     mavlink_msg_global_position_int_encode(system_id, component_id, &msg, &packet1);
@@ -123,10 +124,11 @@ static void mavlink_test_autopilot_version(uint8_t system_id, uint8_t component_
         mav_array_memcpy(packet1.uid2, packet_in.uid2, sizeof(uint8_t)*18);
         
 #ifdef MAVLINK_STATUS_FLAG_OUT_MAVLINK1
-        if (status->flags & MAVLINK_STATUS_FLAG_OUT_MAVLINK1) {
-           // cope with extensions
+        if (status->flags & MAVLINK_STATUS_FLAG_OUT_MAVLINK1)
+{
+    // cope with extensions
            memset(MAVLINK_MSG_ID_AUTOPILOT_VERSION_MIN_LEN + (char *)&packet1, 0, sizeof(packet1)-MAVLINK_MSG_ID_AUTOPILOT_VERSION_MIN_LEN);
-        }
+}
 #endif
         memset(&packet2, 0, sizeof(packet2));
     mavlink_msg_autopilot_version_encode(system_id, component_id, &msg, &packet1);

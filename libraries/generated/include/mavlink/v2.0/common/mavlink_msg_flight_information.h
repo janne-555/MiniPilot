@@ -63,7 +63,7 @@ typedef struct __mavlink_flight_information_t {
 static inline uint16_t mavlink_msg_flight_information_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint64_t arming_time_utc, uint64_t takeoff_time_utc, uint64_t flight_uuid, uint32_t landing_time)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FLIGHT_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, arming_time_utc);
     _mav_put_uint64_t(buf, 8, takeoff_time_utc);
@@ -104,7 +104,7 @@ static inline uint16_t mavlink_msg_flight_information_pack(uint8_t system_id, ui
 static inline uint16_t mavlink_msg_flight_information_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint64_t arming_time_utc, uint64_t takeoff_time_utc, uint64_t flight_uuid, uint32_t landing_time)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FLIGHT_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, arming_time_utc);
     _mav_put_uint64_t(buf, 8, takeoff_time_utc);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_flight_information_pack_chan(uint8_t system_i
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint64_t arming_time_utc,uint64_t takeoff_time_utc,uint64_t flight_uuid,uint32_t landing_time)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FLIGHT_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, arming_time_utc);
     _mav_put_uint64_t(buf, 8, takeoff_time_utc);
@@ -228,7 +228,7 @@ static inline uint16_t mavlink_msg_flight_information_encode_status(uint8_t syst
 
 static inline void mavlink_msg_flight_information_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint64_t arming_time_utc, uint64_t takeoff_time_utc, uint64_t flight_uuid, uint32_t landing_time)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FLIGHT_INFORMATION_LEN];
     _mav_put_uint64_t(buf, 0, arming_time_utc);
     _mav_put_uint64_t(buf, 8, takeoff_time_utc);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_flight_information_send(mavlink_channel_t chan, u
  */
 static inline void mavlink_msg_flight_information_send_struct(mavlink_channel_t chan, const mavlink_flight_information_t* flight_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_flight_information_send(chan, flight_information->time_boot_ms, flight_information->arming_time_utc, flight_information->takeoff_time_utc, flight_information->flight_uuid, flight_information->landing_time);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_FLIGHT_INFORMATION, (const char *)flight_information, MAVLINK_MSG_ID_FLIGHT_INFORMATION_MIN_LEN, MAVLINK_MSG_ID_FLIGHT_INFORMATION_LEN, MAVLINK_MSG_ID_FLIGHT_INFORMATION_CRC);
@@ -273,7 +273,7 @@ static inline void mavlink_msg_flight_information_send_struct(mavlink_channel_t 
  */
 static inline void mavlink_msg_flight_information_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint64_t arming_time_utc, uint64_t takeoff_time_utc, uint64_t flight_uuid, uint32_t landing_time)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, arming_time_utc);
     _mav_put_uint64_t(buf, 8, takeoff_time_utc);
@@ -358,7 +358,7 @@ static inline uint32_t mavlink_msg_flight_information_get_landing_time(const mav
  */
 static inline void mavlink_msg_flight_information_decode(const mavlink_message_t* msg, mavlink_flight_information_t* flight_information)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     flight_information->arming_time_utc = mavlink_msg_flight_information_get_arming_time_utc(msg);
     flight_information->takeoff_time_utc = mavlink_msg_flight_information_get_takeoff_time_utc(msg);
     flight_information->flight_uuid = mavlink_msg_flight_information_get_flight_uuid(msg);

@@ -71,7 +71,7 @@ typedef struct __mavlink_altitude_t {
 static inline uint16_t mavlink_msg_altitude_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, float altitude_monotonic, float altitude_amsl, float altitude_local, float altitude_relative, float altitude_terrain, float bottom_clearance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ALTITUDE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, altitude_monotonic);
@@ -118,7 +118,7 @@ static inline uint16_t mavlink_msg_altitude_pack(uint8_t system_id, uint8_t comp
 static inline uint16_t mavlink_msg_altitude_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, float altitude_monotonic, float altitude_amsl, float altitude_local, float altitude_relative, float altitude_terrain, float bottom_clearance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ALTITUDE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, altitude_monotonic);
@@ -169,7 +169,7 @@ static inline uint16_t mavlink_msg_altitude_pack_chan(uint8_t system_id, uint8_t
                                mavlink_message_t* msg,
                                    uint64_t time_usec,float altitude_monotonic,float altitude_amsl,float altitude_local,float altitude_relative,float altitude_terrain,float bottom_clearance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ALTITUDE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, altitude_monotonic);
@@ -254,7 +254,7 @@ static inline uint16_t mavlink_msg_altitude_encode_status(uint8_t system_id, uin
 
 static inline void mavlink_msg_altitude_send(mavlink_channel_t chan, uint64_t time_usec, float altitude_monotonic, float altitude_amsl, float altitude_local, float altitude_relative, float altitude_terrain, float bottom_clearance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ALTITUDE_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, altitude_monotonic);
@@ -286,7 +286,7 @@ static inline void mavlink_msg_altitude_send(mavlink_channel_t chan, uint64_t ti
  */
 static inline void mavlink_msg_altitude_send_struct(mavlink_channel_t chan, const mavlink_altitude_t* altitude)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_altitude_send(chan, altitude->time_usec, altitude->altitude_monotonic, altitude->altitude_amsl, altitude->altitude_local, altitude->altitude_relative, altitude->altitude_terrain, altitude->bottom_clearance);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ALTITUDE, (const char *)altitude, MAVLINK_MSG_ID_ALTITUDE_MIN_LEN, MAVLINK_MSG_ID_ALTITUDE_LEN, MAVLINK_MSG_ID_ALTITUDE_CRC);
@@ -303,7 +303,7 @@ static inline void mavlink_msg_altitude_send_struct(mavlink_channel_t chan, cons
  */
 static inline void mavlink_msg_altitude_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, float altitude_monotonic, float altitude_amsl, float altitude_local, float altitude_relative, float altitude_terrain, float bottom_clearance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, altitude_monotonic);
@@ -412,7 +412,7 @@ static inline float mavlink_msg_altitude_get_bottom_clearance(const mavlink_mess
  */
 static inline void mavlink_msg_altitude_decode(const mavlink_message_t* msg, mavlink_altitude_t* altitude)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     altitude->time_usec = mavlink_msg_altitude_get_time_usec(msg);
     altitude->altitude_monotonic = mavlink_msg_altitude_get_altitude_monotonic(msg);
     altitude->altitude_amsl = mavlink_msg_altitude_get_altitude_amsl(msg);

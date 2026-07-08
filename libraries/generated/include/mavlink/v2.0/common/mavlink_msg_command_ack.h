@@ -67,7 +67,7 @@ typedef struct __mavlink_command_ack_t {
 static inline uint16_t mavlink_msg_command_ack_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint16_t command, uint8_t result, uint8_t progress, int32_t result_param2, uint8_t target_system, uint8_t target_component)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_ACK_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, result);
@@ -111,7 +111,7 @@ static inline uint16_t mavlink_msg_command_ack_pack(uint8_t system_id, uint8_t c
 static inline uint16_t mavlink_msg_command_ack_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint16_t command, uint8_t result, uint8_t progress, int32_t result_param2, uint8_t target_system, uint8_t target_component)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_ACK_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, result);
@@ -159,7 +159,7 @@ static inline uint16_t mavlink_msg_command_ack_pack_chan(uint8_t system_id, uint
                                mavlink_message_t* msg,
                                    uint16_t command,uint8_t result,uint8_t progress,int32_t result_param2,uint8_t target_system,uint8_t target_component)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_ACK_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, result);
@@ -241,7 +241,7 @@ static inline uint16_t mavlink_msg_command_ack_encode_status(uint8_t system_id, 
 
 static inline void mavlink_msg_command_ack_send(mavlink_channel_t chan, uint16_t command, uint8_t result, uint8_t progress, int32_t result_param2, uint8_t target_system, uint8_t target_component)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_ACK_LEN];
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, result);
@@ -271,7 +271,7 @@ static inline void mavlink_msg_command_ack_send(mavlink_channel_t chan, uint16_t
  */
 static inline void mavlink_msg_command_ack_send_struct(mavlink_channel_t chan, const mavlink_command_ack_t* command_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_command_ack_send(chan, command_ack->command, command_ack->result, command_ack->progress, command_ack->result_param2, command_ack->target_system, command_ack->target_component);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_COMMAND_ACK, (const char *)command_ack, MAVLINK_MSG_ID_COMMAND_ACK_MIN_LEN, MAVLINK_MSG_ID_COMMAND_ACK_LEN, MAVLINK_MSG_ID_COMMAND_ACK_CRC);
@@ -288,7 +288,7 @@ static inline void mavlink_msg_command_ack_send_struct(mavlink_channel_t chan, c
  */
 static inline void mavlink_msg_command_ack_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint16_t command, uint8_t result, uint8_t progress, int32_t result_param2, uint8_t target_system, uint8_t target_component)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, command);
     _mav_put_uint8_t(buf, 2, result);
@@ -385,7 +385,7 @@ static inline uint8_t mavlink_msg_command_ack_get_target_component(const mavlink
  */
 static inline void mavlink_msg_command_ack_decode(const mavlink_message_t* msg, mavlink_command_ack_t* command_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     command_ack->command = mavlink_msg_command_ack_get_command(msg);
     command_ack->result = mavlink_msg_command_ack_get_result(msg);
     command_ack->progress = mavlink_msg_command_ack_get_progress(msg);

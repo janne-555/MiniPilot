@@ -87,7 +87,7 @@ typedef struct __mavlink_scaled_imu_t {
 static inline uint16_t mavlink_msg_scaled_imu_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, int16_t xacc, int16_t yacc, int16_t zacc, int16_t xgyro, int16_t ygyro, int16_t zgyro, int16_t xmag, int16_t ymag, int16_t zmag, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SCALED_IMU_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_int16_t(buf, 4, xacc);
@@ -146,7 +146,7 @@ static inline uint16_t mavlink_msg_scaled_imu_pack(uint8_t system_id, uint8_t co
 static inline uint16_t mavlink_msg_scaled_imu_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, int16_t xacc, int16_t yacc, int16_t zacc, int16_t xgyro, int16_t ygyro, int16_t zgyro, int16_t xmag, int16_t ymag, int16_t zmag, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SCALED_IMU_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_int16_t(buf, 4, xacc);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_scaled_imu_pack_chan(uint8_t system_id, uint8
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,int16_t xacc,int16_t yacc,int16_t zacc,int16_t xgyro,int16_t ygyro,int16_t zgyro,int16_t xmag,int16_t ymag,int16_t zmag,int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SCALED_IMU_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_int16_t(buf, 4, xacc);
@@ -306,7 +306,7 @@ static inline uint16_t mavlink_msg_scaled_imu_encode_status(uint8_t system_id, u
 
 static inline void mavlink_msg_scaled_imu_send(mavlink_channel_t chan, uint32_t time_boot_ms, int16_t xacc, int16_t yacc, int16_t zacc, int16_t xgyro, int16_t ygyro, int16_t zgyro, int16_t xmag, int16_t ymag, int16_t zmag, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SCALED_IMU_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_int16_t(buf, 4, xacc);
@@ -346,7 +346,7 @@ static inline void mavlink_msg_scaled_imu_send(mavlink_channel_t chan, uint32_t 
  */
 static inline void mavlink_msg_scaled_imu_send_struct(mavlink_channel_t chan, const mavlink_scaled_imu_t* scaled_imu)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_scaled_imu_send(chan, scaled_imu->time_boot_ms, scaled_imu->xacc, scaled_imu->yacc, scaled_imu->zacc, scaled_imu->xgyro, scaled_imu->ygyro, scaled_imu->zgyro, scaled_imu->xmag, scaled_imu->ymag, scaled_imu->zmag, scaled_imu->temperature);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SCALED_IMU, (const char *)scaled_imu, MAVLINK_MSG_ID_SCALED_IMU_MIN_LEN, MAVLINK_MSG_ID_SCALED_IMU_LEN, MAVLINK_MSG_ID_SCALED_IMU_CRC);
@@ -363,7 +363,7 @@ static inline void mavlink_msg_scaled_imu_send_struct(mavlink_channel_t chan, co
  */
 static inline void mavlink_msg_scaled_imu_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, int16_t xacc, int16_t yacc, int16_t zacc, int16_t xgyro, int16_t ygyro, int16_t zgyro, int16_t xmag, int16_t ymag, int16_t zmag, int16_t temperature)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_int16_t(buf, 4, xacc);
@@ -520,7 +520,7 @@ static inline int16_t mavlink_msg_scaled_imu_get_temperature(const mavlink_messa
  */
 static inline void mavlink_msg_scaled_imu_decode(const mavlink_message_t* msg, mavlink_scaled_imu_t* scaled_imu)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     scaled_imu->time_boot_ms = mavlink_msg_scaled_imu_get_time_boot_ms(msg);
     scaled_imu->xacc = mavlink_msg_scaled_imu_get_xacc(msg);
     scaled_imu->yacc = mavlink_msg_scaled_imu_get_yacc(msg);

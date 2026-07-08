@@ -71,7 +71,7 @@ typedef struct __mavlink_gimbal_device_set_attitude_t {
 static inline uint16_t mavlink_msg_gimbal_device_set_attitude_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t flags, const float *q, float angular_velocity_x, float angular_velocity_y, float angular_velocity_z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE_LEN];
     _mav_put_float(buf, 16, angular_velocity_x);
     _mav_put_float(buf, 20, angular_velocity_y);
@@ -116,7 +116,7 @@ static inline uint16_t mavlink_msg_gimbal_device_set_attitude_pack(uint8_t syste
 static inline uint16_t mavlink_msg_gimbal_device_set_attitude_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t flags, const float *q, float angular_velocity_x, float angular_velocity_y, float angular_velocity_z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE_LEN];
     _mav_put_float(buf, 16, angular_velocity_x);
     _mav_put_float(buf, 20, angular_velocity_y);
@@ -165,7 +165,7 @@ static inline uint16_t mavlink_msg_gimbal_device_set_attitude_pack_chan(uint8_t 
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint16_t flags,const float *q,float angular_velocity_x,float angular_velocity_y,float angular_velocity_z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE_LEN];
     _mav_put_float(buf, 16, angular_velocity_x);
     _mav_put_float(buf, 20, angular_velocity_y);
@@ -248,7 +248,7 @@ static inline uint16_t mavlink_msg_gimbal_device_set_attitude_encode_status(uint
 
 static inline void mavlink_msg_gimbal_device_set_attitude_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint16_t flags, const float *q, float angular_velocity_x, float angular_velocity_y, float angular_velocity_z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE_LEN];
     _mav_put_float(buf, 16, angular_velocity_x);
     _mav_put_float(buf, 20, angular_velocity_y);
@@ -278,7 +278,7 @@ static inline void mavlink_msg_gimbal_device_set_attitude_send(mavlink_channel_t
  */
 static inline void mavlink_msg_gimbal_device_set_attitude_send_struct(mavlink_channel_t chan, const mavlink_gimbal_device_set_attitude_t* gimbal_device_set_attitude)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_gimbal_device_set_attitude_send(chan, gimbal_device_set_attitude->target_system, gimbal_device_set_attitude->target_component, gimbal_device_set_attitude->flags, gimbal_device_set_attitude->q, gimbal_device_set_attitude->angular_velocity_x, gimbal_device_set_attitude->angular_velocity_y, gimbal_device_set_attitude->angular_velocity_z);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE, (const char *)gimbal_device_set_attitude, MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE_MIN_LEN, MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE_LEN, MAVLINK_MSG_ID_GIMBAL_DEVICE_SET_ATTITUDE_CRC);
@@ -295,7 +295,7 @@ static inline void mavlink_msg_gimbal_device_set_attitude_send_struct(mavlink_ch
  */
 static inline void mavlink_msg_gimbal_device_set_attitude_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint16_t flags, const float *q, float angular_velocity_x, float angular_velocity_y, float angular_velocity_z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 16, angular_velocity_x);
     _mav_put_float(buf, 20, angular_velocity_y);
@@ -402,7 +402,7 @@ static inline float mavlink_msg_gimbal_device_set_attitude_get_angular_velocity_
  */
 static inline void mavlink_msg_gimbal_device_set_attitude_decode(const mavlink_message_t* msg, mavlink_gimbal_device_set_attitude_t* gimbal_device_set_attitude)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_gimbal_device_set_attitude_get_q(msg, gimbal_device_set_attitude->q);
     gimbal_device_set_attitude->angular_velocity_x = mavlink_msg_gimbal_device_set_attitude_get_angular_velocity_x(msg);
     gimbal_device_set_attitude->angular_velocity_y = mavlink_msg_gimbal_device_set_attitude_get_angular_velocity_y(msg);

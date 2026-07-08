@@ -31,8 +31,9 @@ static uint16_t motor_to_pwm(float value) {
   return (uint16_t)(1000 + (value * 1000));
 }
 
-void GCS_send_servo_output(void) {
-  mavlink_message_t msg;
+void GCS_send_servo_output(void)
+{
+    mavlink_message_t msg;
 
   uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 

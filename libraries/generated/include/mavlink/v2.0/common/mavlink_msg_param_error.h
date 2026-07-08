@@ -64,7 +64,7 @@ MAVLINK_WIP
 static inline uint16_t mavlink_msg_param_error_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_ERROR_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -103,7 +103,7 @@ static inline uint16_t mavlink_msg_param_error_pack(uint8_t system_id, uint8_t c
 static inline uint16_t mavlink_msg_param_error_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_ERROR_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -147,7 +147,7 @@ static inline uint16_t mavlink_msg_param_error_pack_chan(uint8_t system_id, uint
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const char *param_id,int16_t param_index,uint8_t error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_ERROR_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -227,7 +227,7 @@ static inline uint16_t mavlink_msg_param_error_encode_status(uint8_t system_id, 
 MAVLINK_WIP
 static inline void mavlink_msg_param_error_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_ERROR_LEN];
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -254,7 +254,7 @@ static inline void mavlink_msg_param_error_send(mavlink_channel_t chan, uint8_t 
 MAVLINK_WIP
 static inline void mavlink_msg_param_error_send_struct(mavlink_channel_t chan, const mavlink_param_error_t* param_error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_param_error_send(chan, param_error->target_system, param_error->target_component, param_error->param_id, param_error->param_index, param_error->error);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_ERROR, (const char *)param_error, MAVLINK_MSG_ID_PARAM_ERROR_MIN_LEN, MAVLINK_MSG_ID_PARAM_ERROR_LEN, MAVLINK_MSG_ID_PARAM_ERROR_CRC);
@@ -272,7 +272,7 @@ static inline void mavlink_msg_param_error_send_struct(mavlink_channel_t chan, c
 MAVLINK_WIP
 static inline void mavlink_msg_param_error_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int16_t(buf, 0, param_index);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -361,7 +361,7 @@ static inline uint8_t mavlink_msg_param_error_get_error(const mavlink_message_t*
 MAVLINK_WIP
 static inline void mavlink_msg_param_error_decode(const mavlink_message_t* msg, mavlink_param_error_t* param_error)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     param_error->param_index = mavlink_msg_param_error_get_param_index(msg);
     param_error->target_system = mavlink_msg_param_error_get_target_system(msg);
     param_error->target_component = mavlink_msg_param_error_get_target_component(msg);

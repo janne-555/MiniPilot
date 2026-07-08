@@ -71,7 +71,7 @@ typedef struct __mavlink_vibration_t {
 static inline uint16_t mavlink_msg_vibration_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, float vibration_x, float vibration_y, float vibration_z, uint32_t clipping_0, uint32_t clipping_1, uint32_t clipping_2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIBRATION_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vibration_x);
@@ -118,7 +118,7 @@ static inline uint16_t mavlink_msg_vibration_pack(uint8_t system_id, uint8_t com
 static inline uint16_t mavlink_msg_vibration_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, float vibration_x, float vibration_y, float vibration_z, uint32_t clipping_0, uint32_t clipping_1, uint32_t clipping_2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIBRATION_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vibration_x);
@@ -169,7 +169,7 @@ static inline uint16_t mavlink_msg_vibration_pack_chan(uint8_t system_id, uint8_
                                mavlink_message_t* msg,
                                    uint64_t time_usec,float vibration_x,float vibration_y,float vibration_z,uint32_t clipping_0,uint32_t clipping_1,uint32_t clipping_2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIBRATION_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vibration_x);
@@ -254,7 +254,7 @@ static inline uint16_t mavlink_msg_vibration_encode_status(uint8_t system_id, ui
 
 static inline void mavlink_msg_vibration_send(mavlink_channel_t chan, uint64_t time_usec, float vibration_x, float vibration_y, float vibration_z, uint32_t clipping_0, uint32_t clipping_1, uint32_t clipping_2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_VIBRATION_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vibration_x);
@@ -286,7 +286,7 @@ static inline void mavlink_msg_vibration_send(mavlink_channel_t chan, uint64_t t
  */
 static inline void mavlink_msg_vibration_send_struct(mavlink_channel_t chan, const mavlink_vibration_t* vibration)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_vibration_send(chan, vibration->time_usec, vibration->vibration_x, vibration->vibration_y, vibration->vibration_z, vibration->clipping_0, vibration->clipping_1, vibration->clipping_2);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_VIBRATION, (const char *)vibration, MAVLINK_MSG_ID_VIBRATION_MIN_LEN, MAVLINK_MSG_ID_VIBRATION_LEN, MAVLINK_MSG_ID_VIBRATION_CRC);
@@ -303,7 +303,7 @@ static inline void mavlink_msg_vibration_send_struct(mavlink_channel_t chan, con
  */
 static inline void mavlink_msg_vibration_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, float vibration_x, float vibration_y, float vibration_z, uint32_t clipping_0, uint32_t clipping_1, uint32_t clipping_2)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, vibration_x);
@@ -412,7 +412,7 @@ static inline uint32_t mavlink_msg_vibration_get_clipping_2(const mavlink_messag
  */
 static inline void mavlink_msg_vibration_decode(const mavlink_message_t* msg, mavlink_vibration_t* vibration)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     vibration->time_usec = mavlink_msg_vibration_get_time_usec(msg);
     vibration->vibration_x = mavlink_msg_vibration_get_vibration_x(msg);
     vibration->vibration_y = mavlink_msg_vibration_get_vibration_y(msg);

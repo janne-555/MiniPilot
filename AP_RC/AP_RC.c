@@ -42,8 +42,9 @@ static void RC_Debug(void);
  * Initialize
  *---------------------------------------------------------------------------*/
 
-void AP_RC_Init(void) {
-  rc.roll = 0.0f;
+void AP_RC_Init(void)
+{
+    rc.roll = 0.0f;
   rc.pitch = 0.0f;
   rc.yaw = 0.0f;
   rc.throttle = 0.5f;
@@ -56,8 +57,9 @@ void AP_RC_Init(void) {
  * Update
  *---------------------------------------------------------------------------*/
 
-void AP_RC_Update(void) {
-  char key;
+void AP_RC_Update(void)
+{
+    char key;
 
   key = AP_Keyboard_Read();
 
@@ -149,9 +151,10 @@ static void RC_ProcessKey(char key) {
 static void RC_UpdateRoll(void) {
   if (roll_right) {
     rc.roll += 0.03f;
-  } else if (roll_left) {
+  } else if (roll_left)
+{
     rc.roll -= 0.03f;
-  } else {
+} else {
     if (rc.roll > 0.0f) {
       rc.roll -= 0.03f;
 
@@ -175,9 +178,10 @@ static void RC_UpdateRoll(void) {
 static void RC_UpdatePitch(void) {
   if (pitch_up) {
     rc.pitch += 0.03f;
-  } else if (pitch_down) {
+  } else if (pitch_down)
+{
     rc.pitch -= 0.03f;
-  } else {
+} else {
     if (rc.pitch > 0.0f) {
       rc.pitch -= 0.03f;
 
@@ -201,9 +205,10 @@ static void RC_UpdatePitch(void) {
 static void RC_UpdateYaw(void) {
   if (yaw_right) {
     rc.yaw += 0.03f;
-  } else if (yaw_left) {
+  } else if (yaw_left)
+{
     rc.yaw -= 0.03f;
-  } else {
+} else {
     if (rc.yaw > 0.0f) {
       rc.yaw -= 0.03f;
 
@@ -224,8 +229,9 @@ static void RC_UpdateYaw(void) {
  * Clamp
  *---------------------------------------------------------------------------*/
 
-static void RC_Clamp(void) {
-  if (rc.roll > RC_MAX)
+static void RC_Clamp(void)
+{
+    if (rc.roll > RC_MAX)
     rc.roll = RC_MAX;
   if (rc.roll < RC_MIN)
     rc.roll = RC_MIN;

@@ -45,8 +45,9 @@ void GCS_send_param(uint16_t index) {
   printf("RX MAV ID = %u\n", msg.msgid);
 }
 
-void GCS_Handle_Param_Set(mavlink_message_t *msg) {
-  mavlink_param_set_t pkt;
+void GCS_Handle_Param_Set(mavlink_message_t *msg)
+{
+    mavlink_param_set_t pkt;
 
   mavlink_msg_param_set_decode(msg, &pkt);
 

@@ -26,9 +26,9 @@ static float debug_last_vz = -999.0f;
  Init
 ----------------------------------------------------------------------------*/
 
-void AP_InertialNav_Init(void) {
-
-  nav.altitude = 0.0f;
+void AP_InertialNav_Init(void)
+{
+    nav.altitude = 0.0f;
 
   nav.latitude = 0.0;
 
@@ -110,10 +110,22 @@ void AP_InertialNav_Update(float dt) {
 
 const AP_InertialNav_t *AP_InertialNav_Get(void) { return &nav; }
 
-float AP_InertialNav_GetAltitude(void) { return nav.altitude; }
+float AP_InertialNav_GetAltitude(void)
+{
+    return nav.altitude;
+}
 
-float AP_InertialNav_GetVelocityZ(void) { return nav.velocity_z; }
+float AP_InertialNav_GetVelocityZ(void)
+{
+    return nav.velocity_z;
+}
 
-double AP_InertialNav_GetLatitude(void) { return nav.latitude; }
+double AP_InertialNav_GetLatitude(void)
+{
+    return nav.latitude;
+}
 
-double AP_InertialNav_GetLongitude(void) { return nav.longitude; }
+double AP_InertialNav_GetLongitude(void)
+{
+    return nav.longitude;
+}

@@ -59,7 +59,7 @@ typedef struct __mavlink_hil_actuator_controls_t {
 static inline uint16_t mavlink_msg_hil_actuator_controls_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, const float *controls, uint8_t mode, uint64_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint64_t(buf, 8, flags);
@@ -95,7 +95,7 @@ static inline uint16_t mavlink_msg_hil_actuator_controls_pack(uint8_t system_id,
 static inline uint16_t mavlink_msg_hil_actuator_controls_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, const float *controls, uint8_t mode, uint64_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint64_t(buf, 8, flags);
@@ -135,7 +135,7 @@ static inline uint16_t mavlink_msg_hil_actuator_controls_pack_chan(uint8_t syste
                                mavlink_message_t* msg,
                                    uint64_t time_usec,const float *controls,uint8_t mode,uint64_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint64_t(buf, 8, flags);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_hil_actuator_controls_encode_status(uint8_t s
 
 static inline void mavlink_msg_hil_actuator_controls_send(mavlink_channel_t chan, uint64_t time_usec, const float *controls, uint8_t mode, uint64_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint64_t(buf, 8, flags);
@@ -233,7 +233,7 @@ static inline void mavlink_msg_hil_actuator_controls_send(mavlink_channel_t chan
  */
 static inline void mavlink_msg_hil_actuator_controls_send_struct(mavlink_channel_t chan, const mavlink_hil_actuator_controls_t* hil_actuator_controls)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_hil_actuator_controls_send(chan, hil_actuator_controls->time_usec, hil_actuator_controls->controls, hil_actuator_controls->mode, hil_actuator_controls->flags);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS, (const char *)hil_actuator_controls, MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS_MIN_LEN, MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS_LEN, MAVLINK_MSG_ID_HIL_ACTUATOR_CONTROLS_CRC);
@@ -250,7 +250,7 @@ static inline void mavlink_msg_hil_actuator_controls_send_struct(mavlink_channel
  */
 static inline void mavlink_msg_hil_actuator_controls_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, const float *controls, uint8_t mode, uint64_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint64_t(buf, 8, flags);
@@ -321,7 +321,7 @@ static inline uint64_t mavlink_msg_hil_actuator_controls_get_flags(const mavlink
  */
 static inline void mavlink_msg_hil_actuator_controls_decode(const mavlink_message_t* msg, mavlink_hil_actuator_controls_t* hil_actuator_controls)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     hil_actuator_controls->time_usec = mavlink_msg_hil_actuator_controls_get_time_usec(msg);
     hil_actuator_controls->flags = mavlink_msg_hil_actuator_controls_get_flags(msg);
     mavlink_msg_hil_actuator_controls_get_controls(msg, hil_actuator_controls->controls);

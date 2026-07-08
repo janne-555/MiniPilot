@@ -21,8 +21,9 @@ static const float inertia = 10.0f;
  * Initialize
  *---------------------------------------------------------------------------*/
 
-void AP_Sim_Init(void) {
-  sim.roll = 0.0f;
+void AP_Sim_Init(void)
+{
+    sim.roll = 0.0f;
   sim.pitch = 0.0f;
   sim.yaw = 0.0f;
 
@@ -39,8 +40,9 @@ void AP_Sim_Init(void) {
  * Update Physics
  *---------------------------------------------------------------------------*/
 
-void AP_Sim_Update(float dt) {
-  const AP_Motors_Output_t *motor;
+void AP_Sim_Update(float dt)
+{
+    const AP_Motors_Output_t *motor;
 
   float roll_torque;
 

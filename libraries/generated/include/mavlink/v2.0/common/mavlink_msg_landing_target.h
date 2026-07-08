@@ -99,7 +99,7 @@ typedef struct __mavlink_landing_target_t {
 static inline uint16_t mavlink_msg_landing_target_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t target_num, uint8_t frame, float angle_x, float angle_y, float distance, float size_x, float size_y, float x, float y, float z, const float *q, uint8_t type, uint8_t position_valid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LANDING_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, angle_x);
@@ -165,7 +165,7 @@ static inline uint16_t mavlink_msg_landing_target_pack(uint8_t system_id, uint8_
 static inline uint16_t mavlink_msg_landing_target_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t target_num, uint8_t frame, float angle_x, float angle_y, float distance, float size_x, float size_y, float x, float y, float z, const float *q, uint8_t type, uint8_t position_valid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LANDING_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, angle_x);
@@ -235,7 +235,7 @@ static inline uint16_t mavlink_msg_landing_target_pack_chan(uint8_t system_id, u
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint8_t target_num,uint8_t frame,float angle_x,float angle_y,float distance,float size_x,float size_y,float x,float y,float z,const float *q,uint8_t type,uint8_t position_valid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LANDING_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, angle_x);
@@ -339,7 +339,7 @@ static inline uint16_t mavlink_msg_landing_target_encode_status(uint8_t system_i
 
 static inline void mavlink_msg_landing_target_send(mavlink_channel_t chan, uint64_t time_usec, uint8_t target_num, uint8_t frame, float angle_x, float angle_y, float distance, float size_x, float size_y, float x, float y, float z, const float *q, uint8_t type, uint8_t position_valid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_LANDING_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, angle_x);
@@ -383,7 +383,7 @@ static inline void mavlink_msg_landing_target_send(mavlink_channel_t chan, uint6
  */
 static inline void mavlink_msg_landing_target_send_struct(mavlink_channel_t chan, const mavlink_landing_target_t* landing_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_landing_target_send(chan, landing_target->time_usec, landing_target->target_num, landing_target->frame, landing_target->angle_x, landing_target->angle_y, landing_target->distance, landing_target->size_x, landing_target->size_y, landing_target->x, landing_target->y, landing_target->z, landing_target->q, landing_target->type, landing_target->position_valid);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_LANDING_TARGET, (const char *)landing_target, MAVLINK_MSG_ID_LANDING_TARGET_MIN_LEN, MAVLINK_MSG_ID_LANDING_TARGET_LEN, MAVLINK_MSG_ID_LANDING_TARGET_CRC);
@@ -400,7 +400,7 @@ static inline void mavlink_msg_landing_target_send_struct(mavlink_channel_t chan
  */
 static inline void mavlink_msg_landing_target_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint8_t target_num, uint8_t frame, float angle_x, float angle_y, float distance, float size_x, float size_y, float x, float y, float z, const float *q, uint8_t type, uint8_t position_valid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, angle_x);
@@ -591,7 +591,7 @@ static inline uint8_t mavlink_msg_landing_target_get_position_valid(const mavlin
  */
 static inline void mavlink_msg_landing_target_decode(const mavlink_message_t* msg, mavlink_landing_target_t* landing_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     landing_target->time_usec = mavlink_msg_landing_target_get_time_usec(msg);
     landing_target->angle_x = mavlink_msg_landing_target_get_angle_x(msg);
     landing_target->angle_y = mavlink_msg_landing_target_get_angle_y(msg);

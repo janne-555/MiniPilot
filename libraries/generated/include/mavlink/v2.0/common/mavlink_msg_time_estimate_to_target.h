@@ -64,7 +64,7 @@ MAVLINK_WIP
 static inline uint16_t mavlink_msg_time_estimate_to_target_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                int32_t safe_return, int32_t land, int32_t mission_next_item, int32_t mission_end, int32_t commanded_action)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET_LEN];
     _mav_put_int32_t(buf, 0, safe_return);
     _mav_put_int32_t(buf, 4, land);
@@ -105,7 +105,7 @@ static inline uint16_t mavlink_msg_time_estimate_to_target_pack(uint8_t system_i
 static inline uint16_t mavlink_msg_time_estimate_to_target_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                int32_t safe_return, int32_t land, int32_t mission_next_item, int32_t mission_end, int32_t commanded_action)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET_LEN];
     _mav_put_int32_t(buf, 0, safe_return);
     _mav_put_int32_t(buf, 4, land);
@@ -151,7 +151,7 @@ static inline uint16_t mavlink_msg_time_estimate_to_target_pack_chan(uint8_t sys
                                mavlink_message_t* msg,
                                    int32_t safe_return,int32_t land,int32_t mission_next_item,int32_t mission_end,int32_t commanded_action)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET_LEN];
     _mav_put_int32_t(buf, 0, safe_return);
     _mav_put_int32_t(buf, 4, land);
@@ -233,7 +233,7 @@ static inline uint16_t mavlink_msg_time_estimate_to_target_encode_status(uint8_t
 MAVLINK_WIP
 static inline void mavlink_msg_time_estimate_to_target_send(mavlink_channel_t chan, int32_t safe_return, int32_t land, int32_t mission_next_item, int32_t mission_end, int32_t commanded_action)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET_LEN];
     _mav_put_int32_t(buf, 0, safe_return);
     _mav_put_int32_t(buf, 4, land);
@@ -262,7 +262,7 @@ static inline void mavlink_msg_time_estimate_to_target_send(mavlink_channel_t ch
 MAVLINK_WIP
 static inline void mavlink_msg_time_estimate_to_target_send_struct(mavlink_channel_t chan, const mavlink_time_estimate_to_target_t* time_estimate_to_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_time_estimate_to_target_send(chan, time_estimate_to_target->safe_return, time_estimate_to_target->land, time_estimate_to_target->mission_next_item, time_estimate_to_target->mission_end, time_estimate_to_target->commanded_action);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET, (const char *)time_estimate_to_target, MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET_MIN_LEN, MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET_LEN, MAVLINK_MSG_ID_TIME_ESTIMATE_TO_TARGET_CRC);
@@ -280,7 +280,7 @@ static inline void mavlink_msg_time_estimate_to_target_send_struct(mavlink_chann
 MAVLINK_WIP
 static inline void mavlink_msg_time_estimate_to_target_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  int32_t safe_return, int32_t land, int32_t mission_next_item, int32_t mission_end, int32_t commanded_action)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int32_t(buf, 0, safe_return);
     _mav_put_int32_t(buf, 4, land);
@@ -371,7 +371,7 @@ static inline int32_t mavlink_msg_time_estimate_to_target_get_commanded_action(c
 MAVLINK_WIP
 static inline void mavlink_msg_time_estimate_to_target_decode(const mavlink_message_t* msg, mavlink_time_estimate_to_target_t* time_estimate_to_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     time_estimate_to_target->safe_return = mavlink_msg_time_estimate_to_target_get_safe_return(msg);
     time_estimate_to_target->land = mavlink_msg_time_estimate_to_target_get_land(msg);
     time_estimate_to_target->mission_next_item = mavlink_msg_time_estimate_to_target_get_mission_next_item(msg);

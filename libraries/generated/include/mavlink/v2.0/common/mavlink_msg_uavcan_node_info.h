@@ -80,7 +80,7 @@ typedef struct __mavlink_uavcan_node_info_t {
 static inline uint16_t mavlink_msg_uavcan_node_info_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint32_t uptime_sec, const char *name, uint8_t hw_version_major, uint8_t hw_version_minor, const uint8_t *hw_unique_id, uint8_t sw_version_major, uint8_t sw_version_minor, uint32_t sw_vcs_commit)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_UAVCAN_NODE_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime_sec);
@@ -131,7 +131,7 @@ static inline uint16_t mavlink_msg_uavcan_node_info_pack(uint8_t system_id, uint
 static inline uint16_t mavlink_msg_uavcan_node_info_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint32_t uptime_sec, const char *name, uint8_t hw_version_major, uint8_t hw_version_minor, const uint8_t *hw_unique_id, uint8_t sw_version_major, uint8_t sw_version_minor, uint32_t sw_vcs_commit)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_UAVCAN_NODE_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime_sec);
@@ -186,7 +186,7 @@ static inline uint16_t mavlink_msg_uavcan_node_info_pack_chan(uint8_t system_id,
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint32_t uptime_sec,const char *name,uint8_t hw_version_major,uint8_t hw_version_minor,const uint8_t *hw_unique_id,uint8_t sw_version_major,uint8_t sw_version_minor,uint32_t sw_vcs_commit)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_UAVCAN_NODE_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime_sec);
@@ -275,7 +275,7 @@ static inline uint16_t mavlink_msg_uavcan_node_info_encode_status(uint8_t system
 
 static inline void mavlink_msg_uavcan_node_info_send(mavlink_channel_t chan, uint64_t time_usec, uint32_t uptime_sec, const char *name, uint8_t hw_version_major, uint8_t hw_version_minor, const uint8_t *hw_unique_id, uint8_t sw_version_major, uint8_t sw_version_minor, uint32_t sw_vcs_commit)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_UAVCAN_NODE_INFO_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime_sec);
@@ -309,7 +309,7 @@ static inline void mavlink_msg_uavcan_node_info_send(mavlink_channel_t chan, uin
  */
 static inline void mavlink_msg_uavcan_node_info_send_struct(mavlink_channel_t chan, const mavlink_uavcan_node_info_t* uavcan_node_info)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_uavcan_node_info_send(chan, uavcan_node_info->time_usec, uavcan_node_info->uptime_sec, uavcan_node_info->name, uavcan_node_info->hw_version_major, uavcan_node_info->hw_version_minor, uavcan_node_info->hw_unique_id, uavcan_node_info->sw_version_major, uavcan_node_info->sw_version_minor, uavcan_node_info->sw_vcs_commit);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_UAVCAN_NODE_INFO, (const char *)uavcan_node_info, MAVLINK_MSG_ID_UAVCAN_NODE_INFO_MIN_LEN, MAVLINK_MSG_ID_UAVCAN_NODE_INFO_LEN, MAVLINK_MSG_ID_UAVCAN_NODE_INFO_CRC);
@@ -326,7 +326,7 @@ static inline void mavlink_msg_uavcan_node_info_send_struct(mavlink_channel_t ch
  */
 static inline void mavlink_msg_uavcan_node_info_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint32_t uptime_sec, const char *name, uint8_t hw_version_major, uint8_t hw_version_minor, const uint8_t *hw_unique_id, uint8_t sw_version_major, uint8_t sw_version_minor, uint32_t sw_vcs_commit)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime_sec);
@@ -457,7 +457,7 @@ static inline uint32_t mavlink_msg_uavcan_node_info_get_sw_vcs_commit(const mavl
  */
 static inline void mavlink_msg_uavcan_node_info_decode(const mavlink_message_t* msg, mavlink_uavcan_node_info_t* uavcan_node_info)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     uavcan_node_info->time_usec = mavlink_msg_uavcan_node_info_get_time_usec(msg);
     uavcan_node_info->uptime_sec = mavlink_msg_uavcan_node_info_get_uptime_sec(msg);
     uavcan_node_info->sw_vcs_commit = mavlink_msg_uavcan_node_info_get_sw_vcs_commit(msg);

@@ -11,8 +11,9 @@
 
 #include "GCS_MAVLink.h"
 
-void GCS_handle_timesync(mavlink_message_t *msg) {
-  mavlink_timesync_t ts;
+void GCS_handle_timesync(mavlink_message_t *msg)
+{
+    mavlink_timesync_t ts;
 
   mavlink_msg_timesync_decode(msg, &ts);
 

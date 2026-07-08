@@ -107,7 +107,7 @@ typedef struct __mavlink_sys_status_t {
 static inline uint16_t mavlink_msg_sys_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t onboard_control_sensors_present, uint32_t onboard_control_sensors_enabled, uint32_t onboard_control_sensors_health, uint16_t load, uint16_t voltage_battery, int16_t current_battery, int8_t battery_remaining, uint16_t drop_rate_comm, uint16_t errors_comm, uint16_t errors_count1, uint16_t errors_count2, uint16_t errors_count3, uint16_t errors_count4, uint32_t onboard_control_sensors_present_extended, uint32_t onboard_control_sensors_enabled_extended, uint32_t onboard_control_sensors_health_extended)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SYS_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, onboard_control_sensors_present);
     _mav_put_uint32_t(buf, 4, onboard_control_sensors_enabled);
@@ -181,7 +181,7 @@ static inline uint16_t mavlink_msg_sys_status_pack(uint8_t system_id, uint8_t co
 static inline uint16_t mavlink_msg_sys_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t onboard_control_sensors_present, uint32_t onboard_control_sensors_enabled, uint32_t onboard_control_sensors_health, uint16_t load, uint16_t voltage_battery, int16_t current_battery, int8_t battery_remaining, uint16_t drop_rate_comm, uint16_t errors_comm, uint16_t errors_count1, uint16_t errors_count2, uint16_t errors_count3, uint16_t errors_count4, uint32_t onboard_control_sensors_present_extended, uint32_t onboard_control_sensors_enabled_extended, uint32_t onboard_control_sensors_health_extended)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SYS_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, onboard_control_sensors_present);
     _mav_put_uint32_t(buf, 4, onboard_control_sensors_enabled);
@@ -259,7 +259,7 @@ static inline uint16_t mavlink_msg_sys_status_pack_chan(uint8_t system_id, uint8
                                mavlink_message_t* msg,
                                    uint32_t onboard_control_sensors_present,uint32_t onboard_control_sensors_enabled,uint32_t onboard_control_sensors_health,uint16_t load,uint16_t voltage_battery,int16_t current_battery,int8_t battery_remaining,uint16_t drop_rate_comm,uint16_t errors_comm,uint16_t errors_count1,uint16_t errors_count2,uint16_t errors_count3,uint16_t errors_count4,uint32_t onboard_control_sensors_present_extended,uint32_t onboard_control_sensors_enabled_extended,uint32_t onboard_control_sensors_health_extended)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SYS_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, onboard_control_sensors_present);
     _mav_put_uint32_t(buf, 4, onboard_control_sensors_enabled);
@@ -371,7 +371,7 @@ static inline uint16_t mavlink_msg_sys_status_encode_status(uint8_t system_id, u
 
 static inline void mavlink_msg_sys_status_send(mavlink_channel_t chan, uint32_t onboard_control_sensors_present, uint32_t onboard_control_sensors_enabled, uint32_t onboard_control_sensors_health, uint16_t load, uint16_t voltage_battery, int16_t current_battery, int8_t battery_remaining, uint16_t drop_rate_comm, uint16_t errors_comm, uint16_t errors_count1, uint16_t errors_count2, uint16_t errors_count3, uint16_t errors_count4, uint32_t onboard_control_sensors_present_extended, uint32_t onboard_control_sensors_enabled_extended, uint32_t onboard_control_sensors_health_extended)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SYS_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, onboard_control_sensors_present);
     _mav_put_uint32_t(buf, 4, onboard_control_sensors_enabled);
@@ -421,7 +421,7 @@ static inline void mavlink_msg_sys_status_send(mavlink_channel_t chan, uint32_t 
  */
 static inline void mavlink_msg_sys_status_send_struct(mavlink_channel_t chan, const mavlink_sys_status_t* sys_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_sys_status_send(chan, sys_status->onboard_control_sensors_present, sys_status->onboard_control_sensors_enabled, sys_status->onboard_control_sensors_health, sys_status->load, sys_status->voltage_battery, sys_status->current_battery, sys_status->battery_remaining, sys_status->drop_rate_comm, sys_status->errors_comm, sys_status->errors_count1, sys_status->errors_count2, sys_status->errors_count3, sys_status->errors_count4, sys_status->onboard_control_sensors_present_extended, sys_status->onboard_control_sensors_enabled_extended, sys_status->onboard_control_sensors_health_extended);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SYS_STATUS, (const char *)sys_status, MAVLINK_MSG_ID_SYS_STATUS_MIN_LEN, MAVLINK_MSG_ID_SYS_STATUS_LEN, MAVLINK_MSG_ID_SYS_STATUS_CRC);
@@ -438,7 +438,7 @@ static inline void mavlink_msg_sys_status_send_struct(mavlink_channel_t chan, co
  */
 static inline void mavlink_msg_sys_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t onboard_control_sensors_present, uint32_t onboard_control_sensors_enabled, uint32_t onboard_control_sensors_health, uint16_t load, uint16_t voltage_battery, int16_t current_battery, int8_t battery_remaining, uint16_t drop_rate_comm, uint16_t errors_comm, uint16_t errors_count1, uint16_t errors_count2, uint16_t errors_count3, uint16_t errors_count4, uint32_t onboard_control_sensors_present_extended, uint32_t onboard_control_sensors_enabled_extended, uint32_t onboard_control_sensors_health_extended)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, onboard_control_sensors_present);
     _mav_put_uint32_t(buf, 4, onboard_control_sensors_enabled);
@@ -655,7 +655,7 @@ static inline uint32_t mavlink_msg_sys_status_get_onboard_control_sensors_health
  */
 static inline void mavlink_msg_sys_status_decode(const mavlink_message_t* msg, mavlink_sys_status_t* sys_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     sys_status->onboard_control_sensors_present = mavlink_msg_sys_status_get_onboard_control_sensors_present(msg);
     sys_status->onboard_control_sensors_enabled = mavlink_msg_sys_status_get_onboard_control_sensors_enabled(msg);
     sys_status->onboard_control_sensors_health = mavlink_msg_sys_status_get_onboard_control_sensors_health(msg);

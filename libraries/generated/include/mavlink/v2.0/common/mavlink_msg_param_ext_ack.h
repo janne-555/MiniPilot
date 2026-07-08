@@ -60,7 +60,7 @@ typedef struct __mavlink_param_ext_ack_t {
 static inline uint16_t mavlink_msg_param_ext_ack_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                const char *param_id, const char *param_value, uint8_t param_type, uint8_t param_result)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_ACK_LEN];
     _mav_put_uint8_t(buf, 144, param_type);
     _mav_put_uint8_t(buf, 145, param_result);
@@ -96,7 +96,7 @@ static inline uint16_t mavlink_msg_param_ext_ack_pack(uint8_t system_id, uint8_t
 static inline uint16_t mavlink_msg_param_ext_ack_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                const char *param_id, const char *param_value, uint8_t param_type, uint8_t param_result)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_ACK_LEN];
     _mav_put_uint8_t(buf, 144, param_type);
     _mav_put_uint8_t(buf, 145, param_result);
@@ -136,7 +136,7 @@ static inline uint16_t mavlink_msg_param_ext_ack_pack_chan(uint8_t system_id, ui
                                mavlink_message_t* msg,
                                    const char *param_id,const char *param_value,uint8_t param_type,uint8_t param_result)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_ACK_LEN];
     _mav_put_uint8_t(buf, 144, param_type);
     _mav_put_uint8_t(buf, 145, param_result);
@@ -210,7 +210,7 @@ static inline uint16_t mavlink_msg_param_ext_ack_encode_status(uint8_t system_id
 
 static inline void mavlink_msg_param_ext_ack_send(mavlink_channel_t chan, const char *param_id, const char *param_value, uint8_t param_type, uint8_t param_result)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_EXT_ACK_LEN];
     _mav_put_uint8_t(buf, 144, param_type);
     _mav_put_uint8_t(buf, 145, param_result);
@@ -234,7 +234,7 @@ static inline void mavlink_msg_param_ext_ack_send(mavlink_channel_t chan, const 
  */
 static inline void mavlink_msg_param_ext_ack_send_struct(mavlink_channel_t chan, const mavlink_param_ext_ack_t* param_ext_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_param_ext_ack_send(chan, param_ext_ack->param_id, param_ext_ack->param_value, param_ext_ack->param_type, param_ext_ack->param_result);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_EXT_ACK, (const char *)param_ext_ack, MAVLINK_MSG_ID_PARAM_EXT_ACK_MIN_LEN, MAVLINK_MSG_ID_PARAM_EXT_ACK_LEN, MAVLINK_MSG_ID_PARAM_EXT_ACK_CRC);
@@ -251,7 +251,7 @@ static inline void mavlink_msg_param_ext_ack_send_struct(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_param_ext_ack_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  const char *param_id, const char *param_value, uint8_t param_type, uint8_t param_result)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 144, param_type);
     _mav_put_uint8_t(buf, 145, param_result);
@@ -322,7 +322,7 @@ static inline uint8_t mavlink_msg_param_ext_ack_get_param_result(const mavlink_m
  */
 static inline void mavlink_msg_param_ext_ack_decode(const mavlink_message_t* msg, mavlink_param_ext_ack_t* param_ext_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_param_ext_ack_get_param_id(msg, param_ext_ack->param_id);
     mavlink_msg_param_ext_ack_get_param_value(msg, param_ext_ack->param_value);
     param_ext_ack->param_type = mavlink_msg_param_ext_ack_get_param_type(msg);

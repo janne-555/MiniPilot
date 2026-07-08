@@ -107,7 +107,7 @@ typedef struct __mavlink_manual_control_t {
 static inline uint16_t mavlink_msg_manual_control_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target, int16_t x, int16_t y, int16_t z, int16_t r, uint16_t buttons, uint16_t buttons2, uint8_t enabled_extensions, int16_t s, int16_t t, int16_t aux1, int16_t aux2, int16_t aux3, int16_t aux4, int16_t aux5, int16_t aux6)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MANUAL_CONTROL_LEN];
     _mav_put_int16_t(buf, 0, x);
     _mav_put_int16_t(buf, 2, y);
@@ -181,7 +181,7 @@ static inline uint16_t mavlink_msg_manual_control_pack(uint8_t system_id, uint8_
 static inline uint16_t mavlink_msg_manual_control_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target, int16_t x, int16_t y, int16_t z, int16_t r, uint16_t buttons, uint16_t buttons2, uint8_t enabled_extensions, int16_t s, int16_t t, int16_t aux1, int16_t aux2, int16_t aux3, int16_t aux4, int16_t aux5, int16_t aux6)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MANUAL_CONTROL_LEN];
     _mav_put_int16_t(buf, 0, x);
     _mav_put_int16_t(buf, 2, y);
@@ -259,7 +259,7 @@ static inline uint16_t mavlink_msg_manual_control_pack_chan(uint8_t system_id, u
                                mavlink_message_t* msg,
                                    uint8_t target,int16_t x,int16_t y,int16_t z,int16_t r,uint16_t buttons,uint16_t buttons2,uint8_t enabled_extensions,int16_t s,int16_t t,int16_t aux1,int16_t aux2,int16_t aux3,int16_t aux4,int16_t aux5,int16_t aux6)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MANUAL_CONTROL_LEN];
     _mav_put_int16_t(buf, 0, x);
     _mav_put_int16_t(buf, 2, y);
@@ -371,7 +371,7 @@ static inline uint16_t mavlink_msg_manual_control_encode_status(uint8_t system_i
 
 static inline void mavlink_msg_manual_control_send(mavlink_channel_t chan, uint8_t target, int16_t x, int16_t y, int16_t z, int16_t r, uint16_t buttons, uint16_t buttons2, uint8_t enabled_extensions, int16_t s, int16_t t, int16_t aux1, int16_t aux2, int16_t aux3, int16_t aux4, int16_t aux5, int16_t aux6)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MANUAL_CONTROL_LEN];
     _mav_put_int16_t(buf, 0, x);
     _mav_put_int16_t(buf, 2, y);
@@ -421,7 +421,7 @@ static inline void mavlink_msg_manual_control_send(mavlink_channel_t chan, uint8
  */
 static inline void mavlink_msg_manual_control_send_struct(mavlink_channel_t chan, const mavlink_manual_control_t* manual_control)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_manual_control_send(chan, manual_control->target, manual_control->x, manual_control->y, manual_control->z, manual_control->r, manual_control->buttons, manual_control->buttons2, manual_control->enabled_extensions, manual_control->s, manual_control->t, manual_control->aux1, manual_control->aux2, manual_control->aux3, manual_control->aux4, manual_control->aux5, manual_control->aux6);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_MANUAL_CONTROL, (const char *)manual_control, MAVLINK_MSG_ID_MANUAL_CONTROL_MIN_LEN, MAVLINK_MSG_ID_MANUAL_CONTROL_LEN, MAVLINK_MSG_ID_MANUAL_CONTROL_CRC);
@@ -438,7 +438,7 @@ static inline void mavlink_msg_manual_control_send_struct(mavlink_channel_t chan
  */
 static inline void mavlink_msg_manual_control_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target, int16_t x, int16_t y, int16_t z, int16_t r, uint16_t buttons, uint16_t buttons2, uint8_t enabled_extensions, int16_t s, int16_t t, int16_t aux1, int16_t aux2, int16_t aux3, int16_t aux4, int16_t aux5, int16_t aux6)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int16_t(buf, 0, x);
     _mav_put_int16_t(buf, 2, y);
@@ -655,7 +655,7 @@ static inline int16_t mavlink_msg_manual_control_get_aux6(const mavlink_message_
  */
 static inline void mavlink_msg_manual_control_decode(const mavlink_message_t* msg, mavlink_manual_control_t* manual_control)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     manual_control->x = mavlink_msg_manual_control_get_x(msg);
     manual_control->y = mavlink_msg_manual_control_get_y(msg);
     manual_control->z = mavlink_msg_manual_control_get_z(msg);

@@ -20,8 +20,9 @@ static AP_Arming_t arming;
 /*---------------------------------------------------------------------------
  * Initialize
  *--------------------------------------------------------------------------*/
-void AP_Arming_Init(void) {
-  arming.armed = 0;
+void AP_Arming_Init(void)
+{
+    arming.armed = 0;
 
   /* Simulator */
   arming.pre_arm_ok = 1;
@@ -100,8 +101,9 @@ void AP_Arming_Arm(void) {
 /*---------------------------------------------------------------------------
  * Disarm
  *--------------------------------------------------------------------------*/
-void AP_Arming_Disarm(void) {
-  arming.armed = 0;
+void AP_Arming_Disarm(void)
+{
+    arming.armed = 0;
   AP_Debug_Print(DBG_ARMING, "\n===== ARMING =====\n"
                              "*** VEHICLE DISARMED ***\n");
 }
@@ -118,4 +120,7 @@ const AP_Arming_t *AP_Arming_Get(void) { return &arming; }
 /*---------------------------------------------------------------------------
  * Status
  *--------------------------------------------------------------------------*/
-uint8_t AP_Arming_IsArmed(void) { return arming.armed; }
+uint8_t AP_Arming_IsArmed(void)
+{
+    return arming.armed;
+}

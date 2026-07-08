@@ -117,7 +117,7 @@ typedef struct __mavlink_odometry_t {
 static inline uint16_t mavlink_msg_odometry_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t frame_id, uint8_t child_frame_id, float x, float y, float z, const float *q, float vx, float vy, float vz, float rollspeed, float pitchspeed, float yawspeed, const float *pose_covariance, const float *velocity_covariance, uint8_t reset_counter, uint8_t estimator_type, int8_t quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ODOMETRY_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x);
@@ -195,7 +195,7 @@ static inline uint16_t mavlink_msg_odometry_pack(uint8_t system_id, uint8_t comp
 static inline uint16_t mavlink_msg_odometry_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t frame_id, uint8_t child_frame_id, float x, float y, float z, const float *q, float vx, float vy, float vz, float rollspeed, float pitchspeed, float yawspeed, const float *pose_covariance, const float *velocity_covariance, uint8_t reset_counter, uint8_t estimator_type, int8_t quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ODOMETRY_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x);
@@ -277,7 +277,7 @@ static inline uint16_t mavlink_msg_odometry_pack_chan(uint8_t system_id, uint8_t
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint8_t frame_id,uint8_t child_frame_id,float x,float y,float z,const float *q,float vx,float vy,float vz,float rollspeed,float pitchspeed,float yawspeed,const float *pose_covariance,const float *velocity_covariance,uint8_t reset_counter,uint8_t estimator_type,int8_t quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ODOMETRY_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x);
@@ -393,7 +393,7 @@ static inline uint16_t mavlink_msg_odometry_encode_status(uint8_t system_id, uin
 
 static inline void mavlink_msg_odometry_send(mavlink_channel_t chan, uint64_t time_usec, uint8_t frame_id, uint8_t child_frame_id, float x, float y, float z, const float *q, float vx, float vy, float vz, float rollspeed, float pitchspeed, float yawspeed, const float *pose_covariance, const float *velocity_covariance, uint8_t reset_counter, uint8_t estimator_type, int8_t quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ODOMETRY_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x);
@@ -445,7 +445,7 @@ static inline void mavlink_msg_odometry_send(mavlink_channel_t chan, uint64_t ti
  */
 static inline void mavlink_msg_odometry_send_struct(mavlink_channel_t chan, const mavlink_odometry_t* odometry)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_odometry_send(chan, odometry->time_usec, odometry->frame_id, odometry->child_frame_id, odometry->x, odometry->y, odometry->z, odometry->q, odometry->vx, odometry->vy, odometry->vz, odometry->rollspeed, odometry->pitchspeed, odometry->yawspeed, odometry->pose_covariance, odometry->velocity_covariance, odometry->reset_counter, odometry->estimator_type, odometry->quality);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ODOMETRY, (const char *)odometry, MAVLINK_MSG_ID_ODOMETRY_MIN_LEN, MAVLINK_MSG_ID_ODOMETRY_LEN, MAVLINK_MSG_ID_ODOMETRY_CRC);
@@ -462,7 +462,7 @@ static inline void mavlink_msg_odometry_send_struct(mavlink_channel_t chan, cons
  */
 static inline void mavlink_msg_odometry_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint8_t frame_id, uint8_t child_frame_id, float x, float y, float z, const float *q, float vx, float vy, float vz, float rollspeed, float pitchspeed, float yawspeed, const float *pose_covariance, const float *velocity_covariance, uint8_t reset_counter, uint8_t estimator_type, int8_t quality)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, x);
@@ -701,7 +701,7 @@ static inline int8_t mavlink_msg_odometry_get_quality(const mavlink_message_t* m
  */
 static inline void mavlink_msg_odometry_decode(const mavlink_message_t* msg, mavlink_odometry_t* odometry)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     odometry->time_usec = mavlink_msg_odometry_get_time_usec(msg);
     odometry->x = mavlink_msg_odometry_get_x(msg);
     odometry->y = mavlink_msg_odometry_get_y(msg);

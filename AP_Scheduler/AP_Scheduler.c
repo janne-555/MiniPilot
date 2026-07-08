@@ -15,7 +15,10 @@ static AP_Task_t tasks[MAX_TASKS];
 static uint8_t task_count = 0;
 
 // Initialize scheduler
-void AP_Scheduler_Init(void) { task_count = 0; }
+void AP_Scheduler_Init(void)
+{
+    task_count = 0;
+}
 
 // Register task
 int AP_Scheduler_Add_Task(TaskFunction_t function, uint32_t period_ms) {

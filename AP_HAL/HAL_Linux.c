@@ -10,8 +10,9 @@
 static int sockfd;
 static struct sockaddr_in tx_addr;
 
-int hal_init(void) {
-  sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+int hal_init(void)
+{
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 
   if (sockfd < 0)
     return -1;
@@ -38,16 +39,19 @@ int hal_init(void) {
   return 0;
 }
 
-void hal_comm_write(uint8_t *data, uint16_t len) {
-  sendto(sockfd, data, len, 0, (struct sockaddr *)&tx_addr, sizeof(tx_addr));
+void hal_comm_write(uint8_t *data, uint16_t len)
+{
+    sendto(sockfd, data, len, 0, (struct sockaddr *)&tx_addr, sizeof(tx_addr));
 }
 
-int hal_comm_read(uint8_t *data, uint16_t len) {
-  return recv(sockfd, data, len, 0);
+int hal_comm_read(uint8_t *data, uint16_t len)
+{
+    return recv(sockfd, data, len, 0);
 }
 
-uint32_t hal_millis(void) {
-  struct timespec ts;
+uint32_t hal_millis(void)
+{
+    struct timespec ts;
 
   clock_gettime(CLOCK_MONOTONIC, &ts);
 

@@ -63,7 +63,7 @@ typedef struct __mavlink_request_data_stream_t {
 static inline uint16_t mavlink_msg_request_data_stream_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t req_stream_id, uint16_t req_message_rate, uint8_t start_stop)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_REQUEST_DATA_STREAM_LEN];
     _mav_put_uint16_t(buf, 0, req_message_rate);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -104,7 +104,7 @@ static inline uint16_t mavlink_msg_request_data_stream_pack(uint8_t system_id, u
 static inline uint16_t mavlink_msg_request_data_stream_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t req_stream_id, uint16_t req_message_rate, uint8_t start_stop)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_REQUEST_DATA_STREAM_LEN];
     _mav_put_uint16_t(buf, 0, req_message_rate);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_request_data_stream_pack_chan(uint8_t system_
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint8_t req_stream_id,uint16_t req_message_rate,uint8_t start_stop)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_REQUEST_DATA_STREAM_LEN];
     _mav_put_uint16_t(buf, 0, req_message_rate);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -228,7 +228,7 @@ static inline uint16_t mavlink_msg_request_data_stream_encode_status(uint8_t sys
 
 static inline void mavlink_msg_request_data_stream_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint8_t req_stream_id, uint16_t req_message_rate, uint8_t start_stop)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_REQUEST_DATA_STREAM_LEN];
     _mav_put_uint16_t(buf, 0, req_message_rate);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_request_data_stream_send(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_request_data_stream_send_struct(mavlink_channel_t chan, const mavlink_request_data_stream_t* request_data_stream)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_request_data_stream_send(chan, request_data_stream->target_system, request_data_stream->target_component, request_data_stream->req_stream_id, request_data_stream->req_message_rate, request_data_stream->start_stop);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_REQUEST_DATA_STREAM, (const char *)request_data_stream, MAVLINK_MSG_ID_REQUEST_DATA_STREAM_MIN_LEN, MAVLINK_MSG_ID_REQUEST_DATA_STREAM_LEN, MAVLINK_MSG_ID_REQUEST_DATA_STREAM_CRC);
@@ -273,7 +273,7 @@ static inline void mavlink_msg_request_data_stream_send_struct(mavlink_channel_t
  */
 static inline void mavlink_msg_request_data_stream_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint8_t req_stream_id, uint16_t req_message_rate, uint8_t start_stop)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, req_message_rate);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -358,7 +358,7 @@ static inline uint8_t mavlink_msg_request_data_stream_get_start_stop(const mavli
  */
 static inline void mavlink_msg_request_data_stream_decode(const mavlink_message_t* msg, mavlink_request_data_stream_t* request_data_stream)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     request_data_stream->req_message_rate = mavlink_msg_request_data_stream_get_req_message_rate(msg);
     request_data_stream->target_system = mavlink_msg_request_data_stream_get_target_system(msg);
     request_data_stream->target_component = mavlink_msg_request_data_stream_get_target_component(msg);

@@ -55,7 +55,7 @@ typedef struct __mavlink_mission_clear_all_t {
 static inline uint16_t mavlink_msg_mission_clear_all_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_CLEAR_ALL_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_mission_clear_all_pack(uint8_t system_id, uin
 static inline uint16_t mavlink_msg_mission_clear_all_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_CLEAR_ALL_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_mission_clear_all_pack_chan(uint8_t system_id
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_CLEAR_ALL_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_mission_clear_all_encode_status(uint8_t syste
 
 static inline void mavlink_msg_mission_clear_all_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_CLEAR_ALL_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_mission_clear_all_send(mavlink_channel_t chan, ui
  */
 static inline void mavlink_msg_mission_clear_all_send_struct(mavlink_channel_t chan, const mavlink_mission_clear_all_t* mission_clear_all)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_mission_clear_all_send(chan, mission_clear_all->target_system, mission_clear_all->target_component, mission_clear_all->mission_type);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_MISSION_CLEAR_ALL, (const char *)mission_clear_all, MAVLINK_MSG_ID_MISSION_CLEAR_ALL_MIN_LEN, MAVLINK_MSG_ID_MISSION_CLEAR_ALL_LEN, MAVLINK_MSG_ID_MISSION_CLEAR_ALL_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_mission_clear_all_send_struct(mavlink_channel_t c
  */
 static inline void mavlink_msg_mission_clear_all_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint8_t mission_type)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -304,7 +304,7 @@ static inline uint8_t mavlink_msg_mission_clear_all_get_mission_type(const mavli
  */
 static inline void mavlink_msg_mission_clear_all_decode(const mavlink_message_t* msg, mavlink_mission_clear_all_t* mission_clear_all)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mission_clear_all->target_system = mavlink_msg_mission_clear_all_get_target_system(msg);
     mission_clear_all->target_component = mavlink_msg_mission_clear_all_get_target_component(msg);
     mission_clear_all->mission_type = mavlink_msg_mission_clear_all_get_mission_type(msg);

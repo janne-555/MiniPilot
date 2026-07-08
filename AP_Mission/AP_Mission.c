@@ -14,16 +14,16 @@
 
 static AP_Mission_t mission;
 
-void AP_Mission_Init(void) {
-
-  memset(&mission, 0, sizeof(mission));
+void AP_Mission_Init(void)
+{
+    memset(&mission, 0, sizeof(mission));
 
   printf("Mission Started\n");
 }
 
-void AP_Mission_Clear(void) {
-
-  mission.count = 0;
+void AP_Mission_Clear(void)
+{
+    mission.count = 0;
 
   mission.current = 0;
 
@@ -47,7 +47,10 @@ uint8_t AP_Mission_AddItem(AP_Mission_Item_t *item) {
   return 1;
 }
 
-uint16_t AP_Mission_Count(void) { return mission.count; }
+uint16_t AP_Mission_Count(void)
+{
+    return mission.count;
+}
 
 AP_Mission_Item_t *AP_Mission_GetItem(uint16_t seq) {
 
@@ -75,9 +78,9 @@ void AP_Mission_Start(void) {
   printf("MISSION START\n");
 }
 
-void AP_Mission_Stop(void) {
-
-  mission.active = 0;
+void AP_Mission_Stop(void)
+{
+    mission.active = 0;
 
   printf("MISSION STOP\n");
 }

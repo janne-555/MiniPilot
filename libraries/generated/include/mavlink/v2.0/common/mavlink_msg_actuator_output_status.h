@@ -55,7 +55,7 @@ typedef struct __mavlink_actuator_output_status_t {
 static inline uint16_t mavlink_msg_actuator_output_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint32_t active, const float *actuator)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, active);
@@ -88,7 +88,7 @@ static inline uint16_t mavlink_msg_actuator_output_status_pack(uint8_t system_id
 static inline uint16_t mavlink_msg_actuator_output_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint32_t active, const float *actuator)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, active);
@@ -125,7 +125,7 @@ static inline uint16_t mavlink_msg_actuator_output_status_pack_chan(uint8_t syst
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint32_t active,const float *actuator)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, active);
@@ -196,7 +196,7 @@ static inline uint16_t mavlink_msg_actuator_output_status_encode_status(uint8_t 
 
 static inline void mavlink_msg_actuator_output_status_send(mavlink_channel_t chan, uint64_t time_usec, uint32_t active, const float *actuator)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, active);
@@ -218,7 +218,7 @@ static inline void mavlink_msg_actuator_output_status_send(mavlink_channel_t cha
  */
 static inline void mavlink_msg_actuator_output_status_send_struct(mavlink_channel_t chan, const mavlink_actuator_output_status_t* actuator_output_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_actuator_output_status_send(chan, actuator_output_status->time_usec, actuator_output_status->active, actuator_output_status->actuator);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS, (const char *)actuator_output_status, MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS_MIN_LEN, MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS_LEN, MAVLINK_MSG_ID_ACTUATOR_OUTPUT_STATUS_CRC);
@@ -235,7 +235,7 @@ static inline void mavlink_msg_actuator_output_status_send_struct(mavlink_channe
  */
 static inline void mavlink_msg_actuator_output_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint32_t active, const float *actuator)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, active);
@@ -294,7 +294,7 @@ static inline uint16_t mavlink_msg_actuator_output_status_get_actuator(const mav
  */
 static inline void mavlink_msg_actuator_output_status_decode(const mavlink_message_t* msg, mavlink_actuator_output_status_t* actuator_output_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     actuator_output_status->time_usec = mavlink_msg_actuator_output_status_get_time_usec(msg);
     actuator_output_status->active = mavlink_msg_actuator_output_status_get_active(msg);
     mavlink_msg_actuator_output_status_get_actuator(msg, actuator_output_status->actuator);

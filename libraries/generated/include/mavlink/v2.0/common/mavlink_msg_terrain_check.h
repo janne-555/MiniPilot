@@ -51,7 +51,7 @@ typedef struct __mavlink_terrain_check_t {
 static inline uint16_t mavlink_msg_terrain_check_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                int32_t lat, int32_t lon)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TERRAIN_CHECK_LEN];
     _mav_put_int32_t(buf, 0, lat);
     _mav_put_int32_t(buf, 4, lon);
@@ -83,7 +83,7 @@ static inline uint16_t mavlink_msg_terrain_check_pack(uint8_t system_id, uint8_t
 static inline uint16_t mavlink_msg_terrain_check_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                int32_t lat, int32_t lon)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TERRAIN_CHECK_LEN];
     _mav_put_int32_t(buf, 0, lat);
     _mav_put_int32_t(buf, 4, lon);
@@ -119,7 +119,7 @@ static inline uint16_t mavlink_msg_terrain_check_pack_chan(uint8_t system_id, ui
                                mavlink_message_t* msg,
                                    int32_t lat,int32_t lon)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TERRAIN_CHECK_LEN];
     _mav_put_int32_t(buf, 0, lat);
     _mav_put_int32_t(buf, 4, lon);
@@ -189,7 +189,7 @@ static inline uint16_t mavlink_msg_terrain_check_encode_status(uint8_t system_id
 
 static inline void mavlink_msg_terrain_check_send(mavlink_channel_t chan, int32_t lat, int32_t lon)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TERRAIN_CHECK_LEN];
     _mav_put_int32_t(buf, 0, lat);
     _mav_put_int32_t(buf, 4, lon);
@@ -211,7 +211,7 @@ static inline void mavlink_msg_terrain_check_send(mavlink_channel_t chan, int32_
  */
 static inline void mavlink_msg_terrain_check_send_struct(mavlink_channel_t chan, const mavlink_terrain_check_t* terrain_check)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_terrain_check_send(chan, terrain_check->lat, terrain_check->lon);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_TERRAIN_CHECK, (const char *)terrain_check, MAVLINK_MSG_ID_TERRAIN_CHECK_MIN_LEN, MAVLINK_MSG_ID_TERRAIN_CHECK_LEN, MAVLINK_MSG_ID_TERRAIN_CHECK_CRC);
@@ -228,7 +228,7 @@ static inline void mavlink_msg_terrain_check_send_struct(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_terrain_check_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  int32_t lat, int32_t lon)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_int32_t(buf, 0, lat);
     _mav_put_int32_t(buf, 4, lon);
@@ -277,7 +277,7 @@ static inline int32_t mavlink_msg_terrain_check_get_lon(const mavlink_message_t*
  */
 static inline void mavlink_msg_terrain_check_decode(const mavlink_message_t* msg, mavlink_terrain_check_t* terrain_check)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     terrain_check->lat = mavlink_msg_terrain_check_get_lat(msg);
     terrain_check->lon = mavlink_msg_terrain_check_get_lon(msg);
 #else

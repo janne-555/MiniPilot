@@ -68,7 +68,7 @@ typedef struct __mavlink_open_drone_id_basic_id_t {
 static inline uint16_t mavlink_msg_open_drone_id_basic_id_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t id_type, uint8_t ua_type, const uint8_t *uas_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -110,7 +110,7 @@ static inline uint16_t mavlink_msg_open_drone_id_basic_id_pack(uint8_t system_id
 static inline uint16_t mavlink_msg_open_drone_id_basic_id_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t id_type, uint8_t ua_type, const uint8_t *uas_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -156,7 +156,7 @@ static inline uint16_t mavlink_msg_open_drone_id_basic_id_pack_chan(uint8_t syst
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const uint8_t *id_or_mac,uint8_t id_type,uint8_t ua_type,const uint8_t *uas_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -236,7 +236,7 @@ static inline uint16_t mavlink_msg_open_drone_id_basic_id_encode_status(uint8_t 
 
 static inline void mavlink_msg_open_drone_id_basic_id_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t id_type, uint8_t ua_type, const uint8_t *uas_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID_LEN];
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -264,7 +264,7 @@ static inline void mavlink_msg_open_drone_id_basic_id_send(mavlink_channel_t cha
  */
 static inline void mavlink_msg_open_drone_id_basic_id_send_struct(mavlink_channel_t chan, const mavlink_open_drone_id_basic_id_t* open_drone_id_basic_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_open_drone_id_basic_id_send(chan, open_drone_id_basic_id->target_system, open_drone_id_basic_id->target_component, open_drone_id_basic_id->id_or_mac, open_drone_id_basic_id->id_type, open_drone_id_basic_id->ua_type, open_drone_id_basic_id->uas_id);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID, (const char *)open_drone_id_basic_id, MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID_MIN_LEN, MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID_LEN, MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID_CRC);
@@ -281,7 +281,7 @@ static inline void mavlink_msg_open_drone_id_basic_id_send_struct(mavlink_channe
  */
 static inline void mavlink_msg_open_drone_id_basic_id_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const uint8_t *id_or_mac, uint8_t id_type, uint8_t ua_type, const uint8_t *uas_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 0, target_system);
     _mav_put_uint8_t(buf, 1, target_component);
@@ -376,7 +376,7 @@ static inline uint16_t mavlink_msg_open_drone_id_basic_id_get_uas_id(const mavli
  */
 static inline void mavlink_msg_open_drone_id_basic_id_decode(const mavlink_message_t* msg, mavlink_open_drone_id_basic_id_t* open_drone_id_basic_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     open_drone_id_basic_id->target_system = mavlink_msg_open_drone_id_basic_id_get_target_system(msg);
     open_drone_id_basic_id->target_component = mavlink_msg_open_drone_id_basic_id_get_target_component(msg);
     mavlink_msg_open_drone_id_basic_id_get_id_or_mac(msg, open_drone_id_basic_id->id_or_mac);

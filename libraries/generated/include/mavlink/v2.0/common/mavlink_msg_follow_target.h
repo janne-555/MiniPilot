@@ -91,7 +91,7 @@ typedef struct __mavlink_follow_target_t {
 static inline uint16_t mavlink_msg_follow_target_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t timestamp, uint8_t est_capabilities, int32_t lat, int32_t lon, float alt, const float *vel, const float *acc, const float *attitude_q, const float *rates, const float *position_cov, uint64_t custom_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FOLLOW_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, custom_state);
@@ -148,7 +148,7 @@ static inline uint16_t mavlink_msg_follow_target_pack(uint8_t system_id, uint8_t
 static inline uint16_t mavlink_msg_follow_target_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t timestamp, uint8_t est_capabilities, int32_t lat, int32_t lon, float alt, const float *vel, const float *acc, const float *attitude_q, const float *rates, const float *position_cov, uint64_t custom_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FOLLOW_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, custom_state);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_follow_target_pack_chan(uint8_t system_id, ui
                                mavlink_message_t* msg,
                                    uint64_t timestamp,uint8_t est_capabilities,int32_t lat,int32_t lon,float alt,const float *vel,const float *acc,const float *attitude_q,const float *rates,const float *position_cov,uint64_t custom_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FOLLOW_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, custom_state);
@@ -304,7 +304,7 @@ static inline uint16_t mavlink_msg_follow_target_encode_status(uint8_t system_id
 
 static inline void mavlink_msg_follow_target_send(mavlink_channel_t chan, uint64_t timestamp, uint8_t est_capabilities, int32_t lat, int32_t lon, float alt, const float *vel, const float *acc, const float *attitude_q, const float *rates, const float *position_cov, uint64_t custom_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_FOLLOW_TARGET_LEN];
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, custom_state);
@@ -342,7 +342,7 @@ static inline void mavlink_msg_follow_target_send(mavlink_channel_t chan, uint64
  */
 static inline void mavlink_msg_follow_target_send_struct(mavlink_channel_t chan, const mavlink_follow_target_t* follow_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_follow_target_send(chan, follow_target->timestamp, follow_target->est_capabilities, follow_target->lat, follow_target->lon, follow_target->alt, follow_target->vel, follow_target->acc, follow_target->attitude_q, follow_target->rates, follow_target->position_cov, follow_target->custom_state);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_FOLLOW_TARGET, (const char *)follow_target, MAVLINK_MSG_ID_FOLLOW_TARGET_MIN_LEN, MAVLINK_MSG_ID_FOLLOW_TARGET_LEN, MAVLINK_MSG_ID_FOLLOW_TARGET_CRC);
@@ -359,7 +359,7 @@ static inline void mavlink_msg_follow_target_send_struct(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_follow_target_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t timestamp, uint8_t est_capabilities, int32_t lat, int32_t lon, float alt, const float *vel, const float *acc, const float *attitude_q, const float *rates, const float *position_cov, uint64_t custom_state)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, timestamp);
     _mav_put_uint64_t(buf, 8, custom_state);
@@ -514,7 +514,7 @@ static inline uint64_t mavlink_msg_follow_target_get_custom_state(const mavlink_
  */
 static inline void mavlink_msg_follow_target_decode(const mavlink_message_t* msg, mavlink_follow_target_t* follow_target)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     follow_target->timestamp = mavlink_msg_follow_target_get_timestamp(msg);
     follow_target->custom_state = mavlink_msg_follow_target_get_custom_state(msg);
     follow_target->lat = mavlink_msg_follow_target_get_lat(msg);

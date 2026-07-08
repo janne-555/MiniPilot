@@ -79,7 +79,7 @@ typedef struct __mavlink_param_map_rc_t {
 static inline uint16_t mavlink_msg_param_map_rc_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t parameter_rc_channel_index, float param_value0, float scale, float param_value_min, float param_value_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_MAP_RC_LEN];
     _mav_put_float(buf, 0, param_value0);
     _mav_put_float(buf, 4, scale);
@@ -130,7 +130,7 @@ static inline uint16_t mavlink_msg_param_map_rc_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_param_map_rc_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t parameter_rc_channel_index, float param_value0, float scale, float param_value_min, float param_value_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_MAP_RC_LEN];
     _mav_put_float(buf, 0, param_value0);
     _mav_put_float(buf, 4, scale);
@@ -185,7 +185,7 @@ static inline uint16_t mavlink_msg_param_map_rc_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,const char *param_id,int16_t param_index,uint8_t parameter_rc_channel_index,float param_value0,float scale,float param_value_min,float param_value_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_MAP_RC_LEN];
     _mav_put_float(buf, 0, param_value0);
     _mav_put_float(buf, 4, scale);
@@ -274,7 +274,7 @@ static inline uint16_t mavlink_msg_param_map_rc_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_param_map_rc_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t parameter_rc_channel_index, float param_value0, float scale, float param_value_min, float param_value_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_PARAM_MAP_RC_LEN];
     _mav_put_float(buf, 0, param_value0);
     _mav_put_float(buf, 4, scale);
@@ -308,7 +308,7 @@ static inline void mavlink_msg_param_map_rc_send(mavlink_channel_t chan, uint8_t
  */
 static inline void mavlink_msg_param_map_rc_send_struct(mavlink_channel_t chan, const mavlink_param_map_rc_t* param_map_rc)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_param_map_rc_send(chan, param_map_rc->target_system, param_map_rc->target_component, param_map_rc->param_id, param_map_rc->param_index, param_map_rc->parameter_rc_channel_index, param_map_rc->param_value0, param_map_rc->scale, param_map_rc->param_value_min, param_map_rc->param_value_max);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_PARAM_MAP_RC, (const char *)param_map_rc, MAVLINK_MSG_ID_PARAM_MAP_RC_MIN_LEN, MAVLINK_MSG_ID_PARAM_MAP_RC_LEN, MAVLINK_MSG_ID_PARAM_MAP_RC_CRC);
@@ -325,7 +325,7 @@ static inline void mavlink_msg_param_map_rc_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_param_map_rc_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, const char *param_id, int16_t param_index, uint8_t parameter_rc_channel_index, float param_value0, float scale, float param_value_min, float param_value_max)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, param_value0);
     _mav_put_float(buf, 4, scale);
@@ -456,7 +456,7 @@ static inline float mavlink_msg_param_map_rc_get_param_value_max(const mavlink_m
  */
 static inline void mavlink_msg_param_map_rc_decode(const mavlink_message_t* msg, mavlink_param_map_rc_t* param_map_rc)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     param_map_rc->param_value0 = mavlink_msg_param_map_rc_get_param_value0(msg);
     param_map_rc->scale = mavlink_msg_param_map_rc_get_scale(msg);
     param_map_rc->param_value_min = mavlink_msg_param_map_rc_get_param_value_min(msg);

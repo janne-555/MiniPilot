@@ -10,8 +10,9 @@
 #include "GCS_MAVLink.h"
 
 // Send attitude
-void GCS_send_attitude(void) {
-  mavlink_message_t msg;
+void GCS_send_attitude(void)
+{
+    mavlink_message_t msg;
 
   uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 

@@ -66,7 +66,7 @@ MAVLINK_WIP
 static inline uint16_t mavlink_msg_esc_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t index, uint64_t time_usec, const int32_t *rpm, const float *voltage, const float *current)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 56, index);
@@ -105,7 +105,7 @@ static inline uint16_t mavlink_msg_esc_status_pack(uint8_t system_id, uint8_t co
 static inline uint16_t mavlink_msg_esc_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t index, uint64_t time_usec, const int32_t *rpm, const float *voltage, const float *current)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 56, index);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_esc_status_pack_chan(uint8_t system_id, uint8
                                mavlink_message_t* msg,
                                    uint8_t index,uint64_t time_usec,const int32_t *rpm,const float *voltage,const float *current)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 56, index);
@@ -229,7 +229,7 @@ static inline uint16_t mavlink_msg_esc_status_encode_status(uint8_t system_id, u
 MAVLINK_WIP
 static inline void mavlink_msg_esc_status_send(mavlink_channel_t chan, uint8_t index, uint64_t time_usec, const int32_t *rpm, const float *voltage, const float *current)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ESC_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 56, index);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_esc_status_send(mavlink_channel_t chan, uint8_t i
 MAVLINK_WIP
 static inline void mavlink_msg_esc_status_send_struct(mavlink_channel_t chan, const mavlink_esc_status_t* esc_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_esc_status_send(chan, esc_status->index, esc_status->time_usec, esc_status->rpm, esc_status->voltage, esc_status->current);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ESC_STATUS, (const char *)esc_status, MAVLINK_MSG_ID_ESC_STATUS_MIN_LEN, MAVLINK_MSG_ID_ESC_STATUS_LEN, MAVLINK_MSG_ID_ESC_STATUS_CRC);
@@ -274,7 +274,7 @@ static inline void mavlink_msg_esc_status_send_struct(mavlink_channel_t chan, co
 MAVLINK_WIP
 static inline void mavlink_msg_esc_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t index, uint64_t time_usec, const int32_t *rpm, const float *voltage, const float *current)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 56, index);
@@ -363,7 +363,7 @@ static inline uint16_t mavlink_msg_esc_status_get_current(const mavlink_message_
 MAVLINK_WIP
 static inline void mavlink_msg_esc_status_decode(const mavlink_message_t* msg, mavlink_esc_status_t* esc_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     esc_status->time_usec = mavlink_msg_esc_status_get_time_usec(msg);
     mavlink_msg_esc_status_get_rpm(msg, esc_status->rpm);
     mavlink_msg_esc_status_get_voltage(msg, esc_status->voltage);

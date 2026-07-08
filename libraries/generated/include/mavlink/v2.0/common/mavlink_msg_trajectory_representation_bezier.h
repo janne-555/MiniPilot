@@ -75,7 +75,7 @@ typedef struct __mavlink_trajectory_representation_bezier_t {
 static inline uint16_t mavlink_msg_trajectory_representation_bezier_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *delta, const float *pos_yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 108, valid_points);
@@ -120,7 +120,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_bezier_pack(uint8_t
 static inline uint16_t mavlink_msg_trajectory_representation_bezier_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *delta, const float *pos_yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 108, valid_points);
@@ -169,7 +169,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_bezier_pack_chan(ui
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint8_t valid_points,const float *pos_x,const float *pos_y,const float *pos_z,const float *delta,const float *pos_yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 108, valid_points);
@@ -252,7 +252,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_bezier_encode_statu
 
 static inline void mavlink_msg_trajectory_representation_bezier_send(mavlink_channel_t chan, uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *delta, const float *pos_yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 108, valid_points);
@@ -282,7 +282,7 @@ static inline void mavlink_msg_trajectory_representation_bezier_send(mavlink_cha
  */
 static inline void mavlink_msg_trajectory_representation_bezier_send_struct(mavlink_channel_t chan, const mavlink_trajectory_representation_bezier_t* trajectory_representation_bezier)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_trajectory_representation_bezier_send(chan, trajectory_representation_bezier->time_usec, trajectory_representation_bezier->valid_points, trajectory_representation_bezier->pos_x, trajectory_representation_bezier->pos_y, trajectory_representation_bezier->pos_z, trajectory_representation_bezier->delta, trajectory_representation_bezier->pos_yaw);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER, (const char *)trajectory_representation_bezier, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER_MIN_LEN, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER_LEN, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_BEZIER_CRC);
@@ -299,7 +299,7 @@ static inline void mavlink_msg_trajectory_representation_bezier_send_struct(mavl
  */
 static inline void mavlink_msg_trajectory_representation_bezier_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *delta, const float *pos_yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 108, valid_points);
@@ -406,7 +406,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_bezier_get_pos_yaw(
  */
 static inline void mavlink_msg_trajectory_representation_bezier_decode(const mavlink_message_t* msg, mavlink_trajectory_representation_bezier_t* trajectory_representation_bezier)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     trajectory_representation_bezier->time_usec = mavlink_msg_trajectory_representation_bezier_get_time_usec(msg);
     mavlink_msg_trajectory_representation_bezier_get_pos_x(msg, trajectory_representation_bezier->pos_x);
     mavlink_msg_trajectory_representation_bezier_get_pos_y(msg, trajectory_representation_bezier->pos_y);

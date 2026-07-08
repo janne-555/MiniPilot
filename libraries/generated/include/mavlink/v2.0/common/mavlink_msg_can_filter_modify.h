@@ -67,7 +67,7 @@ typedef struct __mavlink_can_filter_modify_t {
 static inline uint16_t mavlink_msg_can_filter_modify_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t operation, uint8_t num_ids, const uint16_t *ids)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAN_FILTER_MODIFY_LEN];
     _mav_put_uint8_t(buf, 32, target_system);
     _mav_put_uint8_t(buf, 33, target_component);
@@ -109,7 +109,7 @@ static inline uint16_t mavlink_msg_can_filter_modify_pack(uint8_t system_id, uin
 static inline uint16_t mavlink_msg_can_filter_modify_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t operation, uint8_t num_ids, const uint16_t *ids)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAN_FILTER_MODIFY_LEN];
     _mav_put_uint8_t(buf, 32, target_system);
     _mav_put_uint8_t(buf, 33, target_component);
@@ -155,7 +155,7 @@ static inline uint16_t mavlink_msg_can_filter_modify_pack_chan(uint8_t system_id
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint8_t bus,uint8_t operation,uint8_t num_ids,const uint16_t *ids)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAN_FILTER_MODIFY_LEN];
     _mav_put_uint8_t(buf, 32, target_system);
     _mav_put_uint8_t(buf, 33, target_component);
@@ -235,7 +235,7 @@ static inline uint16_t mavlink_msg_can_filter_modify_encode_status(uint8_t syste
 
 static inline void mavlink_msg_can_filter_modify_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t operation, uint8_t num_ids, const uint16_t *ids)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CAN_FILTER_MODIFY_LEN];
     _mav_put_uint8_t(buf, 32, target_system);
     _mav_put_uint8_t(buf, 33, target_component);
@@ -263,7 +263,7 @@ static inline void mavlink_msg_can_filter_modify_send(mavlink_channel_t chan, ui
  */
 static inline void mavlink_msg_can_filter_modify_send_struct(mavlink_channel_t chan, const mavlink_can_filter_modify_t* can_filter_modify)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_can_filter_modify_send(chan, can_filter_modify->target_system, can_filter_modify->target_component, can_filter_modify->bus, can_filter_modify->operation, can_filter_modify->num_ids, can_filter_modify->ids);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CAN_FILTER_MODIFY, (const char *)can_filter_modify, MAVLINK_MSG_ID_CAN_FILTER_MODIFY_MIN_LEN, MAVLINK_MSG_ID_CAN_FILTER_MODIFY_LEN, MAVLINK_MSG_ID_CAN_FILTER_MODIFY_CRC);
@@ -280,7 +280,7 @@ static inline void mavlink_msg_can_filter_modify_send_struct(mavlink_channel_t c
  */
 static inline void mavlink_msg_can_filter_modify_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint8_t bus, uint8_t operation, uint8_t num_ids, const uint16_t *ids)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 32, target_system);
     _mav_put_uint8_t(buf, 33, target_component);
@@ -375,7 +375,7 @@ static inline uint16_t mavlink_msg_can_filter_modify_get_ids(const mavlink_messa
  */
 static inline void mavlink_msg_can_filter_modify_decode(const mavlink_message_t* msg, mavlink_can_filter_modify_t* can_filter_modify)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_can_filter_modify_get_ids(msg, can_filter_modify->ids);
     can_filter_modify->target_system = mavlink_msg_can_filter_modify_get_target_system(msg);
     can_filter_modify->target_component = mavlink_msg_can_filter_modify_get_target_component(msg);

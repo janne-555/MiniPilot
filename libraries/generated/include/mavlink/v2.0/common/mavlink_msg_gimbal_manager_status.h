@@ -71,7 +71,7 @@ typedef struct __mavlink_gimbal_manager_status_t {
 static inline uint16_t mavlink_msg_gimbal_manager_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint32_t flags, uint8_t gimbal_device_id, uint8_t primary_control_sysid, uint8_t primary_control_compid, uint8_t secondary_control_sysid, uint8_t secondary_control_compid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, flags);
@@ -118,7 +118,7 @@ static inline uint16_t mavlink_msg_gimbal_manager_status_pack(uint8_t system_id,
 static inline uint16_t mavlink_msg_gimbal_manager_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint32_t flags, uint8_t gimbal_device_id, uint8_t primary_control_sysid, uint8_t primary_control_compid, uint8_t secondary_control_sysid, uint8_t secondary_control_compid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, flags);
@@ -169,7 +169,7 @@ static inline uint16_t mavlink_msg_gimbal_manager_status_pack_chan(uint8_t syste
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint32_t flags,uint8_t gimbal_device_id,uint8_t primary_control_sysid,uint8_t primary_control_compid,uint8_t secondary_control_sysid,uint8_t secondary_control_compid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, flags);
@@ -254,7 +254,7 @@ static inline uint16_t mavlink_msg_gimbal_manager_status_encode_status(uint8_t s
 
 static inline void mavlink_msg_gimbal_manager_status_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint32_t flags, uint8_t gimbal_device_id, uint8_t primary_control_sysid, uint8_t primary_control_compid, uint8_t secondary_control_sysid, uint8_t secondary_control_compid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, flags);
@@ -286,7 +286,7 @@ static inline void mavlink_msg_gimbal_manager_status_send(mavlink_channel_t chan
  */
 static inline void mavlink_msg_gimbal_manager_status_send_struct(mavlink_channel_t chan, const mavlink_gimbal_manager_status_t* gimbal_manager_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_gimbal_manager_status_send(chan, gimbal_manager_status->time_boot_ms, gimbal_manager_status->flags, gimbal_manager_status->gimbal_device_id, gimbal_manager_status->primary_control_sysid, gimbal_manager_status->primary_control_compid, gimbal_manager_status->secondary_control_sysid, gimbal_manager_status->secondary_control_compid);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS, (const char *)gimbal_manager_status, MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS_MIN_LEN, MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS_LEN, MAVLINK_MSG_ID_GIMBAL_MANAGER_STATUS_CRC);
@@ -303,7 +303,7 @@ static inline void mavlink_msg_gimbal_manager_status_send_struct(mavlink_channel
  */
 static inline void mavlink_msg_gimbal_manager_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint32_t flags, uint8_t gimbal_device_id, uint8_t primary_control_sysid, uint8_t primary_control_compid, uint8_t secondary_control_sysid, uint8_t secondary_control_compid)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, flags);
@@ -412,7 +412,7 @@ static inline uint8_t mavlink_msg_gimbal_manager_status_get_secondary_control_co
  */
 static inline void mavlink_msg_gimbal_manager_status_decode(const mavlink_message_t* msg, mavlink_gimbal_manager_status_t* gimbal_manager_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     gimbal_manager_status->time_boot_ms = mavlink_msg_gimbal_manager_status_get_time_boot_ms(msg);
     gimbal_manager_status->flags = mavlink_msg_gimbal_manager_status_get_flags(msg);
     gimbal_manager_status->gimbal_device_id = mavlink_msg_gimbal_manager_status_get_gimbal_device_id(msg);

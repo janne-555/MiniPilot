@@ -87,7 +87,7 @@ typedef struct __mavlink_illuminator_status_t {
 static inline uint16_t mavlink_msg_illuminator_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t uptime_ms, uint8_t enable, uint8_t mode_bitmask, uint32_t error_status, uint8_t mode, float brightness, float strobe_period, float strobe_duty_cycle, float temp_c, float min_strobe_period, float max_strobe_period)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ILLUMINATOR_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, uptime_ms);
     _mav_put_uint32_t(buf, 4, error_status);
@@ -146,7 +146,7 @@ static inline uint16_t mavlink_msg_illuminator_status_pack(uint8_t system_id, ui
 static inline uint16_t mavlink_msg_illuminator_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t uptime_ms, uint8_t enable, uint8_t mode_bitmask, uint32_t error_status, uint8_t mode, float brightness, float strobe_period, float strobe_duty_cycle, float temp_c, float min_strobe_period, float max_strobe_period)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ILLUMINATOR_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, uptime_ms);
     _mav_put_uint32_t(buf, 4, error_status);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_illuminator_status_pack_chan(uint8_t system_i
                                mavlink_message_t* msg,
                                    uint32_t uptime_ms,uint8_t enable,uint8_t mode_bitmask,uint32_t error_status,uint8_t mode,float brightness,float strobe_period,float strobe_duty_cycle,float temp_c,float min_strobe_period,float max_strobe_period)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ILLUMINATOR_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, uptime_ms);
     _mav_put_uint32_t(buf, 4, error_status);
@@ -306,7 +306,7 @@ static inline uint16_t mavlink_msg_illuminator_status_encode_status(uint8_t syst
 
 static inline void mavlink_msg_illuminator_status_send(mavlink_channel_t chan, uint32_t uptime_ms, uint8_t enable, uint8_t mode_bitmask, uint32_t error_status, uint8_t mode, float brightness, float strobe_period, float strobe_duty_cycle, float temp_c, float min_strobe_period, float max_strobe_period)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ILLUMINATOR_STATUS_LEN];
     _mav_put_uint32_t(buf, 0, uptime_ms);
     _mav_put_uint32_t(buf, 4, error_status);
@@ -346,7 +346,7 @@ static inline void mavlink_msg_illuminator_status_send(mavlink_channel_t chan, u
  */
 static inline void mavlink_msg_illuminator_status_send_struct(mavlink_channel_t chan, const mavlink_illuminator_status_t* illuminator_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_illuminator_status_send(chan, illuminator_status->uptime_ms, illuminator_status->enable, illuminator_status->mode_bitmask, illuminator_status->error_status, illuminator_status->mode, illuminator_status->brightness, illuminator_status->strobe_period, illuminator_status->strobe_duty_cycle, illuminator_status->temp_c, illuminator_status->min_strobe_period, illuminator_status->max_strobe_period);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ILLUMINATOR_STATUS, (const char *)illuminator_status, MAVLINK_MSG_ID_ILLUMINATOR_STATUS_MIN_LEN, MAVLINK_MSG_ID_ILLUMINATOR_STATUS_LEN, MAVLINK_MSG_ID_ILLUMINATOR_STATUS_CRC);
@@ -363,7 +363,7 @@ static inline void mavlink_msg_illuminator_status_send_struct(mavlink_channel_t 
  */
 static inline void mavlink_msg_illuminator_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t uptime_ms, uint8_t enable, uint8_t mode_bitmask, uint32_t error_status, uint8_t mode, float brightness, float strobe_period, float strobe_duty_cycle, float temp_c, float min_strobe_period, float max_strobe_period)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, uptime_ms);
     _mav_put_uint32_t(buf, 4, error_status);
@@ -520,7 +520,7 @@ static inline float mavlink_msg_illuminator_status_get_max_strobe_period(const m
  */
 static inline void mavlink_msg_illuminator_status_decode(const mavlink_message_t* msg, mavlink_illuminator_status_t* illuminator_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     illuminator_status->uptime_ms = mavlink_msg_illuminator_status_get_uptime_ms(msg);
     illuminator_status->error_status = mavlink_msg_illuminator_status_get_error_status(msg);
     illuminator_status->brightness = mavlink_msg_illuminator_status_get_brightness(msg);

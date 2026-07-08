@@ -75,7 +75,7 @@ typedef struct __mavlink_winch_status_t {
 static inline uint16_t mavlink_msg_winch_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, float line_length, float speed, float tension, float voltage, float current, int16_t temperature, uint32_t status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WINCH_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, line_length);
@@ -125,7 +125,7 @@ static inline uint16_t mavlink_msg_winch_status_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_winch_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, float line_length, float speed, float tension, float voltage, float current, int16_t temperature, uint32_t status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WINCH_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, line_length);
@@ -179,7 +179,7 @@ static inline uint16_t mavlink_msg_winch_status_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint64_t time_usec,float line_length,float speed,float tension,float voltage,float current,int16_t temperature,uint32_t status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WINCH_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, line_length);
@@ -267,7 +267,7 @@ static inline uint16_t mavlink_msg_winch_status_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_winch_status_send(mavlink_channel_t chan, uint64_t time_usec, float line_length, float speed, float tension, float voltage, float current, int16_t temperature, uint32_t status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_WINCH_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, line_length);
@@ -301,7 +301,7 @@ static inline void mavlink_msg_winch_status_send(mavlink_channel_t chan, uint64_
  */
 static inline void mavlink_msg_winch_status_send_struct(mavlink_channel_t chan, const mavlink_winch_status_t* winch_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_winch_status_send(chan, winch_status->time_usec, winch_status->line_length, winch_status->speed, winch_status->tension, winch_status->voltage, winch_status->current, winch_status->temperature, winch_status->status);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_WINCH_STATUS, (const char *)winch_status, MAVLINK_MSG_ID_WINCH_STATUS_MIN_LEN, MAVLINK_MSG_ID_WINCH_STATUS_LEN, MAVLINK_MSG_ID_WINCH_STATUS_CRC);
@@ -318,7 +318,7 @@ static inline void mavlink_msg_winch_status_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_winch_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, float line_length, float speed, float tension, float voltage, float current, int16_t temperature, uint32_t status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_float(buf, 8, line_length);
@@ -439,7 +439,7 @@ static inline uint32_t mavlink_msg_winch_status_get_status(const mavlink_message
  */
 static inline void mavlink_msg_winch_status_decode(const mavlink_message_t* msg, mavlink_winch_status_t* winch_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     winch_status->time_usec = mavlink_msg_winch_status_get_time_usec(msg);
     winch_status->line_length = mavlink_msg_winch_status_get_line_length(msg);
     winch_status->speed = mavlink_msg_winch_status_get_speed(msg);

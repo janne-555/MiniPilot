@@ -22,9 +22,9 @@ static uint8_t last_fix = 255;
  Init
 ----------------------------------------------------------------------------*/
 
-void AP_GPS_Init(void) {
-
-  /*
+void AP_GPS_Init(void)
+{
+    /*
    * Simulator position
    */
 
@@ -110,18 +110,42 @@ void AP_GPS_Update(void) {
 
 const AP_GPS_t *AP_GPS_Get(void) { return &gps; }
 
-double AP_GPS_GetLatitude(void) { return gps.latitude; }
+double AP_GPS_GetLatitude(void)
+{
+    return gps.latitude;
+}
 
-double AP_GPS_GetLongitude(void) { return gps.longitude; }
+double AP_GPS_GetLongitude(void)
+{
+    return gps.longitude;
+}
 
-float AP_GPS_GetAltitude(void) { return gps.altitude; }
+float AP_GPS_GetAltitude(void)
+{
+    return gps.altitude;
+}
 
-float AP_GPS_GetGroundSpeed(void) { return gps.ground_speed; }
+float AP_GPS_GetGroundSpeed(void)
+{
+    return gps.ground_speed;
+}
 
-float AP_GPS_GetCourse(void) { return gps.course; }
+float AP_GPS_GetCourse(void)
+{
+    return gps.course;
+}
 
-uint8_t AP_GPS_GetSatellites(void) { return gps.satellites; }
+uint8_t AP_GPS_GetSatellites(void)
+{
+    return gps.satellites;
+}
 
-uint8_t AP_GPS_IsHealthy(void) { return gps.healthy; }
+uint8_t AP_GPS_IsHealthy(void)
+{
+    return gps.healthy;
+}
 
-AP_GPS_Fix_t AP_GPS_GetFix(void) { return gps.fix; }
+AP_GPS_Fix_t AP_GPS_GetFix(void)
+{
+    return gps.fix;
+}

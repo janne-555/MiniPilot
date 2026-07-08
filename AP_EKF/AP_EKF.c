@@ -24,8 +24,9 @@ static AP_EKF_t ekf;
 
 static uint32_t debug_counter = 0;
 
-void AP_EKF_Init(void) {
-  ekf.roll = 0.0f;
+void AP_EKF_Init(void)
+{
+    ekf.roll = 0.0f;
 
   ekf.pitch = 0.0f;
 
@@ -150,22 +151,49 @@ void AP_EKF_Update(float dt) {
   }
 }
 
-float AP_EKF_GetRoll(void) { return ekf.roll; }
+float AP_EKF_GetRoll(void)
+{
+    return ekf.roll;
+}
 
-float AP_EKF_GetPitch(void) { return ekf.pitch; }
+float AP_EKF_GetPitch(void)
+{
+    return ekf.pitch;
+}
 
-float AP_EKF_GetYaw(void) { return ekf.yaw; }
+float AP_EKF_GetYaw(void)
+{
+    return ekf.yaw;
+}
 
-double AP_EKF_GetLatitude(void) { return ekf.latitude; }
+double AP_EKF_GetLatitude(void)
+{
+    return ekf.latitude;
+}
 
-double AP_EKF_GetLongitude(void) { return ekf.longitude; }
+double AP_EKF_GetLongitude(void)
+{
+    return ekf.longitude;
+}
 
-float AP_EKF_GetAltitude(void) { return ekf.altitude; }
+float AP_EKF_GetAltitude(void)
+{
+    return ekf.altitude;
+}
 
-float AP_EKF_GetVelocityZ(void) { return ekf.velocity_z; }
+float AP_EKF_GetVelocityZ(void)
+{
+    return ekf.velocity_z;
+}
 
-uint8_t AP_EKF_IsHealthy(void) { return ekf.healthy; }
+uint8_t AP_EKF_IsHealthy(void)
+{
+    return ekf.healthy;
+}
 
-uint8_t AP_EKF_CompassHealthy(void) { return ekf.compass_ok; }
+uint8_t AP_EKF_CompassHealthy(void)
+{
+    return ekf.compass_ok;
+}
 
 const AP_EKF_t *AP_EKF_Get(void) { return &ekf; }

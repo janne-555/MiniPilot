@@ -55,7 +55,7 @@ typedef struct __mavlink_component_metadata_t {
 static inline uint16_t mavlink_msg_component_metadata_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint32_t file_crc, const char *uri)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_METADATA_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, file_crc);
@@ -88,7 +88,7 @@ static inline uint16_t mavlink_msg_component_metadata_pack(uint8_t system_id, ui
 static inline uint16_t mavlink_msg_component_metadata_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, uint32_t file_crc, const char *uri)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_METADATA_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, file_crc);
@@ -125,7 +125,7 @@ static inline uint16_t mavlink_msg_component_metadata_pack_chan(uint8_t system_i
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,uint32_t file_crc,const char *uri)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_METADATA_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, file_crc);
@@ -196,7 +196,7 @@ static inline uint16_t mavlink_msg_component_metadata_encode_status(uint8_t syst
 
 static inline void mavlink_msg_component_metadata_send(mavlink_channel_t chan, uint32_t time_boot_ms, uint32_t file_crc, const char *uri)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMPONENT_METADATA_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, file_crc);
@@ -218,7 +218,7 @@ static inline void mavlink_msg_component_metadata_send(mavlink_channel_t chan, u
  */
 static inline void mavlink_msg_component_metadata_send_struct(mavlink_channel_t chan, const mavlink_component_metadata_t* component_metadata)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_component_metadata_send(chan, component_metadata->time_boot_ms, component_metadata->file_crc, component_metadata->uri);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_COMPONENT_METADATA, (const char *)component_metadata, MAVLINK_MSG_ID_COMPONENT_METADATA_MIN_LEN, MAVLINK_MSG_ID_COMPONENT_METADATA_LEN, MAVLINK_MSG_ID_COMPONENT_METADATA_CRC);
@@ -235,7 +235,7 @@ static inline void mavlink_msg_component_metadata_send_struct(mavlink_channel_t 
  */
 static inline void mavlink_msg_component_metadata_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, uint32_t file_crc, const char *uri)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_uint32_t(buf, 4, file_crc);
@@ -294,7 +294,7 @@ static inline uint16_t mavlink_msg_component_metadata_get_uri(const mavlink_mess
  */
 static inline void mavlink_msg_component_metadata_decode(const mavlink_message_t* msg, mavlink_component_metadata_t* component_metadata)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     component_metadata->time_boot_ms = mavlink_msg_component_metadata_get_time_boot_ms(msg);
     component_metadata->file_crc = mavlink_msg_component_metadata_get_file_crc(msg);
     mavlink_msg_component_metadata_get_uri(msg, component_metadata->uri);

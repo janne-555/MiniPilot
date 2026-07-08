@@ -52,7 +52,7 @@ MAVLINK_WIP
 static inline uint16_t mavlink_msg_current_event_sequence_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint16_t sequence, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, flags);
@@ -84,7 +84,7 @@ static inline uint16_t mavlink_msg_current_event_sequence_pack(uint8_t system_id
 static inline uint16_t mavlink_msg_current_event_sequence_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint16_t sequence, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, flags);
@@ -121,7 +121,7 @@ static inline uint16_t mavlink_msg_current_event_sequence_pack_chan(uint8_t syst
                                mavlink_message_t* msg,
                                    uint16_t sequence,uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, flags);
@@ -194,7 +194,7 @@ static inline uint16_t mavlink_msg_current_event_sequence_encode_status(uint8_t 
 MAVLINK_WIP
 static inline void mavlink_msg_current_event_sequence_send(mavlink_channel_t chan, uint16_t sequence, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE_LEN];
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, flags);
@@ -217,7 +217,7 @@ static inline void mavlink_msg_current_event_sequence_send(mavlink_channel_t cha
 MAVLINK_WIP
 static inline void mavlink_msg_current_event_sequence_send_struct(mavlink_channel_t chan, const mavlink_current_event_sequence_t* current_event_sequence)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_current_event_sequence_send(chan, current_event_sequence->sequence, current_event_sequence->flags);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE, (const char *)current_event_sequence, MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE_MIN_LEN, MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE_LEN, MAVLINK_MSG_ID_CURRENT_EVENT_SEQUENCE_CRC);
@@ -235,7 +235,7 @@ static inline void mavlink_msg_current_event_sequence_send_struct(mavlink_channe
 MAVLINK_WIP
 static inline void mavlink_msg_current_event_sequence_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint16_t sequence, uint8_t flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, sequence);
     _mav_put_uint8_t(buf, 2, flags);
@@ -287,7 +287,7 @@ static inline uint8_t mavlink_msg_current_event_sequence_get_flags(const mavlink
 MAVLINK_WIP
 static inline void mavlink_msg_current_event_sequence_decode(const mavlink_message_t* msg, mavlink_current_event_sequence_t* current_event_sequence)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     current_event_sequence->sequence = mavlink_msg_current_event_sequence_get_sequence(msg);
     current_event_sequence->flags = mavlink_msg_current_event_sequence_get_flags(msg);
 #else

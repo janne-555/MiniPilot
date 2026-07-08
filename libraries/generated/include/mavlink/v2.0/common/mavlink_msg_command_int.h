@@ -95,7 +95,7 @@ typedef struct __mavlink_command_int_t {
 static inline uint16_t mavlink_msg_command_int_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t frame, uint16_t command, uint8_t current, uint8_t autocontinue, float param1, float param2, float param3, float param4, int32_t x, int32_t y, float z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_INT_LEN];
     _mav_put_float(buf, 0, param1);
     _mav_put_float(buf, 4, param2);
@@ -160,7 +160,7 @@ static inline uint16_t mavlink_msg_command_int_pack(uint8_t system_id, uint8_t c
 static inline uint16_t mavlink_msg_command_int_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint8_t frame, uint16_t command, uint8_t current, uint8_t autocontinue, float param1, float param2, float param3, float param4, int32_t x, int32_t y, float z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_INT_LEN];
     _mav_put_float(buf, 0, param1);
     _mav_put_float(buf, 4, param2);
@@ -229,7 +229,7 @@ static inline uint16_t mavlink_msg_command_int_pack_chan(uint8_t system_id, uint
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint8_t frame,uint16_t command,uint8_t current,uint8_t autocontinue,float param1,float param2,float param3,float param4,int32_t x,int32_t y,float z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_INT_LEN];
     _mav_put_float(buf, 0, param1);
     _mav_put_float(buf, 4, param2);
@@ -332,7 +332,7 @@ static inline uint16_t mavlink_msg_command_int_encode_status(uint8_t system_id, 
 
 static inline void mavlink_msg_command_int_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint8_t frame, uint16_t command, uint8_t current, uint8_t autocontinue, float param1, float param2, float param3, float param4, int32_t x, int32_t y, float z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_COMMAND_INT_LEN];
     _mav_put_float(buf, 0, param1);
     _mav_put_float(buf, 4, param2);
@@ -376,7 +376,7 @@ static inline void mavlink_msg_command_int_send(mavlink_channel_t chan, uint8_t 
  */
 static inline void mavlink_msg_command_int_send_struct(mavlink_channel_t chan, const mavlink_command_int_t* command_int)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_command_int_send(chan, command_int->target_system, command_int->target_component, command_int->frame, command_int->command, command_int->current, command_int->autocontinue, command_int->param1, command_int->param2, command_int->param3, command_int->param4, command_int->x, command_int->y, command_int->z);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_COMMAND_INT, (const char *)command_int, MAVLINK_MSG_ID_COMMAND_INT_MIN_LEN, MAVLINK_MSG_ID_COMMAND_INT_LEN, MAVLINK_MSG_ID_COMMAND_INT_CRC);
@@ -393,7 +393,7 @@ static inline void mavlink_msg_command_int_send_struct(mavlink_channel_t chan, c
  */
 static inline void mavlink_msg_command_int_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint8_t frame, uint16_t command, uint8_t current, uint8_t autocontinue, float param1, float param2, float param3, float param4, int32_t x, int32_t y, float z)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_float(buf, 0, param1);
     _mav_put_float(buf, 4, param2);
@@ -574,7 +574,7 @@ static inline float mavlink_msg_command_int_get_z(const mavlink_message_t* msg)
  */
 static inline void mavlink_msg_command_int_decode(const mavlink_message_t* msg, mavlink_command_int_t* command_int)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     command_int->param1 = mavlink_msg_command_int_get_param1(msg);
     command_int->param2 = mavlink_msg_command_int_get_param2(msg);
     command_int->param3 = mavlink_msg_command_int_get_param3(msg);

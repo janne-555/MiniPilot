@@ -21,8 +21,9 @@ static AP_Vehicle_State_t vehicle;
  * Init
  *---------------------------------------------------------------------------*/
 
-void AP_Vehicle_Init(void) {
-  vehicle.roll = 0.0f;
+void AP_Vehicle_Init(void)
+{
+    vehicle.roll = 0.0f;
   vehicle.pitch = 0.0f;
   vehicle.yaw = 0.0f;
 
@@ -44,9 +45,9 @@ void AP_Vehicle_Init(void) {
 // Update vehicle
 //------------------------------------------------------------------------------
 
-void AP_Vehicle_Update(void) {
-
-  /*
+void AP_Vehicle_Update(void)
+{
+    /*
    * EKF attitude estimate
    */
 
@@ -110,8 +111,9 @@ void AP_Vehicle_Update(void) {
  * Get attitude
  *---------------------------------------------------------------------------*/
 
-void AP_Vehicle_Get_Attitude(float *roll, float *pitch, float *yaw) {
-  *roll = vehicle.roll;
+void AP_Vehicle_Get_Attitude(float *roll, float *pitch, float *yaw)
+{
+    *roll = vehicle.roll;
 
   *pitch = vehicle.pitch;
 
@@ -122,30 +124,46 @@ void AP_Vehicle_Get_Attitude(float *roll, float *pitch, float *yaw) {
  * Get GPS
  *---------------------------------------------------------------------------*/
 
-void AP_Vehicle_Get_GPS(double *lat, double *lon, float *alt) {
-  *lat = vehicle.latitude;
+void AP_Vehicle_Get_GPS(double *lat, double *lon, float *alt)
+{
+    *lat = vehicle.latitude;
 
   *lon = vehicle.longitude;
 
   *alt = vehicle.altitude;
 }
 
-float AP_Vehicle_Get_Altitude(void) { return vehicle.altitude; }
+float AP_Vehicle_Get_Altitude(void)
+{
+    return vehicle.altitude;
+}
 
 /*----------------------------------------------------------------------------
  * Velocity
  *---------------------------------------------------------------------------*/
 
-float AP_Vehicle_Get_GroundSpeed(void) { return vehicle.ground_speed; }
+float AP_Vehicle_Get_GroundSpeed(void)
+{
+    return vehicle.ground_speed;
+}
 
-float AP_Vehicle_Get_ClimbRate(void) { return vehicle.climb_rate; }
+float AP_Vehicle_Get_ClimbRate(void)
+{
+    return vehicle.climb_rate;
+}
 
 /*----------------------------------------------------------------------------
  * Status
  *---------------------------------------------------------------------------*/
 
-uint8_t AP_Vehicle_Get_Armed(void) { return vehicle.armed; }
+uint8_t AP_Vehicle_Get_Armed(void)
+{
+    return vehicle.armed;
+}
 
-uint8_t AP_Vehicle_Get_Mode(void) { return vehicle.mode; }
+uint8_t AP_Vehicle_Get_Mode(void)
+{
+    return vehicle.mode;
+}
 
 const AP_Vehicle_State_t *AP_Vehicle_GetState(void) { return &vehicle; }

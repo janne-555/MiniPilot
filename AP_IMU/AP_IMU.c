@@ -12,8 +12,9 @@
 static AP_IMU_t imu;
 static float last_gx = 999.0f;
 
-void AP_IMU_Init(void) {
-  imu.gx = 0.0f;
+void AP_IMU_Init(void)
+{
+    imu.gx = 0.0f;
   imu.gy = 0.0f;
   imu.gz = 0.0f;
 

@@ -87,7 +87,7 @@ typedef struct __mavlink_generator_status_t {
 static inline uint16_t mavlink_msg_generator_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t status, uint16_t generator_speed, float battery_current, float load_current, float power_generated, float bus_voltage, int16_t rectifier_temperature, float bat_current_setpoint, int16_t generator_temperature, uint32_t runtime, int32_t time_until_maintenance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GENERATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, status);
     _mav_put_float(buf, 8, battery_current);
@@ -146,7 +146,7 @@ static inline uint16_t mavlink_msg_generator_status_pack(uint8_t system_id, uint
 static inline uint16_t mavlink_msg_generator_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t status, uint16_t generator_speed, float battery_current, float load_current, float power_generated, float bus_voltage, int16_t rectifier_temperature, float bat_current_setpoint, int16_t generator_temperature, uint32_t runtime, int32_t time_until_maintenance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GENERATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, status);
     _mav_put_float(buf, 8, battery_current);
@@ -209,7 +209,7 @@ static inline uint16_t mavlink_msg_generator_status_pack_chan(uint8_t system_id,
                                mavlink_message_t* msg,
                                    uint64_t status,uint16_t generator_speed,float battery_current,float load_current,float power_generated,float bus_voltage,int16_t rectifier_temperature,float bat_current_setpoint,int16_t generator_temperature,uint32_t runtime,int32_t time_until_maintenance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GENERATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, status);
     _mav_put_float(buf, 8, battery_current);
@@ -306,7 +306,7 @@ static inline uint16_t mavlink_msg_generator_status_encode_status(uint8_t system
 
 static inline void mavlink_msg_generator_status_send(mavlink_channel_t chan, uint64_t status, uint16_t generator_speed, float battery_current, float load_current, float power_generated, float bus_voltage, int16_t rectifier_temperature, float bat_current_setpoint, int16_t generator_temperature, uint32_t runtime, int32_t time_until_maintenance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_GENERATOR_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, status);
     _mav_put_float(buf, 8, battery_current);
@@ -346,7 +346,7 @@ static inline void mavlink_msg_generator_status_send(mavlink_channel_t chan, uin
  */
 static inline void mavlink_msg_generator_status_send_struct(mavlink_channel_t chan, const mavlink_generator_status_t* generator_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_generator_status_send(chan, generator_status->status, generator_status->generator_speed, generator_status->battery_current, generator_status->load_current, generator_status->power_generated, generator_status->bus_voltage, generator_status->rectifier_temperature, generator_status->bat_current_setpoint, generator_status->generator_temperature, generator_status->runtime, generator_status->time_until_maintenance);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_GENERATOR_STATUS, (const char *)generator_status, MAVLINK_MSG_ID_GENERATOR_STATUS_MIN_LEN, MAVLINK_MSG_ID_GENERATOR_STATUS_LEN, MAVLINK_MSG_ID_GENERATOR_STATUS_CRC);
@@ -363,7 +363,7 @@ static inline void mavlink_msg_generator_status_send_struct(mavlink_channel_t ch
  */
 static inline void mavlink_msg_generator_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t status, uint16_t generator_speed, float battery_current, float load_current, float power_generated, float bus_voltage, int16_t rectifier_temperature, float bat_current_setpoint, int16_t generator_temperature, uint32_t runtime, int32_t time_until_maintenance)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, status);
     _mav_put_float(buf, 8, battery_current);
@@ -520,7 +520,7 @@ static inline int32_t mavlink_msg_generator_status_get_time_until_maintenance(co
  */
 static inline void mavlink_msg_generator_status_decode(const mavlink_message_t* msg, mavlink_generator_status_t* generator_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     generator_status->status = mavlink_msg_generator_status_get_status(msg);
     generator_status->battery_current = mavlink_msg_generator_status_get_battery_current(msg);
     generator_status->load_current = mavlink_msg_generator_status_get_load_current(msg);

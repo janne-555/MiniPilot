@@ -75,7 +75,7 @@ typedef struct __mavlink_mission_count_t {
 static inline uint16_t mavlink_msg_mission_count_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t count, uint8_t mission_type, uint32_t opaque_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_COUNT_LEN];
     _mav_put_uint16_t(buf, 0, count);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -122,7 +122,7 @@ static inline uint16_t mavlink_msg_mission_count_pack(uint8_t system_id, uint8_t
 static inline uint16_t mavlink_msg_mission_count_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_system, uint8_t target_component, uint16_t count, uint8_t mission_type, uint32_t opaque_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_COUNT_LEN];
     _mav_put_uint16_t(buf, 0, count);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -173,7 +173,7 @@ static inline uint16_t mavlink_msg_mission_count_pack_chan(uint8_t system_id, ui
                                mavlink_message_t* msg,
                                    uint8_t target_system,uint8_t target_component,uint16_t count,uint8_t mission_type,uint32_t opaque_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_COUNT_LEN];
     _mav_put_uint16_t(buf, 0, count);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -258,7 +258,7 @@ static inline uint16_t mavlink_msg_mission_count_encode_status(uint8_t system_id
 
 static inline void mavlink_msg_mission_count_send(mavlink_channel_t chan, uint8_t target_system, uint8_t target_component, uint16_t count, uint8_t mission_type, uint32_t opaque_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MISSION_COUNT_LEN];
     _mav_put_uint16_t(buf, 0, count);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -286,7 +286,7 @@ static inline void mavlink_msg_mission_count_send(mavlink_channel_t chan, uint8_
  */
 static inline void mavlink_msg_mission_count_send_struct(mavlink_channel_t chan, const mavlink_mission_count_t* mission_count)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_mission_count_send(chan, mission_count->target_system, mission_count->target_component, mission_count->count, mission_count->mission_type, mission_count->opaque_id);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_MISSION_COUNT, (const char *)mission_count, MAVLINK_MSG_ID_MISSION_COUNT_MIN_LEN, MAVLINK_MSG_ID_MISSION_COUNT_LEN, MAVLINK_MSG_ID_MISSION_COUNT_CRC);
@@ -303,7 +303,7 @@ static inline void mavlink_msg_mission_count_send_struct(mavlink_channel_t chan,
  */
 static inline void mavlink_msg_mission_count_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_system, uint8_t target_component, uint16_t count, uint8_t mission_type, uint32_t opaque_id)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, count);
     _mav_put_uint8_t(buf, 2, target_system);
@@ -394,7 +394,7 @@ static inline uint32_t mavlink_msg_mission_count_get_opaque_id(const mavlink_mes
  */
 static inline void mavlink_msg_mission_count_decode(const mavlink_message_t* msg, mavlink_mission_count_t* mission_count)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mission_count->count = mavlink_msg_mission_count_get_count(msg);
     mission_count->target_system = mavlink_msg_mission_count_get_target_system(msg);
     mission_count->target_component = mavlink_msg_mission_count_get_target_component(msg);

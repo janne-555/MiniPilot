@@ -67,7 +67,7 @@ typedef struct __mavlink_available_modes_t {
 static inline uint16_t mavlink_msg_available_modes_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t number_modes, uint8_t mode_index, uint8_t standard_mode, uint32_t custom_mode, uint32_t properties, const char *mode_name)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AVAILABLE_MODES_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, properties);
@@ -109,7 +109,7 @@ static inline uint16_t mavlink_msg_available_modes_pack(uint8_t system_id, uint8
 static inline uint16_t mavlink_msg_available_modes_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t number_modes, uint8_t mode_index, uint8_t standard_mode, uint32_t custom_mode, uint32_t properties, const char *mode_name)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AVAILABLE_MODES_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, properties);
@@ -155,7 +155,7 @@ static inline uint16_t mavlink_msg_available_modes_pack_chan(uint8_t system_id, 
                                mavlink_message_t* msg,
                                    uint8_t number_modes,uint8_t mode_index,uint8_t standard_mode,uint32_t custom_mode,uint32_t properties,const char *mode_name)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AVAILABLE_MODES_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, properties);
@@ -235,7 +235,7 @@ static inline uint16_t mavlink_msg_available_modes_encode_status(uint8_t system_
 
 static inline void mavlink_msg_available_modes_send(mavlink_channel_t chan, uint8_t number_modes, uint8_t mode_index, uint8_t standard_mode, uint32_t custom_mode, uint32_t properties, const char *mode_name)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_AVAILABLE_MODES_LEN];
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, properties);
@@ -263,7 +263,7 @@ static inline void mavlink_msg_available_modes_send(mavlink_channel_t chan, uint
  */
 static inline void mavlink_msg_available_modes_send_struct(mavlink_channel_t chan, const mavlink_available_modes_t* available_modes)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_available_modes_send(chan, available_modes->number_modes, available_modes->mode_index, available_modes->standard_mode, available_modes->custom_mode, available_modes->properties, available_modes->mode_name);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_AVAILABLE_MODES, (const char *)available_modes, MAVLINK_MSG_ID_AVAILABLE_MODES_MIN_LEN, MAVLINK_MSG_ID_AVAILABLE_MODES_LEN, MAVLINK_MSG_ID_AVAILABLE_MODES_CRC);
@@ -280,7 +280,7 @@ static inline void mavlink_msg_available_modes_send_struct(mavlink_channel_t cha
  */
 static inline void mavlink_msg_available_modes_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t number_modes, uint8_t mode_index, uint8_t standard_mode, uint32_t custom_mode, uint32_t properties, const char *mode_name)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, custom_mode);
     _mav_put_uint32_t(buf, 4, properties);
@@ -375,7 +375,7 @@ static inline uint16_t mavlink_msg_available_modes_get_mode_name(const mavlink_m
  */
 static inline void mavlink_msg_available_modes_decode(const mavlink_message_t* msg, mavlink_available_modes_t* available_modes)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     available_modes->custom_mode = mavlink_msg_available_modes_get_custom_mode(msg);
     available_modes->properties = mavlink_msg_available_modes_get_properties(msg);
     available_modes->number_modes = mavlink_msg_available_modes_get_number_modes(msg);

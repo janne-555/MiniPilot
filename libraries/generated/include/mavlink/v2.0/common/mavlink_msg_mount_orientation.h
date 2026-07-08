@@ -63,7 +63,7 @@ typedef struct __mavlink_mount_orientation_t {
 static inline uint16_t mavlink_msg_mount_orientation_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint32_t time_boot_ms, float roll, float pitch, float yaw, float yaw_absolute)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MOUNT_ORIENTATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, roll);
@@ -104,7 +104,7 @@ static inline uint16_t mavlink_msg_mount_orientation_pack(uint8_t system_id, uin
 static inline uint16_t mavlink_msg_mount_orientation_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint32_t time_boot_ms, float roll, float pitch, float yaw, float yaw_absolute)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MOUNT_ORIENTATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, roll);
@@ -149,7 +149,7 @@ static inline uint16_t mavlink_msg_mount_orientation_pack_chan(uint8_t system_id
                                mavlink_message_t* msg,
                                    uint32_t time_boot_ms,float roll,float pitch,float yaw,float yaw_absolute)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MOUNT_ORIENTATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, roll);
@@ -228,7 +228,7 @@ static inline uint16_t mavlink_msg_mount_orientation_encode_status(uint8_t syste
 
 static inline void mavlink_msg_mount_orientation_send(mavlink_channel_t chan, uint32_t time_boot_ms, float roll, float pitch, float yaw, float yaw_absolute)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_MOUNT_ORIENTATION_LEN];
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, roll);
@@ -256,7 +256,7 @@ static inline void mavlink_msg_mount_orientation_send(mavlink_channel_t chan, ui
  */
 static inline void mavlink_msg_mount_orientation_send_struct(mavlink_channel_t chan, const mavlink_mount_orientation_t* mount_orientation)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_mount_orientation_send(chan, mount_orientation->time_boot_ms, mount_orientation->roll, mount_orientation->pitch, mount_orientation->yaw, mount_orientation->yaw_absolute);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_MOUNT_ORIENTATION, (const char *)mount_orientation, MAVLINK_MSG_ID_MOUNT_ORIENTATION_MIN_LEN, MAVLINK_MSG_ID_MOUNT_ORIENTATION_LEN, MAVLINK_MSG_ID_MOUNT_ORIENTATION_CRC);
@@ -273,7 +273,7 @@ static inline void mavlink_msg_mount_orientation_send_struct(mavlink_channel_t c
  */
 static inline void mavlink_msg_mount_orientation_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint32_t time_boot_ms, float roll, float pitch, float yaw, float yaw_absolute)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint32_t(buf, 0, time_boot_ms);
     _mav_put_float(buf, 4, roll);
@@ -358,7 +358,7 @@ static inline float mavlink_msg_mount_orientation_get_yaw_absolute(const mavlink
  */
 static inline void mavlink_msg_mount_orientation_decode(const mavlink_message_t* msg, mavlink_mount_orientation_t* mount_orientation)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mount_orientation->time_boot_ms = mavlink_msg_mount_orientation_get_time_boot_ms(msg);
     mount_orientation->roll = mavlink_msg_mount_orientation_get_roll(msg);
     mount_orientation->pitch = mavlink_msg_mount_orientation_get_pitch(msg);

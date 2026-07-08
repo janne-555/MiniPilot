@@ -24,9 +24,10 @@ void GCS_send_heartbeat(void) {
   uint8_t base_mode = 0;
 
   // Set armed flag
-  if (armed) {
+  if (armed)
+{
     base_mode |= MAV_MODE_FLAG_SAFETY_ARMED;
-  }
+}
 
   // Enable custom flight mode
   base_mode |= MAV_MODE_FLAG_CUSTOM_MODE_ENABLED;

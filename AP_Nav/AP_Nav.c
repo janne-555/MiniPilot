@@ -22,9 +22,9 @@ static float last_distance = -999;
  Init
 ----------------------------------------------------------------------------*/
 
-void AP_Nav_Init(void) {
-
-  nav.home_lat = 0;
+void AP_Nav_Init(void)
+{
+    nav.home_lat = 0;
 
   nav.home_lon = 0;
 
@@ -57,9 +57,9 @@ void AP_Nav_Init(void) {
  Set Home
 ----------------------------------------------------------------------------*/
 
-void AP_Nav_SetHome(void) {
-
-  nav.home_lat = AP_InertialNav_GetLatitude();
+void AP_Nav_SetHome(void)
+{
+    nav.home_lat = AP_InertialNav_GetLatitude();
 
   nav.home_lon = AP_InertialNav_GetLongitude();
 
@@ -70,9 +70,9 @@ void AP_Nav_SetHome(void) {
  Target
 ----------------------------------------------------------------------------*/
 
-void AP_Nav_SetTarget(double lat, double lon) {
-
-  nav.target_lat = lat;
+void AP_Nav_SetTarget(double lat, double lon)
+{
+    nav.target_lat = lat;
 
   nav.target_lon = lon;
 
@@ -171,18 +171,33 @@ void AP_Nav_Update(void) {
  Enable
 ----------------------------------------------------------------------------*/
 
-void AP_Nav_Enable(uint8_t enable) { nav.active = enable; }
+void AP_Nav_Enable(uint8_t enable)
+{
+    nav.active = enable;
+}
 
 /*----------------------------------------------------------------------------
  Getters
 ----------------------------------------------------------------------------*/
 
-float AP_Nav_GetDistance(void) { return nav.distance; }
+float AP_Nav_GetDistance(void)
+{
+    return nav.distance;
+}
 
-float AP_Nav_GetBearing(void) { return nav.bearing; }
+float AP_Nav_GetBearing(void)
+{
+    return nav.bearing;
+}
 
-float AP_Nav_GetRollTarget(void) { return nav.target_roll; }
+float AP_Nav_GetRollTarget(void)
+{
+    return nav.target_roll;
+}
 
-float AP_Nav_GetPitchTarget(void) { return nav.target_pitch; }
+float AP_Nav_GetPitchTarget(void)
+{
+    return nav.target_pitch;
+}
 
 const AP_Nav_t *AP_Nav_Get(void) { return &nav; }

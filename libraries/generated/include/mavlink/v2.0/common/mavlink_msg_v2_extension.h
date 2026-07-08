@@ -63,7 +63,7 @@ typedef struct __mavlink_v2_extension_t {
 static inline uint16_t mavlink_msg_v2_extension_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t target_network, uint8_t target_system, uint8_t target_component, uint16_t message_type, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_V2_EXTENSION_LEN];
     _mav_put_uint16_t(buf, 0, message_type);
     _mav_put_uint8_t(buf, 2, target_network);
@@ -102,7 +102,7 @@ static inline uint16_t mavlink_msg_v2_extension_pack(uint8_t system_id, uint8_t 
 static inline uint16_t mavlink_msg_v2_extension_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t target_network, uint8_t target_system, uint8_t target_component, uint16_t message_type, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_V2_EXTENSION_LEN];
     _mav_put_uint16_t(buf, 0, message_type);
     _mav_put_uint8_t(buf, 2, target_network);
@@ -145,7 +145,7 @@ static inline uint16_t mavlink_msg_v2_extension_pack_chan(uint8_t system_id, uin
                                mavlink_message_t* msg,
                                    uint8_t target_network,uint8_t target_system,uint8_t target_component,uint16_t message_type,const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_V2_EXTENSION_LEN];
     _mav_put_uint16_t(buf, 0, message_type);
     _mav_put_uint8_t(buf, 2, target_network);
@@ -222,7 +222,7 @@ static inline uint16_t mavlink_msg_v2_extension_encode_status(uint8_t system_id,
 
 static inline void mavlink_msg_v2_extension_send(mavlink_channel_t chan, uint8_t target_network, uint8_t target_system, uint8_t target_component, uint16_t message_type, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_V2_EXTENSION_LEN];
     _mav_put_uint16_t(buf, 0, message_type);
     _mav_put_uint8_t(buf, 2, target_network);
@@ -248,7 +248,7 @@ static inline void mavlink_msg_v2_extension_send(mavlink_channel_t chan, uint8_t
  */
 static inline void mavlink_msg_v2_extension_send_struct(mavlink_channel_t chan, const mavlink_v2_extension_t* v2_extension)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_v2_extension_send(chan, v2_extension->target_network, v2_extension->target_system, v2_extension->target_component, v2_extension->message_type, v2_extension->payload);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_V2_EXTENSION, (const char *)v2_extension, MAVLINK_MSG_ID_V2_EXTENSION_MIN_LEN, MAVLINK_MSG_ID_V2_EXTENSION_LEN, MAVLINK_MSG_ID_V2_EXTENSION_CRC);
@@ -265,7 +265,7 @@ static inline void mavlink_msg_v2_extension_send_struct(mavlink_channel_t chan, 
  */
 static inline void mavlink_msg_v2_extension_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t target_network, uint8_t target_system, uint8_t target_component, uint16_t message_type, const uint8_t *payload)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint16_t(buf, 0, message_type);
     _mav_put_uint8_t(buf, 2, target_network);
@@ -348,7 +348,7 @@ static inline uint16_t mavlink_msg_v2_extension_get_payload(const mavlink_messag
  */
 static inline void mavlink_msg_v2_extension_decode(const mavlink_message_t* msg, mavlink_v2_extension_t* v2_extension)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     v2_extension->message_type = mavlink_msg_v2_extension_get_message_type(msg);
     v2_extension->target_network = mavlink_msg_v2_extension_get_target_network(msg);
     v2_extension->target_system = mavlink_msg_v2_extension_get_target_system(msg);

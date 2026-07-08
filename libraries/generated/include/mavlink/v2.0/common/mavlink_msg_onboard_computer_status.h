@@ -140,7 +140,7 @@ typedef struct __mavlink_onboard_computer_status_t {
 static inline uint16_t mavlink_msg_onboard_computer_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint32_t uptime, uint8_t type, const uint8_t *cpu_cores, const uint8_t *cpu_combined, const uint8_t *gpu_cores, const uint8_t *gpu_combined, int8_t temperature_board, const int8_t *temperature_core, const int16_t *fan_speed, uint32_t ram_usage, uint32_t ram_total, const uint32_t *storage_type, const uint32_t *storage_usage, const uint32_t *storage_total, const uint32_t *link_type, const uint32_t *link_tx_rate, const uint32_t *link_rx_rate, const uint32_t *link_tx_max, const uint32_t *link_rx_max, uint16_t status_flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime);
@@ -227,7 +227,7 @@ static inline uint16_t mavlink_msg_onboard_computer_status_pack(uint8_t system_i
 static inline uint16_t mavlink_msg_onboard_computer_status_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint32_t uptime, uint8_t type, const uint8_t *cpu_cores, const uint8_t *cpu_combined, const uint8_t *gpu_cores, const uint8_t *gpu_combined, int8_t temperature_board, const int8_t *temperature_core, const int16_t *fan_speed, uint32_t ram_usage, uint32_t ram_total, const uint32_t *storage_type, const uint32_t *storage_usage, const uint32_t *storage_total, const uint32_t *link_type, const uint32_t *link_tx_rate, const uint32_t *link_rx_rate, const uint32_t *link_tx_max, const uint32_t *link_rx_max, uint16_t status_flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime);
@@ -318,7 +318,7 @@ static inline uint16_t mavlink_msg_onboard_computer_status_pack_chan(uint8_t sys
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint32_t uptime,uint8_t type,const uint8_t *cpu_cores,const uint8_t *cpu_combined,const uint8_t *gpu_cores,const uint8_t *gpu_combined,int8_t temperature_board,const int8_t *temperature_core,const int16_t *fan_speed,uint32_t ram_usage,uint32_t ram_total,const uint32_t *storage_type,const uint32_t *storage_usage,const uint32_t *storage_total,const uint32_t *link_type,const uint32_t *link_tx_rate,const uint32_t *link_rx_rate,const uint32_t *link_tx_max,const uint32_t *link_rx_max,uint16_t status_flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime);
@@ -443,7 +443,7 @@ static inline uint16_t mavlink_msg_onboard_computer_status_encode_status(uint8_t
 
 static inline void mavlink_msg_onboard_computer_status_send(mavlink_channel_t chan, uint64_t time_usec, uint32_t uptime, uint8_t type, const uint8_t *cpu_cores, const uint8_t *cpu_combined, const uint8_t *gpu_cores, const uint8_t *gpu_combined, int8_t temperature_board, const int8_t *temperature_core, const int16_t *fan_speed, uint32_t ram_usage, uint32_t ram_total, const uint32_t *storage_type, const uint32_t *storage_usage, const uint32_t *storage_total, const uint32_t *link_type, const uint32_t *link_tx_rate, const uint32_t *link_rx_rate, const uint32_t *link_tx_max, const uint32_t *link_rx_max, uint16_t status_flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime);
@@ -501,7 +501,7 @@ static inline void mavlink_msg_onboard_computer_status_send(mavlink_channel_t ch
  */
 static inline void mavlink_msg_onboard_computer_status_send_struct(mavlink_channel_t chan, const mavlink_onboard_computer_status_t* onboard_computer_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_onboard_computer_status_send(chan, onboard_computer_status->time_usec, onboard_computer_status->uptime, onboard_computer_status->type, onboard_computer_status->cpu_cores, onboard_computer_status->cpu_combined, onboard_computer_status->gpu_cores, onboard_computer_status->gpu_combined, onboard_computer_status->temperature_board, onboard_computer_status->temperature_core, onboard_computer_status->fan_speed, onboard_computer_status->ram_usage, onboard_computer_status->ram_total, onboard_computer_status->storage_type, onboard_computer_status->storage_usage, onboard_computer_status->storage_total, onboard_computer_status->link_type, onboard_computer_status->link_tx_rate, onboard_computer_status->link_rx_rate, onboard_computer_status->link_tx_max, onboard_computer_status->link_rx_max, onboard_computer_status->status_flags);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS, (const char *)onboard_computer_status, MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS_MIN_LEN, MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS_LEN, MAVLINK_MSG_ID_ONBOARD_COMPUTER_STATUS_CRC);
@@ -518,7 +518,7 @@ static inline void mavlink_msg_onboard_computer_status_send_struct(mavlink_chann
  */
 static inline void mavlink_msg_onboard_computer_status_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint32_t uptime, uint8_t type, const uint8_t *cpu_cores, const uint8_t *cpu_combined, const uint8_t *gpu_cores, const uint8_t *gpu_combined, int8_t temperature_board, const int8_t *temperature_core, const int16_t *fan_speed, uint32_t ram_usage, uint32_t ram_total, const uint32_t *storage_type, const uint32_t *storage_usage, const uint32_t *storage_total, const uint32_t *link_type, const uint32_t *link_tx_rate, const uint32_t *link_rx_rate, const uint32_t *link_tx_max, const uint32_t *link_rx_max, uint16_t status_flags)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint32_t(buf, 8, uptime);
@@ -793,7 +793,7 @@ static inline uint16_t mavlink_msg_onboard_computer_status_get_status_flags(cons
  */
 static inline void mavlink_msg_onboard_computer_status_decode(const mavlink_message_t* msg, mavlink_onboard_computer_status_t* onboard_computer_status)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     onboard_computer_status->time_usec = mavlink_msg_onboard_computer_status_get_time_usec(msg);
     onboard_computer_status->uptime = mavlink_msg_onboard_computer_status_get_uptime(msg);
     onboard_computer_status->ram_usage = mavlink_msg_onboard_computer_status_get_ram_usage(msg);

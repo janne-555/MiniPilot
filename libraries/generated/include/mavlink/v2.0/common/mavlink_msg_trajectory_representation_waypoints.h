@@ -110,7 +110,7 @@ typedef struct __mavlink_trajectory_representation_waypoints_t {
 static inline uint16_t mavlink_msg_trajectory_representation_waypoints_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *vel_x, const float *vel_y, const float *vel_z, const float *acc_x, const float *acc_y, const float *acc_z, const float *pos_yaw, const float *vel_yaw, const uint16_t *command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 238, valid_points);
@@ -176,7 +176,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_waypoints_pack(uint
 static inline uint16_t mavlink_msg_trajectory_representation_waypoints_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *vel_x, const float *vel_y, const float *vel_z, const float *acc_x, const float *acc_y, const float *acc_z, const float *pos_yaw, const float *vel_yaw, const uint16_t *command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 238, valid_points);
@@ -246,7 +246,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_waypoints_pack_chan
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint8_t valid_points,const float *pos_x,const float *pos_y,const float *pos_z,const float *vel_x,const float *vel_y,const float *vel_z,const float *acc_x,const float *acc_y,const float *acc_z,const float *pos_yaw,const float *vel_yaw,const uint16_t *command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 238, valid_points);
@@ -350,7 +350,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_waypoints_encode_st
 
 static inline void mavlink_msg_trajectory_representation_waypoints_send(mavlink_channel_t chan, uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *vel_x, const float *vel_y, const float *vel_z, const float *acc_x, const float *acc_y, const float *acc_z, const float *pos_yaw, const float *vel_yaw, const uint16_t *command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 238, valid_points);
@@ -394,7 +394,7 @@ static inline void mavlink_msg_trajectory_representation_waypoints_send(mavlink_
  */
 static inline void mavlink_msg_trajectory_representation_waypoints_send_struct(mavlink_channel_t chan, const mavlink_trajectory_representation_waypoints_t* trajectory_representation_waypoints)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_trajectory_representation_waypoints_send(chan, trajectory_representation_waypoints->time_usec, trajectory_representation_waypoints->valid_points, trajectory_representation_waypoints->pos_x, trajectory_representation_waypoints->pos_y, trajectory_representation_waypoints->pos_z, trajectory_representation_waypoints->vel_x, trajectory_representation_waypoints->vel_y, trajectory_representation_waypoints->vel_z, trajectory_representation_waypoints->acc_x, trajectory_representation_waypoints->acc_y, trajectory_representation_waypoints->acc_z, trajectory_representation_waypoints->pos_yaw, trajectory_representation_waypoints->vel_yaw, trajectory_representation_waypoints->command);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS, (const char *)trajectory_representation_waypoints, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_MIN_LEN, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_LEN, MAVLINK_MSG_ID_TRAJECTORY_REPRESENTATION_WAYPOINTS_CRC);
@@ -411,7 +411,7 @@ static inline void mavlink_msg_trajectory_representation_waypoints_send_struct(m
  */
 static inline void mavlink_msg_trajectory_representation_waypoints_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint8_t valid_points, const float *pos_x, const float *pos_y, const float *pos_z, const float *vel_x, const float *vel_y, const float *vel_z, const float *acc_x, const float *acc_y, const float *acc_z, const float *pos_yaw, const float *vel_yaw, const uint16_t *command)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_uint8_t(buf, 238, valid_points);
@@ -602,7 +602,7 @@ static inline uint16_t mavlink_msg_trajectory_representation_waypoints_get_comma
  */
 static inline void mavlink_msg_trajectory_representation_waypoints_decode(const mavlink_message_t* msg, mavlink_trajectory_representation_waypoints_t* trajectory_representation_waypoints)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     trajectory_representation_waypoints->time_usec = mavlink_msg_trajectory_representation_waypoints_get_time_usec(msg);
     mavlink_msg_trajectory_representation_waypoints_get_pos_x(msg, trajectory_representation_waypoints->pos_x);
     mavlink_msg_trajectory_representation_waypoints_get_pos_y(msg, trajectory_representation_waypoints->pos_y);

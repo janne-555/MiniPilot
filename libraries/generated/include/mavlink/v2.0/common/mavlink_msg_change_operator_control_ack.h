@@ -55,7 +55,7 @@ typedef struct __mavlink_change_operator_control_ack_t {
 static inline uint16_t mavlink_msg_change_operator_control_ack_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint8_t gcs_system_id, uint8_t control_request, uint8_t ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK_LEN];
     _mav_put_uint8_t(buf, 0, gcs_system_id);
     _mav_put_uint8_t(buf, 1, control_request);
@@ -90,7 +90,7 @@ static inline uint16_t mavlink_msg_change_operator_control_ack_pack(uint8_t syst
 static inline uint16_t mavlink_msg_change_operator_control_ack_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint8_t gcs_system_id, uint8_t control_request, uint8_t ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK_LEN];
     _mav_put_uint8_t(buf, 0, gcs_system_id);
     _mav_put_uint8_t(buf, 1, control_request);
@@ -129,7 +129,7 @@ static inline uint16_t mavlink_msg_change_operator_control_ack_pack_chan(uint8_t
                                mavlink_message_t* msg,
                                    uint8_t gcs_system_id,uint8_t control_request,uint8_t ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK_LEN];
     _mav_put_uint8_t(buf, 0, gcs_system_id);
     _mav_put_uint8_t(buf, 1, control_request);
@@ -202,7 +202,7 @@ static inline uint16_t mavlink_msg_change_operator_control_ack_encode_status(uin
 
 static inline void mavlink_msg_change_operator_control_ack_send(mavlink_channel_t chan, uint8_t gcs_system_id, uint8_t control_request, uint8_t ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK_LEN];
     _mav_put_uint8_t(buf, 0, gcs_system_id);
     _mav_put_uint8_t(buf, 1, control_request);
@@ -226,7 +226,7 @@ static inline void mavlink_msg_change_operator_control_ack_send(mavlink_channel_
  */
 static inline void mavlink_msg_change_operator_control_ack_send_struct(mavlink_channel_t chan, const mavlink_change_operator_control_ack_t* change_operator_control_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_change_operator_control_ack_send(chan, change_operator_control_ack->gcs_system_id, change_operator_control_ack->control_request, change_operator_control_ack->ack);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK, (const char *)change_operator_control_ack, MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK_MIN_LEN, MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK_LEN, MAVLINK_MSG_ID_CHANGE_OPERATOR_CONTROL_ACK_CRC);
@@ -243,7 +243,7 @@ static inline void mavlink_msg_change_operator_control_ack_send_struct(mavlink_c
  */
 static inline void mavlink_msg_change_operator_control_ack_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint8_t gcs_system_id, uint8_t control_request, uint8_t ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint8_t(buf, 0, gcs_system_id);
     _mav_put_uint8_t(buf, 1, control_request);
@@ -304,7 +304,7 @@ static inline uint8_t mavlink_msg_change_operator_control_ack_get_ack(const mavl
  */
 static inline void mavlink_msg_change_operator_control_ack_decode(const mavlink_message_t* msg, mavlink_change_operator_control_ack_t* change_operator_control_ack)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     change_operator_control_ack->gcs_system_id = mavlink_msg_change_operator_control_ack_get_gcs_system_id(msg);
     change_operator_control_ack->control_request = mavlink_msg_change_operator_control_ack_get_control_request(msg);
     change_operator_control_ack->ack = mavlink_msg_change_operator_control_ack_get_ack(msg);

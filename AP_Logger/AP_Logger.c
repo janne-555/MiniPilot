@@ -30,8 +30,9 @@ static uint64_t boot_time_us;
  TimeUS
 ----------------------------------------------------------------------------*/
 
-uint64_t AP_Logger_TimeUS(void) {
-  struct timeval tv;
+uint64_t AP_Logger_TimeUS(void)
+{
+    struct timeval tv;
 
   uint64_t now;
 
@@ -79,9 +80,9 @@ void AP_Logger_Init(void) {
  Update
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Update(void) {
-
-  if (!logger.enabled)
+void AP_Logger_Update(void)
+{
+    if (!logger.enabled)
     return;
 
   AP_Logger_Write_Attitude();
@@ -103,9 +104,9 @@ void AP_Logger_Update(void) {
  Attitude
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Write_Attitude(void) {
-
-  fprintf(log_file,
+void AP_Logger_Write_Attitude(void)
+{
+    fprintf(log_file,
 
           "ATT,%llu,%.2f,%.2f,%.2f\n",
 
@@ -124,9 +125,9 @@ void AP_Logger_Write_Attitude(void) {
  Battery
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Write_Battery(void) {
-
-  fprintf(log_file,
+void AP_Logger_Write_Battery(void)
+{
+    fprintf(log_file,
 
           "BAT,%llu,%.2f,%.2f,%.1f\n",
 
@@ -145,9 +146,9 @@ void AP_Logger_Write_Battery(void) {
  Motors
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Write_Motors(void) {
-
-  const AP_Motors_Output_t *m;
+void AP_Logger_Write_Motors(void)
+{
+    const AP_Motors_Output_t *m;
 
   m = AP_Motors_GetOutput();
 
@@ -172,9 +173,9 @@ void AP_Logger_Write_Motors(void) {
  Mode
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Write_Mode(void) {
-
-  fprintf(log_file,
+void AP_Logger_Write_Mode(void)
+{
+    fprintf(log_file,
 
           "MODE,%llu,%d\n",
 
@@ -189,9 +190,9 @@ void AP_Logger_Write_Mode(void) {
  Arming
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Write_Arming(void) {
-
-  fprintf(log_file,
+void AP_Logger_Write_Arming(void)
+{
+    fprintf(log_file,
 
           "ARM,%llu,%u\n",
 
@@ -206,9 +207,9 @@ void AP_Logger_Write_Arming(void) {
  Failsafe
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Write_Failsafe(void) {
-
-  fprintf(log_file,
+void AP_Logger_Write_Failsafe(void)
+{
+    fprintf(log_file,
 
           "FS,%llu,%u,%d\n",
 
@@ -225,9 +226,9 @@ void AP_Logger_Write_Failsafe(void) {
  Events
 ----------------------------------------------------------------------------*/
 
-void AP_Logger_Write_Event(const char *event) {
-
-  fprintf(log_file,
+void AP_Logger_Write_Event(const char *event)
+{
+    fprintf(log_file,
 
           "EV,%llu,%s\n",
 

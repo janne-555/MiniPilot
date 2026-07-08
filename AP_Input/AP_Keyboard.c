@@ -21,8 +21,9 @@ static struct termios new_term;
  * Initialize
  *---------------------------------------------------------------------------*/
 
-void AP_Keyboard_Init(void) {
-  tcgetattr(STDIN_FILENO, &old_term);
+void AP_Keyboard_Init(void)
+{
+    tcgetattr(STDIN_FILENO, &old_term);
 
   new_term = old_term;
 
@@ -39,7 +40,10 @@ void AP_Keyboard_Init(void) {
  * Restore Terminal
  *---------------------------------------------------------------------------*/
 
-void AP_Keyboard_Close(void) { tcsetattr(STDIN_FILENO, TCSANOW, &old_term); }
+void AP_Keyboard_Close(void)
+{
+    tcsetattr(STDIN_FILENO, TCSANOW, &old_term);
+}
 
 /*---------------------------------------------------------------------------
  * Read Keyboard

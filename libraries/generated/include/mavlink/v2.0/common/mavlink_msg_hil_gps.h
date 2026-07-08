@@ -103,7 +103,7 @@ typedef struct __mavlink_hil_gps_t {
 static inline uint16_t mavlink_msg_hil_gps_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t fix_type, int32_t lat, int32_t lon, int32_t alt, uint16_t eph, uint16_t epv, uint16_t vel, int16_t vn, int16_t ve, int16_t vd, uint16_t cog, uint8_t satellites_visible, uint8_t id, uint16_t yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_GPS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int32_t(buf, 8, lat);
@@ -174,7 +174,7 @@ static inline uint16_t mavlink_msg_hil_gps_pack(uint8_t system_id, uint8_t compo
 static inline uint16_t mavlink_msg_hil_gps_pack_status(uint8_t system_id, uint8_t component_id, mavlink_status_t *_status, mavlink_message_t* msg,
                                uint64_t time_usec, uint8_t fix_type, int32_t lat, int32_t lon, int32_t alt, uint16_t eph, uint16_t epv, uint16_t vel, int16_t vn, int16_t ve, int16_t vd, uint16_t cog, uint8_t satellites_visible, uint8_t id, uint16_t yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_GPS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int32_t(buf, 8, lat);
@@ -249,7 +249,7 @@ static inline uint16_t mavlink_msg_hil_gps_pack_chan(uint8_t system_id, uint8_t 
                                mavlink_message_t* msg,
                                    uint64_t time_usec,uint8_t fix_type,int32_t lat,int32_t lon,int32_t alt,uint16_t eph,uint16_t epv,uint16_t vel,int16_t vn,int16_t ve,int16_t vd,uint16_t cog,uint8_t satellites_visible,uint8_t id,uint16_t yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_GPS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int32_t(buf, 8, lat);
@@ -358,7 +358,7 @@ static inline uint16_t mavlink_msg_hil_gps_encode_status(uint8_t system_id, uint
 
 static inline void mavlink_msg_hil_gps_send(mavlink_channel_t chan, uint64_t time_usec, uint8_t fix_type, int32_t lat, int32_t lon, int32_t alt, uint16_t eph, uint16_t epv, uint16_t vel, int16_t vn, int16_t ve, int16_t vd, uint16_t cog, uint8_t satellites_visible, uint8_t id, uint16_t yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_HIL_GPS_LEN];
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int32_t(buf, 8, lat);
@@ -406,7 +406,7 @@ static inline void mavlink_msg_hil_gps_send(mavlink_channel_t chan, uint64_t tim
  */
 static inline void mavlink_msg_hil_gps_send_struct(mavlink_channel_t chan, const mavlink_hil_gps_t* hil_gps)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     mavlink_msg_hil_gps_send(chan, hil_gps->time_usec, hil_gps->fix_type, hil_gps->lat, hil_gps->lon, hil_gps->alt, hil_gps->eph, hil_gps->epv, hil_gps->vel, hil_gps->vn, hil_gps->ve, hil_gps->vd, hil_gps->cog, hil_gps->satellites_visible, hil_gps->id, hil_gps->yaw);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_HIL_GPS, (const char *)hil_gps, MAVLINK_MSG_ID_HIL_GPS_MIN_LEN, MAVLINK_MSG_ID_HIL_GPS_LEN, MAVLINK_MSG_ID_HIL_GPS_CRC);
@@ -423,7 +423,7 @@ static inline void mavlink_msg_hil_gps_send_struct(mavlink_channel_t chan, const
  */
 static inline void mavlink_msg_hil_gps_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  uint64_t time_usec, uint8_t fix_type, int32_t lat, int32_t lon, int32_t alt, uint16_t eph, uint16_t epv, uint16_t vel, int16_t vn, int16_t ve, int16_t vd, uint16_t cog, uint8_t satellites_visible, uint8_t id, uint16_t yaw)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
     _mav_put_uint64_t(buf, 0, time_usec);
     _mav_put_int32_t(buf, 8, lat);
@@ -628,7 +628,7 @@ static inline uint16_t mavlink_msg_hil_gps_get_yaw(const mavlink_message_t* msg)
  */
 static inline void mavlink_msg_hil_gps_decode(const mavlink_message_t* msg, mavlink_hil_gps_t* hil_gps)
 {
-#if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
+    #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     hil_gps->time_usec = mavlink_msg_hil_gps_get_time_usec(msg);
     hil_gps->lat = mavlink_msg_hil_gps_get_lat(msg);
     hil_gps->lon = mavlink_msg_hil_gps_get_lon(msg);

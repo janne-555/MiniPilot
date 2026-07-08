@@ -25,8 +25,9 @@ static AP_FlightMode_t last_mode = 255;
  * Initialize
  *---------------------------------------------------------------------------*/
 
-void AP_FlightMode_Init(void) {
-  flight_mode.mode = FLIGHTMODE_STABILIZE;
+void AP_FlightMode_Init(void)
+{
+    flight_mode.mode = FLIGHTMODE_STABILIZE;
 
   flight_mode.reason = MODE_REASON_SYSTEM;
 
@@ -256,19 +257,34 @@ void AP_FlightMode_SetMode(AP_FlightMode_t mode,
  * Get Mode
  *---------------------------------------------------------------------------*/
 
-AP_FlightMode_t AP_FlightMode_GetMode(void) { return flight_mode.mode; }
+AP_FlightMode_t AP_FlightMode_GetMode(void)
+{
+    return flight_mode.mode;
+}
 
 /*---------------------------------------------------------------------------
  * Desired Outputs
  *---------------------------------------------------------------------------*/
 
-float AP_FlightMode_GetRoll(void) { return flight_mode.desired_roll; }
+float AP_FlightMode_GetRoll(void)
+{
+    return flight_mode.desired_roll;
+}
 
-float AP_FlightMode_GetPitch(void) { return flight_mode.desired_pitch; }
+float AP_FlightMode_GetPitch(void)
+{
+    return flight_mode.desired_pitch;
+}
 
-float AP_FlightMode_GetYaw(void) { return flight_mode.desired_yaw; }
+float AP_FlightMode_GetYaw(void)
+{
+    return flight_mode.desired_yaw;
+}
 
-float AP_FlightMode_GetThrottle(void) { return flight_mode.desired_throttle; }
+float AP_FlightMode_GetThrottle(void)
+{
+    return flight_mode.desired_throttle;
+}
 
 /*---------------------------------------------------------------------------
  * Full State

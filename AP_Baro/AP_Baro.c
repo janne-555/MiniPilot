@@ -25,8 +25,9 @@ static float last_print_alt = -999;
  Init
 ----------------------------------------------------------------------------*/
 
-void AP_Baro_Init(void) {
-  /*
+void AP_Baro_Init(void)
+{
+    /*
    * Sea level default
    */
 
@@ -102,12 +103,27 @@ void AP_Baro_Update(void) {
 
 const AP_Baro_t *AP_Baro_Get(void) { return &baro; }
 
-float AP_Baro_GetPressure(void) { return baro.pressure; }
+float AP_Baro_GetPressure(void)
+{
+    return baro.pressure;
+}
 
-float AP_Baro_GetTemperature(void) { return baro.temperature; }
+float AP_Baro_GetTemperature(void)
+{
+    return baro.temperature;
+}
 
-float AP_Baro_GetAltitude(void) { return baro.altitude; }
+float AP_Baro_GetAltitude(void)
+{
+    return baro.altitude;
+}
 
-float AP_Baro_GetClimbRate(void) { return baro.climb_rate; }
+float AP_Baro_GetClimbRate(void)
+{
+    return baro.climb_rate;
+}
 
-uint8_t AP_Baro_IsHealthy(void) { return baro.healthy; }
+uint8_t AP_Baro_IsHealthy(void)
+{
+    return baro.healthy;
+}
