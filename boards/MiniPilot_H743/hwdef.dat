@@ -1,0 +1,19 @@
+#--------------------------------------------------
+# MiniPilot STM32H743 Board Definition
+#--------------------------------------------------
+
+BOARD MiniPilot_H743
+
+MCU STM32H743xx
+
+OSCILLATOR_HZ 8000000
+
+FLASH_SIZE_KB 2048
+
+BOOTLOADER_SIZE_KB 128
+
+CPU Cortex-M7
+
+FPU FPv5-D16
+
+END

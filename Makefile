@@ -7,7 +7,7 @@ CFLAGS=\
 SRC=\
 main.c \
 AP_Scheduler/AP_Scheduler.c \
-AP_HAL/HAL_Linux.c \
+AP_HAL/HAL_Linux/HAL_Linux.c \
 AP_Vehicle/AP_Vehicle.c \
 AP_Battery/AP_Battery.c \
 AP_Baro/AP_Baro.c \
@@ -30,7 +30,7 @@ AP_Nav/AP_Nav.c \
 AP_Mission/AP_Mission.c \
 AP_Logger/AP_Logger.c \
 AP_Arming/AP_Arming.c \
-AP_Input/AP_Keyboard.c \
+AP_HAL/HAL_Linux/HAL_Keyboard.c \
 AP_InertialNav/AP_InertialNav.c \
 AP_PosControl/AP_PosControl.c \
 AP_Debug/AP_Debug.c \

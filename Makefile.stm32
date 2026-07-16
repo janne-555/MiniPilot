@@ -1,0 +1,71 @@
+#-------------------------------------------------
+# MiniPilot STM32 Build
+#-------------------------------------------------
+
+TARGET = build/output/MiniPilot
+
+CC      = arm-none-eabi-gcc
+AS      = arm-none-eabi-gcc
+OBJCOPY = arm-none-eabi-objcopy
+SIZE    = arm-none-eabi-size
+
+CPU = -mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard
+
+CFLAGS = \
+$(CPU) \
+-DSTM32H743xx \
+-O0 \
+-g3 \
+-Wall \
+-ffunction-sections \
+-fdata-sections \
+-Igenerated \
+-IBSP/STM32H743 \
+-IBSP/STM32H743/CMSIS/Core/Include \
+-IBSP/STM32H743/CMSIS/Device/ST/STM32H7xx/Include
+
+LDFLAGS = \
+$(CPU) \
+-T BSP/STM32H743/Linker/linker.ld \
+-Wl,--gc-sections
+
+SRC = \
+main.c \
+BSP/STM32H743/system_stm32h7xx.c \
+BSP/STM32H743/bsp_clock.c \
+BSP/STM32H743/bsp_gpio.c \
+BSP/STM32H743/bsp_uart.c \
+BSP/STM32H743/bsp_timer.c \
+BSP/STM32H743/bsp_scheduler.c
+ASM = \
+BSP/STM32H743/Startup/startup_stm32h743xx.s
+
+all:
+
+	$(CC) $(CFLAGS) -c $(SRC)
+
+	$(AS) $(CPU) -c $(ASM)
+
+	$(CC) \
+	main.o \
+	system_stm32h7xx.o \
+	bsp_clock.o \
+	bsp_gpio.o \
+	bsp_uart.o \
+	bsp_timer.o \
+	bsp_scheduler.o \
+	startup_stm32h743xx.o \
+	$(LDFLAGS) \
+	-o $(TARGET).elf
+
+	$(OBJCOPY) -O binary $(TARGET).elf $(TARGET).bin
+
+	$(OBJCOPY) -O ihex $(TARGET).elf $(TARGET).hex
+
+	$(SIZE) $(TARGET).elf
+
+clean:
+
+	rm -f *.o
+
+	rm -f build/output/*

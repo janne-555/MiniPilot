@@ -9,8 +9,7 @@
 #include "../AP_Arming/AP_Arming.h"
 #include "../AP_Config/AP_Config.h"
 #include "../AP_Debug/AP_Debug.h"
-#include "../AP_Input/AP_Keyboard.h"
-
+#include "AP_HAL/HAL_Linux/HAL_Keyboard.h"
 static float last_roll = 999.0f;
 /*----------------------------------------------------------------------------
  * Private Variables
@@ -61,7 +60,7 @@ void AP_RC_Update(void)
 {
     char key;
 
-  key = AP_Keyboard_Read();
+  key = HAL_Keyboard_Read();
 
   RC_ProcessKey(key);
 
