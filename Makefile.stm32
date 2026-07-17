@@ -21,6 +21,8 @@ $(CPU) \
 -fdata-sections \
 -Igenerated \
 -IBSP/STM32H743 \
+-IBSP/STM32H743/Core \
+-IBSP/STM32H743/Drivers \
 -IBSP/STM32H743/CMSIS/Core/Include \
 -IBSP/STM32H743/CMSIS/Device/ST/STM32H7xx/Include
 
@@ -32,11 +34,11 @@ $(CPU) \
 SRC = \
 main.c \
 BSP/STM32H743/system_stm32h7xx.c \
-BSP/STM32H743/bsp_clock.c \
-BSP/STM32H743/bsp_gpio.c \
-BSP/STM32H743/bsp_uart.c \
-BSP/STM32H743/bsp_timer.c \
-BSP/STM32H743/bsp_scheduler.c
+BSP/STM32H743/Core/bsp_clock.c \
+BSP/STM32H743/Drivers/bsp_gpio.c \
+BSP/STM32H743/Drivers/bsp_uart.c \
+BSP/STM32H743/Core/bsp_timer.c \
+BSP/STM32H743/Core/bsp_scheduler.c
 ASM = \
 BSP/STM32H743/Startup/startup_stm32h743xx.s
 
